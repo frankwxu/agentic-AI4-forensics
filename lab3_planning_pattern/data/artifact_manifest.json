@@ -1,0 +1,21 @@
+{
+  "case_id": "PL-2026-011",
+  "lab": "Lab 3 - Planning Pattern",
+  "device": {
+    "platform": "Android",
+    "model": "Pixel 8",
+    "os_version": "Android 14"
+  },
+  "acquisition": {
+    "type": "full_file_system",
+    "tool": "Cellebrite UFED 7.70",
+    "acquired_at_utc": "2026-02-12T13:11:42Z",
+    "original_image_sha256": "4bc2ff573aa8bf3d6b0fb7a81341a7ef34df7b64c1d50368f6dd80e38f4a95ce"
+  },
+  "analysis_timezone": "America/New_York",
+  "incident_window_utc": {
+    "start": "2026-02-11T20:55:00Z",
+    "end": "2026-02-11T21:25:00Z"
+  },
+  "note": "Synthetic classroom dataset for planning-pattern demo"
+}

@@ -1,0 +1,2 @@
+timestamp_utc,app,event,bytes_out,notes
+2026-03-01T18:45:07Z,SecureChat,upload_started,48211,"Outbound upload session opened"

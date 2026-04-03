@@ -1,0 +1,4 @@
+.env
+.venv-ai4-forensics/
+__pycache__/
+.ipynb_checkpoints/

@@ -1,0 +1,3 @@
+timestamp_utc,event,notes
+2026-03-01T18:35:02Z,device_locked,"Phone left unattended during vaccination event"
+2026-03-01T19:10:08Z,device_unlocked,"Phone recovered by staff member"

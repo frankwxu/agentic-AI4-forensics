@@ -1,0 +1,4 @@
+start_utc,end_utc,network_state,notes
+2026-02-11T20:55:00Z,2026-02-11T21:10:00Z,online,"Mobile data available"
+2026-02-11T21:10:00Z,2026-02-11T21:26:59Z,offline,"No mobile data or Wi-Fi connectivity recorded"
+2026-02-11T21:27:04Z,2026-02-11T21:40:00Z,online,"Mobile data restored"

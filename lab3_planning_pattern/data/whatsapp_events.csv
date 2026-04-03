@@ -1,0 +1,4 @@
+timestamp_utc,event,chat_id,details
+2026-02-11T21:12:07Z,chat_opened,client_thread_18,"Conversation opened from recent chats"
+2026-02-11T21:13:12Z,message_deleted,client_thread_18,"Deleted outbound message with image attachment placeholder"
+2026-02-11T21:13:19Z,attachment_event,client_thread_18,"Image attachment record observed in app cache metadata"

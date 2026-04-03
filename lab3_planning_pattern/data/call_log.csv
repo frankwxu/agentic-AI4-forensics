@@ -1,0 +1,2 @@
+timestamp_utc,direction,phone_number,duration_seconds,call_type
+2026-02-11T21:08:14Z,outgoing,+1-555-0184,42,cellular_voice

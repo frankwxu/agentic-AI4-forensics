@@ -1,0 +1,5 @@
+timestamp_utc,domain,ip,bytes_out,process
+2026-02-15T01:07:54Z,api.telegram.org,149.154.167.220,285901,org.telegram.messenger
+2026-02-15T01:09:39Z,smtp.gmail.com,142.250.114.108,194221,com.google.android.gm
+2026-02-15T01:10:08Z,drive.google.com,142.250.191.142,16992,com.android.chrome
+2026-02-15T01:11:02Z,intranet.corp.local,10.40.22.18,8422,com.microsoft.teams

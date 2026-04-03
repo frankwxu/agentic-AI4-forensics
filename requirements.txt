@@ -1,0 +1,6 @@
+openai
+python-dotenv
+colorama
+graphviz
+requests
+jupyter

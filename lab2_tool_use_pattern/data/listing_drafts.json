@@ -1,0 +1,18 @@
+[
+  {
+    "draft_id": "draft-9001",
+    "created_at_utc": "2026-01-02T21:31:11Z",
+    "title": "black SUV for sale",
+    "description": "clean title, low miles, cash only",
+    "attached_images": ["IMG_2044.jpg"],
+    "published_at_utc": null
+  },
+  {
+    "draft_id": "draft-9002",
+    "created_at_utc": "2026-01-02T22:18:54Z",
+    "title": "spare car parts",
+    "description": "miscellaneous trim and lights",
+    "attached_images": ["IMG_2051.jpg"],
+    "published_at_utc": null
+  }
+]

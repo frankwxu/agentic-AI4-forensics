@@ -1,0 +1,20 @@
+{
+  "case_id": "DF-2026-017",
+  "device": {
+    "platform": "Android",
+    "model": "Pixel 7",
+    "os_version": "Android 14"
+  },
+  "acquisition": {
+    "type": "full_file_system",
+    "tool": "Cellebrite UFED 7.64",
+    "acquired_at_utc": "2026-02-18T14:32:11Z",
+    "original_image_sha256": "a5f30f7f6a6c95c17117d4ea03f2a618f9380ca379f6f31df96ab53ac49f58a8"
+  },
+  "analysis_timezone": "America/New_York",
+  "incident_window_utc": {
+    "start": "2026-02-14T20:00:00Z",
+    "end": "2026-02-16T04:00:00Z"
+  },
+  "note": "Synthetic classroom dataset for reflection-pattern demo"
+}

@@ -1,0 +1,4 @@
+file_name,primary_object,color,body_type,roof_rack,plate_region_visible,confidence
+IMG_2044.jpg,vehicle,black,SUV,yes,yes,0.96
+IMG_2045.jpg,vehicle,silver,sedan,no,no,0.74
+IMG_2051.jpg,vehicle,black,SUV,no,yes,0.68

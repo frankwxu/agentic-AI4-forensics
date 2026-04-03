@@ -1,0 +1,2 @@
+timestamp_utc,app,event,target,details
+2026-03-01T18:45:02Z,SecureChat,attach_attempt,external_contact_7,"patients_contacts.png selected as outbound attachment"

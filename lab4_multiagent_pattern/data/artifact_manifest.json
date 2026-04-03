@@ -1,0 +1,21 @@
+{
+  "case_id": "MA-2026-022",
+  "lab": "Lab 4 - Multiagent Pattern",
+  "device": {
+    "platform": "Android",
+    "model": "Motorola Edge 2024",
+    "os_version": "Android 14"
+  },
+  "acquisition": {
+    "type": "full_file_system",
+    "tool": "Cellebrite UFED 7.70",
+    "acquired_at_utc": "2026-03-03T12:04:55Z",
+    "original_image_sha256": "2ef6f6d371459ce23d3953196b03f979f8d2d440d4e8f1bf13d1712d7bf7f3a1"
+  },
+  "analysis_timezone": "America/New_York",
+  "incident_window_utc": {
+    "start": "2026-03-01T18:35:00Z",
+    "end": "2026-03-01T19:10:00Z"
+  },
+  "note": "Synthetic classroom dataset for multiagent-pattern demo"
+}

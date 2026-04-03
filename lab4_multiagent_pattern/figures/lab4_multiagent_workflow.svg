@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1550" height="370" viewBox="20 24 1550 370" role="img" aria-labelledby="title desc">
+  <title id="title">Multiagent Pattern Workflow</title>
+  <desc id="desc">Workflow for the Multiagent Pattern: instructor incident package, student scope and task split, investigator, evidence verifier, and custody auditor checks, and student final case conclusion.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 20px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="420" fill="#ffffff"/>
+  <text x="800" y="66" text-anchor="middle" class="title">Multiagent Pattern Workflow</text>
+
+  <rect x="30" y="140" rx="16" ry="16" width="230" height="150" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="145" y="178" text-anchor="middle" class="node-title">[Instructor] Incident</text>
+  <text x="145" y="206" text-anchor="middle" class="node-title">Package</text>
+  <text x="145" y="240" text-anchor="middle" class="node-text">phone-loss period,</text>
+  <text x="145" y="264" text-anchor="middle" class="node-text">key records</text>
+
+  <rect x="292" y="140" rx="16" ry="16" width="230" height="150" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="407" y="178" text-anchor="middle" class="node-title">[Student] Scope and</text>
+  <text x="407" y="206" text-anchor="middle" class="node-title">Task Split</text>
+  <text x="407" y="240" text-anchor="middle" class="node-text">assign role-specific</text>
+  <text x="407" y="264" text-anchor="middle" class="node-text">agent tasks</text>
+
+  <rect x="554" y="140" rx="16" ry="16" width="230" height="150" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="669" y="178" text-anchor="middle" class="node-title">[Agent 1]</text>
+  <text x="669" y="206" text-anchor="middle" class="node-title">Investigator</text>
+  <text x="669" y="240" text-anchor="middle" class="node-text">frames key questions,</text>
+  <text x="669" y="264" text-anchor="middle" class="node-text">proposes next steps</text>
+
+  <rect x="816" y="140" rx="16" ry="16" width="230" height="150" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="931" y="178" text-anchor="middle" class="node-title">[Agent 2]</text>
+  <text x="931" y="206" text-anchor="middle" class="node-title">Evidence Verifier</text>
+  <text x="931" y="240" text-anchor="middle" class="node-text">checks claims against</text>
+  <text x="931" y="264" text-anchor="middle" class="node-text">files and logs</text>
+
+  <rect x="1078" y="140" rx="16" ry="16" width="230" height="150" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="1193" y="178" text-anchor="middle" class="node-title">[Agent 3]</text>
+  <text x="1193" y="206" text-anchor="middle" class="node-title">Custody Auditor</text>
+  <text x="1193" y="240" text-anchor="middle" class="node-text">checks who handled</text>
+  <text x="1193" y="264" text-anchor="middle" class="node-text">evidence and when</text>
+
+  <rect x="1340" y="140" rx="16" ry="16" width="230" height="150" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1455" y="178" text-anchor="middle" class="node-title">[Student] Final</text>
+  <text x="1455" y="206" text-anchor="middle" class="node-title">Conclusion</text>
+  <text x="1455" y="240" text-anchor="middle" class="node-text">resolve conflicts,</text>
+  <text x="1455" y="264" text-anchor="middle" class="node-text">issue conclusion</text>
+
+  <line x1="260" y1="215" x2="292" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="522" y1="215" x2="554" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="784" y1="215" x2="816" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1046" y1="215" x2="1078" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1308" y1="215" x2="1340" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 1193 290 C 1193 350, 407 350, 407 290" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+  <text x="800" y="384" text-anchor="middle" class="label">Repeat until evidence and handling records support one conclusion</text>
+</svg>

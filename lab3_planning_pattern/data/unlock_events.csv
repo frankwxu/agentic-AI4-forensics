@@ -1,0 +1,3 @@
+timestamp_utc,event,source
+2026-02-11T20:55:03Z,device_unlocked,keyguard_log
+2026-02-11T21:25:31Z,device_locked,keyguard_log

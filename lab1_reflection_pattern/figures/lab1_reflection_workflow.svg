@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="350" viewBox="30 42 1540 350" role="img" aria-labelledby="title desc">
+  <title id="title">Reflection Learning Loop</title>
+  <desc id="desc">Workflow for the Reflection Pattern using the customers_q1.csv mobile exfiltration case: evidence package, over-claimed draft, reflection critique, revision, and a final report limited to what the evidence supports.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .node-title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="400" fill="#ffffff"/>
+  <text x="800" y="90" text-anchor="middle" class="title">Reflection Learning Loop</text>
+
+  <rect x="40" y="130" rx="16" ry="16" width="260" height="170" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="170" y="170" text-anchor="middle" class="node-title">[Instructor] Evidence</text>
+  <text x="170" y="198" text-anchor="middle" class="node-title">Package</text>
+  <text x="170" y="232" text-anchor="middle" class="node-text">customers_q1.csv, Telegram,</text>
+  <text x="170" y="256" text-anchor="middle" class="node-text">Gmail, network, deletion</text>
+
+  <rect x="355" y="130" rx="16" ry="16" width="260" height="170" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="485" y="170" text-anchor="middle" class="node-title">[Student] Draft</text>
+  <text x="485" y="198" text-anchor="middle" class="node-title">Report</text>
+  <text x="485" y="232" text-anchor="middle" class="node-text">initial exfiltration</text>
+  <text x="485" y="256" text-anchor="middle" class="node-text">claim across two channels</text>
+
+  <rect x="670" y="130" rx="16" ry="16" width="260" height="170" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="800" y="170" text-anchor="middle" class="node-title">[Agent] Reflection</text>
+  <text x="800" y="198" text-anchor="middle" class="node-title">Critique</text>
+  <text x="800" y="232" text-anchor="middle" class="node-text">flags over-claim,</text>
+  <text x="800" y="256" text-anchor="middle" class="node-text">delivery not confirmed</text>
+
+  <rect x="985" y="130" rx="16" ry="16" width="260" height="170" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1115" y="170" text-anchor="middle" class="node-title">[Student] Revised</text>
+  <text x="1115" y="198" text-anchor="middle" class="node-title">Report</text>
+  <text x="1115" y="232" text-anchor="middle" class="node-text">attempted sharing +</text>
+  <text x="1115" y="256" text-anchor="middle" class="node-text">what remains uncertain</text>
+
+  <rect x="1300" y="130" rx="16" ry="16" width="260" height="170" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1430" y="170" text-anchor="middle" class="node-title">[Student] Final</text>
+  <text x="1430" y="198" text-anchor="middle" class="node-title">Report</text>
+  <text x="1430" y="226" text-anchor="middle" class="node-text">claims limited to</text>
+  <text x="1430" y="250" text-anchor="middle" class="node-text">what the evidence supports</text>
+  <text x="1430" y="274" text-anchor="middle" class="node-text">remaining uncertainty stated</text>
+
+  <line x1="300" y1="215" x2="355" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="615" y1="215" x2="670" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="930" y1="215" x2="985" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1245" y1="215" x2="1300" y2="215" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 1115 300 C 1115 348, 800 348, 800 300" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+  <text x="958" y="372" text-anchor="middle" class="label">Iterate until transmission claims match the available evidence</text>
+</svg>

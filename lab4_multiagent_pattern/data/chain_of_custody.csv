@@ -1,0 +1,5 @@
+timestamp_utc,handler,action,notes
+2026-03-03T12:04:55Z,Investigator_A,acquired_image,"UFED acquisition to encrypted evidence drive"
+2026-03-03T12:41:08Z,Investigator_A,computed_hash,"SHA-256 verified against acquisition log"
+2026-03-04T09:15:30Z,Analyst_B,created_working_copy,"Exported device state, file, messaging, and network artifacts"
+2026-03-05T11:02:44Z,Analyst_C,review_started,"Review began, but no transfer entry from Analyst_B was documented"

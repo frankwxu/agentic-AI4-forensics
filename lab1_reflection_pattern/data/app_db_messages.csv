@@ -1,0 +1,5 @@
+timestamp_utc,app,contact,direction,text_excerpt
+2026-02-15T01:07:58Z,Telegram,@external_consult,OUT,"sending that sheet now"
+2026-02-15T01:08:15Z,Telegram,@external_consult,OUT,"delete after download"
+2026-02-15T01:09:44Z,Gmail,personal_mail,OUT,"see attached export"
+2026-02-15T01:11:51Z,Slack,#sales-ops,IN,"Need customer list for Monday forecast"

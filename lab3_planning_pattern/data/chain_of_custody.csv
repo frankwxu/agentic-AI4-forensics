@@ -1,0 +1,4 @@
+timestamp_utc,handler,action,notes
+2026-02-12T13:11:42Z,Investigator_A,acquired_image,"UFED acquisition to encrypted evidence drive"
+2026-02-12T13:38:57Z,Investigator_A,computed_hash,"SHA-256 verified against acquisition log"
+2026-02-13T08:46:12Z,Analyst_B,created_working_copy,"Exported access, call, app, and network artifacts"

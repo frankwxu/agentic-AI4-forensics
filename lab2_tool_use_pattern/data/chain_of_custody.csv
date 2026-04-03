@@ -1,0 +1,4 @@
+timestamp_utc,handler,action,notes
+2026-01-05T14:22:09Z,Investigator_A,acquired_device,"Logical extraction and media export to encrypted evidence drive"
+2026-01-05T14:48:21Z,Investigator_A,computed_hash,"SHA-256 verified against extraction log"
+2026-01-06T09:12:44Z,Analyst_B,created_working_copy,"Exported gallery, metadata, and listing draft artifacts"
