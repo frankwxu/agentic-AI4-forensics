@@ -1,6 +1,6 @@
 # Setup Checklist
 
-Use this checklist before starting Lab 1.
+Use this checklist before starting `lab0_2_model_warmup`.
 
 - Repository cloned locally
 - `.env` created from `.env.example`
@@ -14,5 +14,6 @@ Use this checklist before starting Lab 1.
 - If using a personal Ollama server, the configured model is available there
 - Jupyter launches from the repo root
 - [03_environment_check.ipynb](03_environment_check.ipynb) runs without blocking errors
+- [04_setup_assignment.ipynb](04_setup_assignment.ipynb) is completed
 
-If any item above is incomplete, fix it before moving to Lab 1.
+If any item above is incomplete, fix it before moving to `lab0_2_model_warmup`.

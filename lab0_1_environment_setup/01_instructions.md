@@ -1,4 +1,4 @@
-# Lab 0: Environment Setup and Ollama Connectivity Check
+# Lab 0A: Environment Setup and Ollama Connectivity Check
 
 ## Purpose
 
@@ -139,6 +139,8 @@ Complete the steps in this order:
 
 9. Launch Jupyter from the repo root.
 10. Open [03_environment_check.ipynb](03_environment_check.ipynb) and run all cells from top to bottom.
+11. Complete [04_setup_assignment.ipynb](04_setup_assignment.ipynb).
+12. After the setup assignment passes, continue to [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md).
 
    If you are using a personal Ollama server, make sure the model in `.env` is available before running the notebook.
 
@@ -154,6 +156,8 @@ You have completed Lab 0 when:
 - the notebook can read the repo `.env` values needed by the labs
 - the notebook can contact the configured Ollama endpoint
 - the notebook can render a small Graphviz diagram
+- you complete [04_setup_assignment.ipynb](04_setup_assignment.ipynb)
+- you are ready to continue to [lab0_2_model_warmup](../lab0_2_model_warmup)
 
 ## Troubleshooting
 
@@ -167,9 +171,10 @@ You have completed Lab 0 when:
 
 ## After Lab 0
 
-After this setup check passes, move on to the forensic labs in order:
+After this setup check passes, continue to:
 
-1. `lab1_reflection_pattern`
-2. `lab2_tool_use_pattern`
-3. `lab3_planning_pattern`
-4. `lab4_multiagent_pattern`
+1. `lab0_2_model_warmup`
+2. `lab1_reflection_pattern`
+3. `lab2_tool_use_pattern`
+4. `lab3_planning_pattern`
+5. `lab4_multiagent_pattern`
