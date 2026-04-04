@@ -1,33 +1,67 @@
 # Agentic AI4 Forensics Labs
 
-## Setup
+This repository contains a standalone set of student-facing labs for agentic AI patterns in digital forensics.
 
-From the `agentic-AI4-forensics` folder, create and activate a virtual environment, then install the required Python packages:
+## Get The Repo
+
+Clone the repository to your local machine, then move into the project folder.
 
 ```bash
-python3 -m venv .venv-ai4-forensics
-source .venv-ai4-forensics/bin/activate
-pip install -r requirements.txt
+git clone https://github.com/frankwxu/agentic-AI4-forensics.git
+cd agentic-AI4-forensics
 ```
 
-Make sure `.env` is present at the repo root with the model configuration used by the notebooks, then open Jupyter from this folder so the local `src/` package and lab paths resolve correctly.
+## Quick Start
 
-This directory is organized into four self-contained lab folders. Each lab folder contains:
+Create a local `.env` from the example file:
+
+```bash
+cp .env.example .env
+```
+
+On Windows, create `.env` by copying `.env.example`.
+
+Then update `.env` with the `MODEL` and `OLLAMA_BASE_URL` values provided by your instructor.
+
+Then begin with [lab0_environment_setup/01_instructions.md](lab0_environment_setup/01_instructions.md). Lab 0 contains the full setup sequence for:
+
+- virtual environment creation
+- Python package installation
+- Graphviz installation
+- `.env` configuration for the instructor-provided Ollama server
+- command-line Ollama connectivity testing
+- optional local Ollama setup
+- Jupyter launch
+- environment verification
+
+## Lab Folders
+
+- `lab0_environment_setup/`: Setup lab for Python, Jupyter, Graphviz, and Ollama connectivity verification
+- `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
+- `lab2_tool_use_pattern/`: Tool-use lab for image metadata, vehicle matching, and sale-draft review
+- `lab3_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
+- `lab4_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
+
+`lab0_environment_setup/` contains:
+
+- `01_instructions.md` with the setup sequence
+- `02_setup_checklist.md` with the pre-lab checklist
+- `03_environment_check.ipynb` with the runnable environment smoke test
+
+Labs 1 through 4 contain:
 
 - `01_instructions.md` with the lab workflow and requirements
 - `02_case_overview.md` with the incident background and case context
 - `03_lab_notebook.ipynb` with the interactive notebook for the lab
 - a `data/` subfolder with the staged case artifacts
 - a `figures/` subfolder when the lab includes workflow diagrams
-- a local `src/` folder with the `agentic_patterns` package used by the notebooks
-
-## Lab Folders
-
-- `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
-- `lab2_tool_use_pattern/`: Tool-use lab for image metadata, vehicle matching, and sale-draft review
-- `lab3_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
-- `lab4_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
 
 Each `data/` folder includes the synthetic evidence artifacts, including an artifact manifest, a chain-of-custody log, and lab-specific files for analysis.
 
-Students should follow the files in order: `01_instructions.md` -> `02_case_overview.md` -> `03_lab_notebook.ipynb`.
+Students should follow this sequence:
+
+1. `lab0_environment_setup`
+2. `lab1_reflection_pattern`
+3. `lab2_tool_use_pattern`
+4. `lab3_planning_pattern`
+5. `lab4_multiagent_pattern`
