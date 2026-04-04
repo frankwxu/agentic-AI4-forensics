@@ -53,7 +53,7 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 - `01_instructions.md` with the setup sequence
 - `02_setup_checklist.md` with the pre-lab checklist
 - `03_environment_check.ipynb` with the runnable environment smoke test
-- `04_setup_assignment.ipynb` with the short coding assignment for setup verification
+- `04_setup_assignment.ipynb` with the short coding assignment, one student question to the model, and an observation report for setup verification
 
 `lab0_2_model_warmup/` contains:
 
