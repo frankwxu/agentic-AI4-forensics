@@ -42,7 +42,7 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 ## Lab Folders
 
 - `lab0_1_environment_setup/`: Setup lab for Python, Jupyter, Graphviz, and Ollama connectivity verification
-- `lab0_2_model_warmup/`: Warm-up lab for comparing outputs from multiple models
+- `lab0_2_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
 - `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
 - `lab2_tool_use_pattern/`: Tool-use lab for image metadata, vehicle matching, and sale-draft review
 - `lab3_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
@@ -58,7 +58,8 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 `lab0_2_model_warmup/` contains:
 
 - `01_instructions.md` with the warm-up sequence
-- `02_model_comparison.ipynb` with the student model-comparison assignment
+- `02_model_comparison.ipynb` with the guided baseline model-comparison notebook
+- `03_prompt_revision_assignment.ipynb` with the student prompt-revision assignment
 
 Labs 1 through 4 contain:
 
