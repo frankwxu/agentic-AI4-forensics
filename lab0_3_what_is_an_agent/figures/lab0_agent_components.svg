@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
+  <title id="title">Main Parts of a Simple AI Agent</title>
+  <desc id="desc">Diagram for Lab 0C showing a central AI agent connected to six components: role, goal, approved tools, short memory, stop condition, and human review boundary.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .center-title { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .center-text { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="580" fill="#ffffff"/>
+  <text x="800" y="58" text-anchor="middle" class="title">Main Parts of a Simple AI Agent</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">Each part narrows the same model into a more inspectable and bounded workflow.</text>
+
+  <rect x="565" y="190" rx="22" ry="22" width="470" height="150" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
+  <text x="800" y="235" text-anchor="middle" class="center-title">AI Agent</text>
+  <text x="800" y="268" text-anchor="middle" class="center-text">The model working within bounded role,</text>
+  <text x="800" y="294" text-anchor="middle" class="center-text">goals, tools, memory, and review limits</text>
+
+  <rect x="110" y="120" rx="16" ry="16" width="260" height="96" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="240" y="152" text-anchor="middle" class="node-title">Role</text>
+  <text x="240" y="180" text-anchor="middle" class="node-text">what job the model</text>
+  <text x="240" y="202" text-anchor="middle" class="node-text">is performing</text>
+
+  <rect x="420" y="360" rx="16" ry="16" width="260" height="96" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="550" y="392" text-anchor="middle" class="node-title">Goal</text>
+  <text x="550" y="420" text-anchor="middle" class="node-text">what successful output</text>
+  <text x="550" y="442" text-anchor="middle" class="node-text">should accomplish</text>
+
+  <rect x="110" y="360" rx="16" ry="16" width="260" height="96" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="240" y="392" text-anchor="middle" class="node-title">Approved Tools</text>
+  <text x="240" y="420" text-anchor="middle" class="node-text">which inputs or resources</text>
+  <text x="240" y="442" text-anchor="middle" class="node-text">the agent may use</text>
+
+  <rect x="1230" y="120" rx="16" ry="16" width="260" height="96" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1360" y="152" text-anchor="middle" class="node-title">Short Memory</text>
+  <text x="1360" y="180" text-anchor="middle" class="node-text">the small context it</text>
+  <text x="1360" y="202" text-anchor="middle" class="node-text">should keep across steps</text>
+
+  <rect x="920" y="360" rx="16" ry="16" width="260" height="96" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="1050" y="392" text-anchor="middle" class="node-title">Stop Condition</text>
+  <text x="1050" y="420" text-anchor="middle" class="node-text">when the agent should</text>
+  <text x="1050" y="442" text-anchor="middle" class="node-text">stop generating steps</text>
+
+  <rect x="1230" y="360" rx="16" ry="16" width="260" height="96" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1360" y="392" text-anchor="middle" class="node-title">Human Review Boundary</text>
+  <text x="1360" y="420" text-anchor="middle" class="node-text">what must stay with</text>
+  <text x="1360" y="442" text-anchor="middle" class="node-text">a person to decide</text>
+
+  <line x1="370" y1="180" x2="565" y2="230" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="680" y1="392" x2="710" y2="340" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="370" y1="392" x2="565" y2="300" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1230" y1="180" x2="1035" y2="230" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="920" y1="392" x2="890" y2="340" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1230" y1="392" x2="1035" y2="300" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

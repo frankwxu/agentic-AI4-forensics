@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="590" viewBox="30 20 1540 590" role="img" aria-labelledby="title desc">
+  <title id="title">From Plain Prompt to Bounded Agent Workflow</title>
+  <desc id="desc">Figure for Lab 0C comparing a plain prompt sent directly to a model with a bounded agent workflow that adds an agent card, mini case packet, structured output, and human review.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .panel-label { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="650" fill="#ffffff"/>
+  <text x="800" y="58" text-anchor="middle" class="title">From Plain Prompt to Bounded Agent Workflow</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">Lab 0C uses the same model in both paths; the difference is how tightly the workflow is bounded.</text>
+
+  <rect x="40" y="112" rx="18" ry="18" width="1520" height="166" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="62" y="144" class="panel-label">Plain model path</text>
+
+  <rect x="150" y="160" rx="16" ry="16" width="320" height="96" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="310" y="192" text-anchor="middle" class="node-title">[Student] Plain Prompt</text>
+  <text x="310" y="220" text-anchor="middle" class="node-text">one open-ended request</text>
+  <text x="310" y="242" text-anchor="middle" class="node-text">with little structure</text>
+
+  <rect x="620" y="160" rx="16" ry="16" width="320" height="96" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="780" y="192" text-anchor="middle" class="node-title">[Same Model] Single Response</text>
+  <text x="780" y="220" text-anchor="middle" class="node-text">answers directly without</text>
+  <text x="780" y="242" text-anchor="middle" class="node-text">extra role or stop rules</text>
+
+  <rect x="1090" y="160" rx="16" ry="16" width="320" height="96" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="1250" y="192" text-anchor="middle" class="node-title">Open-Ended Output</text>
+  <text x="1250" y="220" text-anchor="middle" class="node-text">scope, format, and certainty</text>
+  <text x="1250" y="242" text-anchor="middle" class="node-text">may drift across runs</text>
+
+  <line x1="470" y1="208" x2="620" y2="208" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="940" y1="208" x2="1090" y2="208" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="310" rx="18" ry="18" width="1520" height="240" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="62" y="342" class="panel-label">Bounded agent path</text>
+
+  <rect x="40" y="370" rx="16" ry="16" width="260" height="122" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="170" y="402" text-anchor="middle" class="node-title">[Student] Agent Card</text>
+  <text x="170" y="430" text-anchor="middle" class="node-text">role, goal, memory,</text>
+  <text x="170" y="452" text-anchor="middle" class="node-text">and stop condition</text>
+
+  <rect x="355" y="370" rx="16" ry="16" width="260" height="122" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="485" y="402" text-anchor="middle" class="node-title">Mini Case Packet</text>
+  <text x="485" y="430" text-anchor="middle" class="node-text">approved tools and</text>
+  <text x="485" y="452" text-anchor="middle" class="node-text">allowed local inputs</text>
+
+  <rect x="670" y="370" rx="16" ry="16" width="260" height="122" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="800" y="402" text-anchor="middle" class="node-title">[Same Model] Bounded</text>
+  <text x="800" y="430" text-anchor="middle" class="node-title">Agent Run</text>
+  <text x="800" y="458" text-anchor="middle" class="node-text">follows the card and</text>
+  <text x="800" y="480" text-anchor="middle" class="node-text">workflow constraints</text>
+
+  <rect x="985" y="370" rx="16" ry="16" width="260" height="122" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1115" y="402" text-anchor="middle" class="node-title">Structured Output</text>
+  <text x="1115" y="430" text-anchor="middle" class="node-text">observations, unknowns,</text>
+  <text x="1115" y="452" text-anchor="middle" class="node-text">and one next step</text>
+
+  <rect x="1300" y="370" rx="16" ry="16" width="260" height="122" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1430" y="402" text-anchor="middle" class="node-title">[Student] Human Review</text>
+  <text x="1430" y="430" text-anchor="middle" class="node-text">inspect the result and</text>
+  <text x="1430" y="452" text-anchor="middle" class="node-text">decide what to do next</text>
+
+  <line x1="300" y1="431" x2="355" y2="431" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="615" y1="431" x2="670" y2="431" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="930" y1="431" x2="985" y2="431" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1245" y1="431" x2="1300" y2="431" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 1430 492 C 1430 540, 170 540, 170 492" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+  <text x="800" y="568" text-anchor="middle" class="label">Revise the agent card and rerun if the output is still too broad or unclear</text>
+</svg>
