@@ -1,0 +1,36 @@
+{
+  "case_id": "AG-2026-001",
+  "lab": "lab0_3_what_is_an_agent",
+  "dataset_type": "synthetic_mini_case_packet",
+  "analysis_timezone": "America/New_York",
+  "question": "What do the device events show, what remains unknown, and what should a human reviewer check next?",
+  "device": {
+    "make": "Google",
+    "model": "Pixel 7",
+    "os": "Android 14",
+    "owner_role": "clinic staff coordinator"
+  },
+  "incident_window_utc": {
+    "start": "2026-01-18T22:00:00Z",
+    "end": "2026-01-18T22:20:00Z"
+  },
+  "artifacts": [
+    {
+      "file": "case_brief.md",
+      "description": "High-level scenario and simple review question."
+    },
+    {
+      "file": "triage_events.csv",
+      "description": "Small event log with file, messaging, and network activity relevant to the review question."
+    },
+    {
+      "file": "chain_of_custody.csv",
+      "description": "Optional supporting log showing basic evidence handling."
+    }
+  ],
+  "learning_purpose": [
+    "show the difference between a plain model answer and a bounded agent workflow",
+    "introduce role, tools, memory, and stop conditions before the four pattern labs",
+    "keep the first AI-agent example small, low-stakes, and evidence-bounded"
+  ]
+}

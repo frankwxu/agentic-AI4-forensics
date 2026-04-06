@@ -15,11 +15,11 @@
   - `a5f30f7f6a6c95c17117d4ea03f2a618f9380ca379f6f31df96ab53ac49f58a8`
 
 ## Narrative Summary
-Investigators are reviewing a company-issued Android phone after possible customer-data exfiltration. During the incident window, a file named `customers_q1.csv` appears in Downloads, is modified, and is later copied into Telegram's `Documents` app folder. Soon after, the device shows sent Telegram messages, Gmail activity, and network connections to Telegram and email services. A short time later, the original file disappears from Downloads, while location records suggest the phone stayed in the same general place during this period.
+Investigators are reviewing a company-issued Android phone after possible customer-data exfiltration. During the incident window, a file named `customers_q1.csv` appears in Downloads, is accessed, and is later copied into Telegram's `Documents` app folder. Soon after, the device shows sent Telegram messages, Gmail activity, and network connections to Telegram and email services. A short time later, the original file disappears from Downloads, while location records suggest the phone stayed in the same general place during this period.
 
 ## Key Observed Event Sequence (UTC)
 1. `01:05:22` - `customers_q1.csv` created in Downloads
-2. `01:06:12` - `customers_q1.csv` modified
+2. `01:06:12` - `customers_q1.csv` accessed
 3. `01:07:41` - same file hash copied to Telegram's `Documents` app folder
 4. `01:07:54` - outbound traffic to `api.telegram.org`
 5. `01:07:58` - Telegram outbound message: "sending that sheet now"
@@ -58,7 +58,7 @@ Use the notes below to understand what each file contains before you begin your 
 |--------|---------|
 | `timestamp_utc` | Time of the file event in UTC. |
 | `path` | File location on the device. |
-| `event_type` | File action such as created, modified, copied, or deleted. |
+| `event_type` | File action such as created, accessed, copied, or deleted. |
 | `sha256` | File hash used to compare whether files have the same contents. |
 
 `app_db_messages.csv`
@@ -119,117 +119,51 @@ Your goal is not to make the strongest accusation possible. Your goal is to prod
 ## Student Draft v0
 Before using the notebook, write a short first-pass report based on the case overview and the listed artifacts. Spend about 5-10 minutes on this draft. It does not need to be perfect. The purpose is to capture your initial reasoning before you revise it through the reflection workflow.
 
-Use the template below:
+Use the same wording and order that the notebook will request later:
 
-### 1. Timeline
-Fill in 3-5 key events in time order.
+`Return: (1) timeline, (2) primary hypothesis, (3) two alternative hypotheses, (4) confidence score 0-1 per claim, (5) explicit evidence mapping.`
 
-<table style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid #999; padding: 6px;">Time</th>
-      <th style="border: 1px solid #999; padding: 6px;">Event</th>
-      <th style="border: 1px solid #999; padding: 6px;">Evidence Source</th>
-      <th style="border: 1px solid #999; padding: 6px;">Observation or Inference?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-  </tbody>
-</table>
+### (1) timeline
+List the key events in time order.
 
-### 2. Main Conclusion
-In 2-3 sentences, state the strongest conclusion you think the evidence supports. Try to separate what you directly observed from what you are inferring.
+| Time | Event | Evidence Source |
+|------|-------|-----------------|
+| `[enter time]` | `[enter event]` | `[enter artifact]` |
+| `[enter time]` | `[enter event]` | `[enter artifact]` |
+| `[enter time]` | `[enter event]` | `[enter artifact]` |
 
-### 3. Alternative Explanations
-Write 1-2 other possible explanations for the observed activity. Briefly explain why each one is still possible or why the current evidence does not fully rule it out.
+### (2) primary hypothesis
+State the main explanation that best fits the available artifacts.
 
-### 4. Claim-to-Evidence Table
-For each major claim in your report, identify the evidence that supports it. If a claim is weakly supported, say so.
+`[Write 2-3 sentences here.]`
 
-<table style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid #999; padding: 6px;">Claim</th>
-      <th style="border: 1px solid #999; padding: 6px;">Supporting Evidence</th>
-      <th style="border: 1px solid #999; padding: 6px;">Confidence (0-1)</th>
-      <th style="border: 1px solid #999; padding: 6px;">Limits / Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-  </tbody>
-</table>
+### (3) two alternative hypotheses
+- Alternative hypothesis 1: `[Write one other possible explanation and why it is still possible.]`
 
-### 5. What Remains Uncertain
-Use this table to name what you still cannot conclude from the evidence alone.
+- Alternative hypothesis 2: `[Write a second possible explanation and why the current evidence does not fully rule it out.]`
 
-<table style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid #999; padding: 6px;">Open Question</th>
-      <th style="border: 1px solid #999; padding: 6px;">What Evidence Is Missing?</th>
-      <th style="border: 1px solid #999; padding: 6px;">Why It Matters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-    <tr>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-      <td style="border: 1px solid #999; padding: 6px;"></td>
-    </tr>
-  </tbody>
-</table>
+### (4) confidence score 0-1 per claim
+For each claim in your report, assign a confidence score from 0 to 1 and briefly explain why.
 
-### 6. Confidence and Wording
+| Claim | Confidence (0-1) | Why This Score? |
+|------|-------------------|-----------------|
+| `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
+| `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
+| `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
+
+### (5) explicit evidence mapping
+For each claim in your report, identify the specific evidence that supports it. If a claim is weakly supported, say so.
+
+| Claim | Supporting Evidence | Limits / Notes |
+|------|----------------------|----------------|
+| `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
+| `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
+| `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
+
 When the evidence is incomplete, prefer cautious phrases such as:
 - "the artifacts show"
 - "this is consistent with"
 - "this may suggest"
 - "the current evidence does not confirm"
 
-Your draft can be brief, but it should show that you are grounding each conclusion in evidence and noticing where the evidence stops.
+Your draft can be brief, but it should separate observation from inference, ground each major claim in evidence, and note when the current artifacts do not confirm a stronger conclusion.

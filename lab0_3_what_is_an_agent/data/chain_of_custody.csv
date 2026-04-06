@@ -1,0 +1,4 @@
+timestamp_utc,handler,action,notes
+2026-01-19T09:15:00Z,Officer S. Patel,seized_device,"Collected from clinic supervisor and placed in evidence bag 00417"
+2026-01-19T10:02:11Z,Analyst J. Rivera,acquired_logical_image,"Logical acquisition completed on a secured workstation"
+2026-01-19T10:17:43Z,Analyst J. Rivera,hash_verified,"SHA-256 for the working copy matched the recorded value"

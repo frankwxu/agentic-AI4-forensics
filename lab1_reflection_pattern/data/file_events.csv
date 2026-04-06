@@ -1,6 +1,6 @@
 timestamp_utc,path,event_type,sha256
 2026-02-15T01:05:22Z,/storage/emulated/0/Download/customers_q1.csv,created,531ec9ebf8f4492754f16b1437f1824995c8bf4ee2f6be74d4f2f13fdf3f2ab5
-2026-02-15T01:06:12Z,/storage/emulated/0/Download/customers_q1.csv,modified,531ec9ebf8f4492754f16b1437f1824995c8bf4ee2f6be74d4f2f13fdf3f2ab5
+2026-02-15T01:06:12Z,/storage/emulated/0/Download/customers_q1.csv,accessed,531ec9ebf8f4492754f16b1437f1824995c8bf4ee2f6be74d4f2f13fdf3f2ab5
 2026-02-15T01:07:41Z,/storage/emulated/0/Android/data/com.telegram.messenger/files/Telegram/Documents/customers_q1.csv,copied,531ec9ebf8f4492754f16b1437f1824995c8bf4ee2f6be74d4f2f13fdf3f2ab5
 2026-02-15T01:08:59Z,/storage/emulated/0/DCIM/Camera/IMG_20260215_010859.jpg,created,2a427f455903f62185111b45e22f4f55e7e5a3f7ed4d90dd357b95a8619a185d
 2026-02-15T01:12:04Z,/storage/emulated/0/Download/customers_q1.csv,deleted,531ec9ebf8f4492754f16b1437f1824995c8bf4ee2f6be74d4f2f13fdf3f2ab5

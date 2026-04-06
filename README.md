@@ -23,10 +23,11 @@ On Windows, create `.env` by copying `.env.example`.
 
 Then update `.env` with the `MODEL` and `OLLAMA_BASE_URL` values provided by your instructor.
 
-Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment_setup/01_instructions.md). The onboarding sequence now has two parts:
+Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment_setup/01_instructions.md). The onboarding sequence now has three parts:
 
 - `lab0_1_environment_setup`: environment and connectivity setup
 - `lab0_2_model_warmup`: a small model-comparison exercise
+- `lab0_3_what_is_an_agent`: a hands-on introduction to agent workflows
 
 `lab0_1_environment_setup` contains the full setup sequence for:
 
@@ -43,6 +44,7 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 
 - `lab0_1_environment_setup/`: Setup lab for Python, Jupyter, Graphviz, and Ollama connectivity verification
 - `lab0_2_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
+- `lab0_3_what_is_an_agent/`: Warm-up lab for comparing a plain model prompt with a bounded agent workflow and designing a small agent card
 - `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
 - `lab2_tool_use_pattern/`: Tool-use lab for image metadata, vehicle matching, and sale-draft review
 - `lab3_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
@@ -61,6 +63,13 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 - `02_model_comparison.ipynb` with the guided baseline model-comparison notebook
 - `03_prompt_revision_assignment.ipynb` with the student prompt-revision assignment
 
+`lab0_3_what_is_an_agent/` contains:
+
+- `01_instructions.md` with the hands-on agent-introduction sequence
+- `02_agent_walkthrough.ipynb` with the guided model-vs-agent walkthrough
+- `03_agent_design_assignment.ipynb` with the student agent-card assignment
+- a `data/` subfolder with the small synthetic intake packet
+
 Labs 1 through 4 contain:
 
 - `01_instructions.md` with the lab workflow and requirements
@@ -75,7 +84,8 @@ Students should follow this sequence:
 
 1. `lab0_1_environment_setup`
 2. `lab0_2_model_warmup`
-3. `lab1_reflection_pattern`
-4. `lab2_tool_use_pattern`
-5. `lab3_planning_pattern`
-6. `lab4_multiagent_pattern`
+3. `lab0_3_what_is_an_agent`
+4. `lab1_reflection_pattern`
+5. `lab2_tool_use_pattern`
+6. `lab3_planning_pattern`
+7. `lab4_multiagent_pattern`
