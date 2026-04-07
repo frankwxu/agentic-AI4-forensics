@@ -1,6 +1,6 @@
-timestamp_utc,source,event_type,artifact,details
+timestamp_utc,source,event_type,artifact,event_note
 2026-01-18T22:11:04Z,file_system,created,staff_schedule_monday.png,"Screenshot created in /Pictures/Screenshots/"
-2026-01-18T22:12:18Z,messages,thread_opened,personal_contact,"Conversation with contact 'personal_contact' opened in Messages"
-2026-01-18T22:12:37Z,messages,outbound_text,personal_contact,"Text excerpt: sending that image now"
-2026-01-18T22:12:44Z,network,service_contact,mms-gateway.example,"Messages app opened an outbound mobile-data connection"
+2026-01-18T22:12:18Z,messages,conversation_opened,contact_a,"Conversation with contact 'contact_a' opened in Messages"
+2026-01-18T22:12:37Z,messages,text_sent,contact_a,"Message snippet: sending that image now"
+2026-01-18T22:12:44Z,network,outbound_connection,mms-gateway.example,"Messages app opened an outgoing mobile-data connection"
 2026-01-18T22:14:09Z,file_system,deleted,staff_schedule_monday.png,"Screenshot deleted from the local gallery"

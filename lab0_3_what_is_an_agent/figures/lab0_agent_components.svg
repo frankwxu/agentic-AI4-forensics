@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
-  <title id="title">The Simple Bounded Agent Used in Lab 0C</title>
-  <desc id="desc">Diagram for Lab 0C showing the simpler bounded agent used in this lab, with an AI agent at the center, a dashed instructions group around role and goal, a dashed guardrails group around stop condition and human review boundary, and the other visible design parts approved tools and short memory.</desc>
+  <title id="title">Device Activity Summary Agent Specification</title>
+  <desc id="desc">Diagram for Lab 0C showing the walkthrough Device Activity Summary Agent specification, with the agent at the center, a dashed instructions group around role and goal, a dashed guardrails group around stop condition and human review boundary, and the other visible design parts approved tools and short memory.</desc>
 
   <defs>
     <style>
@@ -17,11 +17,11 @@
   </defs>
 
   <rect x="0" y="0" width="1600" height="580" fill="#ffffff"/>
-  <text x="800" y="58" text-anchor="middle" class="title">The Simple Bounded Agent Used in Lab 0C</text>
+  <text x="800" y="58" text-anchor="middle" class="title">Device Activity Summary Agent Specification</text>
   <text x="800" y="88" text-anchor="middle" class="subtitle">The LLM is the reasoning core; the surrounding parts make the lab workflow easier to inspect and control.</text>
 
   <rect x="565" y="172" rx="22" ry="22" width="470" height="150" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
-  <text x="800" y="217" text-anchor="middle" class="center-title">AI Agent</text>
+  <text x="800" y="217" text-anchor="middle" class="center-title">Device Activity Summary Agent</text>
   <text x="800" y="250" text-anchor="middle" class="center-text">LLM reasoning core working within</text>
   <text x="800" y="276" text-anchor="middle" class="center-text">bounded lab rules and review limits</text>
 

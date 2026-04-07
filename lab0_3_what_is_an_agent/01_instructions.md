@@ -9,7 +9,9 @@ This lab is hands-on. You will run the same model in two different ways:
 - first as a plain model answering an open-ended prompt
 - then as a bounded device-activity review agent with a role, approved tools, short memory, and a stop condition
 
-Then you will design a small agent card of your own and test it on the same mini case packet.
+Then you will design a small agent specification of your own and test it on the same mini case packet.
+
+In the walkthrough notebook, you will test a simple `Device Activity Summary Agent` on that mini case packet before designing your own version.
 
 ## Learning Goals
 
@@ -24,7 +26,7 @@ By the end of this warm-up lab, you should be able to:
   - stop condition
   - human review boundary
 - run a small agent-style device-activity review task on a synthetic case packet
-- revise an agent card so the model behaves in a more bounded and inspectable way
+- revise an agent specification so the model behaves in a more bounded and inspectable way
 
 ## What Is an Agent?
 
@@ -42,13 +44,21 @@ In modern AI systems, many agents use an `LLM` as the reasoning engine inside th
 
 *Figure 0B. Modern LLM-based agent view from Microsoft, [AI agent adoption](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/): a language model works with instructions, knowledge or retrieval, tools or actions, and memory to produce useful outputs.*
 
+In Figure 0B, each component has a simple purpose:
+
+- `model`: the reasoning engine that generates the next response or action
+- `instructions`: the goals, rules, and boundaries that shape the agent's behavior
+- `knowledge / retrieval`: outside information the agent can look up or use for grounding
+- `tools / actions`: functions, APIs, or systems the agent can use to do work
+- `memory`: stored history or state the agent can carry across steps
+
 ## What Each Agent Part Does
 
-Lab 0C uses a simpler bounded version of that modern agent idea. In the notebook, you will define the agent with a small agent card, and the figure below shows the visible design parts that keep its behavior easier to inspect and control:
+Lab 0C uses a simpler bounded version of that modern agent idea. In the walkthrough notebook, these parts are used to define the `Device Activity Summary Agent`. In the notebook, you will define the agent with a small agent specification, and the figure below shows the visible design parts that keep its behavior easier to inspect and control:
 
-![Figure 0C. The simple bounded agent used in Lab 0C](./figures/lab0_agent_components.svg)
+![Figure 0C. Device Activity Summary Agent specification](./figures/lab0_agent_components.svg)
 
-*Figure 0C. The simple bounded agent used in Lab 0C: the LLM is still the reasoning core, while role, goal, approved tools, short memory, stop condition, and a human-review boundary keep the workflow bounded and inspectable.*
+*Figure 0C. Device Activity Summary Agent specification: in the walkthrough example, the LLM is still the reasoning core, while role, goal, approved tools, short memory, stop condition, and a human-review boundary keep the workflow bounded and inspectable.*
 
 You can think of the lab version as a teaching-friendly simplification of the modern agent figure:
 
@@ -69,11 +79,11 @@ In other words, `memory` is not the same thing as a tool call. Memory is what th
 
 ## Instructional Figure
 
-To make the comparison in this lab easier to see, use Figure 0D as a quick map. The top path shows a plain prompt sent directly to a model. The bottom path shows the same model bounded by an agent card, a small case packet, approved inputs, and a human-review step.
+To make the comparison in this lab easier to see, use Figure 0D as a quick map. The top path shows a plain prompt sent directly to a model. The bottom path shows the same model bounded by an agent specification, a small case packet, approved inputs, and a human-review step.
 
 ![Figure 0D. Plain model versus bounded agent workflow for Lab 0C](./figures/lab0_agent_workflow.svg)
 
-*Figure 0D. Plain model versus bounded agent workflow for Lab 0C: a single plain prompt can lead to an open-ended answer, while an agent card plus a mini case packet turns the same model into a bounded workflow that produces structured output for human review.*
+*Figure 0D. Plain model versus bounded agent workflow for Lab 0C: a single plain prompt can lead to an open-ended answer, while an agent specification plus a mini case packet turns the same model into a bounded workflow that produces structured output for human review.*
 
 ## What To Do
 
@@ -83,9 +93,9 @@ Complete the steps in this order:
 2. Open [02_agent_walkthrough.ipynb](02_agent_walkthrough.ipynb).
 3. Run the notebook from top to bottom.
 4. Compare the plain-model response with the agent response.
-5. Pay attention to which parts of the agent card change the behavior of the same model.
+5. Pay attention to which parts of the agent specification change the behavior of the same model.
 6. Open [03_agent_design_assignment.ipynb](03_agent_design_assignment.ipynb).
-7. Edit the student agent card in the notebook so it has a clear role, goal, memory, and human-review rule.
+7. Edit the student agent specification in the notebook so it has a clear role, goal, memory, and human-review rule.
 8. Rerun the notebook and review how your agent design changes the output.
 9. Complete the short reflection at the end of each notebook.
 
@@ -103,6 +113,8 @@ Optional supporting file:
 
 The packet is intentionally small so you can focus on the agent concept rather than a long forensic analysis. In this lab, the main task is to summarize simple device activity, note what is still unknown, and recommend one next human review step.
 
+The `triage_events.csv` file is written in plain language on purpose. Read each row as a short timeline note about what happened on the device.
+
 ## Success Criteria
 
 You have completed this warm-up lab when:
@@ -110,7 +122,7 @@ You have completed this warm-up lab when:
 - you run [02_agent_walkthrough.ipynb](02_agent_walkthrough.ipynb) successfully
 - you compare the same model in plain-prompt form and agent form
 - you can point to the role, tools, memory, stop condition, and output schema in the agent notebook
-- you edit and rerun the student agent card in [03_agent_design_assignment.ipynb](03_agent_design_assignment.ipynb)
+- you edit and rerun the student agent specification in [03_agent_design_assignment.ipynb](03_agent_design_assignment.ipynb)
 - you complete the reflection sections
 
 ## After This Warm-Up

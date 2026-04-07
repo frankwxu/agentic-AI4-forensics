@@ -21,7 +21,7 @@
     },
     {
       "file": "triage_events.csv",
-      "description": "Small event log with file, messaging, and network activity relevant to the review question."
+      "description": "Small plain-language event log with file, messaging, and network activity relevant to the review question."
     },
     {
       "file": "chain_of_custody.csv",
