@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
-  <title id="title">Main Parts of a Simple AI Agent</title>
-  <desc id="desc">Diagram for Lab 0C showing a central AI agent connected to six components: role, goal, approved tools, short memory, stop condition, and human review boundary.</desc>
+  <title id="title">The Simple Bounded Agent Used in Lab 0C</title>
+  <desc id="desc">Diagram for Lab 0C showing the simpler bounded agent used in this lab, with an AI agent at the center and six visible design parts: role, goal, approved tools, short memory, stop condition, and human review boundary.</desc>
 
   <defs>
     <style>
@@ -17,13 +17,13 @@
   </defs>
 
   <rect x="0" y="0" width="1600" height="580" fill="#ffffff"/>
-  <text x="800" y="58" text-anchor="middle" class="title">Main Parts of a Simple AI Agent</text>
-  <text x="800" y="88" text-anchor="middle" class="subtitle">Each part narrows the same model into a more inspectable and bounded workflow.</text>
+  <text x="800" y="58" text-anchor="middle" class="title">The Simple Bounded Agent Used in Lab 0C</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">The LLM is the reasoning core; the surrounding parts make the lab workflow easier to inspect and control.</text>
 
   <rect x="565" y="190" rx="22" ry="22" width="470" height="150" fill="#f8fafc" stroke="#334155" stroke-width="3"/>
   <text x="800" y="235" text-anchor="middle" class="center-title">AI Agent</text>
-  <text x="800" y="268" text-anchor="middle" class="center-text">The model working within bounded role,</text>
-  <text x="800" y="294" text-anchor="middle" class="center-text">goals, tools, memory, and review limits</text>
+  <text x="800" y="268" text-anchor="middle" class="center-text">LLM reasoning core working within</text>
+  <text x="800" y="294" text-anchor="middle" class="center-text">bounded lab rules and review limits</text>
 
   <rect x="110" y="120" rx="16" ry="16" width="260" height="96" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
   <text x="240" y="152" text-anchor="middle" class="node-title">Role</text>
