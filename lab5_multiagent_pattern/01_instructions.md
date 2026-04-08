@@ -2,6 +2,16 @@
 
 Lab 5 applies the Multiagent Pattern as a structured workflow for evidence verification and chain-of-custody review in mobile forensics. Here, chain of custody means the record of who handled the evidence and when. Students use three LLM-based agents with distinct roles: an investigation agent, an evidence-verification agent, and a chain-of-custody auditing agent. They compare agent outputs, resolve disagreements, and issue final evidence-based conclusions. The instructional emphasis is on clear role boundaries, cross-checking, and reasoning that accounts for how evidence was handled.
 
+## Lab-Specific Environment
+
+Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab5_multiagent_pattern/.env`, so you can change models here without affecting the other labs.
+
 ## Educational Objective
 
 The objective of Lab 5 is to build students' ability to assign role-specific tasks, reconcile conflicting agent outputs, and produce an evidence-based conclusion about whether a file was transmitted (confirmed, likely, or unconfirmed), together with a plain-language explanation of whether the evidence-handling record is complete enough to trust that conclusion.

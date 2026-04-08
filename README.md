@@ -32,15 +32,23 @@ cd agentic-AI4-forensics
 
 ## Quick Start
 
-Create a local `.env` from the example file:
+Each lab folder now has its own `.env.example`, including the Lab 0 onboarding labs. Before running a notebook, copy that lab's `.env.example` to `.env` inside the same folder. For example:
 
 ```bash
-cp .env.example .env
+cp lab0_1_environment_setup/.env.example lab0_1_environment_setup/.env
 ```
 
-On Windows, create `.env` by copying `.env.example`.
+On Windows, create `.env` by copying the matching lab-local `.env.example`.
 
-Then update `.env` with the `MODEL` and `OLLAMA_BASE_URL` values provided by your instructor.
+Then update that lab-local `.env` with the `MODEL` and `OLLAMA_BASE_URL` values provided by your instructor.
+
+Repeat that pattern for any lab you plan to run. For example:
+
+```bash
+cp lab2_tool_use_pattern/.env.example lab2_tool_use_pattern/.env
+```
+
+Lab 2 defaults to `qwen3:8b` in its local example because the `ToolAgent` section has been more stable with that model in the current Ollama setup.
 
 Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment_setup/01_instructions.md). The onboarding sequence now has three parts:
 
@@ -53,7 +61,7 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 - virtual environment creation
 - Python package installation
 - Graphviz installation
-- `.env` configuration for the instructor-provided Ollama server
+- lab-local `.env` configuration for the instructor-provided Ollama server
 - command-line Ollama connectivity testing
 - optional local Ollama setup
 - Jupyter launch
@@ -76,18 +84,21 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 - `02_setup_checklist.md` with the pre-lab checklist
 - `03_environment_check.ipynb` with the runnable environment smoke test
 - `04_setup_assignment.ipynb` with the short coding assignment, one student question to the model, and an observation report for setup verification
+- `.env.example` with lab-local model settings
 
 `lab0_2_model_warmup/` contains:
 
 - `01_instructions.md` with the warm-up sequence
 - `02_model_comparison.ipynb` with the guided baseline model-comparison notebook
 - `03_prompt_revision_assignment.ipynb` with the student prompt-revision assignment
+- `.env.example` with lab-local model settings
 
 `lab0_3_what_is_an_agent/` contains:
 
 - `01_instructions.md` with the hands-on agent-introduction sequence
 - `02_agent_walkthrough.ipynb` with the guided model-vs-agent walkthrough
 - `03_agent_design_assignment.ipynb` with the student agent-card assignment
+- `.env.example` with lab-local model settings
 - a `data/` subfolder with the small synthetic intake packet
 
 Labs 1 through 5 contain:
@@ -95,6 +106,7 @@ Labs 1 through 5 contain:
 - `01_instructions.md` with the lab workflow and requirements
 - `02_case_overview.md` with the incident background and case context
 - `03_lab_notebook.ipynb` with the interactive notebook for the lab
+- `.env.example` with lab-local model settings
 - a `data/` subfolder with the staged case artifacts
 - a `figures/` subfolder when the lab includes workflow diagrams
 

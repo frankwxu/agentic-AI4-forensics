@@ -2,6 +2,16 @@
 
 Lab 3 applies the ReAct Pattern as a structured `thought -> action -> observation -> response` loop for a bounded forensic question. Students use a tool-enabled agent to decide what to inspect next, execute one tool call at a time, and stop only after the available evidence supports a careful answer. The instructional emphasis is on transparent tool use, incremental verification, and final answers that stay within what the observed evidence supports.
 
+## Lab-Specific Environment
+
+Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab3_react_pattern/.env`, so you can change models here without affecting the other labs.
+
 ## Educational Objective
 
 The objective of Lab 3 is to build students' ability to answer a narrow forensic question by alternating between reasoning, tool use, and observation review, while keeping each step visible and inspectable.

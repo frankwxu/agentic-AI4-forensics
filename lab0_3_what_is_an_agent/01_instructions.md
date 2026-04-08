@@ -4,6 +4,16 @@
 
 Use this onboarding lab after you complete [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
 
+## Lab-Specific Environment
+
+Before running the walkthrough notebooks, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_3_what_is_an_agent/.env`, so you can change settings here without affecting Lab 0A, Lab 0B, or the later pattern labs.
+
 This lab is hands-on. You will run the same model in two different ways:
 
 - first as a plain model answering an open-ended prompt

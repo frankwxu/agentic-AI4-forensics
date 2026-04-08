@@ -9,8 +9,8 @@ Use this onboarding lab to prepare your machine before starting the forensic pat
 By the end of Lab 0, you should be able to:
 
 - clone the lab repository to your local machine
-- create a local `.env` file from `.env.example`
-- configure `.env` with the instructor-provided model and Ollama server URL
+- create a lab-local `.env` file from `lab0_1_environment_setup/.env.example`
+- configure that `.env` with the instructor-provided model and Ollama server URL
 - create and activate the lab virtual environment
 - install the required Python packages
 - install Graphviz and verify the `dot` command works
@@ -29,27 +29,27 @@ Complete the steps in this order:
    cd agentic-AI4-forensics
    ```
 
-2. Create `.env` from [.env.example](../.env.example).
+2. Create `lab0_1_environment_setup/.env` from [lab0_1_environment_setup/.env.example](./.env.example).
 
    Linux/macOS:
 
    ```bash
-   cp .env.example .env
+   cp lab0_1_environment_setup/.env.example lab0_1_environment_setup/.env
    ```
 
    Windows PowerShell:
 
    ```powershell
-   Copy-Item .env.example .env
+   Copy-Item lab0_1_environment_setup/.env.example lab0_1_environment_setup/.env
    ```
 
    Windows Command Prompt:
 
    ```cmd
-   copy .env.example .env
+   copy lab0_1_environment_setup\.env.example lab0_1_environment_setup\.env
    ```
 
-   The starter [.env.example](../.env.example) currently uses the temporary instructor values below. Only change them if your instructor provides different settings.
+   The starter [lab0_1_environment_setup/.env.example](./.env.example) currently uses the temporary instructor values below. Only change them if your instructor provides different settings.
 
    ```text
    MODEL="qwen3:8b"
@@ -110,7 +110,7 @@ Complete the steps in this order:
 
 7. Test the configured Ollama endpoint from the command line.
 
-   If your `.env` file contains the current temporary instructor endpoint:
+   If `lab0_1_environment_setup/.env` contains the current temporary instructor endpoint:
 
    ```text
    OLLAMA_BASE_URL="http://localhost:11434/v1"
@@ -140,20 +140,20 @@ Complete the steps in this order:
 9. Launch Jupyter from the repo root.
 10. Open [03_environment_check.ipynb](03_environment_check.ipynb) and run all cells from top to bottom.
 11. Complete [04_setup_assignment.ipynb](04_setup_assignment.ipynb), including one question to the configured model and the short observation report at the end.
-12. After the setup assignment passes, continue to [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md).
+12. After the setup assignment passes, create `lab0_2_model_warmup/.env` from `lab0_2_model_warmup/.env.example`, then continue to [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md).
 
-   If you are using a personal Ollama server, make sure the model in `.env` is available before running the notebook.
+   If you are using a personal Ollama server, make sure the model in this lab's `.env` is available before running the notebook.
 
 ## Success Criteria
 
 You have completed Lab 0 when:
 
-- `.env` exists at the repo root and contains the required keys
-- `.env` matches the instructor-provided model and Ollama server URL
+- `lab0_1_environment_setup/.env` exists and contains the required keys
+- `lab0_1_environment_setup/.env` matches the instructor-provided model and Ollama server URL
 - the notebook prints the active Python executable and repo paths correctly
 - the notebook confirms the required Python libraries import successfully
 - the command-line Ollama test returns a valid response
-- the notebook can read the repo `.env` values needed by the labs
+- the notebook can read the lab-local `.env` values needed by the labs
 - the notebook can contact the configured Ollama endpoint
 - the notebook can render a small Graphviz diagram
 - you complete [04_setup_assignment.ipynb](04_setup_assignment.ipynb), including one question to the configured model and the short observation report
@@ -161,11 +161,11 @@ You have completed Lab 0 when:
 
 ## Troubleshooting
 
-- If `.env` is missing, copy `.env.example` to `.env` before running the notebook.
+- If `.env` is missing, copy `lab0_1_environment_setup/.env.example` to `lab0_1_environment_setup/.env` before running the notebook.
 - If `pip install -r requirements.txt` fails, confirm your virtual environment is activated before retrying.
 - If `dot -V` fails, Graphviz is either not installed or not on your system `PATH`.
-- If the command-line Ollama test fails, check the `OLLAMA_BASE_URL` in `.env` and confirm you can reach the instructor-managed server from your network.
-- If the notebook cannot reach Ollama, make sure the `OLLAMA_BASE_URL` in `.env` matches the running server.
+- If the command-line Ollama test fails, check the `OLLAMA_BASE_URL` in `lab0_1_environment_setup/.env` and confirm you can reach the instructor-managed server from your network.
+- If the notebook cannot reach Ollama, make sure the `OLLAMA_BASE_URL` in `lab0_1_environment_setup/.env` matches the running server.
 - If you are using the instructor-managed server, you do not need to run `ollama serve` locally.
 - If you are using a personal Ollama server, make sure it is running and that the configured model is available.
 

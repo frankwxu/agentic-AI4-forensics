@@ -2,6 +2,16 @@
 
 Lab 4 applies the Planning Pattern as a structured workflow for breaking a timeline question into ordered steps. Students use an LLM-based planning agent to build plans, record observations as they work, and revise the plan when new evidence conflicts with earlier assumptions, while remaining responsible for the final interpretation and conclusion. The instructional emphasis is on clear sequencing, observation-driven revision, and evidence-based timeline reconstruction.
 
+## Lab-Specific Environment
+
+Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab4_planning_pattern/.env`, so you can change models here without affecting the other labs.
+
 ## Educational Objective
 
 The objective of Lab 4 is to build students' ability to create ordered investigation plans, update those plans when new observations appear, and produce an evidence-cited timeline conclusion about whether the key events occurred within the incident window, outside it, or remain unresolved.

@@ -4,6 +4,16 @@
 
 Use this warm-up lab after you complete [lab0_1_environment_setup/01_instructions.md](../lab0_1_environment_setup/01_instructions.md). The goal is to give you one small hands-on AI task before you start the five forensic pattern labs.
 
+## Lab-Specific Environment
+
+Before running the warm-up notebooks, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_2_model_warmup/.env`, so you can change settings here without affecting Lab 0A, Lab 0C, or the later pattern labs.
+
 ## Learning Goals
 
 By the end of this warm-up lab, you should be able to:

@@ -39,3 +39,23 @@ This dataset is synthetic and designed to demonstrate a tool-use workflow:
 - inspect AI-assisted vehicle detections
 - connect media evidence to listing-draft records
 - decide whether the evidence supports sale preparation
+
+## What You Should Do Next
+
+In the notebook, you will use local forensic tools to answer one question:
+
+`Does the phone contain confirmed, likely, or unconfirmed evidence that a stolen black SUV was photographed and prepared for an online sale after January 2, 2026?`
+
+Required core tool sequence:
+
+`list_media_files -> extract_image_metadata -> detect_vehicle_attributes -> inspect_listing_records -> compare_vehicle_features`
+
+Return the same five-part report format in both the manual and `ToolAgent` sections of the notebook:
+
+1. `tool-call log`
+2. `strongest timestamp evidence`
+3. `strongest vehicle-match evidence`
+4. `conclusion label (confirmed, likely, or unconfirmed) with confidence 0-1 per major claim`
+5. `explicit evidence mapping and limits`
+
+All required evidence for the core lab is already in the local artifact package above. You do not need a vector database or an external API to complete the main task.

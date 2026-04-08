@@ -2,6 +2,16 @@
 
 Lab 1 introduces the Reflection Pattern as a structured quality-control loop for forensic reasoning. Students analyze artifacts from one mobile case, produce an initial report, receive critique from an LLM-based reflection agent, and revise their conclusions to make them more defensible. The instructional emphasis is not answer generation, but disciplined claim validation, uncertainty handling, and clear reasoning.
 
+## Lab-Specific Environment
+
+Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab1_reflection_pattern/.env`, so you can change models here without affecting the other labs.
+
 ## Educational Objective
 
 The objective of Lab 1 is to build students' ability to produce mobile forensic conclusions that stay within what the evidence supports by applying iterative critique and revision.

@@ -3,8 +3,8 @@
 Use this checklist before starting `lab0_2_model_warmup`.
 
 - Repository cloned locally
-- `.env` created from `.env.example`
-- `.env` updated with the instructor-provided `MODEL` and `OLLAMA_BASE_URL`
+- `lab0_1_environment_setup/.env` created from `lab0_1_environment_setup/.env.example`
+- `lab0_1_environment_setup/.env` updated with the instructor-provided `MODEL` and `OLLAMA_BASE_URL`
 - Virtual environment created: `.venv-ai4-forensics`
 - Virtual environment activated in the current shell
 - `pip install -r requirements.txt` completed successfully

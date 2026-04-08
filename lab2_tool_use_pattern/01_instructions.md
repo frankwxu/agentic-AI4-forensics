@@ -1,6 +1,16 @@
 # Lab 2: Tool Use Pattern for Image Metadata Analysis and Vehicle Verification
 
-Lab 2 applies the Tool Use Pattern as a structured workflow for extracting timestamps, checking image content, and evaluating online-sale evidence from mobile data. Students use an LLM-based tool-calling agent to select, call, and sequence analysis tools while remaining responsible for the final interpretation and conclusion. The instructional emphasis is on careful tool selection, valid parameters, and clear separation between raw tool output and analytic interpretation. Although students use ordered tool sequences, this lab focuses on tool execution and evidence validation rather than broader investigation planning.
+Lab 2 applies the Tool Use Pattern as a structured workflow for extracting timestamps, checking image content, and evaluating online-sale evidence from mobile data. Students first run the required forensic tools manually and then hand the same tool set to an LLM-based `ToolAgent` so they can compare direct tool execution with the packaged abstraction. The instructional emphasis is on careful tool selection, valid parameters, and clear separation between raw tool output and analytic interpretation. This lab stays focused on local evidence tools; retrieval systems and external APIs appear only as optional extension ideas, not as required infrastructure.
+
+## Lab-Specific Environment
+
+Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+
+```bash
+cp .env.example .env
+```
+
+This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab2_tool_use_pattern/.env`, so you can tune the Tool Use lab independently of the others. The default example uses `qwen3:8b` because it has been the most stable option for the `ToolAgent` section with the current Ollama setup.
 
 ## Educational Objective
 
@@ -54,10 +64,26 @@ Students are assessed on clear tool-selection reasoning, not on hidden model int
 2. Use `extract_image_metadata` to inspect capture times and other relevant image metadata.
 3. Use `detect_vehicle_attributes` to determine whether a photo likely shows the stolen vehicle.
 4. Use `inspect_listing_records` to identify online sale drafts or related records tied to the same time period.
-5. Use `compare_vehicle_features` to compare detected vehicle traits with the known vehicle description.
+5. Use `compare_vehicle_features` to compare the case vehicle description with one candidate image at a time.
 6. If evidence is insufficient, run additional justified tool calls and revise the conclusion.
 
 The agent acts as a tool-use aid, not a decision authority: students remain responsible for accepting, rejecting, and justifying those suggestions.
+
+## Required Outputs
+
+Both parts of the notebook use the same report format so students can compare manual tool use with `ToolAgent` output directly. The required report must include:
+
+1. `tool-call log`
+2. `strongest timestamp evidence`
+3. `strongest vehicle-match evidence`
+4. `conclusion label (confirmed, likely, or unconfirmed) with confidence 0-1 per major claim`
+5. `explicit evidence mapping and limits`
+
+The notebook is structured in three stages:
+
+1. `Part 1` manually runs the forensic tool sequence against the staged vehicle-sale case.
+2. `Part 2` runs the same case and report format with `ToolAgent`.
+3. An optional extension shows how the same pattern could later wrap a retrieval-style helper without making vector databases or external APIs part of the core lab.
 
 ## Guided Example
 
@@ -65,11 +91,11 @@ In this lab, students must decide whether a recovered phone contains evidence th
 
 | Tool Call | Tool Output | Why It Matters |
 |---|---|---|
-| `list_media_files(root="gallery/", date_from="2026-01-02")` | `IMG_2044.jpg`, `IMG_2045.jpg`, `IMG_2051.jpg` | narrows review to candidate photos created on or after the theft date |
-| `extract_image_metadata(file_path="IMG_2044.jpg")` | captured `2026-01-02 21:14 UTC`; no later edit time recorded | places the photo after the theft date and inside the reviewed time range |
-| `detect_vehicle_attributes(file_path="IMG_2044.jpg")` | black SUV; roof rack visible; rear plate region visible | links the image content to the stolen vehicle description |
-| `inspect_listing_records(source="listing_drafts.json", date_from="2026-01-02")` | draft created `2026-01-02 21:31 UTC`; title `black SUV for sale`; attached image `IMG_2044.jpg` | links the same photo to an online-sale draft |
-| `compare_vehicle_features(case_description="black SUV with roof rack", detected_attributes=["black","SUV","roof rack"])` | strong match; no conflicting features | supports a high-confidence link between the photo and the stolen vehicle |
+| `list_media_files(root="DCIM/Camera", date_from="2026-01-02T00:00:00Z")` | `IMG_2044.jpg`, `IMG_2045.jpg`, `IMG_2051.jpg` | narrows review to candidate photos created on or after the theft date |
+| `extract_image_metadata(file_name="IMG_2044.jpg")` | captured `2026-01-02 21:14 UTC`; no later edit time recorded | places the photo after the theft date and inside the reviewed time range |
+| `detect_vehicle_attributes(file_name="IMG_2044.jpg")` | black SUV; roof rack visible; rear plate region visible | links the image content to the stolen vehicle description |
+| `inspect_listing_records(source="listing_drafts.json", date_from="2026-01-02T00:00:00Z")` | draft created `2026-01-02 21:31 UTC`; title `black SUV for sale`; attached image `IMG_2044.jpg` | links the same photo to an online-sale draft |
+| `compare_vehicle_features(case_description="black SUV with roof rack", file_name="IMG_2044.jpg")` | strong match; no conflicting features | supports a high-confidence link between the photo and the stolen vehicle |
 
 Student Draft v1:  
 "The phone shows that the seller posted the stolen vehicle for sale online."
@@ -81,8 +107,8 @@ This draft-to-revision contrast shows the Tool Use Pattern objective: students m
 
 This example shows the main learning point: Tool Use Pattern instruction requires students to ground every claim in explicit tool outputs and avoid conclusions beyond observed evidence.
 
-In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional photos, partial matches, and multiple listing records. Required deliverables are a tool-call log, a final report, and a table linking claims to evidence.
+In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional photos, partial matches, and multiple listing records. Required deliverables are the shared five-part report above, built from the core tool sequence and tied to explicit evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`.
+Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`. In the notebook, complete `Part 1` before `Part 2`; the final optional extension is not required for the core lab objectives.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `media_index.csv`, `image_metadata.csv`, `vehicle_detections.csv`, `listing_drafts.json`, and `chain_of_custody.csv`.
