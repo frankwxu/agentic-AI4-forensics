@@ -13,6 +13,11 @@ def completions_create(client, messages: list, model: str) -> str:
 
     Returns:
         str: The content of the model's response.
+
+    Example:
+        >>> messages = [{"role": "user", "content": "Say hello"}]
+        >>> completions_create(client, messages, "qwen3:8b")
+        'Hello!'
     """
     response = client.chat.completions.create(messages=messages, model=model)
     return str(response.choices[0].message.content)
@@ -28,6 +33,12 @@ def build_prompt_structure(prompt: str, role: str, tag: str = "") -> dict:
 
     Returns:
         dict: A dictionary representing the structured prompt.
+
+    Example:
+        >>> build_prompt_structure("What happened?", "user")
+        {'role': 'user', 'content': 'What happened?'}
+        >>> build_prompt_structure("Search the logs", "user", tag="question")
+        {'role': 'user', 'content': '<question>Search the logs</question>'}
     """
     if tag:
         prompt = f"<{tag}>{prompt}</{tag}>"
@@ -42,17 +53,40 @@ def update_chat_history(history: list, msg: str, role: str):
         history (list): The list representing the current chat history.
         msg (str): The message to append.
         role (str): The role type (e.g. 'user', 'assistant', 'system')
+
+    Example:
+        >>> history = []
+        >>> update_chat_history(history, "Please summarize the case.", "user")
+        >>> history
+        [{'role': 'user', 'content': 'Please summarize the case.'}]
     """
     history.append(build_prompt_structure(prompt=msg, role=role))
 
 
 class ChatHistory(list):
+    """
+    A list-like chat history with an optional maximum length.
+
+    Example:
+        >>> history = ChatHistory(total_length=3)
+        >>> history.append({"role": "system", "content": "You are helpful."})
+        >>> history.append({"role": "user", "content": "Hi"})
+        >>> history.append({"role": "assistant", "content": "Hello"})
+        >>> history.append({"role": "user", "content": "Summarize the case"})
+        >>> len(history)
+        3
+    """
+
     def __init__(self, messages: list | None = None, total_length: int = -1):
         """Initialise the queue with a fixed total length.
 
         Args:
             messages (list | None): A list of initial messages
             total_length (int): The maximum number of messages the chat history can hold.
+
+        Example:
+            >>> ChatHistory(messages=[{"role": "user", "content": "Hello"}], total_length=5)
+            [{'role': 'user', 'content': 'Hello'}]
         """
         if messages is None:
             messages = []
@@ -65,13 +99,27 @@ class ChatHistory(list):
 
         Args:
             msg (str): The message to be added to the queue
+
+        Example:
+            >>> history = ChatHistory(total_length=2)
+            >>> history.append({"role": "user", "content": "First"})
+            >>> history.append({"role": "assistant", "content": "Second"})
+            >>> history.append({"role": "user", "content": "Third"})
+            >>> history
+            [{'role': 'assistant', 'content': 'Second'}, {'role': 'user', 'content': 'Third'}]
         """
         if len(self) == self.total_length:
             self.pop(0)
         super().append(msg)
 
     def show_messages(self):
-        """Print all messages currently stored in the chat history."""
+        """Print all messages currently stored in the chat history.
+
+        Example:
+            >>> history = ChatHistory([{"role": "user", "content": "Hello"}])
+            >>> history.show_messages()
+            1. [user] Hello
+        """
         if not self:
             print("ChatHistory is empty.")
             return
@@ -87,6 +135,24 @@ class ChatHistory(list):
 
 
 class FixedPrefixChatHistory(ChatHistory):
+    """
+    A chat history that keeps an initial prefix pinned while newer messages rotate.
+
+    Example:
+        >>> history = FixedPrefixChatHistory(
+        ...     messages=[
+        ...         {"role": "system", "content": "Always stay concise."},
+        ...         {"role": "user", "content": "Question 1"},
+        ...     ],
+        ...     total_length=3,
+        ...     pinned_prefix_len=1,
+        ... )
+        >>> history.append({"role": "assistant", "content": "Answer 1"})
+        >>> history.append({"role": "user", "content": "Question 2"})
+        >>> history[0]
+        {'role': 'system', 'content': 'Always stay concise.'}
+    """
+
     def __init__(self, messages=None, total_length=-1, pinned_prefix_len=1):
         super().__init__(messages, total_length)
         self.pinned_prefix_len = pinned_prefix_len
@@ -95,24 +161,4 @@ class FixedPrefixChatHistory(ChatHistory):
         if self.total_length != -1 and len(self) == self.total_length:
             # Evict the oldest message after the pinned prefix
             self.pop(self.pinned_prefix_len)
-        super().append(msg)
-
-class FixedFirstChatHistory(ChatHistory):
-    def __init__(self, messages: list | None = None, total_length: int = -1):
-        """Initialise the queue with a fixed total length.
-
-        Args:
-            messages (list | None): A list of initial messages
-            total_length (int): The maximum number of messages the chat history can hold.
-        """
-        super().__init__(messages, total_length)
-
-    def append(self, msg: str):
-        """Add a message to the queue. The first messaage will always stay fixed.
-
-        Args:
-            msg (str): The message to be added to the queue
-        """
-        if len(self) == self.total_length:
-            self.pop(1)
         super().append(msg)
