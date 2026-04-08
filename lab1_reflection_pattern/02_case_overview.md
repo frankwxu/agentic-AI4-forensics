@@ -15,12 +15,12 @@
   - `a5f30f7f6a6c95c17117d4ea03f2a618f9380ca379f6f31df96ab53ac49f58a8`
 
 ## Narrative Summary
-Investigators are reviewing a company-issued Android phone after possible customer-data exfiltration. During the incident window, a file named `customers_q1.csv` appears in Downloads, is accessed, and is later copied into Telegram's `Documents` app folder. Soon after, the device shows sent Telegram messages, Gmail activity, and network connections to Telegram and email services. A short time later, the original file disappears from Downloads, while location records suggest the phone stayed in the same general place during this period.
+Investigators are reviewing a company-issued Android phone after possible customer-data exfiltration. During the incident window, a file named `customers_q1.csv` appears in Downloads, is accessed, and is later copied into Telegram's `Telegram/Documents` storage folder. Soon after, the device shows sent Telegram messages, Gmail activity, and network connections to Telegram and email services. A short time later, the original file disappears from Downloads, while location records suggest the phone stayed in the same general place during this period.
 
 ## Key Observed Event Sequence (UTC)
 1. `01:05:22` - `customers_q1.csv` created in Downloads
 2. `01:06:12` - `customers_q1.csv` accessed
-3. `01:07:41` - same file hash copied to Telegram's `Documents` app folder
+3. `01:07:41` - same file hash copied to Telegram's `Telegram/Documents` storage folder
 4. `01:07:54` - outbound traffic to `api.telegram.org`
 5. `01:07:58` - Telegram outbound message: "sending that sheet now"
 6. `01:08:15` - Telegram outbound message: "delete after download"
@@ -121,14 +121,16 @@ Before using the notebook, write a short first-pass report based on the case ove
 
 Use the same wording and order that the notebook will request later:
 
-`Return: (1) timeline, (2) primary hypothesis, (3) two alternative hypotheses, (4) confidence score 0-1 per claim, (5) explicit evidence mapping.`
+`Return these five parts in order: (1) timeline = key events in time order, (2) primary hypothesis = best-supported explanation, (3) two alternative hypotheses = other plausible explanations not fully ruled out, (4) confidence score 0-1 per claim = how strongly each claim is supported, (5) explicit evidence mapping = exact artifacts that support each claim, plus limits.`
+
+`Hypothesis` and `claim` are not the same thing. A hypothesis is your broader explanation of what may have happened in the case. A claim is one specific statement inside your report that can be checked against the artifacts. One hypothesis usually contains several claims. For example, "the user likely prepared the file for external sharing" is a hypothesis, while "`customers_q1.csv` was created in Downloads at `01:05:22 UTC`" is a claim.
 
 ### (1) timeline
 List the key events in time order.
 
 | Time | Event | Evidence Source |
 |------|-------|-----------------|
-| `[enter time]` | `[enter event]` | `[enter artifact]` |
+| `01:05:22 UTC` | `customers_q1.csv` created in Downloads | `file_events.csv` |
 | `[enter time]` | `[enter event]` | `[enter artifact]` |
 | `[enter time]` | `[enter event]` | `[enter artifact]` |
 
@@ -147,7 +149,7 @@ For each claim in your report, assign a confidence score from 0 to 1 and briefly
 
 | Claim | Confidence (0-1) | Why This Score? |
 |------|-------------------|-----------------|
-| `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
+| ``customers_q1.csv` was copied into Telegram's `Telegram/Documents` storage folder.` | `0.95` | `This is directly supported by a copied event in file_events.csv with a matching file hash and Telegram storage path.` |
 | `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
 | `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
 
@@ -156,7 +158,7 @@ For each claim in your report, identify the specific evidence that supports it. 
 
 | Claim | Supporting Evidence | Limits / Notes |
 |------|----------------------|----------------|
-| `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
+| ``customers_q1.csv` was copied into Telegram's `Telegram/Documents` storage folder.` | `file_events.csv` copied event at `01:07:41 UTC`; matching `sha256` for the Downloads file and the Telegram-stored file | `This supports file staging inside Telegram storage, but it does not by itself confirm that the file was successfully sent to a recipient.` |
 | `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
 | `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
 

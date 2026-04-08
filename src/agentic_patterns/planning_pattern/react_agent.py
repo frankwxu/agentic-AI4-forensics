@@ -1,3 +1,7 @@
+# Adapted from The Neural Maze's agentic-patterns-course (MIT License):
+# https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/planning_pattern/react_agent.py
+# Original copyright: Copyright (c) 2024 The Neural Maze
+
 import json
 import os
 from typing import Any

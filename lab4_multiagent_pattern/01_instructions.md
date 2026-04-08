@@ -34,11 +34,17 @@ When staffing permits, a subset of submissions may be scored by two reviewers, w
 ## Instructional Flow and Guided Example
 
 To illustrate the Multiagent Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, acquisition details, and artifact list; the full lab extends the same scenario with additional records and disagreement points.
-As shown in Figure 4, the lab progresses from the incident package to student task assignment, multiagent checks, conflict resolution, and a final case conclusion.
+Before applying Multiagent coordination to this forensic case, it helps to recall the general pattern: multiple specialized agents handle different subtasks, and their outputs are combined to support a final result. Figure 1 shows that general Multiagent Pattern.
 
-![Figure 4. Multiagent-pattern workflow for Lab 4](./figures/lab4_multiagent_workflow.svg)
+![Figure 1. General Multiagent Pattern](./figures/multiagent_pattern.png)
 
-*Figure 4. Multiagent-pattern workflow for Lab 4: instructor incident package -> student task split -> multiagent checks (investigation agent, evidence-verification agent, custody-auditing agent) -> student conflict resolution -> final case conclusion.*
+*Figure 1. General Multiagent Pattern: specialized agents divide work across roles and contribute to a combined output. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+
+In this lab, that same pattern is narrowed to forensic verification, where students compare outputs from specialized roles and resolve disagreements before reaching a final conclusion. As shown in Figure 2, the lab progresses from the incident package to student task assignment, multiagent checks, conflict resolution, and a final case conclusion.
+
+![Figure 2. Multiagent-pattern workflow for Lab 4](./figures/lab4_multiagent_workflow.svg)
+
+*Figure 2. Multiagent-pattern workflow for Lab 4: instructor incident package -> student task split -> multiagent checks (investigation agent, evidence-verification agent, custody-auditing agent) -> student conflict resolution -> final case conclusion.*
 
 ## Multiagent Coordination Logic
 

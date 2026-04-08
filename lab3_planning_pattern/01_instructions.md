@@ -34,11 +34,17 @@ When staffing permits, a subset of submissions may be scored by two reviewers, w
 ## Instructional Flow and Guided Example
 
 To illustrate the Planning Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, timeline, and artifact list; the full lab extends the same scenario with additional records and alternate decision points.
-As shown in Figure 3, the lab progresses from an incident question to initial planning, evidence review, observation-driven replanning, and a final timeline conclusion.
+Before applying Planning to this forensic case, it helps to recall the general pattern: break a larger task into ordered steps, execute those steps, and revise the plan when new observations change what should happen next. Figure 1 shows that general Planning Pattern.
 
-![Figure 3. Planning-pattern workflow for Lab 3](./figures/lab3_planning_workflow.svg)
+![Figure 1. General Planning Pattern](./figures/planning_pattern.png)
 
-*Figure 3. Planning-pattern workflow for Lab 3: instructor incident question -> student initial plan -> student+agent evidence review loop -> student+agent replanning after new WhatsApp evidence -> student final timeline and timing decision.*
+*Figure 1. General Planning Pattern: the model reasons through intermediate steps and updates its path toward a larger goal. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+
+In this lab, that same pattern is narrowed to forensic timeline reconstruction, where students must plan, observe, and replan as new device records change the interpretation of the event sequence. As shown in Figure 2, the lab progresses from an incident question to initial planning, evidence review, observation-driven replanning, and a final timeline conclusion.
+
+![Figure 2. Planning-pattern workflow for Lab 3](./figures/lab3_planning_workflow.svg)
+
+*Figure 2. Planning-pattern workflow for Lab 3: instructor incident question -> student initial plan -> student+agent evidence review loop -> student+agent replanning after new WhatsApp evidence -> student final timeline and timing decision.*
 
 ## Planning Logic
 

@@ -1,3 +1,7 @@
+# Adapted from The Neural Maze's agentic-patterns-course (MIT License):
+# https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/reflection_pattern/reflection_agent.py
+# Original copyright: Copyright (c) 2024 The Neural Maze
+
 from colorama import Fore
 from colorama import Style
 from dotenv import load_dotenv

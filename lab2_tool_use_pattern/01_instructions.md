@@ -34,7 +34,13 @@ When staffing permits, a subset of submissions may be scored by two reviewers, w
 ## Instructional Flow and Guided Example
 
 To illustrate the Tool Use Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, timeline, and artifact list; the full lab extends the same scenario with additional photos, records, and tool options.
-As shown in Figure 2, the lab progresses from evidence intake to date-and-file filtering, structured tool calls, output checking, and a final conclusion about online-sale preparation.
+Before applying Tool Use to this forensic case, it helps to recall the general pattern: the model uses external tools to gather evidence it cannot safely infer from its own weights alone. Figure 1 shows that general Tool Use Pattern.
+
+![Figure 1. General Tool Use Pattern](./figures/tool_pattern.png)
+
+*Figure 1. General Tool Use Pattern: the model accesses external tools to retrieve or compute information before responding. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+
+In this lab, that same pattern is narrowed to forensic review, where students must choose valid tools, inspect the outputs, and distinguish raw results from analytic conclusions. As shown in Figure 2, the lab progresses from evidence intake to date-and-file filtering, structured tool calls, output checking, and a final conclusion about online-sale preparation.
 
 ![Figure 2. Tool-use-pattern workflow for Lab 2](./figures/lab2_tool_use_workflow.svg)
 

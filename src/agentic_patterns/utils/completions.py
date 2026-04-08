@@ -1,3 +1,7 @@
+# Adapted from The Neural Maze's agentic-patterns-course (MIT License):
+# https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/utils/completions.py
+# Original copyright: Copyright (c) 2024 The Neural Maze
+
 def completions_create(client, messages: list, model: str) -> str:
     """
     Sends a request to the client's `completions.create` method to interact with the language model.

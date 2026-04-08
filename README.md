@@ -2,6 +2,24 @@
 
 This repository contains a standalone set of student-facing labs for agentic AI patterns in digital forensics.
 
+## Code Provenance
+
+Parts of the Python implementation in `src/agentic_patterns/` are adapted from The Neural Maze's
+[`agentic-patterns-course`](https://github.com/neural-maze/agentic-patterns-course) and are reused under the MIT License.
+
+Primary upstream source references:
+
+- `ReflectionAgent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/reflection_pattern/reflection_agent.py>
+- `ToolAgent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/tool_pattern/tool_agent.py>
+- `Tool`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/tool_pattern/tool.py>
+- `ReactAgent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/planning_pattern/react_agent.py>
+- `Agent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/multiagent_pattern/agent.py>
+- `Crew`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/multiagent_pattern/crew.py>
+- Utilities: <https://github.com/neural-maze/agentic-patterns-course/tree/main/src/agentic_patterns/utils>
+
+The original copyright and permission notice are preserved in
+[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
 ## Get The Repo
 
 Clone the repository to your local machine, then move into the project folder.

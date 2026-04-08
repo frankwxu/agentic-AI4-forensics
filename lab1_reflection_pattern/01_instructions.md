@@ -31,11 +31,17 @@ When staffing permits, a subset of submissions may be double-scored, and discrep
 ## Instructional Flow and Guided Example
 
 To illustrate the Reflection workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, acquisition details, and event sequence; the full lab extends the same scenario with a larger artifact set.
-As shown in Figure 1, the lab uses an iterative cycle from artifact analysis to draft findings, reflection critique, and revision limited to what the evidence supports.
+Before applying Reflection to this forensic case, it helps to recall the general pattern: produce an initial answer, critique it, and revise it. Figure 1 shows that general Reflection Pattern.
 
-![Figure 1. Reflection-based learning loop for Lab 1](./figures/lab1_reflection_workflow.svg)
+![Figure 1. General Reflection Pattern](./figures/reflection_pattern.png)
 
-*Figure 1. Reflection-based learning loop for Lab 1: mobile artifacts -> Draft v1 -> critique -> revised report -> final improved report.*
+*Figure 1. General Reflection Pattern: an initial response is reviewed through reflection and then revised. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+
+In this lab, that same loop is narrowed to forensic reporting, where revision must stay within what the evidence supports. As shown in Figure 2, the lab uses an iterative cycle from artifact analysis to draft findings, reflection critique, and revision limited to what the evidence supports.
+
+![Figure 2. Reflection-based learning loop for Lab 1](./figures/lab1_reflection_workflow.svg)
+
+*Figure 2. Reflection-based learning loop for Lab 1: mobile artifacts -> Draft v1 -> critique -> revised report -> final improved report.*
 
 Student-agent interaction is explicit and structured in each iteration. The student submits Draft Report v1 with evidence-to-claim links, the LLM-based reflection agent returns critique on claim support and uncertainty language, and the student decides how to revise claims and confidence statements before submitting v2/v3. The agent acts as a critique aid, not a decision authority: students remain responsible for final forensic conclusions and evidence citations.
 
