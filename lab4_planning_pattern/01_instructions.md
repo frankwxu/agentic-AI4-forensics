@@ -1,14 +1,14 @@
-# Lab 3: Planning Pattern for Adaptive Timeline Reconstruction and Event Classification
+# Lab 4: Planning Pattern for Adaptive Timeline Reconstruction and Event Classification
 
-Lab 3 applies the Planning Pattern as a structured workflow for breaking a timeline question into ordered steps. Students use an LLM-based planning agent to build plans, record observations as they work, and revise the plan when new evidence conflicts with earlier assumptions, while remaining responsible for the final interpretation and conclusion. The instructional emphasis is on clear sequencing, observation-driven revision, and evidence-based timeline reconstruction.
+Lab 4 applies the Planning Pattern as a structured workflow for breaking a timeline question into ordered steps. Students use an LLM-based planning agent to build plans, record observations as they work, and revise the plan when new evidence conflicts with earlier assumptions, while remaining responsible for the final interpretation and conclusion. The instructional emphasis is on clear sequencing, observation-driven revision, and evidence-based timeline reconstruction.
 
 ## Educational Objective
 
-The objective of Lab 3 is to build students' ability to create ordered investigation plans, update those plans when new observations appear, and produce an evidence-cited timeline conclusion about whether the key events occurred within the incident window, outside it, or remain unresolved.
+The objective of Lab 4 is to build students' ability to create ordered investigation plans, update those plans when new observations appear, and produce an evidence-cited timeline conclusion about whether the key events occurred within the incident window, outside it, or remain unresolved.
 
 ## Learning Outcomes
 
-By the end of Lab 3, students will be able to:
+By the end of Lab 4, students will be able to:
 
 1. Break a case question into ordered subgoals.
 2. Execute an investigation plan using repeated observation-and-update cycles.
@@ -36,15 +36,15 @@ When staffing permits, a subset of submissions may be scored by two reviewers, w
 To illustrate the Planning Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, timeline, and artifact list; the full lab extends the same scenario with additional records and alternate decision points.
 Before applying Planning to this forensic case, it helps to recall the general pattern: break a larger task into ordered steps, execute those steps, and revise the plan when new observations change what should happen next. Figure 1 shows that general Planning Pattern.
 
-![Figure 1. General Planning Pattern](./figures/planning_pattern.png)
+![Figure 1. General Planning Pattern](https://www.dailydoseofds.com/content/images/2026/01/https-3a-2f-2fsubstack-post-media-s3-amazonaws-com-2fpublic-2fimages-2f643b6891-84f6-4672-aa1f-4724c5ad2d12_716x526-3.gif)
 
-*Figure 1. General Planning Pattern: the model reasons through intermediate steps and updates its path toward a larger goal. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+*Figure 1. General Planning Pattern: the model reasons through intermediate steps and updates its path toward a larger goal. Temporary linked figure from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/), published January 24, 2025. A local backup is saved under `references/dailydoseofds_5_agentic_patterns/` for later redraw work.*
 
 In this lab, that same pattern is narrowed to forensic timeline reconstruction, where students must plan, observe, and replan as new device records change the interpretation of the event sequence. As shown in Figure 2, the lab progresses from an incident question to initial planning, evidence review, observation-driven replanning, and a final timeline conclusion.
 
-![Figure 2. Planning-pattern workflow for Lab 3](./figures/lab3_planning_workflow.svg)
+![Figure 2. Planning-pattern workflow for Lab 4](./figures/lab4_planning_workflow.svg)
 
-*Figure 2. Planning-pattern workflow for Lab 3: instructor incident question -> student initial plan -> student+agent evidence review loop -> student+agent replanning after new WhatsApp evidence -> student final timeline and timing decision.*
+*Figure 2. Planning-pattern workflow for Lab 4: instructor incident question -> student initial plan -> student+agent evidence review loop -> student+agent replanning after new WhatsApp evidence -> student final timeline and timing decision.*
 
 ## Planning Logic
 

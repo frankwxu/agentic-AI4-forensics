@@ -1,0 +1,3 @@
+timestamp_utc,event,state,notes
+2026-02-20T14:10:04Z,locked,screen_locked,start of unattended interval
+2026-02-20T14:25:11Z,unlocked,screen_unlocked,end of unattended interval

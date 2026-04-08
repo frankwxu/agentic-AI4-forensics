@@ -1,14 +1,14 @@
-# Lab 4: Multiagent Pattern for Evidence Verification and Chain-of-Custody Analysis
+# Lab 5: Multiagent Pattern for Evidence Verification and Chain-of-Custody Analysis
 
-Lab 4 applies the Multiagent Pattern as a structured workflow for evidence verification and chain-of-custody review in mobile forensics. Here, chain of custody means the record of who handled the evidence and when. Students use three LLM-based agents with distinct roles: an investigation agent, an evidence-verification agent, and a chain-of-custody auditing agent. They compare agent outputs, resolve disagreements, and issue final evidence-based conclusions. The instructional emphasis is on clear role boundaries, cross-checking, and reasoning that accounts for how evidence was handled.
+Lab 5 applies the Multiagent Pattern as a structured workflow for evidence verification and chain-of-custody review in mobile forensics. Here, chain of custody means the record of who handled the evidence and when. Students use three LLM-based agents with distinct roles: an investigation agent, an evidence-verification agent, and a chain-of-custody auditing agent. They compare agent outputs, resolve disagreements, and issue final evidence-based conclusions. The instructional emphasis is on clear role boundaries, cross-checking, and reasoning that accounts for how evidence was handled.
 
 ## Educational Objective
 
-The objective of Lab 4 is to build students' ability to assign role-specific tasks, reconcile conflicting agent outputs, and produce an evidence-based conclusion about whether a file was transmitted (confirmed, likely, or unconfirmed), together with a plain-language explanation of whether the evidence-handling record is complete enough to trust that conclusion.
+The objective of Lab 5 is to build students' ability to assign role-specific tasks, reconcile conflicting agent outputs, and produce an evidence-based conclusion about whether a file was transmitted (confirmed, likely, or unconfirmed), together with a plain-language explanation of whether the evidence-handling record is complete enough to trust that conclusion.
 
 ## Learning Outcomes
 
-By the end of Lab 4, students will be able to:
+By the end of Lab 5, students will be able to:
 
 1. Assign investigation subtasks to specialized agents with clear role boundaries.
 2. Compare and reconcile conflicting outputs from the investigation, evidence-verification, and custody-auditing agents.
@@ -36,15 +36,15 @@ When staffing permits, a subset of submissions may be scored by two reviewers, w
 To illustrate the Multiagent Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, acquisition details, and artifact list; the full lab extends the same scenario with additional records and disagreement points.
 Before applying Multiagent coordination to this forensic case, it helps to recall the general pattern: multiple specialized agents handle different subtasks, and their outputs are combined to support a final result. Figure 1 shows that general Multiagent Pattern.
 
-![Figure 1. General Multiagent Pattern](./figures/multiagent_pattern.png)
+![Figure 1. General Multiagent Pattern](https://www.dailydoseofds.com/content/images/2026/01/https-3a-2f-2fsubstack-post-media-s3-amazonaws-com-2fpublic-2fimages-2f686c08ca-989b-4083-9128-e6bc2a8c07b5_716x526-3.gif)
 
-*Figure 1. General Multiagent Pattern: specialized agents divide work across roles and contribute to a combined output. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+*Figure 1. General Multiagent Pattern: specialized agents divide work across roles and contribute to a combined output. Temporary linked figure from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/), published January 24, 2025. A local backup is saved under `references/dailydoseofds_5_agentic_patterns/` for later redraw work.*
 
 In this lab, that same pattern is narrowed to forensic verification, where students compare outputs from specialized roles and resolve disagreements before reaching a final conclusion. As shown in Figure 2, the lab progresses from the incident package to student task assignment, multiagent checks, conflict resolution, and a final case conclusion.
 
-![Figure 2. Multiagent-pattern workflow for Lab 4](./figures/lab4_multiagent_workflow.svg)
+![Figure 2. Multiagent-pattern workflow for Lab 5](./figures/lab5_multiagent_workflow.svg)
 
-*Figure 2. Multiagent-pattern workflow for Lab 4: instructor incident package -> student task split -> multiagent checks (investigation agent, evidence-verification agent, custody-auditing agent) -> student conflict resolution -> final case conclusion.*
+*Figure 2. Multiagent-pattern workflow for Lab 5: instructor incident package -> student task split -> multiagent checks (investigation agent, evidence-verification agent, custody-auditing agent) -> student conflict resolution -> final case conclusion.*
 
 ## Multiagent Coordination Logic
 

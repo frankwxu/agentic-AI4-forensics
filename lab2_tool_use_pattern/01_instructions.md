@@ -36,9 +36,9 @@ When staffing permits, a subset of submissions may be scored by two reviewers, w
 To illustrate the Tool Use Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, timeline, and artifact list; the full lab extends the same scenario with additional photos, records, and tool options.
 Before applying Tool Use to this forensic case, it helps to recall the general pattern: the model uses external tools to gather evidence it cannot safely infer from its own weights alone. Figure 1 shows that general Tool Use Pattern.
 
-![Figure 1. General Tool Use Pattern](./figures/tool_pattern.png)
+![Figure 1. General Tool Use Pattern](https://www.dailydoseofds.com/content/images/2026/01/https-3a-2f-2fsubstack-post-media-s3-amazonaws-com-2fpublic-2fimages-2f1a9fbda7-77a8-4a7a-ac2c-077fb98e53a6_716x552-1.gif)
 
-*Figure 1. General Tool Use Pattern: the model accesses external tools to retrieve or compute information before responding. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+*Figure 1. General Tool Use Pattern: the model accesses external tools to retrieve or compute information before responding. Temporary linked figure from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/), published January 24, 2025. A local backup is saved under `references/dailydoseofds_5_agentic_patterns/` for later redraw work.*
 
 In this lab, that same pattern is narrowed to forensic review, where students must choose valid tools, inspect the outputs, and distinguish raw results from analytic conclusions. As shown in Figure 2, the lab progresses from evidence intake to date-and-file filtering, structured tool calls, output checking, and a final conclusion about online-sale preparation.
 

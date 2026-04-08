@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this warm-up lab after you complete [lab0_1_environment_setup/01_instructions.md](../lab0_1_environment_setup/01_instructions.md). The goal is to give you one small hands-on AI task before you start the four forensic pattern labs.
+Use this warm-up lab after you complete [lab0_1_environment_setup/01_instructions.md](../lab0_1_environment_setup/01_instructions.md). The goal is to give you one small hands-on AI task before you start the five forensic pattern labs.
 
 ## Learning Goals
 
@@ -45,5 +45,6 @@ Move on to the main forensic labs in order:
 
 1. `lab1_reflection_pattern`
 2. `lab2_tool_use_pattern`
-3. `lab3_planning_pattern`
-4. `lab4_multiagent_pattern`
+3. `lab3_react_pattern`
+4. `lab4_planning_pattern`
+5. `lab5_multiagent_pattern`

@@ -30,7 +30,7 @@
   ],
   "learning_purpose": [
     "show the difference between a plain model answer and a bounded agent workflow",
-    "introduce role, tools, memory, and stop conditions before the four pattern labs",
+    "introduce role, tools, memory, and stop conditions before the five pattern labs",
     "keep the first AI-agent example small, low-stakes, and evidence-bounded"
   ]
 }

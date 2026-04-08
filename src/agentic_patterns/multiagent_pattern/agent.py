@@ -5,7 +5,7 @@
 from textwrap import dedent
 
 from agentic_patterns.multiagent_pattern.crew import Crew
-from agentic_patterns.planning_pattern.react_agent import ReactAgent
+from agentic_patterns.react_pattern.react_agent import ReactAgent
 from agentic_patterns.tool_pattern.tool import Tool
 
 

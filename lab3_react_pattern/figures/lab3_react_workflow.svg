@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="394" viewBox="30 24 1540 394" role="img" aria-labelledby="title desc">
+  <title id="title">ReAct Pattern Workflow</title>
+  <desc id="desc">Workflow for the ReAct Pattern: forensic question, tool-guided thought-action-observation loop, and a final bounded answer.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 20px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="420" fill="#ffffff"/>
+  <text x="800" y="66" text-anchor="middle" class="title">ReAct Pattern Workflow</text>
+
+  <rect x="40" y="150" rx="16" ry="16" width="260" height="175" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="170" y="188" text-anchor="middle" class="node-title">[Instructor] Forensic</text>
+  <text x="170" y="216" text-anchor="middle" class="node-title">Question</text>
+  <text x="170" y="250" text-anchor="middle" class="node-text">Did the Signal</text>
+  <text x="170" y="274" text-anchor="middle" class="node-text">attempt happen in</text>
+  <text x="170" y="298" text-anchor="middle" class="node-text">the unattended gap?</text>
+
+  <rect x="355" y="150" rx="16" ry="16" width="260" height="175" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="485" y="188" text-anchor="middle" class="node-title">[Student+Agent]</text>
+  <text x="485" y="216" text-anchor="middle" class="node-title">Thought</text>
+  <text x="485" y="250" text-anchor="middle" class="node-text">pick the next tool</text>
+  <text x="485" y="274" text-anchor="middle" class="node-text">needed to reduce</text>
+  <text x="485" y="298" text-anchor="middle" class="node-text">the key uncertainty</text>
+
+  <rect x="670" y="150" rx="16" ry="16" width="260" height="175" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="800" y="188" text-anchor="middle" class="node-title">[Student+Agent]</text>
+  <text x="800" y="216" text-anchor="middle" class="node-title">Action</text>
+  <text x="800" y="250" text-anchor="middle" class="node-text">call one forensic</text>
+  <text x="800" y="274" text-anchor="middle" class="node-text">tool at a time and</text>
+  <text x="800" y="298" text-anchor="middle" class="node-text">collect the result</text>
+
+  <rect x="985" y="150" rx="16" ry="16" width="260" height="175" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="1115" y="188" text-anchor="middle" class="node-title">[Student+Agent]</text>
+  <text x="1115" y="216" text-anchor="middle" class="node-title">Observation</text>
+  <text x="1115" y="250" text-anchor="middle" class="node-text">compare each tool</text>
+  <text x="1115" y="274" text-anchor="middle" class="node-text">result against the</text>
+  <text x="1115" y="298" text-anchor="middle" class="node-text">question and timing</text>
+
+  <rect x="1300" y="150" rx="16" ry="16" width="260" height="175" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1430" y="188" text-anchor="middle" class="node-title">[Student] Final</text>
+  <text x="1430" y="216" text-anchor="middle" class="node-title">Response</text>
+  <text x="1430" y="250" text-anchor="middle" class="node-text">answer the question</text>
+  <text x="1430" y="274" text-anchor="middle" class="node-text">with citations and</text>
+  <text x="1430" y="298" text-anchor="middle" class="node-text">bounded confidence</text>
+
+  <line x1="300" y1="238" x2="355" y2="238" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="615" y1="238" x2="670" y2="238" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="930" y1="238" x2="985" y2="238" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1245" y1="238" x2="1300" y2="238" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 1115 325 C 1115 380, 800 380, 800 325" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+  <text x="958" y="404" text-anchor="middle" class="label">Repeat until the observed evidence is enough to answer</text>
+</svg>

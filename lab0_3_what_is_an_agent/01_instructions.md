@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this onboarding lab after you complete [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the four pattern labs.
+Use this onboarding lab after you complete [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
 
 This lab is hands-on. You will run the same model in two different ways:
 
@@ -131,5 +131,6 @@ Move on to the main forensic labs in order:
 
 1. `lab1_reflection_pattern`
 2. `lab2_tool_use_pattern`
-3. `lab3_planning_pattern`
-4. `lab4_multiagent_pattern`
+3. `lab3_react_pattern`
+4. `lab4_planning_pattern`
+5. `lab5_multiagent_pattern`

@@ -176,5 +176,6 @@ After this setup check passes, continue to:
 1. `lab0_2_model_warmup`
 2. `lab1_reflection_pattern`
 3. `lab2_tool_use_pattern`
-4. `lab3_planning_pattern`
-5. `lab4_multiagent_pattern`
+4. `lab3_react_pattern`
+5. `lab4_planning_pattern`
+6. `lab5_multiagent_pattern`

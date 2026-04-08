@@ -1,0 +1,21 @@
+{
+  "case_id": "RA-2026-009",
+  "lab": "Lab 3 - ReAct Pattern",
+  "device": {
+    "platform": "Android",
+    "model": "Samsung Galaxy A54",
+    "os_version": "Android 14"
+  },
+  "acquisition": {
+    "type": "full_file_system",
+    "tool": "Cellebrite UFED 7.70",
+    "acquired_at_utc": "2026-02-21T10:43:18Z",
+    "original_image_sha256": "a7a4db1c2e1d75889f847d0b46a60bf8b84ae4d1533f6f5ce7aa98fb29dcb6ef"
+  },
+  "analysis_timezone": "America/New_York",
+  "incident_window_utc": {
+    "start": "2026-02-20T14:10:00Z",
+    "end": "2026-02-20T14:25:00Z"
+  },
+  "note": "Synthetic classroom dataset for react-pattern demo"
+}

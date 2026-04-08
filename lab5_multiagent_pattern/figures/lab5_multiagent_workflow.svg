@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1550" height="370" viewBox="20 24 1550 370" role="img" aria-labelledby="title desc">
   <title id="title">Multiagent Pattern Workflow</title>
-  <desc id="desc">Workflow for the Multiagent Pattern: instructor incident package, student scope and task split, investigator, evidence verifier, and custody auditor checks, and student final case conclusion.</desc>
+  <desc id="desc">Workflow for the Multiagent Pattern used in Lab 5: instructor incident package, student scope and task split, investigator, evidence verifier, and custody auditor checks, and student final case conclusion.</desc>
 
   <defs>
     <style>

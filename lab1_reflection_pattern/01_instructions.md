@@ -33,9 +33,9 @@ When staffing permits, a subset of submissions may be double-scored, and discrep
 To illustrate the Reflection workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, acquisition details, and event sequence; the full lab extends the same scenario with a larger artifact set.
 Before applying Reflection to this forensic case, it helps to recall the general pattern: produce an initial answer, critique it, and revise it. Figure 1 shows that general Reflection Pattern.
 
-![Figure 1. General Reflection Pattern](./figures/reflection_pattern.png)
+![Figure 1. General Reflection Pattern](https://www.dailydoseofds.com/content/images/2026/01/https-3a-2f-2fsubstack-post-media-s3-amazonaws-com-2fpublic-2fimages-2fa8deb345-27cf-4bec-8e7f-f1cd25fabcab_716x546-1.gif)
 
-*Figure 1. General Reflection Pattern: an initial response is reviewed through reflection and then revised. Source: `neural-maze/agentic-patterns-course`, reused under the MIT License (Copyright (c) 2024 The Neural Maze).*
+*Figure 1. General Reflection Pattern: an initial response is reviewed through reflection and then revised. Temporary linked figure from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/), published January 24, 2025. A local backup is saved under `references/dailydoseofds_5_agentic_patterns/` for later redraw work.*
 
 In this lab, that same loop is narrowed to forensic reporting, where revision must stay within what the evidence supports. As shown in Figure 2, the lab uses an iterative cycle from artifact analysis to draft findings, reflection critique, and revision limited to what the evidence supports.
 
