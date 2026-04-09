@@ -17,5 +17,6 @@
     "start": "2026-02-20T14:10:00Z",
     "end": "2026-02-20T14:25:00Z"
   },
-  "note": "Synthetic classroom dataset for react-pattern demo"
+  "interval_source": "staff observation log",
+  "note": "Synthetic classroom dataset for react-pattern demo built around a reported unattended interval"
 }

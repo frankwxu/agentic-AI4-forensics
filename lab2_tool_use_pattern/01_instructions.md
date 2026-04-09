@@ -83,12 +83,13 @@ Both parts of the notebook use the same report format so students can compare ma
 4. `conclusion label (confirmed, likely, or unconfirmed) with confidence 0-1 per major claim`
 5. `explicit evidence mapping and limits`
 
-The lab is structured in four stages:
+The lab is structured in five stages:
 
 1. [03a_weather_tool_demo.ipynb](./03a_weather_tool_demo.ipynb) gives a tiny local weather-tool warm-up so students can see the basic `question -> tool call -> answer` loop before the case begins.
 2. [02_case_overview.md](./02_case_overview.md) introduces the vehicle-sale case and the evidence question.
 3. [03b_lab_notebook.ipynb](./03b_lab_notebook.ipynb) manually runs the forensic tool sequence and then repeats the same case with `ToolAgent`.
-4. The final section of `03b_lab_notebook.ipynb` shows an optional retrieval-style helper without making vector databases or external APIs part of the core lab.
+4. [04_tool_use_assignment.ipynb](./04_tool_use_assignment.ipynb) asks students to use the same three tools more independently, choose at least two candidate images, and compare their manual workflow with `ToolAgent`.
+5. The final section of `03b_lab_notebook.ipynb` shows an optional retrieval-style helper without making vector databases or external APIs part of the core lab.
 
 ## Guided Example
 
@@ -112,6 +113,6 @@ This example shows the main learning point: Tool Use Pattern instruction require
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional photos, partial matches, and multiple listing records. Required deliverables are the shared five-part report above, built from the core tool sequence and tied to explicit evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `03a_weather_tool_demo.ipynb`, `02_case_overview.md`, then `03b_lab_notebook.ipynb`. In the main notebook, complete `Part 1` before `Part 2`; the final optional extension is not required for the core lab objectives.
+Students should work through this lab in order: `01_instructions.md`, `03a_weather_tool_demo.ipynb`, `02_case_overview.md`, `03b_lab_notebook.ipynb`, then `04_tool_use_assignment.ipynb`. In the guided notebook, complete `Part 1` before `Part 2`; the final optional extension is not required for the core lab objectives.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `media_index.csv`, `image_metadata.csv`, `vehicle_detections.csv`, `listing_drafts.json`, and `chain_of_custody.csv`.

@@ -1,6 +1,6 @@
 # Lab 3: ReAct Pattern for Incremental Communication Verification
 
-Lab 3 applies the ReAct Pattern as a structured `thought -> action -> observation -> response` loop for a bounded forensic question. Students use a tool-enabled agent to decide what to inspect next, execute one tool call at a time, and stop only after the available evidence supports a careful answer. The instructional emphasis is on transparent tool use, incremental verification, and final answers that stay within what the observed evidence supports.
+Lab 3 applies the ReAct Pattern as a structured `thought -> action -> observation -> response` loop for a bounded forensic question. Students use a tool-enabled agent to decide what to inspect next, execute one tool call at a time, and stop only after the available evidence supports a careful answer. Unlike the Tool Use Pattern in Lab 2, which emphasizes selecting and executing appropriate tools, ReAct emphasizes using each observation to choose the next step in an explicit reasoning loop. The instructional emphasis is on transparent tool use, incremental verification, and final answers that stay within what the observed evidence supports.
 
 ## Lab-Specific Environment
 
@@ -47,7 +47,9 @@ Before applying ReAct to this forensic case, it helps to recall the general patt
 
 *Figure 1. General ReAct Pattern: the model reasons about the next step, acts through a tool, observes the result, and repeats until it can answer. Temporary linked figure from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/), published January 24, 2025. A local backup is saved under `references/dailydoseofds_5_agentic_patterns/` for later redraw work.*
 
-In this lab, that same pattern is narrowed to a quick communication-verification question: did a Signal attachment attempt happen during an unattended interval, and did the device reconnect before that interval ended? As shown in Figure 2, the lab progresses from the forensic question to tool-guided evidence checks and then to a final bounded answer.
+In Figure 1, `Environment` means the external system or evidence source the agent interacts with through tools and observes results from; in this lab, that corresponds to the forensic artifacts being inspected.
+
+In this lab, that same pattern is narrowed to a quick communication-verification question: did a Signal attachment attempt happen during a reported unattended interval, and did the device reconnect before that interval ended? As shown in Figure 2, the lab progresses from the forensic question to tool-guided evidence checks and then to a final bounded answer.
 
 ![Figure 2. ReAct-pattern workflow for Lab 3](./figures/lab3_react_workflow.svg)
 
@@ -71,7 +73,7 @@ In this lab, students review a short unattended-device interval. The key ReAct c
 
 | Step | Tool Call | Observation | Why It Matters |
 |---|---|---|---|
-| 1 | check the incident window | device locked at `14:10:04 UTC` and unlocked at `14:25:11 UTC` | defines the interval that later events must be compared against |
+| 1 | check the incident window | staff observation marks the phone as unattended from `14:10:00 UTC` to `14:25:00 UTC` | defines the interval that later events must be compared against |
 | 2 | check the messaging event | Signal attachment attempt recorded at `14:16:11 UTC` | shows a communication attempt inside the unattended interval |
 | 3 | check the network restoration time | mobile data restored at `14:28:02 UTC` | shows connectivity returned after the unattended interval ended |
 | 4 | produce the answer | attempted communication happened in the interval, but reconnection happened later | supports a bounded final answer without overstating successful delivery |
@@ -84,8 +86,8 @@ Student Final v2:
 
 This draft-to-revision contrast shows the ReAct Pattern objective: each next step should come from the last observation, and the final answer should remain bounded by what the tools actually returned.
 
-In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. Required deliverables are a short ReAct step log, a final answer to the communication question, and a table linking claims to tool observations.
+In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. After reading the case overview, students should open `03_lab_notebook.ipynb`, restate the forensic question, walk through the manual ReAct loop one tool call at a time, and only then compare that process with the packaged agent. Required deliverables are a short ReAct step log, a final answer to the communication question, and a table linking claims to tool observations.
 
 Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`.
 
-The staged artifact package in `data/` includes `artifact_manifest.json`, `device_state.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.
+The staged artifact package in `data/` includes `artifact_manifest.json`, `incident_window.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.

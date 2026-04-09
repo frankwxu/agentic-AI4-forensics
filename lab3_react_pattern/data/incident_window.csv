@@ -1,0 +1,3 @@
+timestamp_utc,event,source,notes
+2026-02-20T14:10:00Z,unattended_interval_start,staff_observation,phone left on supply table before coordinator stepped away
+2026-02-20T14:25:00Z,unattended_interval_end,staff_observation,phone recovered from supply table when coordinator returned
