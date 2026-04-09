@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
+  <title id="title">ToolAgent Tool-Calling Process</title>
+  <desc id="desc">Diagram of the internal ToolAgent calling process: a Python function is wrapped into a Tool object, ToolAgent stores tools in a name-based dictionary, the model returns a tool-call object, ToolAgent matches the tool name, validates arguments, invokes the function, and receives the observation.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .code-text { font: 600 15px 'Consolas', 'Courier New', monospace; fill: #1e293b; }
+      .label { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="520" fill="#ffffff"/>
+  <text x="800" y="52" text-anchor="middle" class="title">ToolAgent Tool-Calling Process</text>
+  <text x="800" y="82" text-anchor="middle" class="subtitle">Focus: how a Python function becomes a tool and how `ToolAgent` invokes it</text>
+
+  <rect x="70" y="130" rx="18" ry="18" width="300" height="150" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="220" y="170" text-anchor="middle" class="node-title">1. Python Function</text>
+  <text x="220" y="205" text-anchor="middle" class="code-text">def get_weather(city, date)</text>
+  <text x="220" y="234" text-anchor="middle" class="node-text">regular function with</text>
+  <text x="220" y="258" text-anchor="middle" class="node-text">name, docstring, and types</text>
+
+  <rect x="450" y="130" rx="18" ry="18" width="300" height="150" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="600" y="170" text-anchor="middle" class="node-title">2. `@tool` Wraps It</text>
+  <text x="600" y="205" text-anchor="middle" class="code-text">Tool(name, fn, fn_signature)</text>
+  <text x="600" y="234" text-anchor="middle" class="node-text">builds the tool object</text>
+  <text x="600" y="258" text-anchor="middle" class="node-text">and JSON signature schema</text>
+
+  <rect x="830" y="130" rx="18" ry="18" width="300" height="150" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="980" y="170" text-anchor="middle" class="node-title">3. `ToolAgent` Stores Tools</text>
+  <text x="980" y="205" text-anchor="middle" class="code-text">tools_dict = {tool.name: tool}</text>
+  <text x="980" y="234" text-anchor="middle" class="node-text">match later by</text>
+  <text x="980" y="258" text-anchor="middle" class="node-text">tool name string</text>
+
+  <rect x="1210" y="130" rx="18" ry="18" width="300" height="150" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>
+  <text x="1360" y="170" text-anchor="middle" class="node-title">4. Model Returns Tool Call</text>
+  <text x="1360" y="205" text-anchor="middle" class="code-text">{name, arguments, id}</text>
+  <text x="1360" y="234" text-anchor="middle" class="node-text">for example:</text>
+  <text x="1360" y="258" text-anchor="middle" class="code-text">name = "get_weather"</text>
+
+  <rect x="370" y="335" rx="18" ry="18" width="360" height="145" fill="#fef3c7" stroke="#ca8a04" stroke-width="2"/>
+  <text x="550" y="375" text-anchor="middle" class="node-title">5. `ToolAgent` Matches the Tool</text>
+  <text x="550" y="410" text-anchor="middle" class="code-text">chosen_tool = tools_dict[tool_call["name"]]</text>
+  <text x="550" y="439" text-anchor="middle" class="node-text">find the wrapped function</text>
+  <text x="550" y="463" text-anchor="middle" class="node-text">that matches the requested name</text>
+
+  <rect x="780" y="335" rx="18" ry="18" width="360" height="145" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="960" y="375" text-anchor="middle" class="node-title">6. Validate + Invoke</text>
+  <text x="960" y="410" text-anchor="middle" class="code-text">chosen_tool.run(**validated_tool_call["arguments"])</text>
+  <text x="960" y="439" text-anchor="middle" class="node-text">this is where the function</text>
+  <text x="960" y="463" text-anchor="middle" class="node-text">actually gets called</text>
+
+  <rect x="1190" y="335" rx="18" ry="18" width="280" height="145" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1330" y="375" text-anchor="middle" class="node-title">7. Observation Returned</text>
+  <text x="1330" y="410" text-anchor="middle" class="node-text">JSON result or other</text>
+  <text x="1330" y="434" text-anchor="middle" class="node-text">tool output goes back</text>
+  <text x="1330" y="458" text-anchor="middle" class="node-text">to `ToolAgent`</text>
+
+  <line x1="370" y1="205" x2="450" y2="205" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="205" x2="830" y2="205" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1130" y1="205" x2="1210" y2="205" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 1360 280 C 1360 315, 740 315, 740 360" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 980 280 C 980 315, 620 315, 620 360" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="730" y1="408" x2="780" y2="408" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1140" y1="408" x2="1190" y2="408" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="800" y="505" text-anchor="middle" class="label">Core idea: `ToolAgent` does name matching and argument handling, then calls the wrapped function with `.run(**arguments)`</text>
+</svg>

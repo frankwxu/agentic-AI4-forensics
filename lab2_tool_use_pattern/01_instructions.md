@@ -1,10 +1,10 @@
 # Lab 2: Tool Use Pattern for Image Metadata Analysis and Vehicle Verification
 
-Lab 2 applies the Tool Use Pattern as a structured workflow for extracting timestamps, checking image content, and evaluating online-sale evidence from mobile data. Students first run the required forensic tools manually and then hand the same tool set to an LLM-based `ToolAgent` so they can compare direct tool execution with the packaged abstraction. The instructional emphasis is on careful tool selection, valid parameters, and clear separation between raw tool output and analytic interpretation. This lab stays focused on local evidence tools; retrieval systems and external APIs appear only as optional extension ideas, not as required infrastructure.
+Lab 2 applies the Tool Use Pattern as a structured workflow for extracting timestamps, checking image content, and evaluating online-sale evidence from mobile data. Students begin with a short local weather-tool demo notebook so they can see the basic tool-use loop in a familiar setting before moving into the forensic case. They then run the required forensic tools manually and hand the same tool set to an LLM-based `ToolAgent` so they can compare direct tool execution with the packaged abstraction. The instructional emphasis is on careful tool selection, valid parameters, and clear separation between raw tool output and analytic interpretation. This lab stays focused on local evidence tools; retrieval systems and external APIs appear only as optional extension ideas, not as required infrastructure.
 
 ## Lab-Specific Environment
 
-Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+Before running the Lab 2 notebooks, create a lab-local `.env` in this folder:
 
 ```bash
 cp .env.example .env
@@ -21,14 +21,14 @@ The objective of Lab 2 is to build students' ability to sequence valid tool call
 By the end of Lab 2, students will be able to:
 
 1. Select appropriate tools to locate relevant photos and sale-related records created on or after January 2, 2026.
-2. Execute tool calls with valid parameters to extract image timestamps and related file metadata.
-3. Use vehicle-detection results to compare photo content with the stolen vehicle description.
+2. Execute tool calls with valid parameters to locate candidate media, inspect combined image evidence, and retrieve listing records.
+3. Use combined image-evidence results to compare photo content and timing with the stolen vehicle description.
 4. Produce a conclusion that distinguishes confirmed, likely, and unconfirmed evidence of online-sale preparation.
 5. Explain when a tool-calling agent's suggested tool choice, arguments, or interpretation should be corrected or rejected based on the tool schema and the available evidence.
 
 ## Measurable Targets
 
-1. At least 85% of students execute the required core tool sequence in valid order for the online-sale evidence task (`list_media_files` -> `extract_image_metadata` -> `detect_vehicle_attributes` -> `inspect_listing_records` -> `compare_vehicle_features`).
+1. At least 85% of students execute the required core tool sequence in valid order for the online-sale evidence task (`list_media_files` -> `inspect_image_evidence` -> `inspect_listing_records`).
 2. At least 90% of submitted tool calls use valid arguments and required formatting.
 3. At least 80% of final submissions correctly classify the evidence as confirmed, likely, or unconfirmed preparation for an online sale using the shared scoring guide.
 4. At least 85% of final submissions include specific file or record references for each major claim.
@@ -50,22 +50,26 @@ Before applying Tool Use to this forensic case, it helps to recall the general p
 
 *Figure 1. General Tool Use Pattern: the model accesses external tools to retrieve or compute information before responding. Temporary linked figure from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/), published January 24, 2025. A local backup is saved under `references/dailydoseofds_5_agentic_patterns/` for later redraw work.*
 
-In this lab, that same pattern is narrowed to forensic review, where students must choose valid tools, inspect the outputs, and distinguish raw results from analytic conclusions. As shown in Figure 2, the lab progresses from evidence intake to date-and-file filtering, structured tool calls, output checking, and a final conclusion about online-sale preparation.
+Because `ToolAgent` can feel abstract at first, Figure 2 zooms into the internal tool-calling step itself. It focuses only on how a Python function becomes a `Tool`, how `ToolAgent` matches a model-returned tool name to that stored tool object, and where the wrapped function is actually invoked.
 
-![Figure 2. Tool-use-pattern workflow for Lab 2](./figures/lab2_tool_use_workflow.svg)
+![Figure 2. How ToolAgent calls a tool](./figures/lab2_toolagent_calling_process.svg)
 
-*Figure 2. Tool-use-pattern workflow for Lab 2: instructor-provided mobile evidence -> student date and file filtering -> student+agent structured tool calls -> agent-supported metadata and vehicle checking -> student conclusion about online-sale preparation.*
+*Figure 2. ToolAgent calling process for Lab 2: Python function -> `@tool` wrapper -> stored `tools_dict` entry -> model tool-call object -> name matching -> function invocation -> returned observation.*
+
+In this lab, that same pattern is narrowed to forensic review, where students must choose valid tools, inspect the outputs, and distinguish raw results from analytic conclusions. As shown in Figure 3, the lab progresses from evidence intake to date-and-file filtering, structured tool calls, output checking, and a final conclusion about online-sale preparation.
+
+![Figure 3. Tool-use-pattern workflow for Lab 2](./figures/lab2_tool_use_workflow.svg)
+
+*Figure 3. Tool-use-pattern workflow for Lab 2: instructor-provided mobile evidence -> student date and file filtering -> student+agent structured tool calls -> agent-supported metadata and vehicle checking -> student conclusion about online-sale preparation.*
 
 ## Tool Selection Logic
 
 Students are assessed on clear tool-selection reasoning, not on hidden model internals. In practice, students should follow this decision logic and justify each step with the evidence they need:
 
 1. Use `list_media_files` to locate candidate photos created on or after January 2, 2026.
-2. Use `extract_image_metadata` to inspect capture times and other relevant image metadata.
-3. Use `detect_vehicle_attributes` to determine whether a photo likely shows the stolen vehicle.
-4. Use `inspect_listing_records` to identify online sale drafts or related records tied to the same time period.
-5. Use `compare_vehicle_features` to compare the case vehicle description with one candidate image at a time.
-6. If evidence is insufficient, run additional justified tool calls and revise the conclusion.
+2. Use `inspect_image_evidence` to inspect one candidate image at a time, combining file details, timestamps, vehicle detections, and comparison to the case description.
+3. Use `inspect_listing_records` to identify online sale drafts or related records tied to the same time period.
+4. If evidence is insufficient, inspect additional candidate images or run other justified follow-up calls before revising the conclusion.
 
 The agent acts as a tool-use aid, not a decision authority: students remain responsible for accepting, rejecting, and justifying those suggestions.
 
@@ -79,11 +83,12 @@ Both parts of the notebook use the same report format so students can compare ma
 4. `conclusion label (confirmed, likely, or unconfirmed) with confidence 0-1 per major claim`
 5. `explicit evidence mapping and limits`
 
-The notebook is structured in three stages:
+The lab is structured in four stages:
 
-1. `Part 1` manually runs the forensic tool sequence against the staged vehicle-sale case.
-2. `Part 2` runs the same case and report format with `ToolAgent`.
-3. An optional extension shows how the same pattern could later wrap a retrieval-style helper without making vector databases or external APIs part of the core lab.
+1. [03a_weather_tool_demo.ipynb](./03a_weather_tool_demo.ipynb) gives a tiny local weather-tool warm-up so students can see the basic `question -> tool call -> answer` loop before the case begins.
+2. [02_case_overview.md](./02_case_overview.md) introduces the vehicle-sale case and the evidence question.
+3. [03b_lab_notebook.ipynb](./03b_lab_notebook.ipynb) manually runs the forensic tool sequence and then repeats the same case with `ToolAgent`.
+4. The final section of `03b_lab_notebook.ipynb` shows an optional retrieval-style helper without making vector databases or external APIs part of the core lab.
 
 ## Guided Example
 
@@ -92,10 +97,8 @@ In this lab, students must decide whether a recovered phone contains evidence th
 | Tool Call | Tool Output | Why It Matters |
 |---|---|---|
 | `list_media_files(root="DCIM/Camera", date_from="2026-01-02T00:00:00Z")` | `IMG_2044.jpg`, `IMG_2045.jpg`, `IMG_2051.jpg` | narrows review to candidate photos created on or after the theft date |
-| `extract_image_metadata(file_name="IMG_2044.jpg")` | captured `2026-01-02 21:14 UTC`; no later edit time recorded | places the photo after the theft date and inside the reviewed time range |
-| `detect_vehicle_attributes(file_name="IMG_2044.jpg")` | black SUV; roof rack visible; rear plate region visible | links the image content to the stolen vehicle description |
-| `inspect_listing_records(source="listing_drafts.json", date_from="2026-01-02T00:00:00Z")` | draft created `2026-01-02 21:31 UTC`; title `black SUV for sale`; attached image `IMG_2044.jpg` | links the same photo to an online-sale draft |
-| `compare_vehicle_features(case_description="black SUV with roof rack", file_name="IMG_2044.jpg")` | strong match; no conflicting features | supports a high-confidence link between the photo and the stolen vehicle |
+| `inspect_image_evidence(file_name="IMG_2044.jpg", case_description="black SUV with roof rack")` | captured `2026-01-02 21:14 UTC`; black SUV; roof rack visible; strong match | combines the strongest timestamp and vehicle-match evidence for one candidate image |
+| `inspect_listing_records(date_from="2026-01-02T00:00:00Z")` | draft created `2026-01-02 21:31 UTC`; title `black SUV for sale`; attached image `IMG_2044.jpg` | links the same photo to an online-sale draft |
 
 Student Draft v1:  
 "The phone shows that the seller posted the stolen vehicle for sale online."
@@ -109,6 +112,6 @@ This example shows the main learning point: Tool Use Pattern instruction require
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional photos, partial matches, and multiple listing records. Required deliverables are the shared five-part report above, built from the core tool sequence and tied to explicit evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`. In the notebook, complete `Part 1` before `Part 2`; the final optional extension is not required for the core lab objectives.
+Students should work through this lab in order: `01_instructions.md`, `03a_weather_tool_demo.ipynb`, `02_case_overview.md`, then `03b_lab_notebook.ipynb`. In the main notebook, complete `Part 1` before `Part 2`; the final optional extension is not required for the core lab objectives.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `media_index.csv`, `image_metadata.csv`, `vehicle_detections.csv`, `listing_drafts.json`, and `chain_of_custody.csv`.

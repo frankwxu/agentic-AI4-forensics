@@ -35,8 +35,7 @@ After a black SUV with a roof rack was reported stolen on January 2, investigato
 ## Intended Educational Use
 This dataset is synthetic and designed to demonstrate a tool-use workflow:
 - identify candidate photos
-- extract and compare metadata
-- inspect AI-assisted vehicle detections
+- inspect combined image evidence for one candidate image at a time
 - connect media evidence to listing-draft records
 - decide whether the evidence supports sale preparation
 
@@ -48,7 +47,7 @@ In the notebook, you will use local forensic tools to answer one question:
 
 Required core tool sequence:
 
-`list_media_files -> extract_image_metadata -> detect_vehicle_attributes -> inspect_listing_records -> compare_vehicle_features`
+`list_media_files -> inspect_image_evidence -> inspect_listing_records`
 
 Return the same five-part report format in both the manual and `ToolAgent` sections of the notebook:
 
