@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620" role="img" aria-labelledby="title desc">
+  <title id="title">Weather Tool Calling Process</title>
+  <desc id="desc">Diagram showing how a user weather question and a get_weather tool signature are used by the language model to propose a tool call, how ToolAgent validates and runs the tool, and how the observation is used for the final answer.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .code-text { font: 600 15px 'Consolas', 'Courier New', monospace; fill: #1e293b; }
+      .label { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .small-label { font: 600 14px 'Segoe UI', Arial, sans-serif; fill: #64748b; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="620" fill="#ffffff"/>
+
+  <text x="800" y="52" text-anchor="middle" class="title">How Tool Calling Works in the Weather Demo</text>
+  <text x="800" y="84" text-anchor="middle" class="subtitle">The LLM chooses a tool call from the question plus the tool signature; ToolAgent runs the real Python function.</text>
+
+  <rect x="50" y="145" rx="18" ry="18" width="260" height="150" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="180" y="182" text-anchor="middle" class="node-title">1. User Question</text>
+  <text x="180" y="220" text-anchor="middle" class="node-text">Should the detective</text>
+  <text x="180" y="244" text-anchor="middle" class="node-text">bring an umbrella in</text>
+  <text x="180" y="268" text-anchor="middle" class="code-text">Seattle on 2026-01-03?</text>
+
+  <rect x="380" y="145" rx="18" ry="18" width="270" height="150" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="515" y="182" text-anchor="middle" class="node-title">2. Tool Signature</text>
+  <text x="515" y="218" text-anchor="middle" class="code-text">name: get_weather</text>
+  <text x="515" y="246" text-anchor="middle" class="code-text">inputs: city, date</text>
+  <text x="515" y="272" text-anchor="middle" class="node-text">available menu entry</text>
+
+  <rect x="720" y="145" rx="18" ry="18" width="300" height="150" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="870" y="182" text-anchor="middle" class="node-title">3. LLM Picks Tool</text>
+  <text x="870" y="218" text-anchor="middle" class="node-text">matches question clues</text>
+  <text x="870" y="242" text-anchor="middle" class="node-text">to the tool signature</text>
+  <text x="870" y="270" text-anchor="middle" class="code-text">tool_call: get_weather</text>
+
+  <rect x="1090" y="145" rx="18" ry="18" width="450" height="150" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>
+  <text x="1315" y="182" text-anchor="middle" class="node-title">4. Tool-Call JSON</text>
+  <text x="1315" y="218" text-anchor="middle" class="code-text">{"name": "get_weather",</text>
+  <text x="1315" y="244" text-anchor="middle" class="code-text"> "arguments": {"city": "Seattle",</text>
+  <text x="1315" y="270" text-anchor="middle" class="code-text"> "date": "2026-01-03"}}</text>
+
+  <rect x="125" y="400" rx="18" ry="18" width="340" height="145" fill="#fef3c7" stroke="#ca8a04" stroke-width="2"/>
+  <text x="295" y="438" text-anchor="middle" class="node-title">5. ToolAgent Checks It</text>
+  <text x="295" y="474" text-anchor="middle" class="node-text">validates arguments</text>
+  <text x="295" y="498" text-anchor="middle" class="node-text">matches the name to</text>
+  <text x="295" y="522" text-anchor="middle" class="code-text">tools_dict["get_weather"]</text>
+
+  <rect x="535" y="400" rx="18" ry="18" width="300" height="145" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="685" y="438" text-anchor="middle" class="node-title">6. Run Tool</text>
+  <text x="685" y="474" text-anchor="middle" class="code-text">get_weather.run(...)</text>
+  <text x="685" y="502" text-anchor="middle" class="node-text">the real Python</text>
+  <text x="685" y="526" text-anchor="middle" class="node-text">function executes</text>
+
+  <rect x="905" y="400" rx="18" ry="18" width="300" height="145" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1055" y="438" text-anchor="middle" class="node-title">7. Observation</text>
+  <text x="1055" y="474" text-anchor="middle" class="code-text">rain showers</text>
+  <text x="1055" y="502" text-anchor="middle" class="code-text">precipitation: 0.85</text>
+  <text x="1055" y="526" text-anchor="middle" class="node-text">tool result returns</text>
+
+  <rect x="1275" y="400" rx="18" ry="18" width="270" height="145" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1410" y="438" text-anchor="middle" class="node-title">8. Final Answer</text>
+  <text x="1410" y="474" text-anchor="middle" class="node-text">Bring an umbrella</text>
+  <text x="1410" y="498" text-anchor="middle" class="node-text">because the tool</text>
+  <text x="1410" y="522" text-anchor="middle" class="node-text">reported rain evidence</text>
+
+  <line x1="310" y1="220" x2="380" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="650" y1="220" x2="720" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1020" y1="220" x2="1090" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1315 295 C 1315 345, 295 345, 295 400" fill="none" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="465" y1="472" x2="535" y2="472" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="835" y1="472" x2="905" y2="472" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1205" y1="472" x2="1275" y2="472" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="800" y="585" text-anchor="middle" class="label">Key distinction: the LLM proposes the tool-call text; ToolAgent runs the real tool and returns the observation.</text>
+</svg>
