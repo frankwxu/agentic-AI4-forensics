@@ -4,7 +4,7 @@ Lab 3 applies the ReAct Pattern as a structured `thought -> action -> observatio
 
 ## Lab-Specific Environment
 
-Before running `03a_memory_demo.ipynb` or `03b_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+Before running `03a_memory_demo.ipynb`, `03b_lab_notebook.ipynb`, or `03c_react_assignment.ipynb`, create a lab-local `.env` in this folder:
 
 ```bash
 cp .env.example .env
@@ -86,8 +86,8 @@ Student Final v2:
 
 This draft-to-revision contrast shows the ReAct Pattern objective: each next step should come from the last observation, and the final answer should remain bounded by what the tools actually returned.
 
-In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. Before the forensic case notebook, students should open `03a_memory_demo.ipynb` to see how conversation history acts as short-term agent memory. Then students should open `03b_lab_notebook.ipynb`, restate the forensic question, walk through the manual ReAct loop one tool call at a time, and only then compare that process with the packaged agent. Required deliverables are a short ReAct step log, a final answer to the communication question, and a table linking claims to tool observations.
+In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. Before the forensic case notebook, students should open `03a_memory_demo.ipynb` to see how conversation history acts as short-term agent memory. Then students should open `03b_lab_notebook.ipynb`, restate the forensic question, walk through the manual ReAct loop one tool call at a time, and compare that process with the packaged agent. After the guided walkthrough, students should complete `03c_react_assignment.ipynb`, which keeps the same case and tools but removes the fixed tool order so students can justify the next step more independently. Required deliverables are a short ReAct step log, a final answer to the communication question, and a reflection that links claims to tool observations and limits.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_memory_demo.ipynb`, then `03b_lab_notebook.ipynb`.
+Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_memory_demo.ipynb`, `03b_lab_notebook.ipynb`, then `03c_react_assignment.ipynb`.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `incident_window.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.

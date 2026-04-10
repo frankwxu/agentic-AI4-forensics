@@ -36,7 +36,7 @@ Signal is a messaging app, similar to WhatsApp or iMessage, that people can use 
 - Chain of custody: `chain_of_custody.csv` (a record of how the evidence was collected, handled, and documented)
 
 ## What Students Do Next
-After reading this overview, students should open `03a_memory_demo.ipynb` for the memory warm-up, then `03b_lab_notebook.ipynb` to use the case facts to practice the ReAct Pattern step by step.
+After reading this overview, students should open `03a_memory_demo.ipynb` for the memory warm-up, then `03b_lab_notebook.ipynb` for the guided ReAct walkthrough, and finally `03c_react_assignment.ipynb` for the less-guided assignment.
 
 1. Restate the forensic question in your own words.
 2. Run the notebook's manual ReAct walkthrough one tool call at a time.
