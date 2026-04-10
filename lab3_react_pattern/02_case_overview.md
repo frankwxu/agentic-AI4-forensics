@@ -2,7 +2,7 @@
 
 ## Case Overview
 - Case ID: `RA-2026-009`
-- Scenario: Quick review of whether a messaging attachment attempt happened during a reported unattended interval and whether connectivity returned before that interval ended.
+- Scenario: Quick review of whether a Signal attachment attempt happened during a reported unattended interval, using connectivity records as context to avoid overstating delivery.
 - Device: Samsung Galaxy A54 (`Android 14`)
 - Incident window (UTC): `2026-02-20T14:10:00Z` to `2026-02-20T14:25:00Z` (`UTC` is a standard global time reference used so timestamps are interpreted consistently.)
 - Analysis timezone: `America/New_York`
@@ -19,7 +19,7 @@ An outreach coordinator reported that a work phone was left unattended on a supp
 
 Signal is a messaging app, similar to WhatsApp or iMessage, that people can use to send text messages, photos, and other attachments. In this case, the Signal record shows an attachment attempt, meaning the phone tried to send or prepare a file through the app. The word `event` here means a recorded action or system log entry with a timestamp, such as the start of the unattended interval, a message attempt being logged, or mobile data going offline or coming back online.
 
-`Network-status changes` means changes in the phone's internet connectivity, especially whether mobile data was unavailable or later restored. These records matter because a message attempt can appear in the logs even when the phone is not connected well enough to complete delivery. Students must answer a narrow timing question: did the attachment attempt happen during the unattended interval, and did the phone reconnect before that interval ended?
+`Network-status changes` means changes in the phone's internet connectivity, especially whether mobile data was unavailable or later restored. These records matter because a message attempt can appear in the logs even when the phone is not connected well enough to complete delivery. Students must answer one main timing question: did the attachment attempt happen during the unattended interval? The connectivity record does not prove delivery; it helps students decide whether the evidence supports only an attempt or something stronger.
 
 ## Key Observed Event Sequence (UTC)
 1. `14:10:00` - staff observation marks the start of the unattended interval
@@ -36,7 +36,7 @@ Signal is a messaging app, similar to WhatsApp or iMessage, that people can use 
 - Chain of custody: `chain_of_custody.csv` (a record of how the evidence was collected, handled, and documented)
 
 ## What Students Do Next
-After reading this overview, students should open `03_lab_notebook.ipynb` and use the case facts to practice the ReAct Pattern step by step.
+After reading this overview, students should open `03a_memory_demo.ipynb` for the memory warm-up, then `03b_lab_notebook.ipynb` to use the case facts to practice the ReAct Pattern step by step.
 
 1. Restate the forensic question in your own words.
 2. Run the notebook's manual ReAct walkthrough one tool call at a time.

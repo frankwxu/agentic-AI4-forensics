@@ -4,13 +4,13 @@ Lab 3 applies the ReAct Pattern as a structured `thought -> action -> observatio
 
 ## Lab-Specific Environment
 
-Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+Before running `03a_memory_demo.ipynb` or `03b_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
 
 ```bash
 cp .env.example .env
 ```
 
-This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab3_react_pattern/.env`, so you can change models here without affecting the other labs.
+These notebooks read `MODEL` and `OLLAMA_BASE_URL` from `lab3_react_pattern/.env`, so you can change models here without affecting the other labs.
 
 ## Educational Objective
 
@@ -49,7 +49,7 @@ Before applying ReAct to this forensic case, it helps to recall the general patt
 
 In Figure 1, `Environment` means the external system or evidence source the agent interacts with through tools and observes results from; in this lab, that corresponds to the forensic artifacts being inspected.
 
-In this lab, that same pattern is narrowed to a quick communication-verification question: did a Signal attachment attempt happen during a reported unattended interval, and did the device reconnect before that interval ended? As shown in Figure 2, the lab progresses from the forensic question to tool-guided evidence checks and then to a final bounded answer.
+In this lab, that same pattern is narrowed to a quick communication-verification question: did a Signal attachment attempt happen during a reported unattended interval? Students also inspect network restoration as supporting context so the final answer stays bounded to what the evidence shows, rather than overstating confirmed delivery. As shown in Figure 2, the lab progresses from the forensic question to tool-guided evidence checks and then to a final bounded answer.
 
 ![Figure 2. ReAct-pattern workflow for Lab 3](./figures/lab3_react_workflow.svg)
 
@@ -86,8 +86,8 @@ Student Final v2:
 
 This draft-to-revision contrast shows the ReAct Pattern objective: each next step should come from the last observation, and the final answer should remain bounded by what the tools actually returned.
 
-In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. After reading the case overview, students should open `03_lab_notebook.ipynb`, restate the forensic question, walk through the manual ReAct loop one tool call at a time, and only then compare that process with the packaged agent. Required deliverables are a short ReAct step log, a final answer to the communication question, and a table linking claims to tool observations.
+In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. Before the forensic case notebook, students should open `03a_memory_demo.ipynb` to see how conversation history acts as short-term agent memory. Then students should open `03b_lab_notebook.ipynb`, restate the forensic question, walk through the manual ReAct loop one tool call at a time, and only then compare that process with the packaged agent. Required deliverables are a short ReAct step log, a final answer to the communication question, and a table linking claims to tool observations.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`.
+Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_memory_demo.ipynb`, then `03b_lab_notebook.ipynb`.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `incident_window.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.

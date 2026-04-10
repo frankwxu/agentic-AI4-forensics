@@ -105,7 +105,7 @@ Labs 1 through 5 contain:
 
 - `01_instructions.md` with the lab workflow and requirements
 - `02_case_overview.md` with the incident background and case context
-- `03_lab_notebook.ipynb` with the interactive notebook for the lab
+- one or more `03*.ipynb` notebooks with the interactive walkthroughs for the lab
 - `.env.example` with lab-local model settings
 - a `data/` subfolder with the staged case artifacts
 - a `figures/` subfolder when the lab includes workflow diagrams

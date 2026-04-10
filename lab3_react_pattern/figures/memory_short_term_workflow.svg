@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="660" viewBox="0 0 1000 660" role="img" aria-labelledby="title desc">
+  <title id="title">Short-Term Memory and the LLM</title>
+  <desc id="desc">Two-by-two icon diagram showing chat history and current question as inputs to the LLM, the assistant response as output, and the response appended back to chat history.</desc>
+
+  <defs>
+    <style>
+      .title { font: 800 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .node-title { font: 800 22px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .tiny { font: 700 12px 'Segoe UI', Arial, sans-serif; fill: #475569; letter-spacing: 0.5px; }
+      .caption { font: 700 17px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="blueArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="660" fill="#ffffff"/>
+  <text x="500" y="54" text-anchor="middle" class="title">Short-Term Memory Is Sent With the Prompt</text>
+  <text x="500" y="84" text-anchor="middle" class="subtitle">Memory is context we send to the model, not hidden knowledge inside the model.</text>
+
+  <rect x="90" y="135" rx="24" ry="24" width="300" height="190" fill="#fff7db" stroke="#d97706" stroke-width="3"/>
+  <text x="240" y="176" text-anchor="middle" class="node-title">Current Question</text>
+  <path d="M 158 219 H 320 Q 340 219 340 239 V 280 Q 340 300 320 300 H 265 L 230 329 V 300 H 158 Q 138 300 138 280 V 239 Q 138 219 158 219 Z" fill="#ffffff" stroke="#f59e0b" stroke-width="3"/>
+  <circle cx="190" cy="260" r="8" fill="#d97706"/>
+  <circle cx="239" cy="260" r="8" fill="#d97706"/>
+  <circle cx="288" cy="260" r="8" fill="#d97706"/>
+
+  <rect x="90" y="370" rx="24" ry="24" width="300" height="190" fill="#eef6ff" stroke="#2563eb" stroke-width="3"/>
+  <text x="240" y="411" text-anchor="middle" class="node-title">chat_history</text>
+  <g aria-label="stacked message cards">
+    <rect x="164" y="488" rx="10" ry="10" width="150" height="42" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+    <rect x="151" y="475" rx="10" ry="10" width="150" height="42" fill="#ffffff" stroke="#60a5fa" stroke-width="2"/>
+    <rect x="138" y="462" rx="10" ry="10" width="150" height="42" fill="#ffffff" stroke="#93c5fd" stroke-width="2"/>
+    <circle cx="160" cy="483" r="8" fill="#2563eb"/>
+    <line x1="176" y1="475" x2="270" y2="475" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"/>
+    <line x1="176" y1="491" x2="248" y2="491" stroke="#cbd5e1" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <rect x="610" y="135" rx="24" ry="24" width="300" height="190" fill="#f8fafc" stroke="#475569" stroke-width="3"/>
+  <text x="760" y="176" text-anchor="middle" class="node-title">LLM</text>
+  <g aria-label="processor chip">
+    <rect x="700" y="216" rx="16" ry="16" width="120" height="92" fill="#e2e8f0" stroke="#334155" stroke-width="3"/>
+    <rect x="724" y="238" rx="8" ry="8" width="72" height="48" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+    <line x1="720" y1="216" x2="720" y2="196" stroke="#64748b" stroke-width="3"/>
+    <line x1="745" y1="216" x2="745" y2="196" stroke="#64748b" stroke-width="3"/>
+    <line x1="775" y1="216" x2="775" y2="196" stroke="#64748b" stroke-width="3"/>
+    <line x1="800" y1="216" x2="800" y2="196" stroke="#64748b" stroke-width="3"/>
+    <line x1="720" y1="328" x2="720" y2="308" stroke="#64748b" stroke-width="3"/>
+    <line x1="745" y1="328" x2="745" y2="308" stroke="#64748b" stroke-width="3"/>
+    <line x1="775" y1="328" x2="775" y2="308" stroke="#64748b" stroke-width="3"/>
+    <line x1="800" y1="328" x2="800" y2="308" stroke="#64748b" stroke-width="3"/>
+    <line x1="680" y1="242" x2="700" y2="242" stroke="#64748b" stroke-width="3"/>
+    <line x1="680" y1="262" x2="700" y2="262" stroke="#64748b" stroke-width="3"/>
+    <line x1="680" y1="282" x2="700" y2="282" stroke="#64748b" stroke-width="3"/>
+    <line x1="820" y1="242" x2="840" y2="242" stroke="#64748b" stroke-width="3"/>
+    <line x1="820" y1="262" x2="840" y2="262" stroke="#64748b" stroke-width="3"/>
+    <line x1="820" y1="282" x2="840" y2="282" stroke="#64748b" stroke-width="3"/>
+  </g>
+
+  <rect x="610" y="370" rx="24" ry="24" width="300" height="190" fill="#ecfdf5" stroke="#16a34a" stroke-width="3"/>
+  <text x="760" y="411" text-anchor="middle" class="node-title">Assistant Response</text>
+  <path d="M 680 454 H 835 Q 855 454 855 474 V 515 Q 855 535 835 535 H 785 L 750 564 V 535 H 680 Q 660 535 660 515 V 474 Q 660 454 680 454 Z" fill="#ffffff" stroke="#22c55e" stroke-width="3"/>
+  <path d="M 699 496 L 731 522 L 814 473" fill="none" stroke="#16a34a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M 390 230 H 610" fill="none" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="500" y="208" text-anchor="middle" class="tiny">QUESTION</text>
+
+  <path d="M 390 465 C 485 465, 520 285, 610 263" fill="none" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="455" y="441" text-anchor="middle" class="tiny">HISTORY</text>
+
+  <path d="M 760 325 L 760 370" fill="none" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="805" y="354" text-anchor="middle" class="tiny">GENERATE</text>
+
+  <path d="M 760 560 C 760 590, 240 590, 240 560" fill="none" stroke="#2563eb" stroke-width="4" stroke-dasharray="10 10" marker-end="url(#blueArrow)"/>
+  <text x="500" y="615" text-anchor="middle" class="caption">Notebook appends the response to chat_history for the next turn</text>
+</svg>
