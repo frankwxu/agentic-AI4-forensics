@@ -78,5 +78,5 @@
   <line x1="835" y1="472" x2="905" y2="472" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
   <line x1="1205" y1="472" x2="1275" y2="472" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
 
-  <text x="800" y="585" text-anchor="middle" class="label">Key distinction: the LLM proposes the tool-call text; ToolAgent runs the real tool and returns the observation.</text>
+  <text x="800" y="585" text-anchor="middle" class="label">Key idea: ToolAgent manages the workflow and uses the LLM to choose the tool-call message.</text>
 </svg>
