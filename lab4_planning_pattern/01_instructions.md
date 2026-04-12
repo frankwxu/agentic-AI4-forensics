@@ -4,7 +4,7 @@ Lab 4 applies the Planning Pattern as a structured workflow for breaking a timel
 
 ## Lab-Specific Environment
 
-Before running `03_lab_notebook.ipynb` or `04_lab_planner_react_workflow.ipynb`, create a lab-local `.env` in this folder:
+Before running `03a_lab_notebook.ipynb`, `03b_lab_planner_react_workflow.ipynb`, or `03c_automatic_planner_react_demo.ipynb`, create a lab-local `.env` in this folder:
 
 ```bash
 cp .env.example .env
@@ -93,8 +93,10 @@ This example shows the main learning point: Planning Pattern instruction require
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional decision branches and conflicting observations. Required deliverables are an initial investigation plan, an observation-linked replanning log, a final report with the reconstructed timeline, and a table linking claims to evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03_lab_notebook.ipynb`, then `04_lab_planner_react_workflow.ipynb`.
+Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_lab_notebook.ipynb`, then `03b_lab_planner_react_workflow.ipynb`. If you want the optional instructor or advanced bounded-loop demo after that, continue to `03c_automatic_planner_react_demo.ipynb`.
 
-The new `04_lab_planner_react_workflow.ipynb` notebook is an advanced extension that is closer to the full planning figure: `PlanningAgent` chooses the next task, `ReactAgent` gathers evidence with tools, and the planner revises the path using those returned observations.
+The `03b_lab_planner_react_workflow.ipynb` notebook is the guided planner-to-`ReactAgent` extension: `PlanningAgent` chooses the next task, `ReactAgent` gathers evidence with tools, and the planner revises the path using those returned observations.
+
+The optional `03c_automatic_planner_react_demo.ipynb` notebook is the bounded automatic version of that same workflow. It is mainly for instructor demo or advanced exploration because it can run for multiple rounds and is more model-dependent.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `unlock_events.csv`, `call_log.csv`, `whatsapp_events.csv`, `network_status.csv`, and `chain_of_custody.csv`.
