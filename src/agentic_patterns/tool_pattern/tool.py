@@ -50,11 +50,28 @@ def validate_arguments(tool_call: dict, tool_signature: dict) -> dict:
         "float": float,
     }
 
-    for arg_name, arg_value in tool_call["arguments"].items():
-        expected_type = properties[arg_name].get("type")
+    validated_arguments = {}
 
-        if not isinstance(arg_value, type_mapping[expected_type]):
-            tool_call["arguments"][arg_name] = type_mapping[expected_type](arg_value)
+    for arg_name, arg_value in tool_call["arguments"].items():
+        arg_schema = properties.get(arg_name)
+        if arg_schema is None:
+            # Local models sometimes hallucinate extra keys for no-arg tools.
+            # Drop undeclared arguments so the tool loop can continue safely.
+            continue
+
+        expected_type = arg_schema.get("type")
+        converter = type_mapping.get(expected_type)
+
+        if converter is None:
+            validated_arguments[arg_name] = arg_value
+            continue
+
+        if not isinstance(arg_value, converter):
+            arg_value = converter(arg_value)
+
+        validated_arguments[arg_name] = arg_value
+
+    tool_call["arguments"] = validated_arguments
 
     return tool_call
 
