@@ -2,7 +2,7 @@
 
 ## Case Overview
 - Case ID: `MA-2026-022`
-- Scenario: Possible transmission of a sensitive image from a public-health outreach phone, combined with a chain-of-custody gap.
+- Scenario: A public-health outreach phone was left unattended during a vaccination event. Investigators must determine whether a file containing patient-related information, `patients_contacts.png`, was likely transmitted from the device and whether a gap in the chain-of-custody record weakens confidence in that conclusion.
 - Device: Motorola Edge 2024 (`Android 14`)
 - Incident window (UTC): `2026-03-01T18:35:00Z` to `2026-03-01T19:10:00Z`
 - Analysis timezone: `America/New_York`
@@ -15,7 +15,16 @@
   - `2ef6f6d371459ce23d3953196b03f979f8d2d440d4e8f1bf13d1712d7bf7f3a1`
 
 ## Narrative Summary
-A county public-health outreach phone was unattended during a vaccination event. The staged artifact package includes device state records, file creation evidence, a messaging attach attempt, network activity, and a chain-of-custody log with a missing transfer entry. Students must decide both whether the file was likely transmitted and whether the evidence-handling record is complete enough to support confidence in that conclusion.
+The case materials show when the phone was locked and unlocked, when `patients_contacts.png` was created, when a messaging app tried to attach that file, when network upload activity began, and how the phone was handled after collection. One transfer between handlers is missing from the chain-of-custody log. Students must evaluate both the transmission evidence and the evidence-handling record before deciding how confident they can be in the final conclusion.
+
+## Investigation Goal
+The investigation goal in this lab is to make one careful final judgment about the evidence. Students should answer:
+
+1. Does the available technical evidence support that `patients_contacts.png` was transmitted?
+2. Should that conclusion be labeled `confirmed`, `likely`, or `unconfirmed`?
+3. Does the missing chain-of-custody transfer weaken confidence in that conclusion?
+
+Students are not being asked to identify a suspect or prove intent. The task is to evaluate the strength of the transmission evidence and the completeness of the evidence-handling record.
 
 ## Key Observed Event Sequence (UTC)
 1. `18:35:02` - device locked at the start of the unattended interval

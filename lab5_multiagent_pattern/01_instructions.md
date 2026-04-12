@@ -4,13 +4,13 @@ Lab 5 applies the Multiagent Pattern as a structured workflow for evidence verif
 
 ## Lab-Specific Environment
 
-Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
+Before running `03a_program_promotion_demo.ipynb` or `03b_lab_notebook.ipynb`, create a lab-local `.env` in this folder:
 
 ```bash
 cp .env.example .env
 ```
 
-This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab5_multiagent_pattern/.env`, so you can change models here without affecting the other labs.
+These notebooks read `MODEL` and `OLLAMA_BASE_URL` from `lab5_multiagent_pattern/.env`, so you can change models here without affecting the other labs.
 
 ## Educational Objective
 
@@ -42,6 +42,11 @@ Student performance is scored with a shared rubric applied to a multiagent coord
 When staffing permits, a subset of submissions may be scored by two reviewers, with differences reconciled through a shared scoring guide. Lab-level reporting includes target attainment rates, accuracy in identifying evidence-handling gaps, and common problems (role confusion, misdiagnosed agent conflict, unresolved agent conflict, unexplained record gaps, and unsupported conclusions).
 
 ## Instructional Flow and Guided Example
+
+Lab 5 now uses two notebooks in sequence:
+
+1. `03a_program_promotion_demo.ipynb` introduces multiagent collaboration in a non-forensics setting with three simple roles: `AudienceAgent`, `ProgramValueAgent`, and `OutreachAgent`.
+2. `03b_lab_notebook.ipynb` applies the same collaboration pattern to the Lab 5 forensic case with `InvestigationAgent`, `EvidenceVerificationAgent`, and `CustodyAuditAgent`.
 
 To illustrate the Multiagent Pattern workflow and assessment logic, we include the following guided example. Read `02_case_overview.md` for the full case facts, acquisition details, and artifact list; the full lab extends the same scenario with additional records and disagreement points.
 Before applying Multiagent coordination to this forensic case, it helps to recall the general pattern: multiple specialized agents handle different subtasks, and their outputs are combined to support a final result. Figure 1 shows that general Multiagent Pattern.
@@ -92,6 +97,6 @@ This example shows the main learning point: Multiagent Pattern instruction requi
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional agent disagreements and evidence-handling gaps. Required deliverables are a multiagent coordination log, conflict-resolution notes, an evidence-handling timeline, a final report, and a table linking claims to evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`.
+Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_program_promotion_demo.ipynb`, then `03b_lab_notebook.ipynb`.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `device_state.csv`, `file_events.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.
