@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="440" viewBox="0 0 1380 440" role="img" aria-labelledby="title desc">
+  <title id="title">Visualizing One Embedding Lookup</title>
+  <desc id="desc">A student-friendly diagram showing the token Dorothy becoming token ID 17, which points to a highlighted row in an embedding table containing a small vector of learned numbers.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .label { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .small { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 600 16px 'Consolas', 'Courier New', monospace; fill: #0f172a; }
+      .table-head { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1380" height="440" fill="#ffffff"/>
+
+  <text x="690" y="46" text-anchor="middle" class="title">Visualizing One Embedding Lookup</text>
+  <text x="690" y="76" text-anchor="middle" class="subtitle">The token ID does not carry meaning by itself. It points to one learned row of numbers in the embedding table.</text>
+
+  <rect x="60" y="138" rx="18" ry="18" width="210" height="118" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+  <text x="165" y="174" text-anchor="middle" class="label">Token</text>
+  <text x="165" y="214" text-anchor="middle" class="mono">"Dorothy"</text>
+  <text x="165" y="238" text-anchor="middle" class="small">text piece from the tokenizer</text>
+
+  <rect x="330" y="138" rx="18" ry="18" width="170" height="118" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="415" y="174" text-anchor="middle" class="label">Token ID</text>
+  <text x="415" y="214" text-anchor="middle" class="mono">17</text>
+  <text x="415" y="238" text-anchor="middle" class="small">lookup key only</text>
+
+  <rect x="560" y="104" rx="22" ry="22" width="760" height="252" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+  <text x="590" y="140" class="label">Embedding Table</text>
+  <text x="590" y="164" class="small">each row is a learned starting meaning for one token</text>
+
+  <rect x="590" y="188" width="80" height="36" fill="#cbd5e1"/>
+  <rect x="670" y="188" width="150" height="36" fill="#cbd5e1"/>
+  <rect x="820" y="188" width="470" height="36" fill="#cbd5e1"/>
+  <text x="630" y="211" text-anchor="middle" class="table-head">ID</text>
+  <text x="745" y="211" text-anchor="middle" class="table-head">Token</text>
+  <text x="1055" y="211" text-anchor="middle" class="table-head">4-D Embedding Vector</text>
+
+  <rect x="590" y="224" width="700" height="44" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <rect x="590" y="268" width="700" height="44" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect x="590" y="312" width="700" height="44" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <text x="630" y="252" text-anchor="middle" class="mono">17</text>
+  <text x="745" y="252" text-anchor="middle" class="mono">"dorothy"</text>
+  <text x="630" y="296" text-anchor="middle" class="mono">42</text>
+  <text x="745" y="296" text-anchor="middle" class="mono">"ran"</text>
+  <text x="630" y="340" text-anchor="middle" class="mono">63</text>
+  <text x="745" y="340" text-anchor="middle" class="mono">"home"</text>
+
+  <rect x="842" y="234" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <rect x="944" y="234" width="92" height="24" rx="6" ry="6" fill="#fecaca" stroke="#dc2626"/>
+  <rect x="1046" y="234" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <rect x="1148" y="234" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <text x="888" y="251" text-anchor="middle" class="mono">0.21</text>
+  <text x="990" y="251" text-anchor="middle" class="mono">-0.44</text>
+  <text x="1092" y="251" text-anchor="middle" class="mono">0.08</text>
+  <text x="1194" y="251" text-anchor="middle" class="mono">0.91</text>
+
+  <rect x="842" y="278" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <rect x="944" y="278" width="92" height="24" rx="6" ry="6" fill="#fecaca" stroke="#dc2626"/>
+  <rect x="1046" y="278" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <rect x="1148" y="278" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <text x="888" y="295" text-anchor="middle" class="mono">0.18</text>
+  <text x="990" y="295" text-anchor="middle" class="mono">-0.39</text>
+  <text x="1092" y="295" text-anchor="middle" class="mono">0.11</text>
+  <text x="1194" y="295" text-anchor="middle" class="mono">0.87</text>
+
+  <rect x="842" y="322" width="92" height="24" rx="6" ry="6" fill="#fecaca" stroke="#dc2626"/>
+  <rect x="944" y="322" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <rect x="1046" y="322" width="92" height="24" rx="6" ry="6" fill="#bbf7d0" stroke="#16a34a"/>
+  <rect x="1148" y="322" width="92" height="24" rx="6" ry="6" fill="#fecaca" stroke="#dc2626"/>
+  <text x="888" y="339" text-anchor="middle" class="mono">-0.72</text>
+  <text x="990" y="339" text-anchor="middle" class="mono">0.55</text>
+  <text x="1092" y="339" text-anchor="middle" class="mono">0.14</text>
+  <text x="1194" y="339" text-anchor="middle" class="mono">-0.31</text>
+
+  <line x1="270" y1="197" x2="330" y2="197" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="500" y1="197" x2="560" y2="246" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="415" y="288" text-anchor="middle" class="small">the model uses this ID</text>
+  <text x="415" y="308" text-anchor="middle" class="small">to find one row</text>
+
+  <text x="940" y="390" text-anchor="middle" class="small">The highlighted row is the token's initial meaning before the transformer adds context.</text>
+</svg>

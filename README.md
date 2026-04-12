@@ -32,7 +32,9 @@ cd agentic-AI4-forensics
 
 ## Quick Start
 
-Each lab folder now has its own `.env.example`, including the Lab 0 onboarding labs. Before running a notebook, copy that lab's `.env.example` to `.env` inside the same folder. For example:
+Most runnable lab folders now have their own `.env.example`. The new `lab0_0_llm_foundations` module begins the course and covers the basic local Python setup needed for the tiny LLM notebook. The later setup lab `lab0_1_environment_setup` adds `.env`, Ollama, and Graphviz for the agent workflow labs.
+
+Before running a notebook in one of the later hands-on labs, copy that lab's `.env.example` to `.env` inside the same folder. For example:
 
 ```bash
 cp lab0_1_environment_setup/.env.example lab0_1_environment_setup/.env
@@ -50,16 +52,24 @@ cp lab2_tool_use_pattern/.env.example lab2_tool_use_pattern/.env
 
 Lab 2 defaults to `qwen3:8b` in its local example because the `ToolAgent` section has been more stable with that model in the current Ollama setup.
 
-Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment_setup/01_instructions.md). The onboarding sequence now has three parts:
+Begin with [lab0_0_llm_foundations/01_instructions.md](lab0_0_llm_foundations/01_instructions.md). Then continue to [lab0_1_environment_setup/01_instructions.md](lab0_1_environment_setup/01_instructions.md). The onboarding sequence now has four parts:
 
-- `lab0_1_environment_setup`: environment and connectivity setup
+- `lab0_0_llm_foundations`: LLM foundations primer with repo clone, base Python setup, and a tiny local training demo
+- `lab0_1_environment_setup`: `.env`, Ollama, Graphviz, and environment checks for the later agent labs
 - `lab0_2_model_warmup`: a small model-comparison exercise
 - `lab0_3_what_is_an_agent`: a hands-on introduction to agent workflows
 
-`lab0_1_environment_setup` contains the full setup sequence for:
+`lab0_0_llm_foundations` contains the first local setup sequence for:
 
+- repository clone
 - virtual environment creation
 - Python package installation
+- Jupyter launch
+- LLM foundations reading
+- tiny local transformer training demo
+
+`lab0_1_environment_setup` contains the later setup sequence for:
+
 - Graphviz installation
 - lab-local `.env` configuration for the instructor-provided Ollama server
 - command-line Ollama connectivity testing
@@ -69,7 +79,8 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 
 ## Lab Folders
 
-- `lab0_1_environment_setup/`: Setup lab for Python, Jupyter, Graphviz, and Ollama connectivity verification
+- `lab0_0_llm_foundations/`: LLM foundations primer with base local setup, a tiny local training demo, reading, figures, and a short public-domain book excerpt
+- `lab0_1_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
 - `lab0_2_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
 - `lab0_3_what_is_an_agent/`: Warm-up lab for comparing a plain model prompt with a bounded agent workflow and designing a small agent card
 - `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
@@ -77,6 +88,14 @@ Then begin with [lab0_1_environment_setup/01_instructions.md](lab0_1_environment
 - `lab3_react_pattern/`: ReAct lab for step-by-step communication verification with tool calls
 - `lab4_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
 - `lab5_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
+
+`lab0_0_llm_foundations/` contains:
+
+- `01_instructions.md` with the conceptual primer sequence
+- `02_llm_foundations_reading.md` with the main reading on tokens, embeddings, transformer flow, training versus inference, and output limits
+- `03_tiny_llm_book_demo.ipynb` with a tiny local word-level transformer training demo
+- a `data/` subfolder with the public-domain book excerpt used for training
+- a `figures/` subfolder with the LLM teaching diagrams
 
 `lab0_1_environment_setup/` contains:
 
@@ -114,11 +133,12 @@ Each `data/` folder includes the synthetic evidence artifacts, including an arti
 
 Students should follow this sequence:
 
-1. `lab0_1_environment_setup`
-2. `lab0_2_model_warmup`
-3. `lab0_3_what_is_an_agent`
-4. `lab1_reflection_pattern`
-5. `lab2_tool_use_pattern`
-6. `lab3_react_pattern`
-7. `lab4_planning_pattern`
-8. `lab5_multiagent_pattern`
+1. `lab0_0_llm_foundations`
+2. `lab0_1_environment_setup`
+3. `lab0_2_model_warmup`
+4. `lab0_3_what_is_an_agent`
+5. `lab1_reflection_pattern`
+6. `lab2_tool_use_pattern`
+7. `lab3_react_pattern`
+8. `lab4_planning_pattern`
+9. `lab5_multiagent_pattern`

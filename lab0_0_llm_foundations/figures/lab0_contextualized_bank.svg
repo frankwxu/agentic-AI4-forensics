@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1460" height="560" viewBox="0 0 1460 560" role="img" aria-labelledby="title desc">
+  <title id="title">How Context Changes a Token Meaning</title>
+  <desc id="desc">A student-friendly diagram showing that the same token bank starts with one initial embedding, but the transformer updates it differently in a river sentence versus a money sentence.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .label { font: 700 19px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .small { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 600 16px 'Consolas', 'Courier New', monospace; fill: #0f172a; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1460" height="560" fill="#ffffff"/>
+
+  <text x="730" y="44" text-anchor="middle" class="title">How Context Changes a Token Meaning</text>
+  <text x="730" y="74" text-anchor="middle" class="subtitle">The token starts with one initial meaning. The transformer updates that meaning differently depending on the surrounding words.</text>
+
+  <rect x="570" y="116" rx="20" ry="20" width="320" height="118" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="730" y="152" text-anchor="middle" class="label">Initial Token Meaning</text>
+  <text x="730" y="186" text-anchor="middle" class="mono">"bank" -&gt; [0.12, -0.41, 0.33, 0.19]</text>
+  <text x="730" y="212" text-anchor="middle" class="small">same starting embedding before context is applied</text>
+
+  <rect x="60" y="286" rx="22" ry="22" width="420" height="206" fill="#eff6ff" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="270" y="322" text-anchor="middle" class="label">Sentence A: River Context</text>
+  <text x="270" y="356" text-anchor="middle" class="text">They sat on the <tspan font-weight="700" fill="#1d4ed8">bank</tspan> of the river.</text>
+  <text x="270" y="388" text-anchor="middle" class="small">surrounding words: sat, river</text>
+  <rect x="130" y="414" rx="18" ry="18" width="280" height="50" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="270" y="444" text-anchor="middle" class="mono">[0.81, -0.12, 0.74, -0.08]</text>
+  <text x="270" y="476" text-anchor="middle" class="small">contextualized meaning leans toward river edge</text>
+
+  <rect x="980" y="286" rx="22" ry="22" width="420" height="206" fill="#fff7ed" stroke="#ea580c" stroke-width="2.5"/>
+  <text x="1190" y="322" text-anchor="middle" class="label">Sentence B: Money Context</text>
+  <text x="1190" y="356" text-anchor="middle" class="text">She deposited cash at the <tspan font-weight="700" fill="#c2410c">bank</tspan>.</text>
+  <text x="1190" y="388" text-anchor="middle" class="small">surrounding words: deposited, cash</text>
+  <rect x="1050" y="414" rx="18" ry="18" width="280" height="50" fill="#fed7aa" stroke="#ea580c" stroke-width="2"/>
+  <text x="1190" y="444" text-anchor="middle" class="mono">[-0.09, 0.77, -0.21, 0.83]</text>
+  <text x="1190" y="476" text-anchor="middle" class="small">contextualized meaning leans toward financial institution</text>
+
+  <rect x="555" y="286" rx="20" ry="20" width="350" height="114" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+  <text x="730" y="320" text-anchor="middle" class="label">Transformer</text>
+  <text x="730" y="350" text-anchor="middle" class="text">uses surrounding words</text>
+  <text x="730" y="374" text-anchor="middle" class="text">to update the token meaning</text>
+
+  <line x1="640" y1="234" x2="270" y2="286" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="820" y1="234" x2="1190" y2="286" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="555" y1="380" x2="410" y2="438" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="905" y1="380" x2="1050" y2="438" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="730" y="530" text-anchor="middle" class="small">The numbers are just placeholders for a learned representation. The teaching point is that the same token can end up with different contextualized meanings in different sentences.</text>
+</svg>

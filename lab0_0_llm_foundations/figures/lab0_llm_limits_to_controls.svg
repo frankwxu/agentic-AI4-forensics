@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="560" viewBox="30 20 1540 560" role="img" aria-labelledby="title desc">
+  <title id="title">Why the Course Adds More Than an LLM Alone</title>
+  <desc id="desc">Diagram for Lab 0 Foundations showing common LLM-only limitations and the course structures added later, such as prompt rules, tools, memory, planning, multiagent review, and human review.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .section { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="600" fill="#ffffff"/>
+  <text x="800" y="58" text-anchor="middle" class="title">Why the Course Adds More Than an LLM Alone</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">The model is the reasoning core, but later labs add structure to make its behavior easier to inspect and bound.</text>
+
+  <rect x="70" y="140" rx="20" ry="20" width="520" height="340" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="100" y="176" class="section">LLM-only behavior can drift</text>
+
+  <rect x="110" y="206" rx="16" ry="16" width="200" height="96" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="210" y="238" text-anchor="middle" class="node-title">Format Drift</text>
+  <text x="210" y="266" text-anchor="middle" class="node-text">structure varies</text>
+  <text x="210" y="288" text-anchor="middle" class="node-text">across runs</text>
+
+  <rect x="350" y="206" rx="16" ry="16" width="200" height="96" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="450" y="238" text-anchor="middle" class="node-title">Overclaiming</text>
+  <text x="450" y="266" text-anchor="middle" class="node-text">sounds more certain</text>
+  <text x="450" y="288" text-anchor="middle" class="node-text">than the evidence</text>
+
+  <rect x="110" y="332" rx="16" ry="16" width="200" height="96" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="210" y="364" text-anchor="middle" class="node-title">Missing Evidence</text>
+  <text x="210" y="392" text-anchor="middle" class="node-text">may answer without</text>
+  <text x="210" y="414" text-anchor="middle" class="node-text">grounded support</text>
+
+  <rect x="350" y="332" rx="16" ry="16" width="200" height="96" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="450" y="364" text-anchor="middle" class="node-title">Context Limits</text>
+  <text x="450" y="392" text-anchor="middle" class="node-text">can miss important</text>
+  <text x="450" y="414" text-anchor="middle" class="node-text">details or steps</text>
+
+  <rect x="670" y="170" rx="22" ry="22" width="260" height="280" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+  <text x="800" y="210" text-anchor="middle" class="node-title">LLM Reasoning Core</text>
+  <text x="800" y="246" text-anchor="middle" class="node-text">useful language generation</text>
+  <text x="800" y="270" text-anchor="middle" class="node-text">and pattern completion</text>
+  <text x="800" y="306" text-anchor="middle" class="label">The rest of the course adds</text>
+  <text x="800" y="330" text-anchor="middle" class="label">structures around this core,</text>
+  <text x="800" y="354" text-anchor="middle" class="label">not a replacement for it.</text>
+
+  <rect x="1010" y="140" rx="20" ry="20" width="520" height="340" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="1040" y="176" class="section">Later labs add controls</text>
+
+  <rect x="1050" y="206" rx="16" ry="16" width="200" height="96" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="1150" y="238" text-anchor="middle" class="node-title">Prompt Rules</text>
+  <text x="1150" y="266" text-anchor="middle" class="node-text">Lab 0B improves</text>
+  <text x="1150" y="288" text-anchor="middle" class="node-text">format consistency</text>
+
+  <rect x="1290" y="206" rx="16" ry="16" width="200" height="96" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1390" y="238" text-anchor="middle" class="node-title">Agent Boundaries</text>
+  <text x="1390" y="266" text-anchor="middle" class="node-text">Lab 0C adds role,</text>
+  <text x="1390" y="288" text-anchor="middle" class="node-text">memory, and stop rules</text>
+
+  <rect x="1050" y="332" rx="16" ry="16" width="200" height="96" fill="#e9d5ff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="1150" y="364" text-anchor="middle" class="node-title">Tools and Plans</text>
+  <text x="1150" y="392" text-anchor="middle" class="node-text">later labs add tool use,</text>
+  <text x="1150" y="414" text-anchor="middle" class="node-text">ReAct, and planning</text>
+
+  <rect x="1290" y="332" rx="16" ry="16" width="200" height="96" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="1390" y="364" text-anchor="middle" class="node-title">Review and Judgment</text>
+  <text x="1390" y="392" text-anchor="middle" class="node-text">multiagent checks and</text>
+  <text x="1390" y="414" text-anchor="middle" class="node-text">human review boundaries</text>
+
+  <line x1="590" y1="310" x2="670" y2="310" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="930" y1="310" x2="1010" y2="310" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="800" y="520" text-anchor="middle" class="label">Course idea: fluent output alone is not enough for careful forensic work, so we add bounded workflow structure around the model.</text>
+</svg>

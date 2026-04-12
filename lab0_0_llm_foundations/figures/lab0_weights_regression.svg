@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="620" viewBox="0 0 1500 620" role="img" aria-labelledby="title desc">
+  <title id="title">A Tiny Weights Analogy</title>
+  <desc id="desc">A student-friendly diagram showing a simple linear model before and after training. The weights w and b change so the fitted line moves closer to the training points.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .panel-title { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .label { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .text { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .small { font: 500 15px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 600 17px 'Consolas', 'Courier New', monospace; fill: #0f172a; }
+      .axis { stroke: #475569; stroke-width: 2.5; }
+      .point { fill: #0f172a; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1500" height="620" fill="#ffffff"/>
+
+  <text x="750" y="44" text-anchor="middle" class="title">A Tiny Weights Analogy</text>
+  <text x="750" y="74" text-anchor="middle" class="subtitle">This is not an LLM. It is a simple line-fitting model that makes the idea of weights easier to see.</text>
+
+  <rect x="40" y="112" rx="24" ry="24" width="680" height="420" fill="#fff7ed" stroke="#ea580c" stroke-width="2.5"/>
+  <rect x="780" y="112" rx="24" ry="24" width="680" height="420" fill="#ecfdf5" stroke="#16a34a" stroke-width="2.5"/>
+
+  <text x="380" y="150" text-anchor="middle" class="panel-title">Before Training</text>
+  <text x="1120" y="150" text-anchor="middle" class="panel-title">After Training</text>
+
+  <text x="380" y="182" text-anchor="middle" class="mono">y = w*x + b</text>
+  <text x="380" y="208" text-anchor="middle" class="mono">w = 0.5, b = 0.5</text>
+  <text x="1120" y="182" text-anchor="middle" class="mono">y = w*x + b</text>
+  <text x="1120" y="208" text-anchor="middle" class="mono">w = 2.0, b = 1.0</text>
+
+  <text x="380" y="238" text-anchor="middle" class="small">training points follow the pattern y = 2x + 1</text>
+  <text x="1120" y="238" text-anchor="middle" class="small">the updated weights make the fitted line match the points</text>
+
+  <line x1="120" y1="450" x2="420" y2="450" class="axis"/>
+  <line x1="120" y1="450" x2="120" y2="270" class="axis"/>
+  <line x1="860" y1="450" x2="1160" y2="450" class="axis"/>
+  <line x1="860" y1="450" x2="860" y2="270" class="axis"/>
+
+  <text x="430" y="456" class="label">x</text>
+  <text x="106" y="258" class="label">y</text>
+  <text x="1170" y="456" class="label">x</text>
+  <text x="846" y="258" class="label">y</text>
+
+  <text x="180" y="470" text-anchor="middle" class="small">1</text>
+  <text x="270" y="470" text-anchor="middle" class="small">2</text>
+  <text x="360" y="470" text-anchor="middle" class="small">3</text>
+  <text x="920" y="470" text-anchor="middle" class="small">1</text>
+  <text x="1010" y="470" text-anchor="middle" class="small">2</text>
+  <text x="1100" y="470" text-anchor="middle" class="small">3</text>
+
+  <text x="102" y="390" text-anchor="end" class="small">3</text>
+  <text x="102" y="330" text-anchor="end" class="small">5</text>
+  <text x="102" y="270" text-anchor="end" class="small">7</text>
+  <text x="842" y="390" text-anchor="end" class="small">3</text>
+  <text x="842" y="330" text-anchor="end" class="small">5</text>
+  <text x="842" y="270" text-anchor="end" class="small">7</text>
+
+  <circle cx="180" cy="390" r="7" class="point"/>
+  <circle cx="270" cy="330" r="7" class="point"/>
+  <circle cx="360" cy="270" r="7" class="point"/>
+  <circle cx="920" cy="390" r="7" class="point"/>
+  <circle cx="1010" cy="330" r="7" class="point"/>
+  <circle cx="1100" cy="270" r="7" class="point"/>
+
+  <line x1="150" y1="405" x2="390" y2="345" stroke="#dc2626" stroke-width="4"/>
+  <line x1="900" y1="403" x2="1120" y2="257" stroke="#16a34a" stroke-width="4"/>
+
+  <text x="455" y="286" text-anchor="end" class="small" fill="#b91c1c">wrong line: weights still off</text>
+  <text x="1185" y="280" class="small" fill="#166534">better line: weights fit the data</text>
+
+  <rect x="470" y="300" rx="18" ry="18" width="200" height="124" fill="#ffedd5" stroke="#fdba74" stroke-width="2"/>
+  <text x="570" y="332" text-anchor="middle" class="label">What changed?</text>
+  <text x="570" y="360" text-anchor="middle" class="text">`w` controls slope</text>
+  <text x="570" y="384" text-anchor="middle" class="text">`b` shifts the line</text>
+  <text x="570" y="408" text-anchor="middle" class="small">training adjusts both</text>
+
+  <rect x="1210" y="300" rx="18" ry="18" width="200" height="146" fill="#dcfce7" stroke="#86efac" stroke-width="2"/>
+  <text x="1310" y="332" text-anchor="middle" class="label">Big Picture</text>
+  <text x="1310" y="360" text-anchor="middle" class="text">better weights</text>
+  <text x="1310" y="384" text-anchor="middle" class="text">lower prediction error</text>
+  <text x="1310" y="408" text-anchor="middle" class="small">same idea, but at a much</text>
+  <text x="1310" y="430" text-anchor="middle" class="small">larger scale in LLMs</text>
+
+  <text x="750" y="578" text-anchor="middle" class="small">In a tiny regression model, training adjusts a few weights. In an LLM, training adjusts many weights, but the high-level idea is the same: the model changes internal learned numbers to reduce prediction error.</text>
+</svg>

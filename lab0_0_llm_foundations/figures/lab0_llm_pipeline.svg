@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
+  <title id="title">Teaching-Friendly LLM Pipeline</title>
+  <desc id="desc">Diagram for Lab 0 Foundations showing a teaching-friendly LLM pipeline from a Dorothy example through tokens, token IDs, initial token meanings in embeddings, transformer-based contextualization, an output layer that scores many next tokens with the top few shown, and sampled output.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 26px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .node-title { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .small { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="560" fill="#ffffff"/>
+  <text x="800" y="58" text-anchor="middle" class="title">From Text Input to Next-Token Output</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">Text -&gt; tokens -&gt; token IDs -&gt; initial token meanings (embeddings)</text>
+  <text x="800" y="114" text-anchor="middle" class="subtitle">-&gt; transformer -&gt; contextualized token meanings -&gt; output layer</text>
+
+  <rect x="60" y="168" rx="18" ry="18" width="240" height="132" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+  <text x="180" y="202" text-anchor="middle" class="node-title">Text Input</text>
+  <text x="180" y="245" text-anchor="middle" class="node-text">"Dorothy ran"</text>
+
+  <rect x="340" y="148" rx="18" ry="18" width="240" height="172" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="460" y="182" text-anchor="middle" class="node-title">Tokenizer</text>
+  <text x="460" y="214" text-anchor="middle" class="node-text">breaks text into</text>
+  <text x="460" y="238" text-anchor="middle" class="node-text">token pieces and IDs</text>
+  <text x="460" y="270" text-anchor="middle" class="small">["Dorothy", " ran"]</text>
+  <text x="460" y="292" text-anchor="middle" class="small">[17, 42]</text>
+
+  <rect x="620" y="148" rx="18" ry="18" width="240" height="172" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="740" y="182" text-anchor="middle" class="node-title">Embeddings</text>
+  <text x="740" y="214" text-anchor="middle" class="node-text">give tokens initial</text>
+  <text x="740" y="238" text-anchor="middle" class="node-text">token meanings</text>
+  <text x="740" y="270" text-anchor="middle" class="small">17 -&gt; [0.21, -0.44, 0.08, 0.91]</text>
+  <text x="740" y="292" text-anchor="middle" class="small">42 -&gt; [0.18, -0.39, 0.11, 0.87]</text>
+
+  <rect x="900" y="124" rx="22" ry="22" width="320" height="220" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+  <text x="1060" y="162" text-anchor="middle" class="node-title">Transformer</text>
+  <text x="1060" y="194" text-anchor="middle" class="node-text">updates token meanings</text>
+  <text x="1060" y="218" text-anchor="middle" class="node-text">using surrounding context</text>
+  <text x="1060" y="254" text-anchor="middle" class="small">output of this stage:</text>
+  <text x="1060" y="278" text-anchor="middle" class="small">contextualized token meanings</text>
+  <text x="1060" y="300" text-anchor="middle" class="small">for the current sequence</text>
+  <text x="1060" y="322" text-anchor="middle" class="small">inside the context window</text>
+
+  <rect x="1250" y="132" rx="18" ry="18" width="280" height="232" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5"/>
+  <text x="1390" y="168" text-anchor="middle" class="node-title">Output Layer</text>
+  <text x="1390" y="200" text-anchor="middle" class="node-text">scores many possible</text>
+  <text x="1390" y="224" text-anchor="middle" class="node-text">next tokens</text>
+  <text x="1390" y="252" text-anchor="middle" class="small">top few shown:</text>
+  <text x="1305" y="280" text-anchor="start" class="small">" home" 0.72</text>
+  <text x="1305" y="302" text-anchor="start" class="small">" away" 0.18</text>
+  <text x="1305" y="324" text-anchor="start" class="small">" back" 0.10</text>
+  <text x="1305" y="346" text-anchor="start" class="small">... many other tokens</text>
+
+  <rect x="560" y="378" rx="18" ry="18" width="480" height="108" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+  <text x="800" y="414" text-anchor="middle" class="node-title">Sampling or Selection</text>
+  <text x="800" y="444" text-anchor="middle" class="node-text">the system may pick " home", append it,</text>
+  <text x="800" y="468" text-anchor="middle" class="node-text">and repeat the cycle</text>
+
+  <line x1="300" y1="234" x2="340" y2="234" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="580" y1="234" x2="620" y2="234" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="860" y1="234" x2="900" y2="234" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1220" y1="234" x2="1250" y2="234" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1390" y1="364" x2="1040" y2="432" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 560 432 C 420 432, 240 390, 180 300" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+  <text x="270" y="410" text-anchor="middle" class="small">generated token is added</text>
+  <text x="270" y="432" text-anchor="middle" class="small">to the running context</text>
+</svg>
