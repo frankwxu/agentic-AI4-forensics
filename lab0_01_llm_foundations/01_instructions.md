@@ -1,13 +1,15 @@
-# Lab 0 Foundations: Train and Inspect a Tiny LLM
+# Lab 0-01: LLM Foundations
 
 ## Purpose
 
-Use this primer before [lab0_1_environment_setup/01_instructions.md](../lab0_1_environment_setup/01_instructions.md). The goal is to give you both:
+Use this primer before [lab0_02_environment_setup/01_instructions.md](../lab0_02_environment_setup/01_instructions.md). The goal is to give you both:
 
 - a plain-language mental model of what a large language model is
 - one small runnable example of how a model is trained and then used for next-word prediction
 
 This lab does not require `.env`, Ollama, or Graphviz. It does require the basic local Python setup needed to run the tiny LLM notebook.
+
+Before you begin this lab, work through the reading in [lab0_00_python_basics/01_instructions.md](../lab0_00_python_basics/01_instructions.md). After you finish the setup steps below, you will return to the Python primer notebook for a short guided practice run.
 
 ## Learning Goals
 
@@ -65,23 +67,25 @@ Complete the steps in this order:
 
 4. Launch Jupyter from the repo root.
 
-5. Read [02_llm_foundations_reading.md](02_llm_foundations_reading.md).
-6. Study the five figures in [figures/](figures) as you read:
+5. Pause here and return to [lab0_00_python_basics/03_python_basics_notebook.ipynb](../lab0_00_python_basics/03_python_basics_notebook.ipynb). Run that notebook from top to bottom.
+6. Read [02_llm_foundations_reading.md](02_llm_foundations_reading.md).
+7. Study the five figures in [figures/](figures) as you read:
    - `lab0_llm_pipeline.svg`
    - `lab0_embedding_lookup.svg`
    - `lab0_contextualized_bank.svg`
    - `lab0_weights_regression.svg`
    - `lab0_llm_limits_to_controls.svg`
-7. Open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb).
-8. Run the notebook from top to bottom.
-9. Answer the short reflection questions at the end of the reading and notebook.
+8. Open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb).
+9. Run the notebook from top to bottom.
+10. Answer the short reflection questions at the end of the reading and notebook.
 
 The notebook trains a tiny word-level transformer on a repeated public-domain book excerpt so you can see a visible training loop on classroom hardware. It is a teaching model, not a production LLM.
 
 ## Success Criteria
 
-You have completed this primer when:
+You have completed Lab 0-01 when:
 
+- you complete [lab0_00_python_basics/03_python_basics_notebook.ipynb](../lab0_00_python_basics/03_python_basics_notebook.ipynb)
 - you can explain what an LLM predicts at each step
 - you can distinguish tokens from words
 - you can explain the difference between training a model and using a model
@@ -92,4 +96,4 @@ You have completed this primer when:
 
 ## After This Primer
 
-Continue to [lab0_1_environment_setup/01_instructions.md](../lab0_1_environment_setup/01_instructions.md).
+Continue to [lab0_02_environment_setup/01_instructions.md](../lab0_02_environment_setup/01_instructions.md).

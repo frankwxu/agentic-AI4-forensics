@@ -1,4 +1,4 @@
-# Lab 0 Foundations Reading: What Is an LLM?
+# Lab 0-01 Reading: What Is an LLM?
 
 This reading gives you a teaching-friendly picture of what a large language model is and what it is not. The goal is not to cover every detail of modern AI systems. The goal is to help you build a usable mental model before you start the setup, prompt, and agent labs.
 
@@ -351,8 +351,8 @@ These are not bugs in only one model. They are reasons the later labs add struct
 
 This course responds to those limits in stages:
 
-- `lab0_2_model_warmup`: show that prompt wording and model choice change outputs
-- `lab0_3_what_is_an_agent`: show how the same model behaves differently inside a bounded workflow
+- `lab0_03_model_warmup`: show that prompt wording and model choice change outputs
+- `lab0_04_what_is_an_agent`: show how the same model behaves differently inside a bounded workflow
 - `lab1` through `lab5`: add reflection, tools, step-by-step reasoning, planning, and multiagent review
 
 The big course idea is not that an LLM becomes perfect once you wrap it in a workflow. The idea is that well-designed structure makes the model's behavior easier to inspect, constrain, and review.
@@ -387,4 +387,4 @@ If you remember only three things from this primer, keep these:
 - prompt wording changes that context and therefore changes output behavior
 - later labs add structure because language fluency alone is not enough for careful forensic work
 
-When you are ready, move on to [lab0_1_environment_setup/01_instructions.md](../lab0_1_environment_setup/01_instructions.md).
+When you are ready, move on to [lab0_02_environment_setup/01_instructions.md](../lab0_02_environment_setup/01_instructions.md).

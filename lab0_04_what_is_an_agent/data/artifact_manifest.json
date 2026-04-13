@@ -1,6 +1,6 @@
 {
   "case_id": "AG-2026-001",
-  "lab": "lab0_3_what_is_an_agent",
+  "lab": "lab0_04_what_is_an_agent",
   "dataset_type": "synthetic_mini_case_packet",
   "analysis_timezone": "America/New_York",
   "question": "What do the device events show, what remains unknown, and what should a human reviewer check next?",

@@ -32,12 +32,12 @@ cd agentic-AI4-forensics
 
 ## Quick Start
 
-Most runnable lab folders now have their own `.env.example`. The new `lab0_0_llm_foundations` module begins the course and covers the basic local Python setup needed for the tiny LLM notebook. The later setup lab `lab0_1_environment_setup` adds `.env`, Ollama, and Graphviz for the agent workflow labs.
+Most runnable lab folders now have their own `.env.example`. Lab 0-00 (`lab0_00_python_basics`) begins the course with a lightweight Python primer for reading notebook code. Lab 0-01 (`lab0_01_llm_foundations`) covers the basic local Python setup needed for the tiny LLM notebook. Lab 0-02 (`lab0_02_environment_setup`) adds `.env`, Ollama, and Graphviz for the agent workflow labs.
 
 Before running a notebook in one of the later hands-on labs, copy that lab's `.env.example` to `.env` inside the same folder. For example:
 
 ```bash
-cp lab0_1_environment_setup/.env.example lab0_1_environment_setup/.env
+cp lab0_02_environment_setup/.env.example lab0_02_environment_setup/.env
 ```
 
 On Windows, create `.env` by copying the matching lab-local `.env.example`.
@@ -52,23 +52,31 @@ cp lab2_tool_use_pattern/.env.example lab2_tool_use_pattern/.env
 
 Lab 2 defaults to `qwen3:8b` in its local example because the `ToolAgent` section has been more stable with that model in the current Ollama setup.
 
-Begin with [lab0_0_llm_foundations/01_instructions.md](lab0_0_llm_foundations/01_instructions.md). Then continue to [lab0_1_environment_setup/01_instructions.md](lab0_1_environment_setup/01_instructions.md). The onboarding sequence now has four parts:
+Begin with [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_instructions.md). Then continue to [lab0_01_llm_foundations/01_instructions.md](lab0_01_llm_foundations/01_instructions.md), followed by [lab0_02_environment_setup/01_instructions.md](lab0_02_environment_setup/01_instructions.md). The onboarding sequence now has five parts:
 
-- `lab0_0_llm_foundations`: LLM foundations primer with repo clone, base Python setup, and a tiny local training demo
-- `lab0_1_environment_setup`: `.env`, Ollama, Graphviz, and environment checks for the later agent labs
-- `lab0_2_model_warmup`: a small model-comparison exercise
-- `lab0_3_what_is_an_agent`: a hands-on introduction to agent workflows
+- `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and a small practice notebook
+- `Lab 0-01` (`lab0_01_llm_foundations`): LLM foundations primer with repo clone, base Python setup, and a tiny local training demo
+- `Lab 0-02` (`lab0_02_environment_setup`): `.env`, Ollama, Graphviz, and environment checks for the later agent labs
+- `Lab 0-03` (`lab0_03_model_warmup`): a small model-comparison exercise
+- `Lab 0-04` (`lab0_04_what_is_an_agent`): a hands-on introduction to agent workflows
 
-`lab0_0_llm_foundations` contains the first local setup sequence for:
+`lab0_00_python_basics` contains the course-specific primer for:
+
+- reading notebook-style Python without needing a full programming course
+- recognizing variables, lists, dictionaries, loops, and helper functions
+- practicing tiny JSON and CSV examples that mirror later labs
+
+`lab0_01_llm_foundations` contains the first local setup sequence for:
 
 - repository clone
 - virtual environment creation
 - Python package installation
 - Jupyter launch
+- returning to the Python primer notebook after base setup
 - LLM foundations reading
 - tiny local transformer training demo
 
-`lab0_1_environment_setup` contains the later setup sequence for:
+`lab0_02_environment_setup` contains the later setup sequence for:
 
 - Graphviz installation
 - lab-local `.env` configuration for the instructor-provided Ollama server
@@ -79,17 +87,25 @@ Begin with [lab0_0_llm_foundations/01_instructions.md](lab0_0_llm_foundations/01
 
 ## Lab Folders
 
-- `lab0_0_llm_foundations/`: LLM foundations primer with base local setup, a tiny local training demo, reading, figures, and a short public-domain book excerpt
-- `lab0_1_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
-- `lab0_2_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
-- `lab0_3_what_is_an_agent/`: Warm-up lab for comparing a plain model prompt with a bounded agent workflow and designing a small agent card
+- `lab0_00_python_basics/`: Python primer with a short reading, a small guided notebook, and tiny JSON/CSV practice data
+- `lab0_01_llm_foundations/`: LLM foundations primer with base local setup, a tiny local training demo, reading, figures, and a short public-domain book excerpt
+- `lab0_02_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
+- `lab0_03_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
+- `lab0_04_what_is_an_agent/`: Warm-up lab for comparing a plain model prompt with a bounded agent workflow and designing a small agent card
 - `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
 - `lab2_tool_use_pattern/`: Tool-use lab for image metadata, vehicle matching, and sale-draft review
 - `lab3_react_pattern/`: ReAct lab for step-by-step communication verification with tool calls
 - `lab4_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
 - `lab5_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
 
-`lab0_0_llm_foundations/` contains:
+`lab0_00_python_basics/` contains:
+
+- `01_instructions.md` with the primer sequence and handoff to `lab0_01_llm_foundations`
+- `02_python_basics_reading.md` with the notebook-reading primer on variables, lists, dictionaries, loops, functions, and small file examples
+- `03_python_basics_notebook.ipynb` with the guided Python practice notebook
+- a `data/` subfolder with the tiny JSON and CSV files used in the notebook
+
+`lab0_01_llm_foundations/` contains:
 
 - `01_instructions.md` with the conceptual primer sequence
 - `02_llm_foundations_reading.md` with the main reading on tokens, embeddings, transformer flow, training versus inference, and output limits
@@ -97,7 +113,7 @@ Begin with [lab0_0_llm_foundations/01_instructions.md](lab0_0_llm_foundations/01
 - a `data/` subfolder with the public-domain book excerpt used for training
 - a `figures/` subfolder with the LLM teaching diagrams
 
-`lab0_1_environment_setup/` contains:
+`lab0_02_environment_setup/` contains:
 
 - `01_instructions.md` with the setup sequence
 - `02_setup_checklist.md` with the pre-lab checklist
@@ -105,14 +121,14 @@ Begin with [lab0_0_llm_foundations/01_instructions.md](lab0_0_llm_foundations/01
 - `04_setup_assignment.ipynb` with the short coding assignment, one student question to the model, and an observation report for setup verification
 - `.env.example` with lab-local model settings
 
-`lab0_2_model_warmup/` contains:
+`lab0_03_model_warmup/` contains:
 
 - `01_instructions.md` with the warm-up sequence
 - `02_model_comparison.ipynb` with the guided baseline model-comparison notebook
 - `03_prompt_revision_assignment.ipynb` with the student prompt-revision assignment
 - `.env.example` with lab-local model settings
 
-`lab0_3_what_is_an_agent/` contains:
+`lab0_04_what_is_an_agent/` contains:
 
 - `01_instructions.md` with the hands-on agent-introduction sequence
 - `02_agent_walkthrough.ipynb` with the guided model-vs-agent walkthrough
@@ -133,12 +149,13 @@ Each `data/` folder includes the synthetic evidence artifacts, including an arti
 
 Students should follow this sequence:
 
-1. `lab0_0_llm_foundations`
-2. `lab0_1_environment_setup`
-3. `lab0_2_model_warmup`
-4. `lab0_3_what_is_an_agent`
-5. `lab1_reflection_pattern`
-6. `lab2_tool_use_pattern`
-7. `lab3_react_pattern`
-8. `lab4_planning_pattern`
-9. `lab5_multiagent_pattern`
+1. `lab0_00_python_basics`
+2. `lab0_01_llm_foundations`
+3. `lab0_02_environment_setup`
+4. `lab0_03_model_warmup`
+5. `lab0_04_what_is_an_agent`
+6. `lab1_reflection_pattern`
+7. `lab2_tool_use_pattern`
+8. `lab3_react_pattern`
+9. `lab4_planning_pattern`
+10. `lab5_multiagent_pattern`

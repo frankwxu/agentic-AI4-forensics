@@ -1,0 +1,4 @@
+timestamp,event,source,detail
+2026-03-01T09:10:00Z,file_opened,laptop,Opened quarterly_contacts.xlsx
+2026-03-01T09:12:18Z,message_sent,messenger,Sent message to external_contact
+2026-03-01T09:13:02Z,network_upload,network,Outbound upload started

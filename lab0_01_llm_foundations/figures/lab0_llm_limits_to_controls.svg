@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="560" viewBox="30 20 1540 560" role="img" aria-labelledby="title desc">
   <title id="title">Why the Course Adds More Than an LLM Alone</title>
-  <desc id="desc">Diagram for Lab 0 Foundations showing common LLM-only limitations and the course structures added later, such as prompt rules, tools, memory, planning, multiagent review, and human review.</desc>
+  <desc id="desc">Diagram for Lab 0-01 showing common LLM-only limitations and the course structures added later, such as prompt rules, tools, memory, planning, multiagent review, and human review.</desc>
 
   <defs>
     <style>
@@ -56,12 +56,12 @@
 
   <rect x="1050" y="206" rx="16" ry="16" width="200" height="96" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
   <text x="1150" y="238" text-anchor="middle" class="node-title">Prompt Rules</text>
-  <text x="1150" y="266" text-anchor="middle" class="node-text">Lab 0B improves</text>
+  <text x="1150" y="266" text-anchor="middle" class="node-text">Lab 0-03 improves</text>
   <text x="1150" y="288" text-anchor="middle" class="node-text">format consistency</text>
 
   <rect x="1290" y="206" rx="16" ry="16" width="200" height="96" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
   <text x="1390" y="238" text-anchor="middle" class="node-title">Agent Boundaries</text>
-  <text x="1390" y="266" text-anchor="middle" class="node-text">Lab 0C adds role,</text>
+  <text x="1390" y="266" text-anchor="middle" class="node-text">Lab 0-04 adds role,</text>
   <text x="1390" y="288" text-anchor="middle" class="node-text">memory, and stop rules</text>
 
   <rect x="1050" y="332" rx="16" ry="16" width="200" height="96" fill="#e9d5ff" stroke="#7c3aed" stroke-width="2"/>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
   <title id="title">Device Activity Summary Agent Specification</title>
-  <desc id="desc">Diagram for Lab 0C showing the walkthrough Device Activity Summary Agent specification, with the agent at the center, a dashed instructions group around role and goal, a dashed guardrails group around stop condition and human review boundary, and the other visible design parts approved tools and short memory.</desc>
+  <desc id="desc">Diagram for Lab 0-04 showing the walkthrough Device Activity Summary Agent specification, with the agent at the center, a dashed instructions group around role and goal, a dashed guardrails group around stop condition and human review boundary, and the other visible design parts approved tools and short memory.</desc>
 
   <defs>
     <style>

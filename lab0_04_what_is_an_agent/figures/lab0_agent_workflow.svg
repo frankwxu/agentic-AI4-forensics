@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="590" viewBox="30 20 1540 590" role="img" aria-labelledby="title desc">
   <title id="title">From Plain Prompt to Bounded Agent Workflow</title>
-  <desc id="desc">Figure for Lab 0C comparing a plain prompt sent directly to a model with a bounded agent workflow that adds an agent card, mini case packet, structured output, and human review.</desc>
+  <desc id="desc">Figure for Lab 0-04 comparing a plain prompt sent directly to a model with a bounded agent workflow that adds an agent card, mini case packet, structured output, and human review.</desc>
 
   <defs>
     <style>
@@ -18,7 +18,7 @@
 
   <rect x="0" y="0" width="1600" height="650" fill="#ffffff"/>
   <text x="800" y="58" text-anchor="middle" class="title">From Plain Prompt to Bounded Agent Workflow</text>
-  <text x="800" y="88" text-anchor="middle" class="subtitle">Lab 0C uses the same model in both paths; the difference is how tightly the workflow is bounded.</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">Lab 0-04 uses the same model in both paths; the difference is how tightly the workflow is bounded.</text>
 
   <rect x="40" y="112" rx="18" ry="18" width="1520" height="166" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
   <text x="62" y="144" class="panel-label">Plain model path</text>

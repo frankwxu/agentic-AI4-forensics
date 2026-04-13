@@ -1,0 +1,15 @@
+{
+  "case_id": "PY-INTRO-001",
+  "question": "Did the employee send a file to an external contact?",
+  "device_owner": "Taylor Reed",
+  "status": "practice dataset",
+  "artifacts": [
+    "timeline.csv",
+    "messages.csv",
+    "chain_of_custody.csv"
+  ],
+  "notes": [
+    "Synthetic classroom dataset",
+    "Use for Python basics only"
+  ]
+}

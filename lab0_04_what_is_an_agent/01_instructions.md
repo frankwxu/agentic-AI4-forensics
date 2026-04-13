@@ -1,8 +1,8 @@
-# Lab 0C: What Is an AI Agent?
+# Lab 0-04: What Is an AI Agent?
 
 ## Purpose
 
-Use this onboarding lab after you complete [lab0_2_model_warmup/01_instructions.md](../lab0_2_model_warmup/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
+Use this onboarding lab after you complete [lab0_03_model_warmup/01_instructions.md](../lab0_03_model_warmup/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
 
 ## Lab-Specific Environment
 
@@ -12,7 +12,7 @@ Before running the walkthrough notebooks, create a lab-local `.env` in this fold
 cp .env.example .env
 ```
 
-This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_3_what_is_an_agent/.env`, so you can change settings here without affecting Lab 0A, Lab 0B, or the later pattern labs.
+This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_04_what_is_an_agent/.env`, so you can change settings here without affecting Lab 0-02, Lab 0-03, or the later pattern labs.
 
 This lab is hands-on. You will run the same model in two different ways:
 
@@ -64,7 +64,7 @@ In Figure 0B, each component has a simple purpose:
 
 ## What Each Agent Part Does
 
-Lab 0C uses a simpler bounded version of that modern agent idea. In the walkthrough notebook, these parts are used to define the `Device Activity Summary Agent`. In the notebook, you will define the agent with a small agent specification, and the figure below shows the visible design parts that keep its behavior easier to inspect and control:
+Lab 0-04 uses a simpler bounded version of that modern agent idea. In the walkthrough notebook, these parts are used to define the `Device Activity Summary Agent`. In the notebook, you will define the agent with a small agent specification, and the figure below shows the visible design parts that keep its behavior easier to inspect and control:
 
 ![Figure 0C. Device Activity Summary Agent specification](./figures/lab0_agent_components.svg)
 
@@ -91,15 +91,15 @@ In other words, `memory` is not the same thing as a tool call. Memory is what th
 
 To make the comparison in this lab easier to see, use Figure 0D as a quick map. The top path shows a plain prompt sent directly to a model. The bottom path shows the same model bounded by an agent specification, a small case packet, approved inputs, and a human-review step.
 
-![Figure 0D. Plain model versus bounded agent workflow for Lab 0C](./figures/lab0_agent_workflow.svg)
+![Figure 0D. Plain model versus bounded agent workflow for Lab 0-04](./figures/lab0_agent_workflow.svg)
 
-*Figure 0D. Plain model versus bounded agent workflow for Lab 0C: a single plain prompt can lead to an open-ended answer, while an agent specification plus a mini case packet turns the same model into a bounded workflow that produces structured output for human review.*
+*Figure 0D. Plain model versus bounded agent workflow for Lab 0-04: a single plain prompt can lead to an open-ended answer, while an agent specification plus a mini case packet turns the same model into a bounded workflow that produces structured output for human review.*
 
 ## What To Do
 
 Complete the steps in this order:
 
-1. Finish [lab0_1_environment_setup/03_environment_check.ipynb](../lab0_1_environment_setup/03_environment_check.ipynb), [lab0_1_environment_setup/04_setup_assignment.ipynb](../lab0_1_environment_setup/04_setup_assignment.ipynb), and [lab0_2_model_warmup/03_prompt_revision_assignment.ipynb](../lab0_2_model_warmup/03_prompt_revision_assignment.ipynb).
+1. Finish [lab0_02_environment_setup/03_environment_check.ipynb](../lab0_02_environment_setup/03_environment_check.ipynb), [lab0_02_environment_setup/04_setup_assignment.ipynb](../lab0_02_environment_setup/04_setup_assignment.ipynb), and [lab0_03_model_warmup/03_prompt_revision_assignment.ipynb](../lab0_03_model_warmup/03_prompt_revision_assignment.ipynb).
 2. Open [02_agent_walkthrough.ipynb](02_agent_walkthrough.ipynb).
 3. Run the notebook from top to bottom.
 4. Compare the plain-model response with the agent response.

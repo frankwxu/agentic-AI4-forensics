@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
   <title id="title">Teaching-Friendly LLM Pipeline</title>
-  <desc id="desc">Diagram for Lab 0 Foundations showing a teaching-friendly LLM pipeline from a Dorothy example through tokens, token IDs, initial token meanings in embeddings, transformer-based contextualization, an output layer that scores many next tokens with the top few shown, and sampled output.</desc>
+  <desc id="desc">Diagram for Lab 0-01 showing a teaching-friendly LLM pipeline from a Dorothy example through tokens, token IDs, initial token meanings in embeddings, transformer-based contextualization, an output layer that scores many next tokens with the top few shown, and sampled output.</desc>
 
   <defs>
     <style>
