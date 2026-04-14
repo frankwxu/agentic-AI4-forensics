@@ -54,7 +54,7 @@ Lab 2 defaults to `qwen3:8b` in its local example because the `ToolAgent` sectio
 
 Begin with [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_instructions.md). Then continue to [lab0_01_llm_foundations/01_instructions.md](lab0_01_llm_foundations/01_instructions.md), followed by [lab0_02_environment_setup/01_instructions.md](lab0_02_environment_setup/01_instructions.md). The onboarding sequence now has five parts:
 
-- `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and a small practice notebook
+- `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and two small practice notebooks
 - `Lab 0-01` (`lab0_01_llm_foundations`): LLM foundations primer with repo clone, base Python setup, and a tiny local training demo
 - `Lab 0-02` (`lab0_02_environment_setup`): `.env`, Ollama, Graphviz, and environment checks for the later agent labs
 - `Lab 0-03` (`lab0_03_model_warmup`): a small model-comparison exercise
@@ -87,7 +87,7 @@ Begin with [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_i
 
 ## Lab Folders
 
-- `lab0_00_python_basics/`: Python primer with a short reading, a small guided notebook, and tiny JSON/CSV practice data
+- `lab0_00_python_basics/`: Python primer with a short reading, two small guided notebooks, and tiny JSON/CSV practice data
 - `lab0_01_llm_foundations/`: LLM foundations primer with base local setup, a tiny local training demo, reading, figures, and a short public-domain book excerpt
 - `lab0_02_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
 - `lab0_03_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
@@ -103,6 +103,7 @@ Begin with [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_i
 - `01_instructions.md` with the primer sequence and handoff to `lab0_01_llm_foundations`
 - `02_python_basics_reading.md` with the notebook-reading primer on variables, lists, dictionaries, loops, functions, and small file examples
 - `03_python_basics_notebook.ipynb` with the guided Python practice notebook
+- `04_python_patterns_for_later_labs.ipynb` with the later-lab Python reading patterns used most often in Labs 2-5
 - a `data/` subfolder with the tiny JSON and CSV files used in the notebook
 
 `lab0_01_llm_foundations/` contains:

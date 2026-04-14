@@ -230,3 +230,12 @@ When you open [03_python_basics_notebook.ipynb](03_python_basics_notebook.ipynb)
 - a helper function that returns a dictionary
 - loading a tiny JSON file and a tiny CSV file
 - printing a few values that look like later course notebook outputs
+
+Then open [04_python_patterns_for_later_labs.ipynb](04_python_patterns_for_later_labs.ipynb) to practice the extra notebook-reading patterns that show up often in Labs 2-5:
+
+- `with` blocks for file reading
+- `sorted(...)`
+- list and dictionary comprehensions
+- `enumerate(...)`
+- imports from the course code
+- `@tool` and simple type hints as reading aids
