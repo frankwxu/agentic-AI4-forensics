@@ -62,30 +62,7 @@ Begin with [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_i
 - `Lab 0-03` (`lab0_03_model_warmup`): a small model-comparison exercise
 - `Lab 0-04` (`lab0_04_what_is_an_agent`): a hands-on introduction to agent workflows
 
-`lab0_00_python_basics` contains the course-specific primer for:
-
-- reading notebook-style Python without needing a full programming course
-- recognizing variables, lists, dictionaries, loops, and helper functions
-- practicing tiny JSON and CSV examples that mirror later labs
-
-`lab0_01_llm_foundations` contains the first local setup sequence for:
-
-- repository clone
-- virtual environment creation
-- Python package installation
-- Jupyter launch
-- returning to the Python primer notebook after base setup
-- LLM foundations reading
-- tiny local transformer training demo
-
-`lab0_02_environment_setup` contains the later setup sequence for:
-
-- Graphviz installation
-- lab-local `.env` configuration for the instructor-provided Ollama server
-- command-line Ollama connectivity testing
-- optional local Ollama setup
-- Jupyter launch
-- environment verification
+Each onboarding lab has its own `01_instructions.md` with the step-by-step details.
 
 ## Lab Folders
 
@@ -100,44 +77,15 @@ Begin with [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_i
 - `lab4_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
 - `lab5_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
 
-`lab0_00_python_basics/` contains:
+## Investigation Cases And Pattern Fit
 
-- `01_instructions.md` with the primer sequence and handoff to `lab0_01_llm_foundations`
-- `02_python_basics_reading.md` with the notebook-reading primer on variables, lists, dictionaries, loops, functions, and small file examples
-- `03_python_basics_notebook.ipynb` with the guided Python practice notebook
-- `04_python_patterns_for_later_labs.ipynb` with the later-lab Python reading patterns used most often in Labs 2-5
-- a `data/` subfolder with the tiny JSON and CSV files used in the notebook
+- `Lab 1 Reflection Pattern`: Students investigate suspected customer-data exfiltration in a business setting. The reflection pattern helps them critique an initial answer, notice missing evidence or weak reasoning, and improve the investigative write-up.
+- `Lab 2 Tool Use Pattern`: Students work through image metadata, vehicle matching, and sale-draft evidence. The tool-use pattern shows how an agent can call specific tools to inspect artifacts instead of guessing from the prompt alone.
+- `Lab 3 ReAct Pattern`: Students verify communications through step-by-step reasoning with tool calls. The ReAct pattern helps them alternate between thinking and evidence collection during the investigation.
+- `Lab 4 Planning Pattern`: Students examine phone access, call timing, and delayed WhatsApp delivery. The planning pattern helps break a more complex forensic question into smaller investigative steps that can be checked in sequence.
+- `Lab 5 Multiagent Pattern`: Students assess transmission activity and review chain-of-custody issues across the case record. The multiagent pattern shows how different investigative roles can split the work, compare findings, and combine them into a final assessment.
 
-`lab0_01_llm_foundations/` contains:
-
-- `01_instructions.md` with the conceptual primer sequence
-- `02_llm_foundations_reading.md` with the main reading on tokens, embeddings, transformer flow, training versus inference, and output limits
-- `03_tiny_llm_book_demo.ipynb` with a tiny local word-level transformer training demo
-- a `data/` subfolder with the public-domain book excerpt used for training
-- a `figures/` subfolder with the LLM teaching diagrams
-
-`lab0_02_environment_setup/` contains:
-
-- `01_instructions.md` with the setup sequence
-- `02_setup_checklist.md` with the pre-lab checklist
-- `03_environment_check.ipynb` with the runnable environment smoke test
-- `04_setup_assignment.ipynb` with the short coding assignment, one student question to the model, and an observation report for setup verification
-- `.env.example` with lab-local model settings
-
-`lab0_03_model_warmup/` contains:
-
-- `01_instructions.md` with the warm-up sequence
-- `02_model_comparison.ipynb` with the guided baseline model-comparison notebook
-- `03_prompt_revision_assignment.ipynb` with the student prompt-revision assignment
-- `.env.example` with lab-local model settings
-
-`lab0_04_what_is_an_agent/` contains:
-
-- `01_instructions.md` with the hands-on agent-introduction sequence
-- `02_agent_walkthrough.ipynb` with the guided model-vs-agent walkthrough
-- `03_agent_design_assignment.ipynb` with the student agent-card assignment
-- `.env.example` with lab-local model settings
-- a `data/` subfolder with the small synthetic intake packet
+Each onboarding lab folder includes its own instructions and supporting materials for that part of the setup or warm-up sequence.
 
 Labs 1 through 5 contain:
 
