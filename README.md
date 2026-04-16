@@ -1,11 +1,18 @@
 # Agentic AI4 Forensics Labs
 
 This repository contains a standalone set of student-facing labs for agentic AI patterns in digital forensics.
+It is designed for cybersecurity and digital forensics students, including learners with little or no computer science background.
+
+## Intended Audience
+
+These tutorial labs are written for students who are learning cybersecurity or digital forensics and may be new to programming.
+The onboarding sequence starts with a lightweight Python and LLM foundation so students can follow the later agent labs without needing a full computer science background.
 
 ## Code Provenance
 
-Parts of the Python implementation in `src/agentic_patterns/` are adapted from The Neural Maze's
-[`agentic-patterns-course`](https://github.com/neural-maze/agentic-patterns-course) and are reused under the MIT License.
+The agent workflow code in `src/agentic_patterns/` gives credit to The Neural Maze's
+[`agentic-patterns-course`](https://github.com/neural-maze/agentic-patterns-course), which provides the upstream course code foundation for several of the labs here.
+Parts of that implementation are adapted and reused under the MIT License.
 
 Primary upstream source references:
 
@@ -33,6 +40,8 @@ cd agentic-AI4-forensics
 ## Quick Start
 
 Most runnable lab folders now have their own `.env.example`. Lab 0-00 (`lab0_00_python_basics`) begins the course with a lightweight Python primer for reading notebook code. Lab 0-01 (`lab0_01_llm_foundations`) covers the basic local Python setup needed for the tiny LLM notebook. Lab 0-02 (`lab0_02_environment_setup`) adds `.env`, Ollama, and Graphviz for the agent workflow labs.
+
+The onboarding labs are paced for cybersecurity and digital forensics students who may only have a little programming experience.
 
 Before running a notebook in one of the later hands-on labs, copy that lab's `.env.example` to `.env` inside the same folder. For example:
 
