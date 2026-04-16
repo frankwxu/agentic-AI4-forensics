@@ -1,5 +1,9 @@
 # Agentic AI4 Forensics Labs
 
+<p align="center">
+  <img src="assets/readme-cover.svg" alt="Cover banner for Agentic AI4 Forensics Labs" width="100%">
+</p>
+
 This repository contains a standalone set of student-facing labs for agentic AI patterns in digital forensics.
 It is designed for cybersecurity and digital forensics students, including learners with little or no computer science background.
 
@@ -13,17 +17,6 @@ The onboarding sequence starts with a lightweight Python and LLM foundation so s
 The agent workflow code in `src/agentic_patterns/` gives credit to The Neural Maze's
 [`agentic-patterns-course`](https://github.com/neural-maze/agentic-patterns-course), which provides the upstream course code foundation for several of the labs here.
 Parts of that implementation are adapted and reused under the MIT License.
-
-Primary upstream source references:
-
-- `ReflectionAgent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/reflection_pattern/reflection_agent.py>
-- `ToolAgent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/tool_pattern/tool_agent.py>
-- `Tool`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/tool_pattern/tool.py>
-- `ReactAgent` (local path: `src/agentic_patterns/react_pattern/react_agent.py`): <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/planning_pattern/react_agent.py>
-- `PlanningAgent` (repo-owned abstraction): `src/agentic_patterns/planning_pattern/planning_agent.py`
-- `Agent`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/multiagent_pattern/agent.py>
-- `Crew`: <https://github.com/neural-maze/agentic-patterns-course/blob/main/src/agentic_patterns/multiagent_pattern/crew.py>
-- Utilities: <https://github.com/neural-maze/agentic-patterns-course/tree/main/src/agentic_patterns/utils>
 
 The original copyright and permission notice are preserved in
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
