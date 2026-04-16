@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 560" role="img" aria-labelledby="title desc">
+  <title id="title">Multiagent pattern workflow</title>
+  <desc id="desc">A high-level multiagent workflow showing Scope, role assignment, team review, merge, and a final report with a feedback loop.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6f0e7"/>
+      <stop offset="48%" stop-color="#f2efe9"/>
+      <stop offset="100%" stop-color="#d9e6e2"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf8ee"/>
+      <stop offset="100%" stop-color="#f4ecdc"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef8c4d"/>
+      <stop offset="100%" stop-color="#d7562f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#12333b" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#d8ddd6" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#173f4b"/>
+    </marker>
+    <style>
+      .eyebrow { fill: #103847; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 2px; font-weight: 700; }
+      .title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 54px; font-weight: 700; }
+      .subtitle { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 21px; }
+      .pill-text { fill: #f8f2e7; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
+      .card-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 28px; font-weight: 700; }
+      .card-text { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 18px; }
+      .mini-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 20px; font-weight: 700; }
+      .mini-text { fill: #4d6660; font-family: 'Courier New', monospace; font-size: 14px; }
+      .flow { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .loop { fill: none; stroke: #7ea797; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 11 10; }
+      .icon { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .accent-fill { fill: #ef8c4d; }
+      .sage-fill { fill: #7ea797; }
+      .gold-fill { fill: #f0c674; }
+      .teal-fill { fill: #103847; }
+      .note { fill: #4d6660; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 0.3px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="560" fill="url(#bg)"/>
+  <rect width="1600" height="560" fill="url(#grid)" opacity="0.42"/>
+  <circle cx="1456" cy="92" r="162" fill="#a8c6bb" opacity="0.25"/>
+  <circle cx="148" cy="494" r="118" fill="#efc4a6" opacity="0.28"/>
+  <path d="M 0 468 C 216 390 430 520 652 452 S 1030 340 1280 426 S 1450 504 1600 452 L 1600 560 L 0 560 Z" fill="#b8d1c8" opacity="0.4"/>
+
+  <text x="86" y="72" class="eyebrow">LAB 5  MULTIAGENT PATTERN</text>
+  <text x="84" y="138" class="title">Split the work, then merge the call.</text>
+  <text x="86" y="176" class="subtitle">A simpler multiagent workflow lets several roles compare evidence before one report is issued.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="56" y="224" width="248" height="168" rx="28" fill="url(#card)"/>
+    <rect x="56" y="224" width="248" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="84" y="248" width="84" height="28" rx="14" fill="url(#accent)"/>
+  <text x="126" y="267" text-anchor="middle" class="pill-text">SCOPE</text>
+  <text x="84" y="324" class="card-title">Scope</text>
+  <text x="84" y="354" class="card-text">Set the case.</text>
+  <g transform="matrix(0.38 0 0 0.38 220 260)">
+    <rect x="-42" y="-26" width="84" height="102" rx="16" fill="#f8f2e7" stroke="#173f4b" stroke-width="4"/>
+    <path class="icon" d="M -18 -2 H 18"/>
+    <path class="icon" d="M -18 18 H 22"/>
+    <path class="icon" d="M -18 38 H 8"/>
+    <path class="icon" d="M -6 54 H 12"/>
+    <circle cx="26" cy="-12" r="10" class="gold-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="350" y="224" width="248" height="168" rx="28" fill="url(#card)"/>
+    <rect x="350" y="224" width="248" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="378" y="248" width="96" height="28" rx="14" fill="#103847"/>
+  <text x="426" y="267" text-anchor="middle" class="pill-text">ASSIGN</text>
+  <text x="378" y="324" class="card-title">Roles</text>
+  <text x="378" y="354" class="card-text">Split the work.</text>
+  <g transform="matrix(0.36 0 0 0.36 514 260)">
+    <path class="icon" d="M -8 -26 V 42"/>
+    <path class="icon" d="M -8 8 H -44"/>
+    <path class="icon" d="M -8 8 H 34"/>
+    <path class="icon" d="M -44 8 V 34"/>
+    <path class="icon" d="M 34 8 V 34"/>
+    <circle cx="-8" cy="-34" r="10" class="accent-fill"/>
+    <circle cx="-44" cy="44" r="10" class="sage-fill"/>
+    <circle cx="-8" cy="52" r="10" class="gold-fill"/>
+    <circle cx="34" cy="44" r="10" class="teal-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="644" y="224" width="332" height="168" rx="28" fill="url(#card)"/>
+    <rect x="644" y="224" width="332" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="672" y="230" width="80" height="28" rx="14" fill="#7ea797"/>
+  <text x="712" y="249" text-anchor="middle" class="pill-text">TEAM</text>
+  <text x="672" y="324" class="card-title">Team Review</text>
+  <text x="672" y="354" class="card-text">Compare findings.</text>
+  <g transform="matrix(0.34 0 0 0.34 906 260)">
+    <path class="icon" d="M -8 -26 V 42"/>
+    <path class="icon" d="M -8 8 H -44"/>
+    <path class="icon" d="M -8 8 H 34"/>
+    <path class="icon" d="M -44 8 V 34"/>
+    <path class="icon" d="M 34 8 V 34"/>
+    <circle cx="-8" cy="-34" r="10" class="accent-fill"/>
+    <circle cx="-44" cy="44" r="10" class="sage-fill"/>
+    <circle cx="-8" cy="52" r="10" class="gold-fill"/>
+    <circle cx="34" cy="44" r="10" class="teal-fill"/>
+  </g>
+
+  <text x="672" y="378" class="mini-text">lead | verify | audit</text>
+
+  <g filter="url(#shadow)">
+    <rect x="1022" y="224" width="248" height="168" rx="28" fill="url(#card)"/>
+    <rect x="1022" y="224" width="248" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="1050" y="248" width="94" height="28" rx="14" fill="#ef8c4d"/>
+  <text x="1097" y="267" text-anchor="middle" class="pill-text">MERGE</text>
+  <text x="1050" y="324" class="card-title">Resolve</text>
+  <text x="1050" y="354" class="card-text">Merge views.</text>
+  <g transform="matrix(0.38 0 0 0.38 1186 260)">
+    <path class="icon" d="M -36 -16 L -10 10 L -36 36"/>
+    <path class="icon" d="M 36 -16 L 10 10 L 36 36"/>
+    <path class="icon" d="M -10 10 H 10"/>
+    <circle cx="0" cy="10" r="8" class="accent-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1316" y="224" width="228" height="168" rx="28" fill="url(#card)"/>
+    <rect x="1316" y="224" width="228" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="1344" y="248" width="98" height="28" rx="14" fill="#103847"/>
+  <text x="1393" y="267" text-anchor="middle" class="pill-text">REPORT</text>
+  <text x="1344" y="324" class="card-title">Report</text>
+  <text x="1344" y="354" class="card-text">Write final call.</text>
+  <g transform="matrix(0.34 0 0 0.34 1478 260)">
+    <rect x="-34" y="-22" width="68" height="80" rx="14" fill="#f8f2e7" stroke="#173f4b" stroke-width="4"/>
+    <path class="icon" d="M -12 0 H 12"/>
+    <path class="icon" d="M -12 18 H 16"/>
+    <path class="icon" d="M -12 36 H 4"/>
+    <path class="icon" d="M -4 50 L 6 60 L 24 40"/>
+  </g>
+
+  <path d="M 304 322 H 350" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 598 322 H 644" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 976 322 H 1022" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 1270 322 H 1316" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 1148 392 V 438 C 1148 484 810 484 810 438 V 392" class="loop" marker-end="url(#arrow)"/>
+  <text x="980" y="498" text-anchor="middle" class="note">If the team disagrees, rerun the role check before the report.</text>
+</svg>

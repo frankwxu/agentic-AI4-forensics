@@ -20,6 +20,55 @@ The onboarding sequence starts with a lightweight Python and LLM foundation so s
 - `Lab 4 Planning Pattern`: Students examine phone access, call timing, and delayed WhatsApp delivery. The planning pattern helps break a more complex forensic question into smaller investigative steps that can be checked in sequence.
 - `Lab 5 Multiagent Pattern`: Students assess transmission activity and review chain-of-custody issues across the case record. The multiagent pattern shows how different investigative roles can split the work, compare findings, and combine them into a final assessment.
 
+## Pattern Workflows
+
+This gallery previews the five agentic patterns used across Labs 1 through 5.
+
+### Lab 1: Reflection Pattern
+
+<p align="center">
+  <img src="assets/readme-patterns/reflection-pattern.svg" alt="High-level reflection pattern workflow" width="96%">
+</p>
+<p align="center">
+  Evidence becomes a draft, critique, revision, and a bounded final report in <a href="lab1_reflection_pattern/01_instructions.md">Lab 1 instructions</a>.
+</p>
+
+### Lab 2: Tool Use Pattern
+
+<p align="center">
+  <img src="assets/readme-patterns/tool-use-pattern.svg" alt="High-level tool use pattern workflow" width="96%">
+</p>
+<p align="center">
+  The workflow moves from question to tool choice, execution, validation, and conclusion in <a href="lab2_tool_use_pattern/01_instructions.md">Lab 2 instructions</a>.
+</p>
+
+### Lab 3: ReAct Pattern
+
+<p align="center">
+  <img src="assets/readme-patterns/react-pattern.svg" alt="High-level ReAct pattern workflow" width="96%">
+</p>
+<p align="center">
+  Thought, action, and observation repeat until the answer is ready in <a href="lab3_react_pattern/01_instructions.md">Lab 3 instructions</a>.
+</p>
+
+### Lab 4: Planning Pattern
+
+<p align="center">
+  <img src="assets/readme-patterns/planning-pattern.svg" alt="High-level planning pattern workflow" width="96%">
+</p>
+<p align="center">
+  The planning loop breaks the case into steps, reviews evidence, and replans in <a href="lab4_planning_pattern/01_instructions.md">Lab 4 instructions</a>.
+</p>
+
+### Lab 5: Multiagent Pattern
+
+<p align="center">
+  <img src="assets/readme-patterns/multiagent-pattern.svg" alt="High-level multiagent pattern workflow" width="96%">
+</p>
+<p align="center">
+  Specialized roles split the work and reconcile findings before one judgment in <a href="lab5_multiagent_pattern/01_instructions.md">Lab 5 instructions</a>.
+</p>
+
 ## Code Provenance
 
 The agent workflow code in `src/agentic_patterns/` gives credit to The Neural Maze's

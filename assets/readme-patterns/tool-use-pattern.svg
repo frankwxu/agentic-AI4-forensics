@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" role="img" aria-labelledby="title desc">
+  <title id="title">Tool use pattern workflow</title>
+  <desc id="desc">A high-level tool use workflow showing Question, Select Tool, Run Tool, Check Output, and Conclusion with a feedback loop.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6f0e7"/>
+      <stop offset="48%" stop-color="#f2efe9"/>
+      <stop offset="100%" stop-color="#d9e6e2"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf8ee"/>
+      <stop offset="100%" stop-color="#f4ecdc"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef8c4d"/>
+      <stop offset="100%" stop-color="#d7562f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#12333b" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#d8ddd6" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#173f4b"/>
+    </marker>
+    <style>
+      .eyebrow { fill: #103847; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 2px; font-weight: 700; }
+      .title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 54px; font-weight: 700; }
+      .subtitle { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 21px; }
+      .pill-text { fill: #f8f2e7; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
+      .pill-text-dark { fill: #103847; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
+      .card-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 30px; font-weight: 700; }
+      .card-text { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 18px; }
+      .flow { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .loop { fill: none; stroke: #7ea797; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 11 10; }
+      .icon { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .accent-fill { fill: #ef8c4d; }
+      .sage-fill { fill: #7ea797; }
+      .gold-fill { fill: #f0c674; }
+      .teal-fill { fill: #103847; }
+      .note { fill: #4d6660; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 0.3px; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="520" fill="url(#bg)"/>
+  <rect width="1600" height="520" fill="url(#grid)" opacity="0.42"/>
+  <circle cx="1458" cy="96" r="162" fill="#a8c6bb" opacity="0.25"/>
+  <circle cx="158" cy="454" r="118" fill="#efc4a6" opacity="0.28"/>
+  <path d="M 0 428 C 200 366 412 486 620 420 S 1014 312 1258 396 S 1448 470 1600 420 L 1600 520 L 0 520 Z" fill="#b8d1c8" opacity="0.4"/>
+
+  <text x="86" y="66" class="eyebrow">LAB 2  TOOL USE PATTERN</text>
+  <text x="84" y="132" class="title">Choose the tool before the conclusion.</text>
+  <text x="86" y="170" class="subtitle">A tool-use workflow grounds the answer in outputs instead of guesses.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="56" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
+    <rect x="56" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="86" y="236" width="102" height="28" rx="14" fill="url(#accent)"/>
+  <text x="137" y="255" text-anchor="middle" class="pill-text">PROMPT</text>
+  <text x="86" y="312" class="card-title">Question</text>
+  <text x="86" y="342" class="card-text">Name the need.</text>
+  <g transform="matrix(0.42 0 0 0.42 244 258)">
+    <path class="icon" d="M -42 -8 H 26 A 16 16 0 0 1 42 8 V 36 A 16 16 0 0 1 26 52 H -2 L -26 74 V 52 H -42 A 16 16 0 0 1 -58 36 V 8 A 16 16 0 0 1 -42 -8 Z"/>
+    <path class="icon" d="M -24 12 H 22"/>
+    <path class="icon" d="M -24 28 H 10"/>
+    <circle cx="28" cy="-18" r="10" class="gold-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="350" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
+    <rect x="350" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="380" y="236" width="122" height="28" rx="14" fill="#7ea797"/>
+  <text x="441" y="255" text-anchor="middle" class="pill-text">TOOL CHOICE</text>
+  <text x="380" y="312" class="card-title">Choose Tool</text>
+  <text x="380" y="342" class="card-text">Pick one tool.</text>
+  <g transform="matrix(0.42 0 0 0.42 538 258)">
+    <rect x="-46" y="-6" width="92" height="54" rx="12" fill="none" stroke="#173f4b" stroke-width="4"/>
+    <path class="icon" d="M -24 -6 V -24 H 24 V -6"/>
+    <path class="icon" d="M -10 12 L -22 24 L -6 40"/>
+    <path class="icon" d="M 10 40 L 22 24 L 6 12"/>
+    <circle cx="32" cy="-24" r="9" class="accent-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="644" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
+    <rect x="644" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="674" y="236" width="108" height="28" rx="14" fill="#103847"/>
+  <text x="728" y="255" text-anchor="middle" class="pill-text">EXECUTE</text>
+  <text x="674" y="312" class="card-title">Run Tool</text>
+  <text x="674" y="342" class="card-text">Get output.</text>
+  <g transform="matrix(0.42 0 0 0.42 832 258)">
+    <circle cx="0" cy="12" r="28" fill="none" stroke="#173f4b" stroke-width="4"/>
+    <circle cx="0" cy="12" r="12" fill="none" stroke="#173f4b" stroke-width="4"/>
+    <path class="icon" d="M 0 -36 V -20"/>
+    <path class="icon" d="M 0 44 V 60"/>
+    <path class="icon" d="M -48 12 H -32"/>
+    <path class="icon" d="M 32 12 H 48"/>
+    <path class="icon" d="M -33 -21 L -22 -10"/>
+    <path class="icon" d="M 22 34 L 33 45"/>
+    <path class="icon" d="M 22 -10 L 33 -21"/>
+    <path class="icon" d="M -33 45 L -22 34"/>
+    <circle cx="42" cy="-24" r="9" class="sage-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="938" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
+    <rect x="938" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="968" y="236" width="120" height="28" rx="14" fill="#f0c674"/>
+  <text x="1028" y="255" text-anchor="middle" class="pill-text-dark">VALIDATE</text>
+  <text x="968" y="312" class="card-title">Check</text>
+  <text x="968" y="342" class="card-text">Verify proof.</text>
+  <g transform="matrix(0.42 0 0 0.42 1126 258)">
+    <rect x="-44" y="-24" width="84" height="96" rx="14" fill="#f8f2e7" stroke="#173f4b" stroke-width="4"/>
+    <path class="icon" d="M -18 -2 H 16"/>
+    <path class="icon" d="M -18 18 H 20"/>
+    <path class="icon" d="M -18 38 H 8"/>
+    <path class="icon" d="M -16 56 L -2 70 L 24 44"/>
+    <circle cx="28" cy="-14" r="10" class="teal-fill"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="1232" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
+    <rect x="1232" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
+  </g>
+  <rect x="1262" y="236" width="112" height="28" rx="14" fill="#ef8c4d"/>
+  <text x="1318" y="255" text-anchor="middle" class="pill-text">REPORT</text>
+  <text x="1262" y="312" class="card-title">Result</text>
+  <text x="1262" y="342" class="card-text">State support.</text>
+  <g transform="matrix(0.42 0 0 0.42 1420 258)">
+    <rect x="-46" y="-24" width="92" height="96" rx="16" fill="#f8f2e7" stroke="#173f4b" stroke-width="4"/>
+    <path class="icon" d="M -18 2 H 18"/>
+    <path class="icon" d="M -18 22 H 22"/>
+    <path class="icon" d="M -18 42 H 8"/>
+    <path class="icon" d="M -18 58 H 16"/>
+    <path class="icon" d="M 18 46 L 32 60"/>
+    <circle cx="24" cy="-14" r="10" class="sage-fill"/>
+  </g>
+
+  <path d="M 306 319 H 350" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 600 319 H 644" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 894 319 H 938" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 1188 319 H 1232" class="flow" marker-end="url(#arrow)"/>
+  <path d="M 1028 380 V 430 C 1028 482 476 482 476 430 V 380" class="loop" marker-end="url(#arrow)"/>
+  <text x="752" y="486" text-anchor="middle" class="note">Return to tool choice if the output is not enough.</text>
+</svg>
