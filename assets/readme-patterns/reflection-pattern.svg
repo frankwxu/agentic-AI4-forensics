@@ -29,10 +29,10 @@
       .title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 54px; font-weight: 700; }
       .subtitle { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 21px; }
       .pill { fill: #103847; }
-      .pill-text { fill: #f8f2e7; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
-      .pill-text-dark { fill: #103847; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
-      .card-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 30px; font-weight: 700; }
-      .card-text { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 18px; }
+      .pill-text { fill: #f8f2e7; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 1px; font-weight: 700; }
+      .pill-text-dark { fill: #103847; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 1px; font-weight: 700; }
+      .card-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 34px; font-weight: 700; }
+      .card-text { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 20px; }
       .flow { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
       .loop { fill: none; stroke: #ef8c4d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 11 10; }
       .icon { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
@@ -59,8 +59,8 @@
     <rect x="56" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
     <rect x="56" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
   </g>
-  <rect x="86" y="236" width="108" height="28" rx="14" fill="url(#accent)"/>
-  <text x="140" y="255" text-anchor="middle" class="pill-text">START HERE</text>
+  <rect x="86" y="236" width="124" height="28" rx="14" fill="url(#accent)"/>
+  <text x="148" y="255" text-anchor="middle" class="pill-text">START HERE</text>
   <text x="86" y="312" class="card-title">Evidence</text>
   <text x="86" y="342" class="card-text">Start with facts.</text>
   <g transform="matrix(0.42 0 0 0.42 244 258)">
@@ -75,8 +75,8 @@
     <rect x="350" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
     <rect x="350" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
   </g>
-  <rect x="380" y="236" width="86" height="28" rx="14" fill="#7ea797"/>
-  <text x="423" y="255" text-anchor="middle" class="pill-text">FIRST PASS</text>
+  <rect x="380" y="236" width="112" height="28" rx="14" fill="#7ea797"/>
+  <text x="436" y="255" text-anchor="middle" class="pill-text">FIRST PASS</text>
   <text x="380" y="312" class="card-title">Draft</text>
   <text x="380" y="342" class="card-text">Write first pass.</text>
   <g transform="matrix(0.42 0 0 0.42 538 258)">
@@ -92,8 +92,8 @@
     <rect x="644" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
     <rect x="644" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
   </g>
-  <rect x="674" y="236" width="98" height="28" rx="14" fill="#103847"/>
-  <text x="723" y="255" text-anchor="middle" class="pill-text">CHECK IT</text>
+  <rect x="674" y="236" width="102" height="28" rx="14" fill="#103847"/>
+  <text x="725" y="255" text-anchor="middle" class="pill-text">CHECK IT</text>
   <text x="674" y="312" class="card-title">Critique</text>
   <text x="674" y="342" class="card-text">Check support.</text>
   <g transform="matrix(0.42 0 0 0.42 832 258)">
@@ -122,8 +122,8 @@
     <rect x="1232" y="212" width="250" height="168" rx="28" fill="url(#card)"/>
     <rect x="1232" y="212" width="250" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
   </g>
-  <rect x="1262" y="236" width="96" height="28" rx="14" fill="#ef8c4d"/>
-  <text x="1310" y="255" text-anchor="middle" class="pill-text">SUBMIT</text>
+  <rect x="1262" y="236" width="100" height="28" rx="14" fill="#ef8c4d"/>
+  <text x="1312" y="255" text-anchor="middle" class="pill-text">SUBMIT</text>
   <text x="1262" y="312" class="card-title">Final</text>
   <text x="1262" y="342" class="card-text">Issue final report.</text>
   <g transform="matrix(0.42 0 0 0.42 1420 258)">

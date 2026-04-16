@@ -28,10 +28,10 @@
       .eyebrow { fill: #103847; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 2px; font-weight: 700; }
       .title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 54px; font-weight: 700; }
       .subtitle { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 21px; }
-      .pill-text { fill: #f8f2e7; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
-      .pill-text-dark { fill: #103847; font-family: 'Courier New', monospace; font-size: 14px; letter-spacing: 1.2px; font-weight: 700; }
-      .card-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 28px; font-weight: 700; }
-      .card-text { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 18px; }
+      .pill-text { fill: #f8f2e7; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 1px; font-weight: 700; }
+      .pill-text-dark { fill: #103847; font-family: 'Courier New', monospace; font-size: 17px; letter-spacing: 1px; font-weight: 700; }
+      .card-title { fill: #163842; font-family: Georgia, 'Times New Roman', serif; font-size: 34px; font-weight: 700; }
+      .card-text { fill: #4d6660; font-family: Verdana, Geneva, sans-serif; font-size: 20px; }
       .flow { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
       .loop { fill: none; stroke: #ef8c4d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 11 10; }
       .icon { fill: none; stroke: #173f4b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
@@ -92,8 +92,8 @@
     <rect x="548" y="222" width="220" height="168" rx="28" fill="url(#card)"/>
     <rect x="548" y="222" width="220" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
   </g>
-  <rect x="574" y="246" width="100" height="28" rx="14" fill="#103847"/>
-  <text x="624" y="265" text-anchor="middle" class="pill-text">NEXT STEP</text>
+  <rect x="574" y="246" width="120" height="28" rx="14" fill="#103847"/>
+  <text x="634" y="265" text-anchor="middle" class="pill-text">NEXT STEP</text>
   <text x="574" y="322" class="card-title">Execute</text>
   <text x="574" y="352" class="card-text">Run one check.</text>
   <g transform="matrix(0.38 0 0 0.38 714 258)">
@@ -126,7 +126,7 @@
     <rect x="1048" y="222" width="220" height="168" rx="28" fill="none" stroke="#d2c0a8" stroke-width="2"/>
   </g>
   <rect x="1074" y="246" width="100" height="28" rx="14" fill="#ef8c4d"/>
-  <text x="1124" y="255" text-anchor="middle" class="pill-text">ADJUST</text>
+  <text x="1124" y="265" text-anchor="middle" class="pill-text">ADJUST</text>
   <text x="1074" y="322" class="card-title">Replan</text>
   <text x="1074" y="352" class="card-text">Shift the plan.</text>
   <g transform="matrix(0.38 0 0 0.38 1214 258)">
