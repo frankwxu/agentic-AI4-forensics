@@ -12,6 +12,14 @@ It is designed for cybersecurity and digital forensics students, including learn
 These tutorial labs are written for students who are learning cybersecurity or digital forensics and may be new to programming.
 The onboarding sequence starts with a lightweight Python and LLM foundation so students can follow the later agent labs without needing a full computer science background.
 
+## Investigation Cases And Pattern Fit
+
+- `Lab 1 Reflection Pattern`: Students investigate suspected customer-data exfiltration in a business setting. The reflection pattern helps them critique an initial answer, notice missing evidence or weak reasoning, and improve the investigative write-up.
+- `Lab 2 Tool Use Pattern`: Students work through image metadata, vehicle matching, and sale-draft evidence. The tool-use pattern shows how an agent can call specific tools to inspect artifacts instead of guessing from the prompt alone.
+- `Lab 3 ReAct Pattern`: Students verify communications through step-by-step reasoning with tool calls. The ReAct pattern helps them alternate between thinking and evidence collection during the investigation.
+- `Lab 4 Planning Pattern`: Students examine phone access, call timing, and delayed WhatsApp delivery. The planning pattern helps break a more complex forensic question into smaller investigative steps that can be checked in sequence.
+- `Lab 5 Multiagent Pattern`: Students assess transmission activity and review chain-of-custody issues across the case record. The multiagent pattern shows how different investigative roles can split the work, compare findings, and combine them into a final assessment.
+
 ## Code Provenance
 
 The agent workflow code in `src/agentic_patterns/` gives credit to The Neural Maze's
@@ -76,14 +84,6 @@ Each onboarding lab has its own `01_instructions.md` with the step-by-step detai
 - `lab3_react_pattern/`: ReAct lab for step-by-step communication verification with tool calls
 - `lab4_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
 - `lab5_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
-
-## Investigation Cases And Pattern Fit
-
-- `Lab 1 Reflection Pattern`: Students investigate suspected customer-data exfiltration in a business setting. The reflection pattern helps them critique an initial answer, notice missing evidence or weak reasoning, and improve the investigative write-up.
-- `Lab 2 Tool Use Pattern`: Students work through image metadata, vehicle matching, and sale-draft evidence. The tool-use pattern shows how an agent can call specific tools to inspect artifacts instead of guessing from the prompt alone.
-- `Lab 3 ReAct Pattern`: Students verify communications through step-by-step reasoning with tool calls. The ReAct pattern helps them alternate between thinking and evidence collection during the investigation.
-- `Lab 4 Planning Pattern`: Students examine phone access, call timing, and delayed WhatsApp delivery. The planning pattern helps break a more complex forensic question into smaller investigative steps that can be checked in sequence.
-- `Lab 5 Multiagent Pattern`: Students assess transmission activity and review chain-of-custody issues across the case record. The multiagent pattern shows how different investigative roles can split the work, compare findings, and combine them into a final assessment.
 
 Each onboarding lab folder includes its own instructions and supporting materials for that part of the setup or warm-up sequence.
 
