@@ -87,9 +87,51 @@ git clone https://github.com/frankwxu/agentic-AI4-forensics.git
 cd agentic-AI4-forensics
 ```
 
+## Open-Source Ollama Setup
+
+Labs `0-02` through `5` use open-source Ollama for local model serving. By default, the lab-local `.env.example` files point to a local Ollama-compatible endpoint at `http://localhost:11434/v1`.
+
+Install Ollama with the official distribution for your platform:
+
+- macOS: use the official installer from [Ollama for macOS](https://ollama.com/download/mac)
+- Linux:
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+- Windows PowerShell:
+
+```powershell
+irm https://ollama.com/install.ps1 | iex
+```
+
+If you need another platform-specific package or installer, use the main [Ollama download page](https://ollama.com/download).
+
+Start or verify Ollama locally:
+
+```bash
+ollama serve
+ollama list
+```
+
+Download the models used in these labs:
+
+```bash
+ollama pull qwen3:8b
+ollama pull qwen3.5:9b
+```
+
+| Labs | Default model |
+| --- | --- |
+| `Lab 0-02`, `Lab 0-03`, `Lab 0-04`, `Lab 2`, `Lab 4`, `Lab 5` | `qwen3:8b` |
+| `Lab 1`, `Lab 3` | `qwen3.5:9b` |
+
+If your instructor provides a different `MODEL` or `OLLAMA_BASE_URL`, use the instructor override in that lab's local `.env` file.
+
 ## Quick Start
 
-Most runnable lab folders now have their own `.env.example`. Lab 0-00 (`lab0_00_python_basics`) begins the course with a lightweight Python primer for reading notebook code. Lab 0-01 (`lab0_01_llm_foundations`) covers the basic local Python setup needed for the tiny LLM notebook. Lab 0-02 (`lab0_02_environment_setup`) adds `.env`, Ollama, and Graphviz for the agent workflow labs.
+Complete the `Open-Source Ollama Setup` section above before starting the later labs. Most runnable lab folders now have their own `.env.example`. Lab 0-00 (`lab0_00_python_basics`) begins the course with a lightweight Python primer for reading notebook code. Lab 0-01 (`lab0_01_llm_foundations`) covers the basic local Python setup needed for the tiny LLM notebook. Lab 0-02 (`lab0_02_environment_setup`) adds `.env`, Ollama, and Graphviz for the agent workflow labs.
 
 The onboarding labs are paced for cybersecurity and digital forensics students who may only have a little programming experience.
 
@@ -101,7 +143,7 @@ cp lab0_02_environment_setup/.env.example lab0_02_environment_setup/.env
 
 On Windows, create `.env` by copying the matching lab-local `.env.example`.
 
-Then update that lab-local `.env` with the `MODEL` and `OLLAMA_BASE_URL` values provided by your instructor.
+Then update that lab-local `.env` with the default local Ollama setup or the instructor-provided override for `MODEL` and `OLLAMA_BASE_URL`.
 
 Repeat that pattern for any lab you plan to run. For example:
 
