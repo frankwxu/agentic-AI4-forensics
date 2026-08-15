@@ -10,110 +10,52 @@ This lab also includes a runnable notebook, [03_tiny_llm_book_demo.ipynb](03_tin
 
 ## 1. What Is an LLM?
 
-An `LLM`, or large language model, is a system trained to predict the next token in a sequence of text.
+An `LLM`, or large language model, is a type of AI model that excels at understanding and generating human language. It is trained on large amounts of text to recognize language patterns and can interpret the wording and context of an input well enough to produce a useful response. This capability does not prove human-like comprehension or guarantee that its response is factually correct or supported by evidence.
 
-That definition sounds simple, but it is the key idea behind many modern chat systems. When you ask a question, the model does not look up a hidden answer sheet in the way a database would. Instead, it uses patterns learned from training data to decide which token is most likely to come next, then repeats that step again and again.
+Under the hood, the central job is simpler: predict the next token from the text that came before it. When you ask a question, the model does not look up a hidden answer sheet in the way a database would. Instead, it uses patterns learned from training data to score possible next tokens, selects one, and repeats that step again and again.
 
 In plain language, an LLM is:
 
 - a model that reads text as tokens
 - a model that uses prior context to predict what should come next
-- a model that can generate useful language without truly "understanding" text the way a person does
+- a model that can generate useful language without guaranteeing human-like understanding, factual correctness, or evidence-based conclusions
 
 This is why an LLM can produce responses that sound fluent, organized, and confident, even when parts of the answer are incomplete or wrong.
 
-## 2. How Text Becomes Tokens
+For a second, approachable explanation, see Hugging Face's [What are LLMs?](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms) lesson.
 
-Models do not read raw text the way humans do. They first break text into smaller pieces called `tokens`.
+## 2. What a Transformer Does at a High Level
 
-Depending on the tokenizer, a token might be:
+The `transformer` is the model architecture that made modern LLMs practical at scale. Most current LLMs are built on this deep-learning architecture, which uses an `attention` mechanism to decide which parts of the input matter most for the current prediction. Transformers were introduced in 2017, and their adoption grew rapidly after models such as Google's BERT in 2018.
 
-- a whole short word
-- part of a longer word
-- punctuation
-- whitespace patterns
-- a symbol or number chunk
+If you would like to see the original encoder--decoder Transformer design, see the diagram in the paper [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762).
 
-For example, the sentence:
+![Transformer attention architecture](https://machinelearningmastery.com/wp-content/uploads/2021/08/attention_research_1.png)
 
-```text
-Dorothy ran home.
-```
+*Figure 2. A visual overview of the Transformer architecture and its attention-based components. Most current LLMs use the decoder-style approach for next-token generation.*
 
-might be broken into pieces like:
+### Three Transformer Families
 
-```text
-["Dorothy", " ran", " home", "."]
-```
+Transformers are commonly grouped by the job they perform:
 
-The exact split depends on the tokenizer. The important point is that models work with token sequences, not with human-friendly word boundaries.
+- `encoder-based` Transformers take text (or other data) as input and turn it into a dense representation, also called an embedding. BERT is a well-known example. These models are useful for text classification, semantic search, and named-entity recognition.
+- `decoder-based` Transformers generate a sequence one token at a time. Llama is one example. This is the usual architecture for chat-oriented LLMs, text generation, and code generation; such models often have billions of parameters.
+- `encoder--decoder`, or sequence-to-sequence, Transformers first encode the input into a context representation and then decode an output sequence. T5 and BART are examples. They are often used for translation, summarization, and paraphrasing.
 
-### What This Looks Like
+Although language models come in several forms, the LLMs used in chat systems are typically large decoder-based Transformers. Their repeated next-token generation is the principle this reading focuses on.
 
-You can picture tokenization as a first pass that turns text into chunks the model can work with, and then assigns each chunk an ID.
+### Examples of LLMs
 
-For example:
+The following are representative LLM families and their providers:
 
-```text
-Original text:
-Dorothy ran home.
-
-Possible token sequence:
-["Dorothy", " ran", " home", "."]
-
-Possible token IDs:
-[17, 42, 9, 3]
-```
-
-The model does not yet know what these chunks mean. At this stage, it has an ordered sequence of pieces and a numeric ID for each piece.
-
-In the tiny notebook for this lab, we simplify even further and use `word-level tokens`, so each word is treated as one token. Real production LLMs often use more flexible tokenizers that can split longer words into smaller parts.
-
-### Why This Matters
-
-- A single word can become multiple tokens.
-- A prompt with more tokens uses more of the model's context window.
-- Small wording changes can change the token sequence and therefore change the output.
-
-## 3. From Token IDs to Initial Token Meanings
-
-Token IDs are only labels. Before the model can do useful math with them, it looks up each ID in an embedding table and turns it into a small vector of learned numbers.
-
-That is the role of `embeddings`: they give each token an initial meaning the model can work with numerically.
-
-### What This Looks Like
-
-Students often ask what an embedding actually is. A simple answer is: it is a row of learned numbers attached to a token.
-
-For example, a tiny teaching model might store something like:
-
-```text
-"dorothy" -> token ID 17 -> [0.21, -0.44, 0.08, 0.91]
-"ran"     -> token ID 42 -> [0.18, -0.39, 0.11, 0.87]
-"home"    -> token ID 63 -> [-0.72, 0.55, 0.14, -0.31]
-```
-
-![Figure 2. Visualizing one embedding lookup](./figures/lab0_embedding_lookup.svg)
-
-*Figure 2. A token does not carry meaning as raw text or as an ID alone. The model uses the token ID to look up one learned row of numbers in the embedding table, giving that token an initial meaning before context is applied.*
-
-Those numbers are not meant for people to read directly. They are values the model learns so it can process tokens mathematically.
-
-One helpful mental model is:
-
-- tokenization gives the model token pieces
-- token IDs give each token a lookup key
-- embeddings give each token a learned numeric row from a table
-
-So when students ask, "What does an embedding look like?", the shortest correct answer is:
-
-`a small vector of learned numbers attached to a token`
-
-You do not need to interpret each number by itself. What matters is that the model uses those numbers as the token's starting meaning before context is applied.
-
-## 4. What a Transformer Does at a High Level
-
-The `transformer` is the model architecture that made modern LLMs practical at scale.
+| Model | Provider |
+| --- | --- |
+| Deepseek-R1 | DeepSeek |
+| GPT4 | OpenAI |
+| Llama 3 | Meta (Facebook AI Research) |
+| SmolLM2 | Hugging Face |
+| Gemma | Google |
+| Mistral | Mistral |
 
 For this course, treat the transformer as a black box with a clear job:
 
@@ -133,9 +75,7 @@ This is why the wording `contextualized token meanings` can be helpful. Before t
 
 ### What This Looks Like
 
-The same token can end up with different contextualized meanings in different sentences.
-
-Up to this point, the reading has used `Dorothy ran ...` as the main running example. Here we briefly switch to `bank` because it is a better word for showing contextualization: the same token can point toward different meanings depending on the surrounding words.
+The same token can end up with different contextualized meanings in different sentences. To show this, we briefly use `bank` because it can point toward different meanings depending on the surrounding words.
 
 For example, consider the token `bank`:
 
@@ -164,6 +104,105 @@ Anything earlier than that would fall outside the current window.
 That is why longer prompts can matter. More useful recent context often leads to better next-token predictions.
 
 You do not need the math for this course. What matters is that the model is constantly turning initial token meanings into contextualized token meanings before making a prediction.
+
+## 3. How Text Becomes Tokens
+
+Models do not read raw text the way humans do. They first break text into smaller pieces called `tokens`.
+
+Depending on the tokenizer, a token might be:
+
+- a whole short word
+- part of a longer word
+- punctuation
+- whitespace patterns
+- a symbol or number chunk
+
+For example, the sentence:
+
+```text
+Dorothy ran home.
+```
+
+might be broken into pieces like:
+
+```text
+["Dorothy", " ran", " home", "."]
+```
+
+The exact split depends on the tokenizer. The important point is that models work with token sequences, not with human-friendly word boundaries.
+
+Many tokenizers use subword pieces, which lets a limited vocabulary represent many different words. For example, `interest` and `ing` can combine to form `interesting`, while `ed` can be added to form `interested`.
+
+### What This Looks Like
+
+You can picture tokenization as a first pass that turns text into chunks the model can work with, and then assigns each chunk an ID.
+
+For example:
+
+```text
+Original text:
+Dorothy ran home.
+
+Possible token sequence:
+["Dorothy", " ran", " home", "."]
+
+Possible token IDs:
+[17, 42, 9, 3]
+```
+
+The model does not yet know what these chunks mean. At this stage, it has an ordered sequence of pieces and a numeric ID for each piece.
+
+In the tiny notebook for this lab, we simplify even further and use `word-level tokens`, so each word is treated as one token. Real production LLMs often use more flexible tokenizers that can split longer words into smaller parts.
+
+### Try It: Tokenizer Playground
+
+Use the interactive Hugging Face tokenizer playground to see how different tokenizers split your own text into tokens:
+
+<iframe src="https://agents-course-the-tokenizer-playground.static.hf.space" title="Hugging Face Tokenizer Playground" width="100%" height="520"></iframe>
+
+If the interactive view is not available in your Markdown preview, open the [Tokenizer Playground](https://agents-course-the-tokenizer-playground.static.hf.space) in a new tab.
+
+### Why This Matters
+
+- A single word can become multiple tokens.
+- A prompt with more tokens uses more of the model's context window.
+- Small wording changes can change the token sequence and therefore change the output.
+
+## 4. From Token IDs to Initial Token Meanings
+
+Token IDs are only labels. Before the model can do useful math with them, it looks up each ID in an embedding table and turns it into a small vector of learned numbers.
+
+That is the role of `embeddings`: they give each token an initial meaning the model can work with numerically.
+
+### What This Looks Like
+
+Students often ask what an embedding actually is. A simple answer is: it is a row of learned numbers attached to a token.
+
+For example, a tiny teaching model might store something like:
+
+```text
+"dorothy" -> token ID 17 -> [0.21, -0.44, 0.08, 0.91]
+"ran"     -> token ID 42 -> [0.18, -0.39, 0.11, 0.87]
+"home"    -> token ID 63 -> [-0.72, 0.55, 0.14, -0.31]
+```
+
+![Figure 4. Visualizing one embedding lookup](./figures/lab0_embedding_lookup.svg)
+
+*Figure 4. A token does not carry meaning as raw text or as an ID alone. The model uses the token ID to look up one learned row of numbers in the embedding table, giving that token an initial meaning before context is applied.*
+
+Those numbers are not meant for people to read directly. They are values the model learns so it can process tokens mathematically.
+
+One helpful mental model is:
+
+- tokenization gives the model token pieces
+- token IDs give each token a lookup key
+- embeddings give each token a learned numeric row from a table
+
+So when students ask, "What does an embedding look like?", the shortest correct answer is:
+
+`a small vector of learned numbers attached to a token`
+
+You do not need to interpret each number by itself. What matters is that the model uses those numbers as the token's starting meaning before context is applied.
 
 ## 5. What the Model Predicts
 
@@ -242,9 +281,9 @@ This distinction matters later in the course:
 
 If the word `weights` still feels abstract, it can help to look at a much simpler model first.
 
-![Figure 4. A tiny regression analogy for weights](./figures/lab0_weights_regression.svg)
+![Figure 5. A tiny regression analogy for weights](./figures/lab0_weights_regression.svg)
 
-*Figure 4. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
+*Figure 5. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
 
 ### What One Training Example Looks Like
 
@@ -345,9 +384,9 @@ An LLM-only workflow can run into problems such as:
 
 These are not bugs in only one model. They are reasons the later labs add structure around the model.
 
-![Figure 5. Why the course adds more than an LLM alone](./figures/lab0_llm_limits_to_controls.svg)
+![Figure 6. Why the course adds more than an LLM alone](./figures/lab0_llm_limits_to_controls.svg)
 
-*Figure 5. LLM-only behavior is useful but not always reliable enough for bounded forensic tasks. The rest of the course adds prompt rules, tools, memory, planning, multiagent review, and human judgment around the model.*
+*Figure 6. LLM-only behavior is useful but not always reliable enough for bounded forensic tasks. The rest of the course adds prompt rules, tools, memory, planning, multiagent review, and human judgment around the model.*
 
 This course responds to those limits in stages:
 
