@@ -4,10 +4,6 @@ This reading gives you a teaching-friendly picture of what a large language mode
 
 This lab also includes a runnable notebook, [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb), where you will train a tiny word-level transformer on a short public-domain book excerpt and inspect its next-word predictions.
 
-![Figure 1. From text input to next-token output in an LLM](./figures/lab0_llm_pipeline.svg)
-
-*Figure 1. A teaching-friendly LLM pipeline: text becomes tokens, tokens become token IDs, token IDs become initial token meanings (embeddings), the transformer turns those into contextualized token meanings, and the output layer scores many possible next tokens. The figure shows only the top few probabilities so they are easy to read.*
-
 ## 1. What Is an LLM?
 
 An `LLM`, or large language model, is a type of AI model that excels at understanding and generating human language. It is trained on large amounts of text to recognize language patterns and can interpret the wording and context of an input well enough to produce a useful response. This capability does not prove human-like comprehension or guarantee that its response is factually correct or supported by evidence.
@@ -47,7 +43,7 @@ If you would like to see the original encoder--decoder Transformer design, see t
 
 ![Transformer attention architecture](https://machinelearningmastery.com/wp-content/uploads/2021/08/attention_research_1.png)
 
-*Figure 2. The original encoder--decoder Transformer architecture, designed for sequence-to-sequence tasks such as translation.*
+*Figure 1. The original encoder--decoder Transformer architecture, designed for sequence-to-sequence tasks such as translation.*
 
 **Three Transformer Families.**
 
@@ -63,7 +59,7 @@ Because this course focuses on chat-style LLMs, the diagram below shows a decode
 
 ![Decoder-only LLM architecture](./figures/decoder_only.jpg)
 
-*Figure 3. The GPT-1 architecture without the task-classifier head (left) and the GPT-2 architecture (right). Source: [Meet GPT: The Decoder-Only Transformer](https://towardsdatascience.com/meet-gpt-the-decoder-only-transformer-12f4a7918b36/).*
+*Figure 2. The GPT-1 architecture without the task-classifier head (left) and the GPT-2 architecture (right). Source: [Meet GPT: The Decoder-Only Transformer](https://towardsdatascience.com/meet-gpt-the-decoder-only-transformer-12f4a7918b36/).*
 
 For this course, treat the `decoder-only Transformer` as a black box with a clear job:
 
@@ -162,9 +158,9 @@ For example, a tiny teaching model might store something like:
 "home"    -> token ID 63 -> [-0.72, 0.55, 0.14, -0.31]
 ```
 
-![Figure 4. Visualizing one embedding lookup](./figures/lab0_embedding_lookup.svg)
+![Figure 3. Visualizing one embedding lookup](./figures/lab0_embedding_lookup.svg)
 
-*Figure 4. A token does not carry meaning as raw text or as an ID alone. The model uses the token ID to look up one learned row of numbers in the embedding table, giving that token an initial meaning before context is applied.*
+*Figure 3. A token does not carry meaning as raw text or as an ID alone. The model uses the token ID to look up one learned row of numbers in the embedding table, giving that token an initial meaning before context is applied.*
 
 Those numbers are not meant for people to read directly. They are values the model learns so it can process tokens mathematically.
 
@@ -184,27 +180,27 @@ You do not need to interpret each number by itself. What matters is that the mod
 
 The transformer updates each token's starting embedding using the surrounding tokens. The resulting contextualized meaning can differ across sentences. For example, `bank` can point toward different meanings in a river sentence versus a money sentence. Attention lets the model give greater weight to the words that reveal which meaning is intended.
 
-![Figure 5. Context words disambiguate bank](./figures/lab0_bank_attention_context.png)
+![Figure 4. Context words disambiguate bank](./figures/lab0_bank_attention_context.png)
 
-*Figure 5. Context words distinguish the river meaning of `bank` from its financial-institution meaning. Attention helps the model identify the words most useful for making that distinction. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
+*Figure 4. Context words distinguish the river meaning of `bank` from its financial-institution meaning. Attention helps the model identify the words most useful for making that distinction. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
 
 The two contexts then lead to different contextualized embeddings. In this teaching illustration, `bank1` is closer to river-related ideas and `bank2` is closer to money-related ideas; the percentages show an illustrative weighting, not a calculation students need to perform.
 
-![Figure 6. Context changes the embedding of bank](./figures/lab0_bank_contextual_embeddings.png)
+![Figure 5. Context changes the embedding of bank](./figures/lab0_bank_contextual_embeddings.png)
 
-*Figure 6. A teaching visualization of contextualized embeddings. The same token, `bank`, is represented differently when its surrounding context points toward a river or toward money. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
+*Figure 5. A teaching visualization of contextualized embeddings. The same token, `bank`, is represented differently when its surrounding context points toward a river or toward money. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
 
 The attention mechanism represents these relationships as numeric scores between token positions. The example below gives `bank` a nonzero relationship with `river` in the first sentence and with `money` in the second.
 
-![Figure 7. Attention-score matrices for bank](./figures/lab0_bank_attention_scores.png)
+![Figure 6. Attention-score matrices for bank](./figures/lab0_bank_attention_scores.png)
 
-*Figure 7. A simplified attention-score matrix for the two `bank` contexts. The numbers are illustrative attention relationships, not probabilities students need to calculate. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
+*Figure 6. A simplified attention-score matrix for the two `bank` contexts. The numbers are illustrative attention relationships, not probabilities students need to calculate. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
 
 The following simplified view makes the same contrast explicit: one starting embedding for `bank` is updated into different contextualized representations.
 
-![Figure 8. The same token can change meaning across contexts](./figures/lab0_contextualized_bank.svg)
+![Figure 7. The same token can change meaning across contexts](./figures/lab0_contextualized_bank.svg)
 
-*Figure 8. The token `bank` can start with one initial embedding, but the transformer updates it differently in a river sentence versus a money sentence.*
+*Figure 7. The token `bank` can start with one initial embedding, but the transformer updates it differently in a river sentence versus a money sentence.*
 
 ### Context Windows
 
@@ -222,27 +218,27 @@ the model might only "see" something like:
 
 Anything earlier than that would fall outside the current window. More useful recent context often leads to better next-token predictions.
 
-## 5. What the Model Predicts
+## 5. How an LLM Generates Text
+
+### Autoregressive Generation
 
 At each generation step, the model takes the current contextualized token meanings and produces a probability distribution over possible next tokens.
 
-To keep one running example, the next few sections continue with the same tiny sentence.
+LLMs generate text `autoregressively`: each selected token is appended to the input sequence and becomes part of the context used to predict the following token. The loop continues until the model selects an end-of-sequence (`EOS`) token, which signals that generation can stop.
 
-For example, after the text:
+![Figure 8. Animated autoregressive generation](https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit1/AutoregressionSchema.gif)
 
-```text
-Dorothy ran
-```
+*Figure 8. Autoregressive generation: each selected token becomes part of the context for the next prediction. Source: [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms).*
 
-the model might internally lean toward possibilities such as:
+### One Decoding Step
 
-- ` home`
-- ` away`
-- ` back`
+During one decoding step, the tokenized input is transformed into contextual representations that capture token meaning and position. The model then produces scores ranking every vocabulary token as a possible next token.
 
-The model does not simply "know" one correct next token. It scores many possibilities and the system then selects or samples one.
+The output layer scores the whole vocabulary, but Figure 9 shows only a small top-token slice so the probabilities are easy to read.
 
-The output layer scores the whole vocabulary, but Figure 1 shows only a small top-token slice so the probabilities are easy to read.
+![Figure 9. From text input to next-token output in an LLM](./figures/lab0_llm_pipeline.svg)
+
+*Figure 9. A teaching-friendly LLM pipeline: text becomes tokens, tokens become token IDs, token IDs become initial token meanings (embeddings), the transformer turns those into contextualized token meanings, and the output layer scores many possible next tokens. The figure shows only the top few probabilities so they are easy to read.*
 
 This is the core loop:
 
@@ -252,7 +248,7 @@ This is the core loop:
 4. score possible next tokens
 5. choose one token
 6. append it to the sequence
-7. repeat
+7. repeat until the model selects an `EOS` token
 
 That is what people mean by `next-token prediction`.
 
@@ -273,7 +269,13 @@ The model may score possible next tokens something like this:
 other tokens 0.03 combined
 ```
 
-That does not mean the model has proven Dorothy ran home. It means that, given the words so far, `home` currently looks like the most likely next token.
+The model does not simply "know" one correct next token. It scores many possibilities and the system then selects or samples one. That does not mean the model has proven Dorothy ran home; it means that, given the words so far, `home` currently looks like the most likely next token.
+
+Figure 10 makes the selection stage visible. After the model scores possible next tokens, a decoding strategy selects one token; the selected token is appended to the text and becomes part of the context for the next prediction. This continues until the model selects `EOS`.
+
+![Figure 10. Animated next-token generation](https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit1/DecodingFinal.gif)
+
+*Figure 10. Animated next-token generation from a probability distribution. Source: [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms).*
 
 ## 6. Training Versus Using a Model
 
@@ -299,9 +301,9 @@ This distinction matters later in the course:
 
 If the word `weights` still feels abstract, it can help to look at a much simpler model first.
 
-![Figure 9. A tiny regression analogy for weights](./figures/lab0_weights_regression.svg)
+![Figure 11. A tiny regression analogy for weights](./figures/lab0_weights_regression.svg)
 
-*Figure 9. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
+*Figure 11. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
 
 ### A Training Example
 
@@ -402,9 +404,9 @@ An LLM-only workflow can run into problems such as:
 
 These are not bugs in only one model. They are reasons the later labs add structure around the model.
 
-![Figure 10. Why the course adds more than an LLM alone](./figures/lab0_llm_limits_to_controls.svg)
+![Figure 12. Why the course adds more than an LLM alone](./figures/lab0_llm_limits_to_controls.svg)
 
-*Figure 10. LLM-only behavior is useful but not always reliable enough for bounded forensic tasks. The rest of the course adds prompt rules, tools, memory, planning, multiagent review, and human judgment around the model.*
+*Figure 12. LLM-only behavior is useful but not always reliable enough for bounded forensic tasks. The rest of the course adds prompt rules, tools, memory, planning, multiagent review, and human judgment around the model.*
 
 This course responds to those limits in stages:
 
