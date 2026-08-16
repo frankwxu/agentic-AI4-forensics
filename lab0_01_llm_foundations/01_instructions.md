@@ -18,8 +18,9 @@ By the end of this primer, you should be able to:
 - explain what an LLM is in plain language
 - describe tokens, tokenization, embeddings, and context window at a high level
 - explain next-token prediction without using advanced math
-- train a tiny word-level transformer on a short book excerpt
-- watch training loss and next-word accuracy change during training
+- identify the causal mask that makes the tiny model a decoder-only Transformer
+- train a tiny word-level decoder-only Transformer on a short book excerpt
+- interpret training and validation loss and next-word accuracy graphs
 - distinguish training from inference
 - explain why prompts and temperature can change outputs
 - identify at least one reason an LLM can sound confident and still be wrong
@@ -62,7 +63,7 @@ Complete the steps in this order:
 3. Install the base Python packages:
 
    ```bash
-   pip install -r requirements.txt
+   python -m pip install -r requirements.txt
    ```
 
 4. Launch Jupyter from the repo root.
@@ -70,17 +71,12 @@ Complete the steps in this order:
 5. Pause here and return to [lab0_00_python_basics/03_python_basics_notebook.ipynb](../lab0_00_python_basics/03_python_basics_notebook.ipynb). Run that notebook from top to bottom.
 6. Then run [lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb](../lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb).
 7. Read [02_llm_foundations_reading.md](02_llm_foundations_reading.md).
-8. Study the five figures in [figures/](figures) as you read:
-   - `lab0_llm_pipeline.svg`
-   - `lab0_embedding_lookup.svg`
-   - `lab0_contextualized_bank.svg`
-   - `lab0_weights_regression.svg`
-   - `lab0_llm_limits_to_controls.svg`
+8. Study the figures embedded in the reading. Pay particular attention to the decoder-only Transformer, contextualized `bank` embeddings, and the next-token generation loop.
 9. Open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb).
-10. Run the notebook from top to bottom.
+10. Run the notebook from top to bottom. Notice the initial random embeddings, the decoder-only architecture diagram, the training and validation loss/accuracy graphs, the next-word predictions, and the generated continuation.
 11. Answer the short reflection questions at the end of the reading and notebook.
 
-The notebook trains a tiny word-level transformer on a repeated public-domain book excerpt so you can see a visible training loop on classroom hardware. It is a teaching model, not a production LLM.
+The notebook trains a tiny word-level decoder-only Transformer on a repeated public-domain book excerpt so you can see a visible training loop on classroom hardware. It is a teaching model, not a production LLM.
 
 ## Success Criteria
 
@@ -90,11 +86,16 @@ You have completed Lab 0-01 when:
 - you complete [lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb](../lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb)
 - you can explain what an LLM predicts at each step
 - you can distinguish tokens from words
+- you can explain why the tiny model is decoder-only and how its causal mask limits attention to prior tokens
 - you can explain the difference between training a model and using a model
 - you can explain why prompt wording changes outputs
-- you can point to a training loss trend and explain what it means
+- you can point to training and validation loss/accuracy trends and explain what they mean
 - you can inspect a next-word prediction and explain why it depends on the prompt context
 - you can name at least one limitation of LLM-only behavior that later labs are designed to address
+
+## Optional Extension
+
+At the end of the notebook, complete **Optional Assignment: Train on a Different Text** to observe how a different training excerpt changes the vocabulary, learned parameters, predictions, and generated output. This is an extension, not a required completion criterion.
 
 ## After This Primer
 
