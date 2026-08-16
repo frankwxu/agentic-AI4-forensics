@@ -2,13 +2,13 @@
 
 Use this checklist before starting `lab0_03_model_warmup`.
 
-- Lab 0-01 is completed:
+- [Course Setup](../course_setup.md) is completed:
   - repository cloned locally
   - virtual environment created: `.venv-ai4-forensics`
   - virtual environment activated in the current shell
-  - `pip install -r requirements.txt` completed successfully
+  - `python -m pip install -r requirements.txt` completed successfully
   - Jupyter launches from the repo root
-  - the tiny LLM reading and notebook are completed
+- Lab 0-00 and Lab 0-01 are completed, including the tiny LLM reading and notebook
 - `lab0_02_environment_setup/.env` created from `lab0_02_environment_setup/.env.example`
 - `lab0_02_environment_setup/.env` updated with the instructor-provided `MODEL` and `OLLAMA_BASE_URL`
 - Graphviz system application installed

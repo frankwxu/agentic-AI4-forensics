@@ -7,9 +7,7 @@ Use this primer before [lab0_02_environment_setup/01_instructions.md](../lab0_02
 - a plain-language mental model of what a large language model is
 - one small runnable example of how a model is trained and then used for next-word prediction
 
-This lab does not require `.env`, Ollama, or Graphviz. It does require the basic local Python setup needed to run the tiny LLM notebook.
-
-Before you begin this lab, work through the reading in [lab0_00_python_basics/01_instructions.md](../lab0_00_python_basics/01_instructions.md). After you finish the setup steps below, you will return to the Python primer notebooks for two short guided practice runs.
+This lab does not require `.env`, Ollama, or Graphviz. Complete [Course Setup](../course_setup.md) and [Lab 0-00: Python Basics](../lab0_00_python_basics/01_instructions.md) before you begin.
 
 ## Learning Goals
 
@@ -30,51 +28,11 @@ By the end of this primer, you should be able to:
 
 Complete the steps in this order:
 
-1. Clone the repo:
-
-   ```bash
-   git clone https://github.com/frankwxu/agentic-AI4-forensics.git
-   cd agentic-AI4-forensics
-   ```
-
-2. Create and activate the virtual environment.
-
-   Linux/macOS:
-
-   ```bash
-   python3 -m venv .venv-ai4-forensics
-   source .venv-ai4-forensics/bin/activate
-   ```
-
-   Windows PowerShell:
-
-   ```powershell
-   py -3 -m venv .venv-ai4-forensics
-   .\.venv-ai4-forensics\Scripts\Activate.ps1
-   ```
-
-   Windows Command Prompt:
-
-   ```cmd
-   py -3 -m venv .venv-ai4-forensics
-   .venv-ai4-forensics\Scripts\activate.bat
-   ```
-
-3. Install the base Python packages:
-
-   ```bash
-   python -m pip install -r requirements.txt
-   ```
-
-4. Launch Jupyter from the repo root.
-
-5. Pause here and return to [lab0_00_python_basics/03_python_basics_notebook.ipynb](../lab0_00_python_basics/03_python_basics_notebook.ipynb). Run that notebook from top to bottom.
-6. Then run [lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb](../lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb).
-7. Read [02_llm_foundations_reading.md](02_llm_foundations_reading.md).
-8. Study the figures embedded in the reading. Pay particular attention to the decoder-only Transformer, contextualized `bank` embeddings, and the next-token generation loop.
-9. Open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb).
-10. Run the notebook from top to bottom. Notice the initial random embeddings, the decoder-only architecture diagram, the training and validation loss/accuracy graphs, the next-word predictions, and the generated continuation.
-11. Answer the short reflection questions at the end of the reading and notebook.
+1. Read [02_llm_foundations_reading.md](02_llm_foundations_reading.md).
+2. Study the figures embedded in the reading. Pay particular attention to the decoder-only Transformer, contextualized `bank` embeddings, and the next-token generation loop.
+3. Open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb).
+4. Run the notebook from top to bottom. Notice the initial random embeddings, the decoder-only architecture diagram, the training and validation loss/accuracy graphs, the next-word predictions, and the generated continuation.
+5. Answer the short reflection questions at the end of the reading and notebook.
 
 The notebook trains a tiny word-level decoder-only Transformer on a repeated public-domain book excerpt so you can see a visible training loop on classroom hardware. It is a teaching model, not a production LLM.
 
@@ -82,8 +40,6 @@ The notebook trains a tiny word-level decoder-only Transformer on a repeated pub
 
 You have completed Lab 0-01 when:
 
-- you complete [lab0_00_python_basics/03_python_basics_notebook.ipynb](../lab0_00_python_basics/03_python_basics_notebook.ipynb)
-- you complete [lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb](../lab0_00_python_basics/04_python_patterns_for_later_labs.ipynb)
 - you can explain what an LLM predicts at each step
 - you can distinguish tokens from words
 - you can explain why the tiny model is decoder-only and how its causal mask limits attention to prior tokens
