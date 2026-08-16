@@ -1,4 +1,18 @@
-# telegram_agent_demo.py - Telegram agent with personality, persistent sessions, and tool use
+"""Telegram agent classroom demo: personality, memory, and tool use.
+
+Read this file in six sections:
+
+1. Configuration loads credentials and creates the OpenAI client.
+2. Tool definitions describe what the model is allowed to request.
+3. Persistent memory saves one JSONL conversation file per Telegram user.
+4. ``execute_tool`` runs a tool request and returns its result.
+5. ``run_agent_turn`` repeats model -> tool -> model until there is a final reply.
+6. ``handle_message`` connects that agent loop to each incoming Telegram message.
+
+Message flow:
+Telegram message -> load saved memory -> run agent and tools -> save memory
+-> send the final answer back to Telegram.
+"""
 
 SOUL = """
 # Who You Are
@@ -32,7 +46,10 @@ from openai import OpenAI
 from telegram import Update
 from telegram.ext import Application, ContextTypes, MessageHandler, filters
 
-# Load .env from either your project folder or current directory
+# --- Configuration ---------------------------------------------------------
+
+# Prefer the course's secure credentials file. The fallback makes local testing
+# convenient without putting credentials in source code.
 for env_path in (Path("/home/frank/projects/telegram_bot/.env"), Path.cwd() / ".env"):
     if env_path.exists():
         load_dotenv(env_path, override=True)
@@ -50,11 +67,20 @@ if not OPENAI_API_KEY:
 if not OPENAI_MODEL:
     raise RuntimeError("Missing OPENAI_MODEL in .env")
 
+# The OpenAI client is reused for every incoming Telegram message.
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-SESSIONS_DIR = "./sessions"
-os.makedirs(SESSIONS_DIR, exist_ok=True)
+# Use the script's folder as the demo workspace, regardless of where Python is
+# launched. Relative tool-created files and persistent sessions live here.
+DEMO_DIR = Path(__file__).resolve().parent
+SESSIONS_DIR = DEMO_DIR / "sessions"
+SESSIONS_DIR.mkdir(exist_ok=True)
 
+# --- Tool definitions ------------------------------------------------------
+
+# These JSON-schema definitions are sent with every model request. With
+# ``tool_choice="auto"``, the model compares the user request with each tool's
+# name and description, then either returns normal text or a structured call.
 TOOLS = [
     {
         "type": "function",
@@ -135,12 +161,16 @@ TOOLS = [
 ]
 
 
+# --- Persistent conversation memory ---------------------------------------
+
+
 def get_session_path(user_id: str) -> str:
-    return os.path.join(SESSIONS_DIR, f"{user_id}.jsonl")
+    """Give every Telegram user a separate persistent memory file."""
+    return str(SESSIONS_DIR / f"{user_id}.jsonl")
 
 
 def load_session(user_id: str) -> list[dict]:
-    """Load conversation history from disk."""
+    """Load a user's JSONL messages so the model can remember prior turns."""
     path = get_session_path(user_id)
     messages: list[dict] = []
     if os.path.exists(path):
@@ -152,7 +182,7 @@ def load_session(user_id: str) -> list[dict]:
 
 
 def save_session(user_id: str, messages: list[dict]) -> None:
-    """Overwrite the session file with the full message list."""
+    """Save the complete updated history; JSONL stores one message per line."""
     path = get_session_path(user_id)
     with open(path, "w", encoding="utf-8") as f:
         for message in messages:
@@ -160,19 +190,36 @@ def save_session(user_id: str, messages: list[dict]) -> None:
 
 
 def truncate_text(text: str, limit: int = 4000) -> str:
+    """Keep tool results small enough to send back to the model."""
     if len(text) <= limit:
         return text
     return text[:limit] + "\n...[truncated]"
 
 
+# --- Tool execution --------------------------------------------------------
+
+
+def get_demo_file_path(path: str) -> Path:
+    """Resolve a generated file path and keep it inside the demo folder."""
+    resolved_path = (DEMO_DIR / path).resolve()
+    if not resolved_path.is_relative_to(DEMO_DIR):
+        raise ValueError("Files created by this demo must stay in the demo folder")
+    return resolved_path
+
+
 def execute_tool(name: str, tool_input: dict) -> str:
+    """Run one tool requested by the model and return its text result."""
     if name == "run_command":
+        # This is deliberately broad for the classroom demo; do not expose it
+        # to untrusted users in a production bot.
         result = subprocess.run(
             tool_input["command"],
             shell=True,
             capture_output=True,
             text=True,
             timeout=30,
+            # Relative files made by a command are created beside this script.
+            cwd=DEMO_DIR,
         )
         return truncate_text((result.stdout or "") + (result.stderr or ""))
 
@@ -181,9 +228,10 @@ def execute_tool(name: str, tool_input: dict) -> str:
             return truncate_text(f.read())
 
     if name == "write_file":
-        with open(tool_input["path"], "w", encoding="utf-8") as f:
+        output_path = get_demo_file_path(tool_input["path"])
+        with open(output_path, "w", encoding="utf-8") as f:
             f.write(tool_input["content"])
-        return f"Wrote to {tool_input['path']}"
+        return f"Wrote to {output_path}"
 
     if name == "web_search":
         # Placeholder implementation
@@ -192,9 +240,19 @@ def execute_tool(name: str, tool_input: dict) -> str:
     return f"Unknown tool: {name}"
 
 
+# --- Agent loop ------------------------------------------------------------
+
+
 def run_agent_turn(messages: list[dict], system_prompt: str) -> tuple[str, list[dict]]:
-    """Run one full agent turn, including any tool calls."""
+    """Return a final answer after the model has finished requesting tools.
+
+    A model response is either a final text answer or one or more tool calls.
+    Tool results are appended to ``messages`` and the model is called again.
+    """
     while True:
+        # Give the model the personality prompt, this user's saved conversation,
+        # and the allowed tool schemas. ``auto`` lets the model choose a tool
+        # only when it believes a tool would help answer the user.
         response = client.chat.completions.create(
             model=OPENAI_MODEL,
             messages=[
@@ -207,7 +265,7 @@ def run_agent_turn(messages: list[dict], system_prompt: str) -> tuple[str, list[
 
         assistant_message = response.choices[0].message
 
-        # Final response with no tool calls
+        # A response without tool calls is the agent's final answer for this turn.
         if not assistant_message.tool_calls:
             text = assistant_message.content or ""
             messages.append({
@@ -216,7 +274,8 @@ def run_agent_turn(messages: list[dict], system_prompt: str) -> tuple[str, list[
             })
             return text, messages
 
-        # Save assistant message containing tool calls
+        # Preserve the tool-call request in memory so the next API call has the
+        # complete conversation required by the Chat Completions API.
         messages.append({
             "role": "assistant",
             "content": assistant_message.content or "",
@@ -233,7 +292,9 @@ def run_agent_turn(messages: list[dict], system_prompt: str) -> tuple[str, list[
             ],
         })
 
-        # Execute tool calls and feed results back
+        # Execute every requested tool, then append its result as a tool message.
+        # The loop gives that result back to the model, which may request another
+        # tool or turn the result into the final answer sent to Telegram.
         for tc in assistant_message.tool_calls:
             tool_name = tc.function.name
             tool_args = json.loads(tc.function.arguments or "{}")
@@ -249,11 +310,16 @@ def run_agent_turn(messages: list[dict], system_prompt: str) -> tuple[str, list[
             })
 
 
+# --- Telegram integration --------------------------------------------------
+
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Turn one Telegram text message into one persistent agent interaction."""
     try:
         if update.message is None or update.message.text is None:
             return
 
+        # Load this sender's prior conversation to provide short-term memory.
         user_id = str(update.effective_user.id)
         messages = load_session(user_id)
 
@@ -273,6 +339,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
+    """Configure Telegram polling and receive messages until Ctrl+C is pressed."""
     app = Application.builder().token(TELEGRAM_BOT_TOKEN).build()
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.run_polling()

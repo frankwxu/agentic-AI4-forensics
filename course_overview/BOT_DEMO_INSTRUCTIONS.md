@@ -8,6 +8,26 @@
 
 For a step-by-step companion tutorial, see [Build an autonomous AI agent with OpenAI and Telegram](https://gist.github.com/dabit3/bc60d3bea0b02927995cd9bf53c3db32).
 
+## How the agent works
+
+Each Telegram user has an independent conversation memory file, stored as `course_overview/sessions/<telegram-user-id>.jsonl`. A JSONL file has one JSON message per line, making it easy to inspect or delete when resetting a demo.
+
+When a user sends a message, the bot follows this sequence:
+
+1. Load that user's saved messages and append the new Telegram message.
+2. Send the personality prompt, conversation history, and tool definitions to the model.
+3. The model decides whether to reply normally or request a tool. `tool_choice="auto"` means the model chooses based on the tool names, descriptions, and the user's request.
+4. When the model requests a tool, Python runs it, adds the result to the conversation as a `tool` message, and asks the model again. This repeats until the model returns a normal text answer.
+5. Save the updated conversation and reply to the user in Telegram.
+
+For example, a request such as “read this file” may cause the model to choose `read_file`; a casual question usually produces a direct text answer without any tool call. The model can request only the tools listed in `TOOLS`, although this classroom example intentionally gives those tools broad local access.
+
+### Example conversation
+
+This conversation illustrates the agent receiving messages and replying through Telegram:
+
+![Example Telegram agent conversation](figures/conversation.jpg)
+
 ## 1. Install dependencies
 
 From the repository root:
@@ -34,7 +54,7 @@ For example, `OPENAI_MODEL` may be a tool-capable chat model available to your O
 
 ## 3. Start the bot
 
-Run this command from the repository root so the session data is saved in `./sessions`:
+Run this command from the repository root:
 
 ```bash
 python3 course_overview/telegram_agent_demo.py
@@ -61,15 +81,15 @@ After sending a message, the bot responds in the Telegram chat:
 3. Ask the bot to inspect a harmless local file or run a harmless command, such as `pwd`.
 4. Explain that each tool request is printed in the terminal and that the result is returned to the model before it answers.
 
-Memory files are written to `sessions/<telegram-user-id>.jsonl`. Remove a user's file to reset that user's conversation memory.
+Memory files are written beside the script in `course_overview/sessions/<telegram-user-id>.jsonl`, regardless of the directory from which the command is run. Remove a user's file to reset that user's conversation memory.
 
 ## Tools in this demo
 
 | Tool | Behavior |
 | --- | --- |
-| `run_command` | Runs a shell command on the computer. |
+| `run_command` | Runs a shell command; relative files made by the command are created in `course_overview`. |
 | `read_file` | Reads a UTF-8 text file. |
-| `write_file` | Writes a UTF-8 text file. |
+| `write_file` | Writes a UTF-8 text file inside `course_overview`; paths outside that folder are rejected. |
 | `web_search` | Returns a placeholder result; it does not perform a real web search. |
 
 ## Classroom safety
