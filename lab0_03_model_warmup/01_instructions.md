@@ -36,6 +36,8 @@ Complete the steps in this order:
 6. Open [03_prompt_revision_assignment.ipynb](03_prompt_revision_assignment.ipynb).
 7. Revise the prompt so the three models return more consistent results.
 8. Compare the baseline and revised results, then complete the reflection.
+9. Open [04_pii_ground_truth_assignment.ipynb](04_pii_ground_truth_assignment.ipynb).
+10. Compare each model's answer with the five-person synthetic ground truth and complete the assignment questions.
 
 In [03_prompt_revision_assignment.ipynb](../lab0_03_model_warmup/03_prompt_revision_assignment.ipynb), Steps 1 through 5 keep the same models, case note, and baseline prompt flow from [02_model_comparison.ipynb](../lab0_03_model_warmup/02_model_comparison.ipynb). The new work begins in Steps 6 and 7, where you revise the prompt and compare the before/after results.
 
@@ -48,6 +50,7 @@ You have completed this warm-up lab when:
 - you review the comparison summary
 - you revise the prompt and rerun the same 3 models
 - you complete the reflection section
+- you compare all three models with the five-person synthetic ground truth and explain whether they agree
 
 ## After This Warm-Up
 

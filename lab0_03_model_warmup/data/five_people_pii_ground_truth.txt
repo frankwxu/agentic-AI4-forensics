@@ -1,0 +1,11 @@
+Synthetic PII extraction case file — all names, records, and email addresses are fictional. Do not contact the listed addresses.
+
+Case record A: Avery Brooks lives at 1842 Willow Lane, Madison, WI 53703. The contact number recorded for Avery is 202-555-0101, and the email address is avery.brooks@google.com. The phone evidence lists IMEI 490154203237518.
+
+Case record B: Naomi Chen can be reached at naomi.chen@cnn.com or 202-555-0102. Her mailing address is 77 Harbor Street, Portland, ME 04101. The tablet serial number is TAB-NC-4829.
+
+Case record C: Diego Ramirez provided the address 910 West Elm Road, Austin, TX 78701. His number is 202-555-0103 and his email is diego.ramirez@fbi.gov. Investigators recorded device ID DEV-DR-7712.
+
+Case record D: Priya Shah uses priya.shah@umd.edu and 202-555-0104. Her address is 56 Maple Court, Albany, NY 12207. The seized phone has IMEI 356938035643809.
+
+Case record E: Marcus Turner is associated with 202-555-0105, marcus.turner@google.com, and 300 Pine Avenue, Denver, CO 80202. The laptop serial number is LT-MT-9306.

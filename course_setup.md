@@ -1,6 +1,6 @@
 # Course Setup
 
-Complete this one-time setup before starting Lab 0-00: Python Basics. It prepares your local copy of the course, Python environment, and Jupyter notebooks.
+Complete this one-time setup before starting Lab 0-00: Python Basics. It prepares your local copy of the course, Python environment, and VS Code notebooks.
 
 ## 1. Clone the Repository
 
@@ -40,13 +40,14 @@ With the virtual environment activated, run:
 python -m pip install -r requirements.txt
 ```
 
-## 4. Launch Jupyter
+## 4. Open the Course in VS Code
 
-Start Jupyter from the repository root while the virtual environment is still active:
+1. Open the `agentic-AI4-forensics` repository folder in Visual Studio Code.
+2. Install the **Python** and **Jupyter** extensions if they are not already installed.
+3. Select the `.venv-ai4-forensics` Python interpreter. In VS Code, open the Command Palette (`Ctrl+Shift+P`), choose **Python: Select Interpreter**, then select the virtual environment created in step 2.
+4. Open a lab's `.ipynb` notebook. When prompted to select a notebook kernel, choose `.venv-ai4-forensics`.
 
-```bash
-jupyter notebook
-```
+VS Code starts and manages the Jupyter kernel for the notebook, so you do not need to run `jupyter notebook` in a terminal.
 
 ## Next Step
 
