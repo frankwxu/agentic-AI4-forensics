@@ -22,29 +22,7 @@ In plain language, an LLM is:
 
 This is why an LLM can produce responses that sound fluent, organized, and confident, even when parts of the answer are incomplete or wrong.
 
-For a second, approachable explanation, see Hugging Face's [What are LLMs?](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms) lesson.
-
-## 2. What a Transformer Does at a High Level
-
-The `transformer` is the model architecture that made modern LLMs practical at scale. Most current LLMs are built on this deep-learning architecture, which uses an `attention` mechanism to decide which parts of the input matter most for the current prediction. Transformers were introduced in 2017, and their adoption grew rapidly after models such as Google's BERT in 2018.
-
-If you would like to see the original encoder--decoder Transformer design, see the diagram in the paper [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762).
-
-![Transformer attention architecture](https://machinelearningmastery.com/wp-content/uploads/2021/08/attention_research_1.png)
-
-*Figure 2. A visual overview of the Transformer architecture and its attention-based components. Most current LLMs use the decoder-style approach for next-token generation.*
-
-### Three Transformer Families
-
-Transformers are commonly grouped by the job they perform:
-
-- `encoder-based` Transformers take text (or other data) as input and turn it into a dense representation, also called an embedding. BERT is a well-known example. These models are useful for text classification, semantic search, and named-entity recognition.
-- `decoder-based` Transformers generate a sequence one token at a time. Llama is one example. This is the usual architecture for chat-oriented LLMs, text generation, and code generation; such models often have billions of parameters.
-- `encoder--decoder`, or sequence-to-sequence, Transformers first encode the input into a context representation and then decode an output sequence. T5 and BART are examples. They are often used for translation, summarization, and paraphrasing.
-
-Although language models come in several forms, the LLMs used in chat systems are typically large decoder-based Transformers. Their repeated next-token generation is the principle this reading focuses on.
-
-### Examples of LLMs
+**Examples of LLMs.**
 
 The following are representative LLM families and their providers:
 
@@ -57,7 +35,37 @@ The following are representative LLM families and their providers:
 | Gemma | Google |
 | Mistral | Mistral |
 
-For this course, treat the transformer as a black box with a clear job:
+For a second, approachable explanation, see Hugging Face's [What are LLMs?](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms) lesson.
+
+## 2. What a Transformer Does at a High Level
+
+The `transformer` is the model architecture that made modern LLMs practical at scale. Most current LLMs are built on this deep-learning architecture, which uses an `attention` mechanism to decide which parts of the input matter most for the current prediction. Transformers were introduced in 2017, and their adoption grew rapidly after models such as Google's BERT in 2018.
+
+If you would like to see the original encoder--decoder Transformer design, see the diagram in the paper [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762).
+
+> **Important:** The diagram below shows the original encoder--decoder Transformer, which was designed for sequence-to-sequence tasks such as translation. Llama and GPT-style chat LLMs use only a decoder stack: the same layers process the prompt and generate the next token.
+
+![Transformer attention architecture](https://machinelearningmastery.com/wp-content/uploads/2021/08/attention_research_1.png)
+
+*Figure 2. The original encoder--decoder Transformer architecture, designed for sequence-to-sequence tasks such as translation.*
+
+**Three Transformer Families.**
+
+Transformers are commonly grouped by the job they perform:
+
+- `encoder-based` Transformers take text (or other data) as input and turn it into a dense representation, also called an embedding. BERT is a well-known example. These models are useful for text classification, semantic search, and named-entity recognition.
+- `decoder-only` Transformers generate a sequence one token at a time. Llama is one example. This is the usual architecture for chat-oriented LLMs, text generation, and code generation; such models often have billions of parameters.
+- `encoder--decoder`, or sequence-to-sequence, Transformers first encode the input into a context representation and then decode an output sequence. T5 and BART are examples. They are often used for translation, summarization, and paraphrasing.
+
+Although language models come in several forms, the LLMs used in chat systems are typically large decoder-only Transformers. Their repeated next-token generation is the principle this reading focuses on.
+
+Because this course focuses on chat-style LLMs, the diagram below shows a decoder-only Transformer. Its masked self-attention layers process the prompt and previously generated tokens, then predict one next token at a time.
+
+![Decoder-only LLM architecture](./figures/decoder_only.jpg)
+
+*Figure 3. The GPT-1 architecture without the task-classifier head (left) and the GPT-2 architecture (right). Source: [Meet GPT: The Decoder-Only Transformer](https://towardsdatascience.com/meet-gpt-the-decoder-only-transformer-12f4a7918b36/).*
+
+For this course, treat the `decoder-only Transformer` as a black box with a clear job:
 
 - input: the tokens seen so far, represented as embeddings
 - internal work: update those token meanings in relation to one another inside the allowed context window
@@ -71,39 +79,7 @@ One helpful way to think about the internal pieces is:
 - `output layer`: converts the current contextualized state into next-token scores
 - `sampler`: selects the next token from those scores
 
-This is why the wording `contextualized token meanings` can be helpful. Before the transformer, each token has a starting embedding. After the transformer, that representation has been updated using the nearby words.
-
-### What This Looks Like
-
-The same token can end up with different contextualized meanings in different sentences. To show this, we briefly use `bank` because it can point toward different meanings depending on the surrounding words.
-
-For example, consider the token `bank`:
-
-![Figure 3. The same token can change meaning across contexts](./figures/lab0_contextualized_bank.svg)
-
-*Figure 3. This is a second teaching example used only to show contextualization. The token `bank` can start with one initial embedding, but the transformer updates it differently in a river sentence versus a money sentence. That is what we mean by a contextualized token meaning.*
-
-### What a Context Window Means
-
-The `context window` is the amount of recent text the model is allowed to consider at one time when predicting the next token.
-
-For example, if a tiny model could only look at the last 6 tokens, then:
-
-```text
-... Aunt Em called, and Dorothy ran home
-```
-
-the model might only "see" something like:
-
-```text
-["Em", "called", ",", "Dorothy", "ran", "home"]
-```
-
-Anything earlier than that would fall outside the current window.
-
-That is why longer prompts can matter. More useful recent context often leads to better next-token predictions.
-
-You do not need the math for this course. What matters is that the model is constantly turning initial token meanings into contextualized token meanings before making a prediction.
+The next two sections explain tokens and embeddings. After that, you will see how a transformer uses surrounding context to update those initial meanings before making a prediction.
 
 ## 3. How Text Becomes Tokens
 
@@ -133,7 +109,7 @@ The exact split depends on the tokenizer. The important point is that models wor
 
 Many tokenizers use subword pieces, which lets a limited vocabulary represent many different words. For example, `interest` and `ing` can combine to form `interesting`, while `ed` can be added to form `interested`.
 
-### What This Looks Like
+### Tokenization Example
 
 You can picture tokenization as a first pass that turns text into chunks the model can work with, and then assigns each chunk an ID.
 
@@ -174,7 +150,7 @@ Token IDs are only labels. Before the model can do useful math with them, it loo
 
 That is the role of `embeddings`: they give each token an initial meaning the model can work with numerically.
 
-### What This Looks Like
+### Embedding Lookup Example
 
 Students often ask what an embedding actually is. A simple answer is: it is a row of learned numbers attached to a token.
 
@@ -203,6 +179,48 @@ So when students ask, "What does an embedding look like?", the shortest correct 
 `a small vector of learned numbers attached to a token`
 
 You do not need to interpret each number by itself. What matters is that the model uses those numbers as the token's starting meaning before context is applied.
+
+### From Initial to Contextualized Meanings
+
+The transformer updates each token's starting embedding using the surrounding tokens. The resulting contextualized meaning can differ across sentences. For example, `bank` can point toward different meanings in a river sentence versus a money sentence. Attention lets the model give greater weight to the words that reveal which meaning is intended.
+
+![Figure 5. Context words disambiguate bank](./figures/lab0_bank_attention_context.png)
+
+*Figure 5. Context words distinguish the river meaning of `bank` from its financial-institution meaning. Attention helps the model identify the words most useful for making that distinction. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
+
+The two contexts then lead to different contextualized embeddings. In this teaching illustration, `bank1` is closer to river-related ideas and `bank2` is closer to money-related ideas; the percentages show an illustrative weighting, not a calculation students need to perform.
+
+![Figure 6. Context changes the embedding of bank](./figures/lab0_bank_contextual_embeddings.png)
+
+*Figure 6. A teaching visualization of contextualized embeddings. The same token, `bank`, is represented differently when its surrounding context points toward a river or toward money. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
+
+The attention mechanism represents these relationships as numeric scores between token positions. The example below gives `bank` a nonzero relationship with `river` in the first sentence and with `money` in the second.
+
+![Figure 7. Attention-score matrices for bank](./figures/lab0_bank_attention_scores.png)
+
+*Figure 7. A simplified attention-score matrix for the two `bank` contexts. The numbers are illustrative attention relationships, not probabilities students need to calculate. Source: [Cohere, What Is Attention in Language Models?](https://cohere.com/llmu/what-is-attention-in-language-models).*
+
+The following simplified view makes the same contrast explicit: one starting embedding for `bank` is updated into different contextualized representations.
+
+![Figure 8. The same token can change meaning across contexts](./figures/lab0_contextualized_bank.svg)
+
+*Figure 8. The token `bank` can start with one initial embedding, but the transformer updates it differently in a river sentence versus a money sentence.*
+
+### Context Windows
+
+The `context window` is the amount of recent text the model is allowed to consider at one time when predicting the next token. For example, if a tiny model could only look at the last 6 tokens, then:
+
+```text
+... Aunt Em called, and Dorothy ran home
+```
+
+the model might only "see" something like:
+
+```text
+["Em", "called", ",", "Dorothy", "ran", "home"]
+```
+
+Anything earlier than that would fall outside the current window. More useful recent context often leads to better next-token predictions.
 
 ## 5. What the Model Predicts
 
@@ -238,7 +256,7 @@ This is the core loop:
 
 That is what people mean by `next-token prediction`.
 
-### What This Looks Like
+### Next-Token Prediction Example
 
 Suppose the current text is:
 
@@ -281,11 +299,11 @@ This distinction matters later in the course:
 
 If the word `weights` still feels abstract, it can help to look at a much simpler model first.
 
-![Figure 5. A tiny regression analogy for weights](./figures/lab0_weights_regression.svg)
+![Figure 9. A tiny regression analogy for weights](./figures/lab0_weights_regression.svg)
 
-*Figure 5. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
+*Figure 9. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
 
-### What One Training Example Looks Like
+### A Training Example
 
 Here is a tiny teaching example:
 
@@ -356,7 +374,7 @@ In simple terms:
 
 That is one reason the same prompt can produce different outputs across runs or settings.
 
-### What This Looks Like
+### Temperature Example
 
 Suppose the next-token probabilities are:
 
@@ -384,9 +402,9 @@ An LLM-only workflow can run into problems such as:
 
 These are not bugs in only one model. They are reasons the later labs add structure around the model.
 
-![Figure 6. Why the course adds more than an LLM alone](./figures/lab0_llm_limits_to_controls.svg)
+![Figure 10. Why the course adds more than an LLM alone](./figures/lab0_llm_limits_to_controls.svg)
 
-*Figure 6. LLM-only behavior is useful but not always reliable enough for bounded forensic tasks. The rest of the course adds prompt rules, tools, memory, planning, multiagent review, and human judgment around the model.*
+*Figure 10. LLM-only behavior is useful but not always reliable enough for bounded forensic tasks. The rest of the course adds prompt rules, tools, memory, planning, multiagent review, and human judgment around the model.*
 
 This course responds to those limits in stages:
 
@@ -418,7 +436,7 @@ When you open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb), watch 
 - inference uses the trained model to score and sample likely next words
 - the model can still sound fluent while remaining limited by its size, data, and context
 
-## One Last Bridge to the Next Labs
+## Key Takeaways
 
 If you remember only three things from this primer, keep these:
 
