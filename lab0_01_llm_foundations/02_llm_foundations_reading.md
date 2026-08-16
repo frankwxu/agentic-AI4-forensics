@@ -24,9 +24,13 @@ The following are representative LLM families and their providers:
 
 | Model | Provider |
 | --- | --- |
-| Deepseek-R1 | DeepSeek |
+| ChatGPT (GPT family) | OpenAI |
 | GPT4 | OpenAI |
+| Claude | Anthropic |
+| Gemini | Google |
 | Llama 3 | Meta (Facebook AI Research) |
+| Qwen | Alibaba Cloud |
+| DeepSeek-R1 | DeepSeek |
 | SmolLM2 | Hugging Face |
 | Gemma | Google |
 | Mistral | Mistral |
@@ -277,14 +281,31 @@ Figure 10 makes the selection stage visible. After the model scores possible nex
 
 *Figure 10. Animated next-token generation from a probability distribution. Source: [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms).*
 
-## 6. Training Versus Using a Model
+## 6. Training, Inference, and Parameters
 
-Students often blur `training` and `inference`, so keep them separate:
+`Training` and `inference` are different processes:
 
 - `training`: the model's internal weights are updated so it gets better at prediction
 - `inference`: the model uses its current weights to generate an output, but the weights do not change
 
-`Weights` are the internal learned numbers of the model. During training, the model adjusts those numbers a little at a time so its predictions get better.
+### Parameters and Weights
+
+An LLM contains many learned numeric values called `parameters`. `Weights` are a common type of parameter that controls how strongly parts of the model influence a prediction. Parameters appear in the embeddings and the attention, feed-forward, and output layers. For this course, you can usually think of adjusting parameters and adjusting weights as the same training idea.
+
+The table includes the Qwen models used in this course alongside familiar examples. Counts are published for particular model versions; product providers do not disclose the parameter counts for every model.
+
+| Model (example version) | Published parameter count |
+| --- | ---: |
+| Qwen3 (`qwen3:8b`) | 8B |
+| Qwen3.5 (`qwen3.5:9b`) | 9B |
+| Llama 3.1 8B | 8B |
+| Gemma 3 4B | 4B |
+| DeepSeek-R1 | 671B total; 37B active per token |
+| GPT-4 / ChatGPT | Not publicly disclosed |
+| Claude | Not publicly disclosed |
+| Gemini | Not publicly disclosed |
+
+`B` means billion parameters. “Active per token” applies to mixture-of-experts models, which activate only part of their total parameters for a given token. Parameter count describes model scale, but it does not guarantee factual accuracy, reliable reasoning, or evidence-based conclusions. For published examples, see Meta's [Llama 3.1 announcement](https://ai.meta.com/blog/meta-llama-3-1/), Google's [Gemma 3 documentation](https://ai.google.dev/gemma/docs/core/gemma_library), and DeepSeek's [DeepSeek-R1 model card](https://github.com/deepseek-ai/DeepSeek-R1).
 
 During training, the model repeatedly predicts tokens, compares its predictions with the training text, measures error, and updates its weights to reduce that error over time.
 
@@ -331,9 +352,21 @@ This is why training and inference feel different:
 - training changes the model
 - inference uses the current model
 
-## 7. Why Prompting Changes Outputs
+## 7. How Prompts and Sampling Shape Outputs
 
-Prompts matter because prompts are part of the token context.
+### Prompt Tokens Become Context
+
+A prompt is the input text the LLM receives; it is not a separate command that bypasses the model. The system converts the prompt into tokens and places them in the context the model processes. In a decoder-only Transformer, self-attention lets the model relate the current prediction to relevant earlier prompt tokens. Changing the prompt changes this contextual processing and can change the scores for possible next tokens—and therefore the response.
+
+**Related terms.**
+
+- `prompt`: the new input text or instructions sent to the model
+- `context`: all tokens currently available to the model, which can include system instructions, earlier conversation, retrieved documents, tool results, the prompt, and previously generated tokens
+- `context window`: the maximum number of tokens the model can consider at one time
+
+In short, the prompt becomes part of the context, and the context must fit inside the context window.
+
+### Prompting Example
 
 If you ask:
 
@@ -342,7 +375,7 @@ Continue the sentence:
 Dorothy ran
 ```
 
-you give the model a broad context with few boundaries.
+the model knows that it should continue the text, but it has not been told how long the response should be or what format to use.
 
 If you ask:
 
@@ -351,7 +384,17 @@ Continue the sentence with exactly one word:
 Dorothy ran
 ```
 
-you change the token context and make some next-token paths more likely than others.
+the added tokens tell the model that the response should be a one-word completion. That constraint changes which next tokens and stopping points are more likely.
+
+Here are illustrative possible results from the same starting text:
+
+| Prompt | Possible response |
+| --- | --- |
+| `Continue the sentence: Dorothy ran` | `Dorothy ran home, relieved to see the lights ahead.` |
+| `Continue the sentence with exactly one word: Dorothy ran` | `home` |
+| `Continue the sentence in a cautious forensic tone: Dorothy ran` | `away.` |
+
+These are examples, not guaranteed outputs. The exact response can vary with the model and its sampling settings, but the prompt changes the context and the next tokens the model is likely to select.
 
 This is why prompt wording can influence:
 
@@ -360,7 +403,7 @@ This is why prompt wording can influence:
 - caution or certainty
 - consistency across runs
 
-### Temperature
+### Temperature and Sampling
 
 `Temperature` changes how deterministic or variable token selection becomes.
 
@@ -376,9 +419,7 @@ In simple terms:
 
 That is one reason the same prompt can produce different outputs across runs or settings.
 
-### Temperature Example
-
-Suppose the next-token probabilities are:
+**Example.** Suppose the next-token probabilities are:
 
 ```text
 "home"  0.72
@@ -422,10 +463,11 @@ Use these questions to check your understanding:
 
 1. In one or two sentences, what does an LLM predict at each generation step?
 2. Why is a token not always the same thing as a word?
-3. What is the difference between training a model and using a model at inference time?
-4. Why can two prompts about the same topic produce different answers?
-5. Why can an LLM sound confident and still be wrong?
-6. Name one reason later labs add tools, memory, or human review around the model.
+3. How does attention help the model give `bank` different contextualized meanings in a river sentence and a money sentence?
+4. What is the difference between a prompt, context, and a context window?
+5. How do prompt wording and temperature each influence an LLM's output?
+6. What is the difference between training a model and using it at inference time? What happens to its parameters in each case?
+7. Why can an LLM sound confident and still be wrong? Name one reason later labs add tools, memory, or human review around the model.
 
 ## Notebook Bridge
 
@@ -442,8 +484,8 @@ When you open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb), watch 
 
 If you remember only three things from this primer, keep these:
 
-- an LLM works by predicting the next token from context
-- prompt wording changes that context and therefore changes output behavior
-- later labs add structure because language fluency alone is not enough for careful forensic work
+- a decoder-only LLM uses attention to process prior-token context and predict one next token at a time
+- prompts become part of the context, which must fit in the context window; sampling settings such as temperature also shape the selected output
+- training changes learned parameters, whereas inference uses them; fluent language alone is not enough for careful forensic work
 
 When you are ready, move on to [lab0_02_environment_setup/01_instructions.md](../lab0_02_environment_setup/01_instructions.md).
