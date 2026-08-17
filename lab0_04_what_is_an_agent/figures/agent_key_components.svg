@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+<defs>
+  <style>
+    .title{font:700 38px Arial,Helvetica,sans-serif;fill:#0d2b57}
+    .agentTitle{font:700 34px Arial,Helvetica,sans-serif;fill:#0d2b57}
+    .blue{font:700 21px Arial,Helvetica,sans-serif;fill:#1f66c1}
+    .green{font:700 21px Arial,Helvetica,sans-serif;fill:#168847}
+    .orange{font:700 21px Arial,Helvetica,sans-serif;fill:#e87500}
+    .purple{font:700 20px Arial,Helvetica,sans-serif;fill:#6d3bb4}
+    .head{font:700 17px Arial,Helvetica,sans-serif;fill:#111}
+    .body{font:15px Arial,Helvetica,sans-serif;fill:#111}
+    .small{font:13.5px Arial,Helvetica,sans-serif;fill:#111}
+    .tiny{font:12px Arial,Helvetica,sans-serif;fill:#111}
+  </style>
+  <marker id="ab" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1f66c1"/></marker>
+  <marker id="ag" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#168847"/></marker>
+  <marker id="ap" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#6d3bb4"/></marker>
+  <marker id="aps" viewBox="0 0 8 8" markerWidth="7" markerHeight="7" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 Z" fill="#6d3bb4"/></marker>
+</defs>
+
+<rect width="1536" height="1024" fill="#fff"/>
+<text x="768" y="48" text-anchor="middle" class="title">AGENT AND KEY COMPONENTS</text>
+
+<!-- Main agent -->
+<rect x="315" y="64" width="890" height="608" rx="24" fill="#fff" stroke="#0d2b57" stroke-width="2"/>
+
+<g stroke="#0d2b57" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="625" y="89" width="48" height="40" rx="8"/>
+  <circle cx="639" cy="109" r="2.8" fill="#0d2b57" stroke="none"/>
+  <circle cx="659" cy="109" r="2.8" fill="#0d2b57" stroke="none"/>
+  <line x1="649" y1="89" x2="649" y2="78"/>
+  <circle cx="649" cy="74" r="4.5" fill="#6d3bb4"/>
+</g>
+<text x="704" y="120" class="agentTitle">AGENT</text>
+
+<!-- Inputs -->
+<rect x="28" y="141" width="250" height="515" rx="20" fill="#f7fbff" stroke="#1f66c1" stroke-width="2"/>
+<text x="153" y="177" text-anchor="middle" class="blue">INPUTS</text>
+<line x1="278" y1="347" x2="315" y2="347" stroke="#1f66c1" stroke-width="3" marker-end="url(#ab)"/>
+
+
+<g stroke="#1f66c1" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="73" cy="226" r="10"/>
+  <path d="M55 268c2-18 34-18 36 0"/>
+</g>
+<text x="108" y="236" class="head">User messages</text><text x="108" y="258" class="head">&amp; requests</text>
+<text x="108" y="282" class="small">(goals, questions,</text><text x="108" y="301" class="small">feedback)</text>
+
+
+<g stroke="#6d3bb4" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M60 355h26"/>
+  <path d="M63 355v-10c0-7 4-13 10-15 6 2 10 8 10 15v10"/>
+  <path d="M69 360c2 4 6 4 8 0"/>
+</g>
+<text x="108" y="345" class="head">System events</text>
+<text x="108" y="369" class="small">(time, triggers,</text><text x="108" y="388" class="small">notifications)</text>
+
+
+<g stroke="#168847" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="65" cy="440" r="7"/>
+  <circle cx="82" cy="444" r="6"/>
+  <path d="M53 463c1-12 23-12 24 0"/>
+  <path d="M75 465c1-9 18-9 19 0"/>
+</g>
+<text x="108" y="443" class="head">Other agents</text><text x="108" y="465" class="head">or systems</text>
+<text x="108" y="489" class="small">(messages,</text><text x="108" y="508" class="small">observations)</text>
+
+
+<g stroke="#e87500" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M57 562h25l10 10v35H57z"/>
+  <path d="M82 562v11h10"/>
+  <line x1="64" y1="582" x2="84" y2="582"/>
+  <line x1="64" y1="590" x2="84" y2="590"/>
+</g>
+<text x="108" y="576" class="head">Files &amp; data</text>
+<text x="108" y="600" class="small">(documents, images,</text><text x="108" y="619" class="small">tables, etc.)</text>
+
+<!-- Outputs -->
+<rect x="1260" y="141" width="245" height="515" rx="20" fill="#fbfffb" stroke="#168847" stroke-width="2"/>
+<text x="1382" y="177" text-anchor="middle" class="green">OUTPUTS</text>
+<line x1="1205" y1="347" x2="1260" y2="347" stroke="#168847" stroke-width="3" marker-end="url(#ag)"/>
+
+
+<g stroke="#168847" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="1280" y="214" width="42" height="30" rx="9"/>
+  <path d="M1291 244l-8 8v-12"/>
+  <circle cx="1293" cy="229" r="1.8" fill="#168847" stroke="none"/>
+  <circle cx="1301" cy="229" r="1.8" fill="#168847" stroke="none"/>
+  <circle cx="1309" cy="229" r="1.8" fill="#168847" stroke="none"/>
+</g>
+<text x="1340" y="236" class="head">Agent responses</text>
+<text x="1340" y="265" class="small">• Answers</text><text x="1340" y="288" class="small">• Summaries</text><text x="1340" y="311" class="small">• Recommendations</text>
+
+
+<g stroke="#168847" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M1282 349h26l11 11v38h-37z"/>
+  <path d="M1308 349v12h11"/>
+  <line x1="1289" y1="374" x2="1311" y2="374"/>
+  <line x1="1289" y1="382" x2="1306" y2="382"/>
+</g>
+<text x="1340" y="363" class="head">Artifacts</text>
+<text x="1340" y="392" class="small">• Reports</text><text x="1340" y="415" class="small">• Tables</text><text x="1340" y="438" class="small">• Files</text><text x="1340" y="461" class="small">• Visualizations</text>
+
+
+<g stroke="#168847" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M1281 543l31-31"/>
+  <path d="M1302 512h10v10"/>
+  <path d="M1281 526v17h17"/>
+</g>
+<text x="1340" y="535" class="head">External effects</text>
+<text x="1340" y="564" class="small">• Messages sent</text><text x="1340" y="587" class="small">• System changes</text><text x="1340" y="610" class="small">• Completed actions</text>
+
+<!-- Brain -->
+<rect x="340" y="142" width="840" height="145" rx="18" fill="#f7fbff" stroke="#1f66c1" stroke-width="2"/>
+
+<g stroke="#1f66c1" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="372" y="187" width="54" height="54" rx="10"/>
+  <rect x="386" y="201" width="26" height="26" rx="5"/>
+  <line x1="382" y1="181" x2="382" y2="187"/>
+  <line x1="399" y1="181" x2="399" y2="187"/>
+  <line x1="416" y1="181" x2="416" y2="187"/>
+  <line x1="382" y1="241" x2="382" y2="247"/>
+  <line x1="399" y1="241" x2="399" y2="247"/>
+  <line x1="416" y1="241" x2="416" y2="247"/>
+  <line x1="366" y1="198" x2="372" y2="198"/>
+  <line x1="366" y1="214" x2="372" y2="214"/>
+  <line x1="366" y1="230" x2="372" y2="230"/>
+  <line x1="426" y1="198" x2="432" y2="198"/>
+  <line x1="426" y1="214" x2="432" y2="214"/>
+  <line x1="426" y1="230" x2="432" y2="230"/>
+</g>
+<text x="474" y="180" class="blue">1. BRAIN (REASONING ENGINE)</text>
+<text x="474" y="215" class="body">The agent’s “brain” uses an AI model (e.g., LLM) to</text>
+<text x="474" y="238" class="body">understand inputs, reason, plan, and decide what to do next.</text>
+<text x="910" y="174" class="body">• Understand inputs</text>
+<text x="910" y="204" class="body">• Reason about goals &amp; context</text>
+<text x="910" y="234" class="body">• Plan steps</text>
+<text x="910" y="264" class="body">• Select next action</text>
+
+<!-- Memory -->
+<rect x="340" y="309" width="840" height="158" rx="18" fill="#fbfffb" stroke="#168847" stroke-width="2"/>
+
+<g stroke="#168847" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="399" cy="350" rx="28" ry="9"/>
+  <path d="M371 350v46c0 5 13 9 28 9s28-4 28-9v-46"/>
+  <path d="M371 365c0 5 13 9 28 9s28-4 28-9"/>
+  <path d="M371 381c0 5 13 9 28 9s28-4 28-9"/>
+</g>
+<text x="474" y="355" class="green">2. MEMORY</text>
+<text x="474" y="390" class="body">Stores information the agent can use</text><text x="474" y="413" class="body">now or in the future.</text>
+
+<text x="760" y="337" class="small">• <tspan font-weight="700">Short-term / context memory</tspan></text>
+<text x="779" y="357" class="tiny">(conversation history, recent observations)</text>
+<text x="760" y="386" class="small">• <tspan font-weight="700">Working memory</tspan></text>
+<text x="779" y="406" class="tiny">(intermediate results, notes)</text>
+<text x="760" y="435" class="small">• <tspan font-weight="700">Long-term memory</tspan></text>
+<text x="779" y="455" class="tiny">(vector DB, databases, files, knowledge base)</text>
+
+<!-- Tools -->
+<rect x="340" y="487" width="840" height="168" rx="18" fill="#fffaf5" stroke="#e87500" stroke-width="2"/>
+
+<g stroke="#e87500" stroke-width="2.7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="401" cy="563" r="12"/>
+  <circle cx="401" cy="563" r="4"/>
+  <path d="M401 539v8M401 579v8M377 563h8M417 563h8M384 546l6 6M412 574l6 6M384 580l6-6M412 552l6-6"/>
+</g>
+<text x="474" y="528" class="orange">3. TOOLS / CAPABILITIES</text><text x="474" y="554" class="orange">(THE BODY)</text>
+<text x="474" y="591" class="body">Provides the agent with abilities</text><text x="474" y="614" class="body">to interact with the outside world.</text>
+
+<text x="748" y="518" class="small">• <tspan font-weight="700">Retrieval / Search</tspan> (web, docs, knowledge bases)</text>
+<text x="748" y="546" class="small">• <tspan font-weight="700">Code execution</tspan> (run code, calculations)</text>
+<text x="748" y="574" class="small">• <tspan font-weight="700">APIs &amp; Services</tspan> (external APIs, platforms)</text>
+<text x="748" y="602" class="small">• <tspan font-weight="700">External actions</tspan> (send email, control systems, etc.)</text>
+<text x="748" y="630" class="small">• <tspan font-weight="700">File &amp; data operations</tspan> (read/write files, process data)</text>
+
+<!-- Environment -->
+<line x1="748" y1="672" x2="748" y2="713" stroke="#6d3bb4" stroke-width="2.5" marker-start="url(#aps)" marker-end="url(#ap)"/>
+<rect x="315" y="716" width="890" height="134" rx="18" fill="#fcf9ff" stroke="#6d3bb4" stroke-width="2"/>
+<text x="760" y="744" text-anchor="middle" class="purple">ENVIRONMENT (THE WORLD)</text>
+<text x="760" y="770" text-anchor="middle" class="small">The external world the agent perceives and acts upon.</text>
+
+
+<g stroke="#6d3bb4" stroke-width="2" fill="none">
+  <circle cx="365" cy="803" r="17"/>
+  <ellipse cx="365" cy="803" rx="8" ry="17"/>
+  <line x1="348" y1="803" x2="382" y2="803"/>
+</g>
+<text x="365" y="836" text-anchor="middle" class="tiny">Web</text>
+
+<g stroke="#6d3bb4" stroke-width="2" fill="none">
+  <ellipse cx="478" cy="793" rx="13" ry="5"/>
+  <path d="M465 793v22c0 3 6 5 13 5s13-2 13-5v-22"/>
+  <path d="M465 804c0 3 6 5 13 5s13-2 13-5"/>
+</g>
+<text x="478" y="836" text-anchor="middle" class="tiny">Databases</text>
+
+<g stroke="#6d3bb4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M594 812c0-7 5-12 12-12 2-7 8-10 14-10 8 0 13 5 15 11 8 0 13 4 13 10s-5 10-13 10h-29c-7 0-12-3-12-9z"/>
+</g>
+<text x="625" y="836" text-anchor="middle" class="tiny">APIs / Services</text>
+
+<g stroke="#6d3bb4" stroke-width="2" fill="none" stroke-linecap="round">
+  <circle cx="741" cy="798" r="6"/>
+  <circle cx="756" cy="800" r="5"/>
+  <path d="M729 819c1-11 23-11 24 0"/>
+  <path d="M750 819c1-8 16-8 17 0"/>
+</g>
+<text x="748" y="836" text-anchor="middle" class="tiny">Users</text>
+
+<g stroke="#6d3bb4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="850" y="788" width="30" height="27" rx="3"/>
+  <line x1="850" y1="796" x2="880" y2="796"/>
+  <line x1="858" y1="784" x2="858" y2="792"/>
+  <line x1="872" y1="784" x2="872" y2="792"/>
+  <circle cx="865" cy="805" r="3"/>
+</g>
+<text x="865" y="833" text-anchor="middle" class="tiny">Real-world events</text><text x="865" y="847" text-anchor="middle" class="tiny">&amp; systems</text>
+
+<g stroke="#6d3bb4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="1048" y="789" width="17" height="28" rx="2"/>
+  <rect x="1071" y="783" width="20" height="34" rx="2"/>
+  <circle cx="1056.5" cy="812" r="1.5" fill="#6d3bb4" stroke="none"/>
+  <circle cx="1081" cy="812" r="1.5" fill="#6d3bb4" stroke="none"/>
+</g>
+<text x="1070" y="836" text-anchor="middle" class="tiny">Devices / IoT</text>
+
+<!-- Loop -->
+<rect x="220" y="878" width="1085" height="116" rx="16" fill="#fff" stroke="#8f6bc1" stroke-dasharray="7 6" stroke-width="1.5"/>
+<text x="762" y="904" text-anchor="middle" class="purple">AGENT LOOP (THOUGHT–ACTION–OBSERVATION)</text>
+
+<rect x="280" y="922" width="190" height="54" rx="12" fill="#fbf8ff" stroke="#a98bd0"/><circle cx="278" cy="937" r="14" fill="#6d3bb4"/><text x="278" y="942" text-anchor="middle" font-size="14" font-family="Arial" fill="#fff" font-weight="700">1</text><text x="375" y="942" text-anchor="middle" class="head">REASON / PLAN</text><text x="375" y="964" text-anchor="middle" class="tiny">Think, reason, decide.</text>
+<line x1="470" y1="949" x2="535" y2="949" stroke="#6d3bb4" stroke-width="2.5" marker-end="url(#ap)"/>
+<rect x="558" y="922" width="190" height="54" rx="12" fill="#fbf8ff" stroke="#a98bd0"/><circle cx="556" cy="937" r="14" fill="#6d3bb4"/><text x="556" y="942" text-anchor="middle" font-size="14" font-family="Arial" fill="#fff" font-weight="700">2</text><text x="653" y="942" text-anchor="middle" class="head">ACT (USE TOOLS)</text><text x="653" y="964" text-anchor="middle" class="tiny">Select a tool/capability.</text>
+<line x1="748" y1="949" x2="813" y2="949" stroke="#6d3bb4" stroke-width="2.5" marker-end="url(#ap)"/>
+<rect x="836" y="922" width="190" height="54" rx="12" fill="#fbf8ff" stroke="#a98bd0"/><circle cx="834" cy="937" r="14" fill="#6d3bb4"/><text x="834" y="942" text-anchor="middle" font-size="14" font-family="Arial" fill="#fff" font-weight="700">3</text><text x="931" y="942" text-anchor="middle" class="head">OBSERVE RESULTS</text><text x="931" y="964" text-anchor="middle" class="tiny">Environment returns results.</text>
+<line x1="1026" y1="949" x2="1080" y2="949" stroke="#6d3bb4" stroke-width="2.5" marker-end="url(#ap)"/><circle cx="1123" cy="949" r="26" fill="none" stroke="#6d3bb4" stroke-width="4" stroke-dasharray="12 8"/>
+<text x="1168" y="940" class="small">Repeat until</text><text x="1168" y="961" class="small">goal is achieved.</text>
+</svg>

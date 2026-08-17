@@ -12,7 +12,7 @@ Before running the warm-up notebooks, create a lab-local `.env` in this folder:
 cp .env.example .env
 ```
 
-This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_03_model_warmup/.env`, so you can change settings here without affecting Lab 0-02, Lab 0-04, or the later pattern labs.
+This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_03_model_basics/.env`, so you can change settings here without affecting Lab 0-02, Lab 0-04, or the later pattern labs.
 
 ## Learning Goals
 
@@ -39,7 +39,7 @@ Complete the steps in this order:
 9. Open [04_pii_ground_truth_assignment.ipynb](04_pii_ground_truth_assignment.ipynb).
 10. Compare each model's answer with the five-person synthetic ground truth and complete the assignment questions.
 
-In [03_prompt_revision_assignment.ipynb](../lab0_03_model_warmup/03_prompt_revision_assignment.ipynb), Steps 1 through 5 keep the same models, case note, and baseline prompt flow from [02_model_comparison.ipynb](../lab0_03_model_warmup/02_model_comparison.ipynb). The new work begins in Steps 6 and 7, where you revise the prompt and compare the before/after results.
+In [03_prompt_revision_assignment.ipynb](../lab0_03_model_basics/03_prompt_revision_assignment.ipynb), Steps 1 through 5 keep the same models, case note, and baseline prompt flow from [02_model_comparison.ipynb](../lab0_03_model_basics/02_model_comparison.ipynb). The new work begins in Steps 6 and 7, where you revise the prompt and compare the before/after results.
 
 ## Success Criteria
 

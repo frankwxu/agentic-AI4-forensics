@@ -154,7 +154,7 @@ Begin with [Course Setup](course_setup.md), then [lab0_00_python_basics/01_instr
 - `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and two small practice notebooks
 - `Lab 0-01` (`lab0_01_llm_foundations`): LLM foundations primer with a tiny local training demo
 - `Lab 0-02` (`lab0_02_environment_setup`): `.env`, Ollama, Graphviz, and environment checks for the later agent labs
-- `Lab 0-03` (`lab0_03_model_warmup`): a small model-comparison exercise
+- `Lab 0-03` (`lab0_03_model_basics`): a small model-comparison exercise
 - `Lab 0-04` (`lab0_04_what_is_an_agent`): a hands-on introduction to agent workflows
 
 Each onboarding lab has its own `01_instructions.md` with the step-by-step details.
@@ -164,7 +164,7 @@ Each onboarding lab has its own `01_instructions.md` with the step-by-step detai
 - `lab0_00_python_basics/`: Python primer with a short reading, two small guided notebooks, and tiny JSON/CSV practice data
 - `lab0_01_llm_foundations/`: LLM foundations primer with a tiny local training demo, reading, figures, and a short public-domain book excerpt
 - `lab0_02_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
-- `lab0_03_model_warmup/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
+- `lab0_03_model_basics/`: Warm-up lab for comparing outputs from multiple models and revising prompts for consistency
 - `lab0_04_what_is_an_agent/`: Warm-up lab for comparing a plain model prompt with a bounded agent workflow and designing a small agent card
 - `lab1_reflection_pattern/`: Reflection lab for suspected customer-data exfiltration
 - `lab2_tool_use_pattern/`: Tool-use lab for image metadata, vehicle matching, and sale-draft review
@@ -190,7 +190,7 @@ Students should follow this sequence:
 1. `lab0_00_python_basics`
 2. `lab0_01_llm_foundations`
 3. `lab0_02_environment_setup`
-4. `lab0_03_model_warmup`
+4. `lab0_03_model_basics`
 5. `lab0_04_what_is_an_agent`
 6. `lab1_reflection_pattern`
 7. `lab2_tool_use_pattern`

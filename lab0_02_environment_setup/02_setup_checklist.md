@@ -1,6 +1,6 @@
 # Setup Checklist
 
-Use this checklist before starting `lab0_03_model_warmup`.
+Use this checklist before starting `lab0_03_model_basics`.
 
 - [Course Setup](../course_setup.md) is completed:
   - repository cloned locally
@@ -18,4 +18,4 @@ Use this checklist before starting `lab0_03_model_warmup`.
 - [03_environment_check.ipynb](03_environment_check.ipynb) runs without blocking errors
 - [04_setup_assignment.ipynb](04_setup_assignment.ipynb) is completed, including one student question to the configured model and the short observation report
 
-If any item above is incomplete, fix it before moving to `lab0_03_model_warmup`.
+If any item above is incomplete, fix it before moving to `lab0_03_model_basics`.

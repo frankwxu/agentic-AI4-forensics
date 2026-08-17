@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this onboarding lab after you complete [lab0_03_model_warmup/01_instructions.md](../lab0_03_model_warmup/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
+Use this onboarding lab after you complete [lab0_03_model_basics/01_instructions.md](../lab0_03_model_basics/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
 
 ## Lab-Specific Environment
 
@@ -40,27 +40,41 @@ By the end of this warm-up lab, you should be able to:
 
 ## What Is an Agent?
 
-One standard AI definition is simple: an agent perceives an environment and acts on that environment. In classical AI, the environment provides inputs to the agent, and the agent sends actions back to the environment.
+A foundational definition of an agent is simple: it perceives an environment and acts on that environment. In classical AI, the environment provides percepts to the agent, and the agent produces actions that affect the environment.
 
-![Figure 0A. Standard agent-environment view](https://artint.info/3e/html/x6.png)
+![Figure 0A. Classical AI agent-environment view](https://artint.info/3e/html/x6.png)
 
-*Figure 0A. Standard agent-environment view from Poole and Mackworth, [Agents and Environments](https://artint.info/3e/html/ArtInt3e.Ch2.S1.html): the agent receives percepts from the environment and produces actions that affect the environment.*
+*Figure 0A. Classical AI agent-environment view from Poole and Mackworth, [Agents and Environments](https://artint.info/3e/html/ArtInt3e.Ch2.S1.html): the agent receives percepts from the environment and produces actions that affect the environment.*
 
 ## A Modern LLM-Based Agent
 
-In modern AI systems, many agents use an `LLM` as the reasoning engine inside that larger loop. A helpful modern definition from Microsoft describes an AI agent as a flexible software program that uses generative AI models to interpret inputs, reason through problems, and decide on appropriate actions based on context.
+In modern AI systems, many agents use an `LLM` as the reasoning engine inside that larger loop. The agent combines the model with memory and tools so it can interpret inputs, reason through goals and context, take actions, and use the results of those actions in later steps.
 
-![Figure 0B. Modern LLM-based agent view](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/images/agent-overview.png)
+![Figure 0B. Agent and key components](./figures/agent_components.png)
 
-*Figure 0B. Modern LLM-based agent view from Microsoft, [AI agent adoption](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/): a language model works with instructions, knowledge or retrieval, tools or actions, and memory to produce useful outputs.*
+*Figure 0B. Agent and key components: an agent receives inputs, uses a reasoning model, memory, and tools to act in an environment, then observes results in a repeating thought–action–observation loop.*
+
+### Classical and LLM-Based Agents
+
+Figure 0B is a modern version of the same basic agent idea in Figure 0A. Both receive information from an environment, decide what to do, act, and use the result to guide later behavior. The main difference is the component that makes the decisions and the interface used to act:
+
+| Classical AI agent                                                           | LLM-based agent                                                                                                     |
+| ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **sensors** receive percepts from the environment                            | **inputs** include user requests, events, messages, and files or data                                               |
+| a **controller** uses rules, search, planning, or a learned policy to decide | an **LLM reasoning engine** interprets the context, reasons, plans, and selects a next action                       |
+| **actuators** carry out actions in the environment                           | **tools and capabilities** retrieve information, run code, call APIs, edit files, or take approved external actions |
+
+Memory, instructions, retrieval, and guardrails are common additions around the LLM. They help the agent retain useful context, work with information outside the model, and stay within defined limits.
 
 In Figure 0B, each component has a simple purpose:
 
-- `model`: the reasoning engine that generates the next response or action
-- `instructions`: the goals, rules, and boundaries that shape the agent's behavior
-- `knowledge / retrieval`: outside information the agent can look up or use for grounding
-- `tools / actions`: functions, APIs, or systems the agent can use to do work
-- `memory`: stored history or state the agent can carry across steps
+- `inputs`: user requests, system events, messages from other agents or systems, and files or data that give the agent something to work on
+- `brain / reasoning engine`: the AI model or `LLM` that understands inputs, reasons about goals and context, plans steps, and selects the next action
+- `memory`: information the agent keeps while working. This can include context or conversation history, working memory for intermediate results and notes, and long-term memory such as stored documents, databases, or a knowledge base
+- `tools / capabilities`: the ways an agent interacts with the outside world, including retrieval or search, code execution, APIs and services, external actions, and file or data operations
+- `environment`: the external world the agent can observe or act on, such as websites, databases, services, users, events, and devices
+- `outputs`: responses and artifacts the agent produces, plus external effects such as sent messages, system changes, or completed actions
+- `agent loop`: the repeating cycle of reasoning or planning, acting with a selected tool, and observing the result until the goal or stop condition is reached
 
 ## What Each Agent Part Does
 
@@ -99,7 +113,7 @@ To make the comparison in this lab easier to see, use Figure 0D as a quick map. 
 
 Complete the steps in this order:
 
-1. Finish [lab0_02_environment_setup/03_environment_check.ipynb](../lab0_02_environment_setup/03_environment_check.ipynb), [lab0_02_environment_setup/04_setup_assignment.ipynb](../lab0_02_environment_setup/04_setup_assignment.ipynb), and [lab0_03_model_warmup/03_prompt_revision_assignment.ipynb](../lab0_03_model_warmup/03_prompt_revision_assignment.ipynb).
+1. Finish [lab0_02_environment_setup/03_environment_check.ipynb](../lab0_02_environment_setup/03_environment_check.ipynb), [lab0_02_environment_setup/04_setup_assignment.ipynb](../lab0_02_environment_setup/04_setup_assignment.ipynb), and [lab0_03_model_basics/03_prompt_revision_assignment.ipynb](../lab0_03_model_basics/03_prompt_revision_assignment.ipynb).
 2. Open [02_agent_walkthrough.ipynb](02_agent_walkthrough.ipynb).
 3. Run the notebook from top to bottom.
 4. Compare the plain-model response with the agent response.
