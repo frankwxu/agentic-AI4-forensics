@@ -48,25 +48,17 @@ Figure 0B shows the classical version of this idea: the agent receives informati
 
 ## A Modern LLM-Based Agent
 
-In modern AI systems, many agents use an `LLM` as the reasoning engine inside that larger loop. The agent combines the model with persistent instructions, memory, and tools so it can interpret inputs, reason through goals and context, take actions, and use the results of those actions in later steps.
+An `LLM`-based agent is a system that uses an `LLM` to interact with its environment and achieve a user-defined objective. It combines the model's reasoning and planning with actions—often through external tools—to complete tasks.
+
+The `LLM` is the reasoning core, not the entire agent. Instructions set the agent's role and limits. Memory retains useful context between steps, and tools let the agent gather information or act in its environment.
+
+Figure 0C shows these parts working together. Configuration and instructions set the agent's role and boundaries; inputs give it information to work with; the `LLM`, memory, and tools support its decisions and actions; and the results become observations that can guide a later step.
 
 ![Figure 0C. Agent and key components](./figures/agent_components_with_config.png)
 
 *Figure 0C. Agent and key components: configuration and instructions define the agent's role and boundaries; it then receives inputs, uses a reasoning model, memory, and tools to act in an environment, and observes results in a repeating thought–action–observation loop.*
 
-## Classical and LLM-Based Agents
-
-Figure 0C is a modern version of the same basic agent idea in Figure 0B. Both receive information from an environment, decide what to do, act, and use the result to guide later behavior. The main difference is the component that makes the decisions and the interface used to act:
-
-| Classical AI agent                                                          | LLM-based agent                                                                                                     |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| **sensors** receive percepts from the environment                           | **inputs** include user requests, events, messages, and files or data                                               |
-| a**controller** uses rules, search, planning, or a learned policy to decide | an**LLM reasoning engine** interprets the context, reasons, plans, and selects a next action                        |
-| **actuators** carry out actions in the environment                          | **tools and capabilities** retrieve information, run code, call APIs, edit files, or take approved external actions |
-
-Memory, instructions, retrieval, and guardrails are common additions around the LLM. They help the agent retain useful context, work with information outside the model, and stay within defined limits.
-
-Figure 0C includes the agent configuration/instructions that set the agent's role and boundaries, as well as the components that carry out the work. Each has a simple purpose:
+The labels in Figure 0C have these meanings:
 
 - `inputs`: user requests, system events, messages from other agents or systems, and files or data that give the agent something to work on
 - `agent configuration / instructions`: persistent guidance that defines the agent's role and goal, rules and constraints, output format, and safety or human-review boundaries
@@ -77,29 +69,67 @@ Figure 0C includes the agent configuration/instructions that set the agent's rol
 - `outputs`: responses and artifacts the agent produces, plus external effects such as sent messages, system changes, or completed actions
 - `agent loop`: the repeating cycle of reasoning or planning, acting with a selected tool, and observing the result until the goal or stop condition is reached
 
+**Inputs versus instructions.** Inputs are the current materials the agent works on. For example, “Summarize this mobile-device event log” is a user input. Instructions are the persistent guidance that controls how it works. For example, “Use only approved case materials, do not determine misconduct, and recommend one human-review step” is part of the agent configuration.
+
+## Classical and LLM-Based Agents
+
+Figure 0C is a modern version of the same basic agent idea in Figure 0B. Both receive information from an environment, decide what to do, act, and use the result to guide later behavior. The main difference is the component that makes the decisions and the interface used to act:
+
+| Classical AI agent                                                          | LLM-based agent                                                                                                     |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **sensors** receive percepts from the environment                           | **inputs** include user requests, events, messages, and files or data                                               |
+| a **controller** uses rules, search, planning, or a learned policy to decide | an **LLM reasoning engine** interprets the context, reasons, plans, and selects a next action                      |
+| **actuators** carry out actions in the environment                          | **tools and capabilities** retrieve information, run code, call APIs, edit files, or take approved external actions |
+
+Both types follow an observe–decide–act loop. In an LLM-based agent, the `LLM` takes the controller role and can work with natural-language instructions and external tools.
+
+## How Much Control Does an AI Agent Have?
+
+An `LLM` can be part of a workflow without controlling it. The term **agency** describes how much the model's output is allowed to control the next step in the surrounding program. Here, **control flow** means what the program does next: for example, choosing a path, calling a tool, or running another step.
+
+**Reasoning and planning do not determine agency by themselves.** An `LLM` can reason about a problem and return text, but remain a simple processor if the program only displays or saves that response. The workflow gives the model agency when it allows the response to affect a path, tool, or later step.
+
+The patterns below are simplified pseudocode, not code you need to run.
+
+| Agency level | What the model output controls | What that is called | Example pattern |
+| --- | --- | --- | --- |
+| ☆☆☆ | It does not choose the program's next path, tool, or iteration. | Simple processor | `process_llm_output(llm_response)` |
+| ★☆☆ | It chooses between predefined paths. | Router | `if llm_decision(): path_a() else: path_b()` |
+| ★★☆ | It selects an approved function and its arguments. | Tool caller | `run_function(llm_chosen_tool, llm_chosen_args)` |
+| ★★★ | It controls whether another step runs and what that step is. | Multi-step agent | `while llm_should_continue(): execute_next_step()` |
+| ★★★ | It can delegate work to another agentic workflow. | Multi-agent workflow | `if llm_trigger(): execute_agent()` |
+
+The final row is a coordination pattern, not automatically a higher level of agency than a multi-step agent. In digital forensics, greater workflow control makes clear boundaries, activity logs, authorization checks, and human review increasingly important.
+
 ## What Is a Bounded Agent?
 
-A bounded agent has a limited job and clear operating limits. It is told which information and tools it may use, what context it should keep, when it should stop, and which decisions must remain with a person. These boundaries make its behavior easier to inspect and reduce the risk that it will make unsupported claims or take an unauthorized action.
+Being bounded is not a separate agency level. **Agency** asks what the `LLM` is allowed to control in a workflow; **boundaries** define the limits on that control. A bounded agent can be a router, a tool caller, or a multi-step agent. As an agent is allowed to control more of a workflow, its boundaries become more important.
 
-Core boundaries in a bounded-agent specification are:
+A bounded agent has a limited job and clear operating limits. A bounded-agent specification has two parts: a purpose and boundaries. The purpose defines the job to perform and what a useful result looks like. The boundaries define the permitted scope—what the agent may read, use, and produce—as well as prohibited actions, the stopping point, and decisions reserved for human review.
 
-- `role`: tells the model what job it is performing in this workflow
-- `goal`: tells the model what a successful result should accomplish
-- `approved tools`: limits which inputs or resources the agent is allowed to use
-- `stop condition`: tells the agent when it should stop instead of continuing to generate more steps
-- `human review boundary`: marks the decisions or judgments that should stay with a person
+The core parts of a bounded-agent specification are:
 
-An agent may also use `short memory`: a limited amount of context it carries across steps. Memory is optional, not part of the definition of a bounded agent. If an agent uses memory, limiting its scope is another useful boundary. Memory is not the same as a tool call; memory is what the agent keeps, while tools are what it uses to gather information or do work.
+- **purpose:** `role` tells the model what job it is performing, and `goal` tells it what a useful result should accomplish
+- **permitted scope:** approved inputs and `approved tools` limit the materials and resources the agent may use
+- **operational limits:** prohibited actions and a `stop condition` define what the agent must not do and when it must stop instead of continuing to generate more steps
+- **human authority:** a `human review boundary` marks the decisions or judgments that must remain with a person
+- **optional working context:** `short memory` is a limited amount of context the agent carries across steps
+
+Memory is optional, not part of the definition of a bounded agent. If an agent uses memory, limiting its scope is another useful boundary. Memory is not the same as a tool call; memory is what the agent keeps, while tools are what it uses to gather information or do work.
 
 Figure 0C uses broader architecture terms for these boundaries and optional design choices:
 
 | Bounded-agent boundary or design choice | AI-agent component in Figure 0C |
 | --- | --- |
-| `role`, `goal`, `stop condition`, `human review boundary` | agent configuration / instructions |
+| `role`, `goal`, approved inputs, prohibited actions, `stop condition`, `human review boundary` | agent configuration / instructions |
 | `approved tools` | tools / capabilities |
 | optional `short memory` | memory |
 
 The `LLM` is the reasoning core that uses these configured components.
+
+**Why bounded agents matter in digital forensics.** Digital-forensic work depends on being able to explain what information was examined, how it was handled, and what supports a conclusion. A bounded agent can help with a narrow, repeatable task—such as organizing approved artifacts, summarizing an event log, or identifying a question for the next review step—without becoming the source of the evidence or the final decision-maker.
+
+Its limits make that assistance easier to audit: approved inputs define the evidence scope, approved tools define what the workflow may do, and a stop condition prevents an open-ended investigation. The agent's output is a lead or a structured summary for an examiner to check against the original materials. A qualified human must still assess reliability, preserve required documentation, and make investigative or legal conclusions.
 
 Some actions have real consequences. For example, a booking agent should follow its approval and payment rules before it commits a reservation.
 
