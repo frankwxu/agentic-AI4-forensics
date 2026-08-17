@@ -135,7 +135,7 @@ You have completed Lab 0-02 when:
 After this setup check passes, continue to:
 
 1. `lab0_03_model_basics`
-2. `lab0_04_what_is_an_agent`
+2. `lab0_04_ai_agent`
 3. `lab1_reflection_pattern`
 4. `lab2_tool_use_pattern`
 5. `lab3_react_pattern`
