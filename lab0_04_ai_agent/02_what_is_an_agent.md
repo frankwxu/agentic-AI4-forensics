@@ -64,7 +64,7 @@ The labels in Figure 0C have these meanings:
 - `agent configuration / instructions`: persistent guidance that defines the agent's role and goal, rules and constraints, output format, and safety or human-review boundaries
 - `brain / reasoning engine`: the AI model or `LLM` that understands inputs, reasons about goals and context, plans steps, and selects the next action
 - `memory`: information the agent keeps while working, such as conversation history, intermediate notes, stored documents, databases, or a knowledge base
-- `tools / capabilities`: the ways an agent interacts with the outside world, including retrieval or search, code execution, APIs and services, external actions, and file or data operations
+- `tools / capabilities`: the ways an agent interacts with the outside world, including retrieval or search, code execution, APIs and services, image or video generation, external actions, and file or data operations
 - `environment`: the external world the agent can observe or act on, such as websites, databases, services, users, events, and devices
 - `outputs`: responses and artifacts the agent produces, plus external effects such as sent messages, system changes, or completed actions
 - `agent loop`: the repeating cycle of reasoning or planning, acting with a selected tool, and observing the result until the goal or stop condition is reached
@@ -79,7 +79,7 @@ Figure 0C is a modern version of the same basic agent idea in Figure 0B. Both re
 | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | **sensors** receive percepts from the environment                           | **inputs** include user requests, events, messages, and files or data                                               |
 | a **controller** uses rules, search, planning, or a learned policy to decide | an **LLM reasoning engine** interprets the context, reasons, plans, and selects a next action                      |
-| **actuators** carry out actions in the environment                          | **tools and capabilities** retrieve information, run code, call APIs, edit files, or take approved external actions |
+| **actuators** carry out actions in the environment                          | **tools and capabilities** retrieve information, run code, call APIs, generate media, edit files, or take approved external actions |
 
 Both types follow an observe–decide–act loop. In an LLM-based agent, the `LLM` takes the controller role and can work with natural-language instructions and external tools.
 
@@ -98,6 +98,8 @@ The patterns below are simplified pseudocode, not code you need to run.
 | ★★☆ | It selects an approved function and its arguments. | Tool caller | `run_function(llm_chosen_tool, llm_chosen_args)` |
 | ★★★ | It controls whether another step runs and what that step is. | Multi-step agent | `while llm_should_continue(): execute_next_step()` |
 | ★★★ | It can delegate work to another agentic workflow. | Multi-agent workflow | `if llm_trigger(): execute_agent()` |
+
+*Adapted from the Hugging Face Agents Course lesson, [“What is an Agent?”](https://huggingface.co/learn/agents-course/en/unit1/what-are-agents).*
 
 The final row is a coordination pattern, not automatically a higher level of agency than a multi-step agent. In digital forensics, greater workflow control makes clear boundaries, activity logs, authorization checks, and human review increasingly important.
 
@@ -153,4 +155,4 @@ Figure 0E is a quick map of the comparison you will make in the walkthrough. The
 
 *Figure 0E. Plain model versus bounded agent workflow for Lab 0-04: a single plain prompt can lead to an open-ended answer, while an agent specification plus a mini case packet turns the same model into a bounded workflow that produces structured output for human review.*
 
-Next, open [03_agent_walkthrough.ipynb](03_agent_walkthrough.ipynb). You will compare the two paths using the same model and synthetic case packet.
+Next, open [03_tools.ipynb](03_tools.ipynb). You will see how an agent uses a simple weather tool before comparing the two paths in the walkthrough notebook.
