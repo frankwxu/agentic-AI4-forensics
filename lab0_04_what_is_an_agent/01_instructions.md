@@ -48,11 +48,11 @@ A foundational definition of an agent is simple: it perceives an environment and
 
 ## A Modern LLM-Based Agent
 
-In modern AI systems, many agents use an `LLM` as the reasoning engine inside that larger loop. The agent combines the model with memory and tools so it can interpret inputs, reason through goals and context, take actions, and use the results of those actions in later steps.
+In modern AI systems, many agents use an `LLM` as the reasoning engine inside that larger loop. The agent combines the model with persistent instructions, memory, and tools so it can interpret inputs, reason through goals and context, take actions, and use the results of those actions in later steps.
 
-![Figure 0B. Agent and key components](./figures/agent_components.png)
+![Figure 0B. Agent and key components](./figures/agent_components_with_config.png)
 
-*Figure 0B. Agent and key components: an agent receives inputs, uses a reasoning model, memory, and tools to act in an environment, then observes results in a repeating thought–action–observation loop.*
+*Figure 0B. Agent and key components: configuration and instructions define the agent's role and boundaries; it then receives inputs, uses a reasoning model, memory, and tools to act in an environment, and observes results in a repeating thought–action–observation loop.*
 
 ### Classical and LLM-Based Agents
 
@@ -69,6 +69,7 @@ Memory, instructions, retrieval, and guardrails are common additions around the 
 In Figure 0B, each component has a simple purpose:
 
 - `inputs`: user requests, system events, messages from other agents or systems, and files or data that give the agent something to work on
+- `agent configuration / instructions`: persistent guidance that defines the agent's role and goal, rules and constraints, output format, and safety or human-review boundaries
 - `brain / reasoning engine`: the AI model or `LLM` that understands inputs, reasons about goals and context, plans steps, and selects the next action
 - `memory`: information the agent keeps while working. This can include context or conversation history, working memory for intermediate results and notes, and long-term memory such as stored documents, databases, or a knowledge base
 - `tools / capabilities`: the ways an agent interacts with the outside world, including retrieval or search, code execution, APIs and services, external actions, and file or data operations
