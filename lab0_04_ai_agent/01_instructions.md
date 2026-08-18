@@ -26,24 +26,24 @@ copy .env.example .env
 
 This lab reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_04_ai_agent/.env`, so you can change settings here without affecting Lab 0-02, Lab 0-03, or the later pattern labs.
 
-This lab is hands-on. You will first see how a simple weather tool works. You will then compare a plain model response with a bounded mobile-device-activity review agent and design a small agent specification of your own.
+This lab is hands-on. You will first see how a simple weather tool works. You will then run a bounded mobile-device-activity review agent and design a small agent specification of your own.
 
 ## Learning Goals
 
-By the end of this warm-up lab, you should be able to:
+By the end of this introductory lab, you should be able to:
 
-- explain the difference between a plain model response and an agent workflow
+- explain how a bounded agent combines a role and goal with program-controlled steps
 - explain how a tool gives an agent a specific, defined capability
 - recognize how a generic `Tool` class and `@tool` decorator can create consistent tool descriptions
-- identify the role, goal, approved tools, short memory, stop condition, and human-review boundary in a course agent specification
-- run a small agent-style mobile-device-activity review task on a synthetic case packet
+- identify the role, goal, approved tools, tool validation, working memory, stop condition, structured result, and human-review boundary in a course agent specification
+- run a bounded mobile-device-activity review task on a synthetic case packet
 - revise an agent specification so the model behaves in a more bounded and inspectable way
 
 ## Lab Sequence
 
 1. Read [02_what_is_an_agent.md](02_what_is_an_agent.md).
 2. Run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), and [05_memory.ipynb](05_memory.ipynb).
-3. Run [06_agent_walkthrough.ipynb](06_agent_walkthrough.ipynb) and compare the plain-model and agent responses.
+3. Run [06_forensic_agent_walkthrough.ipynb](06_forensic_agent_walkthrough.ipynb) and inspect its tool decisions, working memory, and final review.
 4. Complete [07_agent_design_assignment.ipynb](07_agent_design_assignment.ipynb), including its reflection.
 
 ## Mini Case Packet
@@ -66,9 +66,8 @@ The `triage_events.csv` file is written in plain language on purpose. Read each 
 
 You have completed this warm-up lab when:
 
-- you run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), [05_memory.ipynb](05_memory.ipynb), and [06_agent_walkthrough.ipynb](06_agent_walkthrough.ipynb) successfully
-- you compare the same model in plain-prompt form and agent form
-- you can point to the role, tools, memory, stop condition, and output schema in the agent notebook
+- you run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), [05_memory.ipynb](05_memory.ipynb), and [06_forensic_agent_walkthrough.ipynb](06_forensic_agent_walkthrough.ipynb) successfully
+- you can point to the role, goal, approved tools, validation, working memory, stop condition, structured result, and human-review boundary in the agent notebook
 - you edit and rerun the student agent specification in [07_agent_design_assignment.ipynb](07_agent_design_assignment.ipynb)
 - you complete the reflection sections
 
