@@ -34,12 +34,13 @@ Complete the steps in this order:
 1. Finish [lab0_02_environment_setup/03_environment_check.ipynb](../lab0_02_environment_setup/03_environment_check.ipynb), [lab0_02_environment_setup/04_setup_assignment.ipynb](../lab0_02_environment_setup/04_setup_assignment.ipynb), and [lab0_03_model_basics/03_prompt_revision_assignment.ipynb](../lab0_03_model_basics/03_prompt_revision_assignment.ipynb).
 2. Read [02_what_is_an_agent.md](02_what_is_an_agent.md).
 3. Open [03_tools.ipynb](03_tools.ipynb) and run it from top to bottom.
-4. Open [04_agent_walkthrough.ipynb](04_agent_walkthrough.ipynb) and run it from top to bottom.
-5. Compare the plain-model response with the agent response. Pay attention to which parts of the agent specification change the behavior of the same model.
-6. Open [05_agent_design_assignment.ipynb](05_agent_design_assignment.ipynb).
-7. Edit the student agent specification so it has a clear role, goal, memory, and human-review rule.
-8. Rerun the notebook and review how your agent design changes the output.
-9. Complete the short reflection at the end of each notebook.
+4. Open [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb) and compare Qwen's addition and multiplication tool requests.
+5. Open [05_agent_walkthrough.ipynb](05_agent_walkthrough.ipynb) and run it from top to bottom.
+6. Compare the plain-model response with the agent response. Pay attention to which parts of the agent specification change the behavior of the same model.
+7. Open [06_agent_design_assignment.ipynb](06_agent_design_assignment.ipynb).
+8. Edit the student agent specification so it has a clear role, goal, memory, and human-review rule.
+9. Rerun the notebook and review how your agent design changes the output.
+10. Complete the short reflection at the end of each notebook.
 
 ## Mini Case Packet
 
@@ -61,10 +62,10 @@ The `triage_events.csv` file is written in plain language on purpose. Read each 
 
 You have completed this warm-up lab when:
 
-- you run [03_tools.ipynb](03_tools.ipynb) and [04_agent_walkthrough.ipynb](04_agent_walkthrough.ipynb) successfully
+- you run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), and [05_agent_walkthrough.ipynb](05_agent_walkthrough.ipynb) successfully
 - you compare the same model in plain-prompt form and agent form
 - you can point to the role, tools, memory, stop condition, and output schema in the agent notebook
-- you edit and rerun the student agent specification in [05_agent_design_assignment.ipynb](05_agent_design_assignment.ipynb)
+- you edit and rerun the student agent specification in [06_agent_design_assignment.ipynb](06_agent_design_assignment.ipynb)
 - you complete the reflection sections
 
 ## After This Warm-Up
