@@ -147,12 +147,8 @@ Figure 0D shows this course example. Its role, approved tools, short memory, sto
 
 *Figure 0D. A course example of a bounded-agent specification: the LLM is the reasoning core, while role, goal, approved tools, short memory, stop condition, and a human-review boundary keep the device-activity review limited and inspectable.*
 
-## Plain Model or Bounded Workflow?
+## From Components to a Bounded Workflow
 
-Figure 0E is a quick map of the comparison you will make in the walkthrough. The top path shows a plain prompt sent directly to a model. The bottom path shows the same model bounded by an agent specification, a small case packet, approved inputs, and a human-review step.
+The walkthrough brings these components together in one synthetic forensic workflow. The model receives a limited role and goal, selects only from approved case-packet readers, and receives each approved result as short-term evidence memory. The Python program validates every requested tool, limits the number of tool calls, and requires a structured review for a human examiner.
 
-![Figure 0E. Plain model versus bounded agent workflow for Lab 0-04](./figures/lab0_agent_workflow.svg)
-
-*Figure 0E. Plain model versus bounded agent workflow for Lab 0-04: a single plain prompt can lead to an open-ended answer, while an agent specification plus a mini case packet turns the same model into a bounded workflow that produces structured output for human review.*
-
-Next, open [03_tools.ipynb](03_tools.ipynb). You will see how an agent uses a simple weather tool before comparing the two paths in the walkthrough notebook.
+Next, open [03_tools.ipynb](03_tools.ipynb). You will see how an agent uses a simple weather tool, then learn tool selection and memory before running the bounded forensic-agent walkthrough.
