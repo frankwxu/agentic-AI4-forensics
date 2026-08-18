@@ -1,5 +1,7 @@
 # Lab 1: Reflection Pattern for Evidence-Bounded Reasoning
 
+## Purpose
+
 Lab 1 introduces the Reflection Pattern as a structured quality-control loop for forensic reasoning. Students analyze artifacts from one mobile case, produce an initial report, receive critique from an LLM-based reflection agent, and revise their conclusions to make them more defensible. The instructional emphasis is not answer generation, but disciplined claim validation, uncertainty handling, and clear reasoning.
 
 ## Lab-Specific Environment
@@ -10,13 +12,25 @@ Before running `03_lab_notebook.ipynb`, create a lab-local `.env` in this folder
 cp .env.example .env
 ```
 
+On Windows, use the command for your terminal:
+
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+```
+
+```bat
+:: Command Prompt
+copy .env.example .env
+```
+
 This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab1_reflection_pattern/.env`, so you can change models here without affecting the other labs.
 
-## Educational Objective
+## Learning Goals
 
 The objective of Lab 1 is to build students' ability to produce mobile forensic conclusions that stay within what the evidence supports by applying iterative critique and revision.
 
-## Learning Outcomes
+**Learning outcomes**
 
 By the end of Lab 1, students will be able to:
 
@@ -24,6 +38,11 @@ By the end of Lab 1, students will be able to:
 2. Map investigative claims to specific artifacts and timestamps.
 3. Revise over-claimed conclusions after structured reflection feedback.
 4. Explain what remains uncertain using defensible confidence language.
+
+## Lab Sequence
+
+1. Read [02_case_overview.md](02_case_overview.md).
+2. Complete [03_lab_notebook.ipynb](03_lab_notebook.ipynb).
 
 ## Measurable Targets
 
@@ -72,6 +91,8 @@ This example shows the core learning mechanism: Reflection moves students from s
 
 In the actual lab, students work on the full staged case package described in `02_case_overview.md`, with additional app metadata, attachment records, timeline entries, and network slices. Required deliverables are Draft Report v1, critique log, Final Report v2/v3, and a table linking claims to evidence. Evaluation uses rubric dimensions for linking claims to evidence, reasoning validity, timeline accuracy, uncertainty handling, and measurable revision improvement.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, then `03_lab_notebook.ipynb`.
-
 The staged artifact package in `data/` includes `artifact_manifest.json`, `file_events.csv`, `app_db_messages.csv`, `network_events.csv`, `location_events.csv`, and `chain_of_custody.csv`.
+
+## Next
+
+Continue with [Lab 2: Tool Use Pattern](../lab2_tool_use_pattern/01_instructions.md).

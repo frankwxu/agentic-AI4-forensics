@@ -1,5 +1,7 @@
 # Lab 5: Multiagent Pattern for Evidence Verification and Chain-of-Custody Analysis
 
+## Purpose
+
 Lab 5 applies the Multiagent Pattern as a structured workflow for evidence verification and chain-of-custody review in mobile forensics. Here, chain of custody means the record of who handled the evidence and when. Students use three LLM-based agents with distinct roles: an investigation agent, an evidence-verification agent, and a chain-of-custody auditing agent. They compare agent outputs, resolve disagreements, and issue final evidence-based conclusions. The instructional emphasis is on clear role boundaries, cross-checking, and reasoning that accounts for how evidence was handled.
 
 ## Lab-Specific Environment
@@ -10,13 +12,25 @@ Before running `03a_program_promotion_demo.ipynb` or `03b_lab_notebook.ipynb`, c
 cp .env.example .env
 ```
 
+On Windows, use the command for your terminal:
+
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+```
+
+```bat
+:: Command Prompt
+copy .env.example .env
+```
+
 These notebooks read `MODEL` and `OLLAMA_BASE_URL` from `lab5_multiagent_pattern/.env`, so you can change models here without affecting the other labs.
 
-## Educational Objective
+## Learning Goals
 
 The objective of Lab 5 is to build students' ability to assign role-specific tasks, reconcile conflicting agent outputs, and produce an evidence-based conclusion about whether a file was transmitted (confirmed, likely, or unconfirmed), together with a plain-language explanation of whether the evidence-handling record is complete enough to trust that conclusion.
 
-## Learning Outcomes
+**Learning outcomes**
 
 By the end of Lab 5, students will be able to:
 
@@ -25,6 +39,12 @@ By the end of Lab 5, students will be able to:
 3. Evaluate whether the record of who handled the evidence and when supports or weakens confidence in a conclusion.
 4. Produce a final case conclusion grounded in both technical evidence and the completeness of the evidence-handling record.
 5. Explain whether disagreement across agents reflects missing evidence, prompt or role-boundary limits, or an unsupported inference by one of the agents.
+
+## Lab Sequence
+
+1. Read [02_case_overview.md](02_case_overview.md).
+2. Run [03a_program_promotion_demo.ipynb](03a_program_promotion_demo.ipynb).
+3. Complete [03b_lab_notebook.ipynb](03b_lab_notebook.ipynb).
 
 ## Measurable Targets
 
@@ -97,6 +117,8 @@ This example shows the main learning point: Multiagent Pattern instruction requi
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional agent disagreements and evidence-handling gaps. Required deliverables are a multiagent coordination log, conflict-resolution notes, an evidence-handling timeline, a final report, and a table linking claims to evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_program_promotion_demo.ipynb`, then `03b_lab_notebook.ipynb`.
-
 The staged artifact package in `data/` includes `artifact_manifest.json`, `device_state.csv`, `file_events.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.
+
+## Course Completion
+
+You have completed the five forensic pattern labs. Review the course guidance for submission or follow-up activities.

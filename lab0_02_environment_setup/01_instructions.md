@@ -17,9 +17,7 @@ By the end of Lab 0-02, you should be able to:
 - optionally run a local Ollama server if you are not using the instructor-managed server
 - run a short environment smoke test for the later labs
 
-## What To Do
-
-Complete the steps in this order:
+## Lab Sequence
 
 1. Create `lab0_02_environment_setup/.env` from [lab0_02_environment_setup/.env.example](./.env.example).
 
@@ -102,9 +100,6 @@ Complete the steps in this order:
 
 6. Open [03_environment_check.ipynb](03_environment_check.ipynb) and run all cells from top to bottom.
 7. Complete [04_setup_assignment.ipynb](04_setup_assignment.ipynb), including one question to the configured model and the short observation report at the end.
-8. After the setup assignment passes, create `lab0_03_model_basics/.env` from `lab0_03_model_basics/.env.example`, then continue to [lab0_03_model_basics/01_instructions.md](../lab0_03_model_basics/01_instructions.md).
-
-   If you are using a personal Ollama server, make sure the model in this lab's `.env` is available before running the notebook.
 
 ## Success Criteria
 
@@ -118,7 +113,7 @@ You have completed Lab 0-02 when:
 - the notebook can contact the configured Ollama endpoint
 - the notebook can render a small Graphviz diagram
 - you complete [04_setup_assignment.ipynb](04_setup_assignment.ipynb), including one question to the configured model and the short observation report
-- you are ready to continue to [lab0_03_model_basics](../lab0_03_model_basics)
+- you are ready to continue to [lab0_03_llm_api_and_model_basics](../lab0_03_llm_api_and_model_basics)
 
 ## Troubleshooting
 
@@ -130,14 +125,6 @@ You have completed Lab 0-02 when:
 - If you are using the instructor-managed server, you do not need to run `ollama serve` locally.
 - If you are using a personal Ollama server, make sure it is running and that the configured model is available.
 
-## After Lab 0-02
+## Next
 
-After this setup check passes, continue to:
-
-1. `lab0_03_model_basics`
-2. `lab0_04_ai_agent`
-3. `lab1_reflection_pattern`
-4. `lab2_tool_use_pattern`
-5. `lab3_react_pattern`
-6. `lab4_planning_pattern`
-7. `lab5_multiagent_pattern`
+Continue with [Lab 0-03: LLM API, Structured Output, and Model Comparison](../lab0_03_llm_api_and_model_basics/01_instructions.md).

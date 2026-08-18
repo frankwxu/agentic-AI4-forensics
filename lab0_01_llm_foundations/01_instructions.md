@@ -24,9 +24,7 @@ By the end of this primer, you should be able to:
 - identify at least one reason an LLM can sound confident and still be wrong
 - explain why later labs add prompt structure, tools, memory, and human review around the model
 
-## What To Do
-
-Complete the steps in this order:
+## Lab Sequence
 
 1. Read [02_llm_foundations_reading.md](02_llm_foundations_reading.md).
 2. Study the figures embedded in the reading. Pay particular attention to the decoder-only Transformer, contextualized `bank` embeddings, and the next-token generation loop.
@@ -53,6 +51,6 @@ You have completed Lab 0-01 when:
 
 At the end of the notebook, complete **Optional Assignment: Train on a Different Text** to observe how a different training excerpt changes the vocabulary, learned parameters, predictions, and generated output. This is an extension, not a required completion criterion.
 
-## After This Primer
+## Next
 
 Continue to [lab0_02_environment_setup/01_instructions.md](../lab0_02_environment_setup/01_instructions.md).

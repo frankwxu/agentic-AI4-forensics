@@ -1,5 +1,7 @@
 # Lab 3: ReAct Pattern for Incremental Communication Verification
 
+## Purpose
+
 Lab 3 applies the ReAct Pattern as a structured `thought -> action -> observation -> response` loop for a bounded forensic question. Students use a tool-enabled agent to decide what to inspect next, execute one tool call at a time, and stop only after the available evidence supports a careful answer. Unlike the Tool Use Pattern in Lab 2, which emphasizes selecting and executing appropriate tools, ReAct emphasizes using each observation to choose the next step in an explicit reasoning loop. The instructional emphasis is on transparent tool use, incremental verification, and final answers that stay within what the observed evidence supports.
 
 ## Lab-Specific Environment
@@ -10,13 +12,25 @@ Before running `03a_memory_demo.ipynb`, `03b_lab_notebook.ipynb`, or `03c_react_
 cp .env.example .env
 ```
 
+On Windows, use the command for your terminal:
+
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+```
+
+```bat
+:: Command Prompt
+copy .env.example .env
+```
+
 These notebooks read `MODEL` and `OLLAMA_BASE_URL` from `lab3_react_pattern/.env`, so you can change models here without affecting the other labs.
 
-## Educational Objective
+## Learning Goals
 
 The objective of Lab 3 is to build students' ability to answer a narrow forensic question by alternating between reasoning, tool use, and observation review, while keeping each step visible and inspectable.
 
-## Learning Outcomes
+**Learning outcomes**
 
 By the end of Lab 3, students will be able to:
 
@@ -25,6 +39,13 @@ By the end of Lab 3, students will be able to:
 3. Use tool results to refine the next step in a bounded forensic workflow.
 4. Produce a final answer that cites the observed evidence and notes what remains unconfirmed.
 5. Distinguish a ReAct loop from a broader planning workflow that involves larger task decomposition and replanning.
+
+## Lab Sequence
+
+1. Read [02_case_overview.md](02_case_overview.md).
+2. Run [03a_memory_demo.ipynb](03a_memory_demo.ipynb).
+3. Complete [03b_lab_notebook.ipynb](03b_lab_notebook.ipynb).
+4. Complete [03c_react_assignment.ipynb](03c_react_assignment.ipynb).
 
 ## Measurable Targets
 
@@ -88,6 +109,8 @@ This draft-to-revision contrast shows the ReAct Pattern objective: each next ste
 
 In the actual lab, students analyze the staged mini-case package described in `02_case_overview.md`, with visible tool calls and manual observation logging before using the packaged `ReactAgent`. Before the forensic case notebook, students should open `03a_memory_demo.ipynb` to see how conversation history acts as short-term agent memory. Then students should open `03b_lab_notebook.ipynb`, restate the forensic question, walk through the manual ReAct loop one tool call at a time, and compare that process with the packaged agent. After the guided walkthrough, students should complete `03c_react_assignment.ipynb`, which keeps the same case and tools but removes the fixed tool order so students can justify the next step more independently. Required deliverables are a short ReAct step log, a final answer to the communication question, and a reflection that links claims to tool observations and limits.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_memory_demo.ipynb`, `03b_lab_notebook.ipynb`, then `03c_react_assignment.ipynb`.
-
 The staged artifact package in `data/` includes `artifact_manifest.json`, `incident_window.csv`, `messaging_events.csv`, `network_events.csv`, and `chain_of_custody.csv`.
+
+## Next
+
+Continue with [Lab 4: Planning Pattern](../lab4_planning_pattern/01_instructions.md).

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this onboarding lab after you complete [lab0_03_model_basics/01_instructions.md](../lab0_03_model_basics/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
+Use this onboarding lab after you complete [lab0_03_llm_api_and_model_basics/01_instructions.md](../lab0_03_llm_api_and_model_basics/01_instructions.md). The goal is to make the idea of an AI agent concrete before you start the five pattern labs.
 
 ## Lab-Specific Environment
 
@@ -12,7 +12,19 @@ Before running the walkthrough notebooks, create a lab-local `.env` in this fold
 cp .env.example .env
 ```
 
-This warm-up reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_04_ai_agent/.env`, so you can change settings here without affecting Lab 0-02, Lab 0-03, or the later pattern labs.
+On Windows, use the command for your terminal:
+
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+```
+
+```bat
+:: Command Prompt
+copy .env.example .env
+```
+
+This lab reads `MODEL` and `OLLAMA_BASE_URL` from `lab0_04_ai_agent/.env`, so you can change settings here without affecting Lab 0-02, Lab 0-03, or the later pattern labs.
 
 This lab is hands-on. You will first see how a simple weather tool works. You will then compare a plain model response with a bounded mobile-device-activity review agent and design a small agent specification of your own.
 
@@ -27,21 +39,12 @@ By the end of this warm-up lab, you should be able to:
 - run a small agent-style mobile-device-activity review task on a synthetic case packet
 - revise an agent specification so the model behaves in a more bounded and inspectable way
 
-## What To Do
+## Lab Sequence
 
-Complete the steps in this order:
-
-1. Finish [lab0_02_environment_setup/03_environment_check.ipynb](../lab0_02_environment_setup/03_environment_check.ipynb), [lab0_02_environment_setup/04_setup_assignment.ipynb](../lab0_02_environment_setup/04_setup_assignment.ipynb), and [lab0_03_model_basics/04_prompt_revision_assignment.ipynb](../lab0_03_model_basics/04_prompt_revision_assignment.ipynb).
-2. Read [02_what_is_an_agent.md](02_what_is_an_agent.md).
-3. Open [03_tools.ipynb](03_tools.ipynb) and run it from top to bottom.
-4. Open [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb) and compare Qwen's addition and multiplication tool requests.
-5. Open [05_memory.ipynb](05_memory.ipynb) and compare conversation memory with evidence-bounded working memory.
-6. Open [06_agent_walkthrough.ipynb](06_agent_walkthrough.ipynb) and run it from top to bottom.
-7. Compare the plain-model response with the agent response. Pay attention to which parts of the agent specification change the behavior of the same model.
-8. Open [07_agent_design_assignment.ipynb](07_agent_design_assignment.ipynb).
-9. Edit the student agent specification so it has a clear role, goal, memory, and human-review rule.
-10. Rerun the notebook and review how your agent design changes the output.
-11. Complete the short reflection at the end of each notebook.
+1. Read [02_what_is_an_agent.md](02_what_is_an_agent.md).
+2. Run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), and [05_memory.ipynb](05_memory.ipynb).
+3. Run [06_agent_walkthrough.ipynb](06_agent_walkthrough.ipynb) and compare the plain-model and agent responses.
+4. Complete [07_agent_design_assignment.ipynb](07_agent_design_assignment.ipynb), including its reflection.
 
 ## Mini Case Packet
 
@@ -69,12 +72,6 @@ You have completed this warm-up lab when:
 - you edit and rerun the student agent specification in [07_agent_design_assignment.ipynb](07_agent_design_assignment.ipynb)
 - you complete the reflection sections
 
-## After This Warm-Up
+## Next
 
-Move on to the main forensic labs in order:
-
-1. `lab1_reflection_pattern`
-2. `lab2_tool_use_pattern`
-3. `lab3_react_pattern`
-4. `lab4_planning_pattern`
-5. `lab5_multiagent_pattern`
+Continue with [Lab 1: Reflection Pattern](../lab1_reflection_pattern/01_instructions.md).

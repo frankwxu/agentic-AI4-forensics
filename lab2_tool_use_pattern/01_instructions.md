@@ -1,5 +1,7 @@
 # Lab 2: Tool Use Pattern for Image Metadata Analysis and Vehicle Verification
 
+## Purpose
+
 Lab 2 applies the Tool Use Pattern as a structured workflow for extracting timestamps, checking image content, and evaluating online-sale evidence from mobile data. Students begin with a short local weather-tool demo notebook so they can see the basic tool-use loop in a familiar setting before moving into the forensic case. They then run the required forensic tools manually and hand the same tool set to an LLM-based `ToolAgent` so they can compare direct tool execution with the packaged abstraction. The instructional emphasis is on careful tool selection, valid parameters, and clear separation between raw tool output and analytic interpretation. This lab stays focused on local evidence tools; retrieval systems and external APIs appear only as optional extension ideas, not as required infrastructure.
 
 ## Lab-Specific Environment
@@ -10,13 +12,25 @@ Before running the Lab 2 notebooks, create a lab-local `.env` in this folder:
 cp .env.example .env
 ```
 
-This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab2_tool_use_pattern/.env`, so you can tune the Tool Use lab independently of the others. The default example uses `qwen3:8b` because it has been the most stable option for the `ToolAgent` section with the current Ollama setup.
+On Windows, use the command for your terminal:
 
-## Educational Objective
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+```
+
+```bat
+:: Command Prompt
+copy .env.example .env
+```
+
+These notebooks read `MODEL` and `OLLAMA_BASE_URL` from `lab2_tool_use_pattern/.env`, so you can tune the Tool Use lab independently of the others. The default example uses `qwen3:8b` because it has been the most stable option for the `ToolAgent` section with the current Ollama setup.
+
+## Learning Goals
 
 The objective of Lab 2 is to build students' ability to sequence valid tool calls, interpret outputs, and produce an evidence-based conclusion about whether the phone contains confirmed, likely, or unconfirmed evidence that the stolen vehicle was photographed and prepared for an online sale.
 
-## Learning Outcomes
+**Learning outcomes**
 
 By the end of Lab 2, students will be able to:
 
@@ -25,6 +39,13 @@ By the end of Lab 2, students will be able to:
 3. Use combined image-evidence results to compare photo content and timing with the stolen vehicle description.
 4. Produce a conclusion that distinguishes confirmed, likely, and unconfirmed evidence of online-sale preparation.
 5. Explain when a tool-calling agent's suggested tool choice, arguments, or interpretation should be corrected or rejected based on the tool schema and the available evidence.
+
+## Lab Sequence
+
+1. Run [03a_weather_tool_demo.ipynb](03a_weather_tool_demo.ipynb).
+2. Read [02_case_overview.md](02_case_overview.md).
+3. Complete [03b_lab_notebook.ipynb](03b_lab_notebook.ipynb).
+4. Complete [04_tool_use_assignment.ipynb](04_tool_use_assignment.ipynb).
 
 ## Measurable Targets
 
@@ -113,6 +134,8 @@ This example shows the main learning point: Tool Use Pattern instruction require
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional photos, partial matches, and multiple listing records. Required deliverables are the shared five-part report above, built from the core tool sequence and tied to explicit evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `03a_weather_tool_demo.ipynb`, `02_case_overview.md`, `03b_lab_notebook.ipynb`, then `04_tool_use_assignment.ipynb`. In the guided notebook, complete `Part 1` before `Part 2`; the final optional extension is not required for the core lab objectives.
-
 The staged artifact package in `data/` includes `artifact_manifest.json`, `media_index.csv`, `image_metadata.csv`, `vehicle_detections.csv`, `listing_drafts.json`, and `chain_of_custody.csv`.
+
+## Next
+
+Continue with [Lab 3: ReAct Pattern](../lab3_react_pattern/01_instructions.md).

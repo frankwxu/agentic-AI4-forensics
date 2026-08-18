@@ -451,7 +451,7 @@ These are not bugs in only one model. They are reasons the later labs add struct
 
 This course responds to those limits in stages:
 
-- `lab0_03_model_basics`: show that prompt wording and model choice change outputs
+- `lab0_03_llm_api_and_model_basics`: practice API requests and structured output, then show that prompt wording and model choice change outputs
 - `lab0_04_ai_agent`: show how the same model behaves differently inside a bounded workflow
 - `lab1` through `lab5`: add reflection, tools, step-by-step reasoning, planning, and multiagent review
 

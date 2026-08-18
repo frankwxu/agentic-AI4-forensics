@@ -1,5 +1,7 @@
 # Lab 4: Planning Pattern for Adaptive Timeline Reconstruction and Event Classification
 
+## Purpose
+
 Lab 4 applies the Planning Pattern as a structured workflow for breaking a timeline question into ordered steps. Students use an LLM-based planning agent to build plans, record observations as they work, and revise the plan when new evidence conflicts with earlier assumptions, while remaining responsible for the final interpretation and conclusion. The instructional emphasis is on clear sequencing, observation-driven revision, and evidence-based timeline reconstruction.
 
 ## Lab-Specific Environment
@@ -10,13 +12,25 @@ Before running `03a_lab_notebook.ipynb`, `03b_lab_planner_react_workflow.ipynb`,
 cp .env.example .env
 ```
 
-This notebook reads `MODEL` and `OLLAMA_BASE_URL` from `lab4_planning_pattern/.env`, so you can change models here without affecting the other labs.
+On Windows, use the command for your terminal:
 
-## Educational Objective
+```powershell
+# PowerShell
+Copy-Item .env.example .env
+```
+
+```bat
+:: Command Prompt
+copy .env.example .env
+```
+
+These notebooks read `MODEL` and `OLLAMA_BASE_URL` from `lab4_planning_pattern/.env`, so you can change models here without affecting the other labs.
+
+## Learning Goals
 
 The objective of Lab 4 is to build students' ability to create ordered investigation plans, update those plans when new observations appear, and produce an evidence-cited timeline conclusion about whether the key events occurred within the incident window, outside it, or remain unresolved.
 
-## Learning Outcomes
+**Learning outcomes**
 
 By the end of Lab 4, students will be able to:
 
@@ -25,6 +39,13 @@ By the end of Lab 4, students will be able to:
 3. Replan appropriately when observations invalidate prior assumptions.
 4. Produce a final conclusion grounded in a clear, evidence-cited timeline.
 5. Explain why a planning agent's proposed sequence failed or required revision when new observations exposed hidden assumptions, missing dependencies, or timing conflicts.
+
+## Lab Sequence
+
+1. Read [02_case_overview.md](02_case_overview.md).
+2. Complete [03a_lab_notebook.ipynb](03a_lab_notebook.ipynb).
+3. Complete [03b_lab_planner_react_workflow.ipynb](03b_lab_planner_react_workflow.ipynb).
+4. Optionally run [03c_automatic_planner_react_demo.ipynb](03c_automatic_planner_react_demo.ipynb).
 
 ## Measurable Targets
 
@@ -93,10 +114,12 @@ This example shows the main learning point: Planning Pattern instruction require
 
 In the actual lab, students analyze the full staged case package described in `02_case_overview.md`, with additional decision branches and conflicting observations. Required deliverables are an initial investigation plan, an observation-linked replanning log, a final report with the reconstructed timeline, and a table linking claims to evidence.
 
-Students should work through this lab in order: `01_instructions.md`, `02_case_overview.md`, `03a_lab_notebook.ipynb`, then `03b_lab_planner_react_workflow.ipynb`. If you want the optional instructor or advanced bounded-loop demo after that, continue to `03c_automatic_planner_react_demo.ipynb`.
-
 The `03b_lab_planner_react_workflow.ipynb` notebook is the guided planner-to-`ReactAgent` extension: `PlanningAgent` chooses the next task, `ReactAgent` gathers evidence with tools, and the planner revises the path using those returned observations.
 
 The optional `03c_automatic_planner_react_demo.ipynb` notebook is the bounded automatic version of that same workflow. It is mainly for instructor demo or advanced exploration because it can run for multiple rounds and is more model-dependent.
 
 The staged artifact package in `data/` includes `artifact_manifest.json`, `unlock_events.csv`, `call_log.csv`, `whatsapp_events.csv`, `network_status.csv`, and `chain_of_custody.csv`.
+
+## Next
+
+Continue with [Lab 5: Multiagent Pattern](../lab5_multiagent_pattern/01_instructions.md).

@@ -23,9 +23,7 @@ By the end of this primer, you should be able to:
 - understand `@tool` as a course-specific pattern for turning a function into something an agent can call
 - feel more comfortable reading the code cells in the later labs
 
-## What To Do
-
-Complete the steps in this order:
+## Lab Sequence
 
 1. Confirm that you have completed [Course Setup](../course_setup.md).
 2. Read [02_python_basics_reading.md](02_python_basics_reading.md).
@@ -48,6 +46,6 @@ You have completed this primer when:
 - you can explain in plain language what `@tool` is doing in the course notebooks
 - you can read later course notebook cells with much less anxiety
 
-## After This Primer
+## Next
 
 Continue into [lab0_01_llm_foundations/01_instructions.md](../lab0_01_llm_foundations/01_instructions.md).
