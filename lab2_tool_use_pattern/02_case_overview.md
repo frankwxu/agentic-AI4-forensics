@@ -60,5 +60,5 @@ Return the same five-part report format in both the manual and `ToolAgent` secti
 All required evidence for the core lab is already in the local artifact package above. You do not need a vector database or an external API to complete the main task.
 
 Suggested order for Lab 2:
-1. work through `03b_lab_notebook.ipynb` for the guided version
+1. work through `03_lab_notebook.ipynb` for the guided version
 2. complete `04_tool_use_assignment.ipynb` for the more independent practice

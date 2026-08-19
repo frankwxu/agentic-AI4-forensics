@@ -21,14 +21,26 @@ The animation below shows the general Reflection Pattern: generate an answer, cr
 
 *Figure 1. General Reflection Pattern animation: a query produces an initial output, reflection produces a reflected output, and the cycle iterates before returning a response. Adapted from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/).*
 
-- **Query:** the task given to the model. In this lab, it asks for a report based on the approved forensic artifacts.
+- **Query:** the task given to the model. In this lab, it asks for a report based on the forensic artifacts.
 - **Initial Output:** the model's first report before critique.
-- **Reflect:** the reflection agent reviews the draft for claims that may be unsupported, missing evidence links, and weak uncertainty language.
+- **Reflect:** the model, in its critique role, reviews the draft for claims that may be unsupported, missing evidence links, and weak uncertainty language.
 - **Reflected Output:** the model revises its report using that critique.
 - **Iterate:** if material issues remain, the critique-and-revision cycle repeats. You review the final output and decide whether its claims are actually supported.
 - **Response:** when the cycle stops, the revised output is returned as the response for a student to review.
 
-## Reflection in This Lab
+## The Case Scenario
+
+Investigators are reviewing a company-issued Android phone in a synthetic suspected customer-data exfiltration case involving `customers_q1.csv`. The artifacts show the file being staged in Telegram storage, followed by Telegram and Gmail messages, related network activity, and deletion of the original file from Downloads.
+
+Those events do not, by themselves, prove that the file was successfully delivered to another person. Your task is to determine what the evidence supports, identify what remains uncertain, and evaluate whether reflection makes the report more defensible.
+
+**Reflection is used to:**
+
+- identify unsupported claims or missing evidence links;
+- make remaining uncertainty explicit;
+- revise the report so it stays within what the artifacts support.
+
+## The Reflection Workflow in This Lab
 
 The Lab 1 workflow below applies the same pattern to the synthetic case. The same configured model takes different roles through its instructions: it drafts a report, critiques the draft, and revises the report. Together, those repeated model calls form the reflection-agent workflow. You inspect each stage and decide whether the final claims and evidence links are defensible.
 

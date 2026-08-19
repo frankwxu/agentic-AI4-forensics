@@ -1,12 +1,12 @@
-# Lab: Tool Use Pattern for Image Metadata Analysis and Vehicle Verification
+# Lab 2: Tool Use Pattern for Image Metadata Analysis and Vehicle Verification
 
 ## Purpose
 
-This lab introduces the Tool Use Pattern for evidence-bounded forensic reasoning. Students use local tools to locate relevant photos, inspect image evidence, and review online-sale records from one mobile case. They first run the tools directly, then inspect how `ToolAgent` selects and calls the same tools. The instructional emphasis is on choosing an appropriate tool, supplying valid arguments, separating tool output from interpretation, and reaching a conclusion that stays within the evidence.
+Lab 2 introduces the Tool Use Pattern for evidence-bounded forensic reasoning. Students use local tools to locate relevant photos, inspect image evidence, and review online-sale records from one mobile case. They first run the tools directly, then inspect how `ToolAgent` selects and calls the same tools. The instructional emphasis is on choosing an appropriate tool, supplying valid arguments, separating tool output from interpretation, and reaching a conclusion that stays within the evidence.
 
 ## Learning Outcomes
 
-By the end of this lab, students will be able to:
+By the end of Lab 2, students will be able to:
 
 1. Select appropriate tools to locate photos and sale-related records created on or after January 2, 2026.
 2. Execute tool calls with valid parameters to locate candidate media, inspect image evidence, and retrieve listing records.
@@ -22,53 +22,21 @@ The animation below shows the general Tool Use Pattern: a model selects an exter
 
 *Figure 1. General Tool Use Pattern: the model accesses external tools to retrieve or compute information before responding. Adapted from Avi Chawla, [5 Agentic AI design patterns](https://www.dailydoseofds.com/p/5-agentic-ai-design-patterns/).*
 
-**Figure 1, component by component:**
+## Tool Use in This Lab
 
-- **User:** the person who needs an answer. In this lab, the student asks an evidence question about the recovered phone.
-- **Query:** the question or task that the user asks the model. Here, it asks whether the phone contains evidence that the stolen vehicle was prepared for online sale.
-- **LLM:** the model reads the query and decides whether it needs evidence from a tool before answering.
-- **Tool Calling:** the agent receives the model's requested tool name and arguments, calls the matching local tool, and returns that tool's observation to the model.
-- **Vector Database / Tools & APIs:** possible sources of information or computation. This lab uses local forensic tools; vector databases and external APIs are optional extensions, not required parts of the lab.
-- **LLM (Generate):** after receiving the tool result, the model uses the observation to generate an evidence-based answer.
-- **Response:** the generated answer returned to the user. Students review it and remain responsible for the final forensic conclusion.
+This lab applies the pattern to a synthetic case involving a stolen black SUV. The model does not inspect the phone data directly. Instead, it can request a defined local tool, receive that tool's result, and use the result in its next step. Students inspect the calls and outputs, then make the final forensic judgment.
 
-## The Case Scenario
+Figure 2 shows the mechanics of one tool call. A Python function is wrapped as a `Tool`, stored by name, matched to the model's requested tool name, and then invoked by the program. The returned observation becomes information the model and student can use.
 
-After a black SUV with a roof rack was reported stolen, investigators recovered an Android phone. Its records include a saved listing draft titled `black SUV for sale` with `IMG_2044.jpg` attached.
+![Figure 2. How ToolAgent calls a tool](./figures/lab2_toolagent_calling_process.svg)
 
-Your task is to determine whether the phone contains confirmed, likely, or unconfirmed evidence that a stolen black SUV was photographed and prepared for an online sale after January 2, 2026.
+*Figure 2. ToolAgent calling process for Lab 2: Python function -> `@tool` wrapper -> stored `tools_dict` entry -> model tool-call object -> name matching -> function invocation -> returned observation.*
 
-Classify the result as:
+Figure 3 shows the case workflow. Students narrow the evidence, run structured tool calls, check the returned observations, and decide what the evidence supports about preparation for an online sale.
 
-- **Confirmed:** direct tool outputs support each part of the task.
-- **Likely:** the outputs suggest the conclusion, but an important link is missing or weak.
-- **Unconfirmed:** the outputs do not adequately support the conclusion.
+![Figure 3. Tool-use-pattern workflow for Lab 2](./figures/lab2_tool_use_workflow.svg)
 
-**Your focus is to:**
-
-- choose the right local tool and valid arguments for each evidence question;
-- read the returned observations rather than guessing from the model;
-- connect timestamps, vehicle attributes, and listing records;
-- explain what the evidence does not prove.
-
-## The Tool Use Workflow in This Lab
-
-The workflow below applies the same pattern to the case. The model does not inspect the phone data directly. Instead, it can request a defined local tool, receive that tool's result, and use the result in its next step. Students inspect the calls and outputs, then make the final forensic judgment.
-
-Figure 2 shows the case workflow. Students narrow the evidence, run structured tool calls, check the returned observations, and decide what the evidence supports about preparation for an online sale.
-
-![Figure 2. Tool-use-pattern workflow for this lab](./figures/lab2_tool_use_workflow.svg)
-
-*Figure 2. Tool-use-pattern workflow for this lab: instructor-provided mobile evidence -> student date and file filtering -> student+agent structured tool calls -> agent-supported metadata and vehicle checking -> student conclusion about online-sale preparation.*
-
-**Figure 2, box by box:**
-
-- **[Instructor] Mobile Evidence Package:** the instructor provides the gallery, image metadata, vehicle-detection, listing-draft, and chain-of-custody records.
-- **[Student] Date and File Filtering:** you use the case date and file information to narrow the evidence to candidate photos and records relevant to the stolen vehicle.
-- **[Student+Agent] Tool Calls:** direct tool use and `ToolAgent` both call the same local tools with arguments that identify the evidence to inspect.
-- **[Agent] Metadata + Vehicle Check:** the agent uses the returned tool observations to compare timestamps, vehicle attributes, and listing evidence with the case description.
-- **[Student] Online-Sale Conclusion:** you classify the evidence as confirmed, likely, or unconfirmed and explain the evidence mapping and limits.
-- **Dashed iteration arrow:** if a tool result is insufficient or raises a new question, return to filtering and make another justified tool call before reaching the conclusion.
+*Figure 3. Tool-use-pattern workflow for Lab 2: instructor-provided mobile evidence -> student date and file filtering -> student+agent structured tool calls -> agent-supported metadata and vehicle checking -> student conclusion about online-sale preparation.*
 
 ## Tool Selection Logic
 
@@ -109,7 +77,7 @@ The example shows the core learning point: ground every claim in explicit tool o
 
 ## Lab-Specific Environment
 
-Before running the lab notebooks, create a lab-local `.env` in this folder:
+Before running the Lab 2 notebooks, create a lab-local `.env` in this folder:
 
 ```bash
 cp .env.example .env

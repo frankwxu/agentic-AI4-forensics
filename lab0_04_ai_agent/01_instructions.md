@@ -42,8 +42,8 @@ By the end of this introductory lab, you should be able to:
 ## Lab Sequence
 
 1. Read [02_what_is_an_agent.md](02_what_is_an_agent.md).
-2. Run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), and [05_memory.ipynb](05_memory.ipynb).
-3. Run [06_forensic_agent_walkthrough.ipynb](06_forensic_agent_walkthrough.ipynb), inspect its tool decisions, working memory, and final review, and complete its reflection.
+2. Run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_and_validation.ipynb](04_tool_selection_and_validation.ipynb), [05_reusable_toolagent_weather_demo.ipynb](05_reusable_toolagent_weather_demo.ipynb), and [06_memory.ipynb](06_memory.ipynb).
+3. Run [07_forensic_agent_walkthrough.ipynb](07_forensic_agent_walkthrough.ipynb), inspect its tool decisions, working memory, and final review, and complete its reflection.
 
 ## Mini Case Packet
 
@@ -65,7 +65,7 @@ The `triage_events.csv` file is written in plain language on purpose. Read each 
 
 You have completed this warm-up lab when:
 
-- you run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_demo.ipynb](04_tool_selection_demo.ipynb), [05_memory.ipynb](05_memory.ipynb), and [06_forensic_agent_walkthrough.ipynb](06_forensic_agent_walkthrough.ipynb) successfully
+- you run [03_tools.ipynb](03_tools.ipynb), [04_tool_selection_and_validation.ipynb](04_tool_selection_and_validation.ipynb), [05_reusable_toolagent_weather_demo.ipynb](05_reusable_toolagent_weather_demo.ipynb), [06_memory.ipynb](06_memory.ipynb), and [07_forensic_agent_walkthrough.ipynb](07_forensic_agent_walkthrough.ipynb) successfully
 - you can point to the role, goal, approved tools, validation, working memory, stop condition, structured result, and human-review boundary in the agent notebook
 - you complete the reflection sections
 
