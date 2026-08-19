@@ -51,6 +51,12 @@ Classify the result as:
 - connect timestamps, vehicle attributes, and listing records;
 - explain what the evidence does not prove.
 
+## Tools Available in This Case
+
+- **`list_media_files`:** finds candidate photos by folder and date.
+- **`inspect_image_evidence`:** examines one photo's metadata and vehicle features.
+- **`inspect_listing_records`:** retrieves saved online-sale listing records.
+
 ## The Tool Use Workflow in This Lab
 
 The workflow below applies the same pattern to the case. The model does not inspect the phone data directly. Instead, it can request a defined local tool, receive that tool's result, and use the result in its next step. Students inspect the calls and outputs, then make the final forensic judgment.
@@ -70,7 +76,7 @@ Figure 2 shows the case workflow. Students narrow the evidence, run structured t
 - **[Student] Online-Sale Conclusion:** you classify the evidence as confirmed, likely, or unconfirmed and explain the evidence mapping and limits.
 - **Dashed iteration arrow:** if a tool result is insufficient or raises a new question, return to filtering and make another justified tool call before reaching the conclusion.
 
-## Tool Selection Logic
+## Choosing the Right Tool
 
 Students are assessed on clear tool-selection reasoning, not on hidden model internals. Follow this decision logic and justify each step with the evidence needed:
 
@@ -80,16 +86,6 @@ Students are assessed on clear tool-selection reasoning, not on hidden model int
 4. If the evidence is insufficient, inspect additional candidate images or run another justified follow-up call before revising the conclusion.
 
 `ToolAgent` is a tool-use aid, not a decision authority. You remain responsible for accepting, correcting, or rejecting its suggestions and for justifying the conclusion.
-
-## Required Outputs
-
-Use the same report format for direct tool use and `ToolAgent` output so you can compare the two workflows. Your report must include:
-
-1. `tool-call log`
-2. `strongest timestamp evidence`
-3. `strongest vehicle-match evidence`
-4. `conclusion label (confirmed, likely, or unconfirmed) with confidence 0-1 per major claim`
-5. `explicit evidence mapping and limits`
 
 ## Guided Example
 
@@ -106,6 +102,16 @@ In this lab, you must decide whether a recovered phone contains evidence that a 
 **Evidence-bounded conclusion:** “The phone contains confirmed evidence that a black SUV matching the stolen vehicle was photographed on January 2, 2026 and attached to an online sale draft created later that evening. The records support preparation for an online sale, but they do not confirm that the listing was posted or that the vehicle was sold.”
 
 The example shows the core learning point: ground every claim in explicit tool output and avoid conclusions beyond the observed evidence. The required notebooks provide the full staged case package, additional candidate images, partial matches, and listing records. External APIs and retrieval systems are optional extension ideas; they are not required for this lab.
+
+## Your Required Report
+
+Use the same report format for direct tool use and `ToolAgent` output so you can compare the two workflows. Your report must include:
+
+1. `tool-call log`
+2. `strongest timestamp evidence`
+3. `strongest vehicle-match evidence`
+4. `conclusion label (confirmed, likely, or unconfirmed) with confidence 0-1 per major claim`
+5. `explicit evidence mapping and limits`
 
 ## Lab-Specific Environment
 
