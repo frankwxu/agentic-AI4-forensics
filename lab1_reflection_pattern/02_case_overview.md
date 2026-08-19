@@ -106,7 +106,7 @@ This dataset is synthetic and designed to demonstrate a reflection loop:
 - Revise into a more defensible report.
 
 ## What You Should Do Next
-Use this case overview as your starting point for Lab 1. In the notebook, you will turn these artifacts into a preliminary incident report, then revise that report after critique.
+Use this case overview as your starting point for Lab 1. In the notebook, the model will turn these artifacts into a preliminary incident report, then revise that report after critique for you to inspect.
 
 As you work, keep these questions in mind:
 
@@ -116,56 +116,29 @@ As you work, keep these questions in mind:
 
 Your goal is not to make the strongest accusation possible. Your goal is to produce a careful, evidence-bounded report that separates observation from inference and cites the artifacts that support each claim.
 
-## Student Draft v0
-Before using the notebook, write a short first-pass report based on the case overview and the listed artifacts. Spend about 5-10 minutes on this draft. It does not need to be perfect. The purpose is to capture your initial reasoning before you revise it through the reflection workflow.
+## Prepare for the Reflection Workflow
 
-Use the same wording and order that the notebook will request later:
+The notebook will generate the initial report from this synthetic case package. Before running it, identify two details you expect a defensible report to include and one stronger conclusion that the current artifacts do **not** prove. You will use those expectations to inspect the model draft, reflection critique, and revised report.
 
-`Return these five parts in order: (1) timeline = key events in time order, (2) primary hypothesis = best-supported explanation, (3) two alternative hypotheses = other plausible explanations not fully ruled out, (4) confidence score 0-1 per claim = how strongly each claim is supported, (5) explicit evidence mapping = exact artifacts that support each claim, plus limits.`
+Keep these distinctions in mind:
 
-`Hypothesis` and `claim` are not the same thing. A hypothesis is your broader explanation of what may have happened in the case. A claim is one specific statement inside your report that can be checked against the artifacts. One hypothesis usually contains several claims. For example, "the user likely prepared the file for external sharing" is a hypothesis, while "`customers_q1.csv` was created in Downloads at `01:05:22 UTC`" is a claim.
+- A **hypothesis** is a broader explanation of what may have happened, such as “the user likely prepared the file for external sharing.”
+- A **claim** is a specific, checkable statement within a report, such as “`customers_q1.csv` was created in Downloads at `01:05:22 UTC`.”
 
-### (1) timeline
-List the key events in time order.
+When the evidence is incomplete, prefer cautious phrases such as “the artifacts show,” “this is consistent with,” “this may suggest,” and “the current evidence does not confirm.”
 
-| Time | Event | Evidence Source |
-|------|-------|-----------------|
-| `01:05:22 UTC` | `customers_q1.csv` created in Downloads | `file_events.csv` |
-| `[enter time]` | `[enter event]` | `[enter artifact]` |
-| `[enter time]` | `[enter event]` | `[enter artifact]` |
+## Worked Reflection Example
 
-### (2) primary hypothesis
-State the main explanation that best fits the available artifacts.
+This short example shows what to look for when you inspect the notebook’s draft, critique, and revision. It does not replace checking the actual artifacts.
 
-`[Write 2-3 sentences here.]`
+**Model Draft v1**
 
-### (3) two alternative hypotheses
-- Alternative hypothesis 1: `[Write one other possible explanation and why it is still possible.]`
+"The employee exfiltrated `customers_q1.csv` to an outside party through Telegram and Gmail."
 
-- Alternative hypothesis 2: `[Write a second possible explanation and why the current evidence does not fully rule it out.]`
+**Reflection Critique**
 
-### (4) confidence score 0-1 per claim
-For each claim in your report, assign a confidence score from 0 to 1 and briefly explain why.
+"This conclusion is over-claimed. The artifacts support file preparation, Telegram staging, outbound messaging, outbound network activity, and later deletion of the source file. They do not independently confirm recipient receipt or prove that the same file was successfully transmitted through both Telegram and Gmail. Separate observed events from inferred transmission and explain what remains uncertain."
 
-| Claim | Confidence (0-1) | Why This Score? |
-|------|-------------------|-----------------|
-| ``customers_q1.csv` was copied into Telegram's `Telegram/Documents` storage folder.` | `0.95` | `This is directly supported by a copied event in file_events.csv with a matching file hash and Telegram storage path.` |
-| `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
-| `[enter claim]` | `[0.0-1.0]` | `[explain why]` |
+**Revised Model Draft v2**
 
-### (5) explicit evidence mapping
-For each claim in your report, identify the specific evidence that supports it. If a claim is weakly supported, say so.
-
-| Claim | Supporting Evidence | Limits / Notes |
-|------|----------------------|----------------|
-| ``customers_q1.csv` was copied into Telegram's `Telegram/Documents` storage folder.` | `file_events.csv` copied event at `01:07:41 UTC`; matching `sha256` for the Downloads file and the Telegram-stored file | `This supports file staging inside Telegram storage, but it does not by itself confirm that the file was successfully sent to a recipient.` |
-| `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
-| `[enter claim]` | `[cite artifact(s)]` | `[note limits]` |
-
-When the evidence is incomplete, prefer cautious phrases such as:
-- "the artifacts show"
-- "this is consistent with"
-- "this may suggest"
-- "the current evidence does not confirm"
-
-Your draft can be brief, but it should separate observation from inference, ground each major claim in evidence, and note when the current artifacts do not confirm a stronger conclusion.
+"Artifacts show that `customers_q1.csv` was prepared on the device, copied into Telegram application storage, and followed by outbound Telegram and Gmail activity consistent with attempted external sharing. This supports a defensible conclusion that the user engaged in activity consistent with trying to share the file or its contents outside the organization. The current artifacts do not independently confirm completed delivery to a recipient or show that the same file was successfully transmitted through both channels."

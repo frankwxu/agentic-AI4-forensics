@@ -20,29 +20,29 @@
   <rect x="40" y="130" rx="16" ry="16" width="260" height="170" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
   <text x="170" y="170" text-anchor="middle" class="node-title">[Instructor] Evidence</text>
   <text x="170" y="198" text-anchor="middle" class="node-title">Package</text>
-  <text x="170" y="232" text-anchor="middle" class="node-text">customers_q1.csv, Telegram,</text>
-  <text x="170" y="256" text-anchor="middle" class="node-text">Gmail, network, deletion</text>
+  <text x="170" y="232" text-anchor="middle" class="node-text">file, app-message, network,</text>
+  <text x="170" y="256" text-anchor="middle" class="node-text">location, and custody logs</text>
 
   <rect x="355" y="130" rx="16" ry="16" width="260" height="170" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
-  <text x="485" y="170" text-anchor="middle" class="node-title">[Student] Draft</text>
-  <text x="485" y="198" text-anchor="middle" class="node-title">Report</text>
+  <text x="485" y="170" text-anchor="middle" class="node-title">[Model] Generate</text>
+  <text x="485" y="198" text-anchor="middle" class="node-title">Draft</text>
   <text x="485" y="232" text-anchor="middle" class="node-text">initial exfiltration</text>
   <text x="485" y="256" text-anchor="middle" class="node-text">claim across two channels</text>
 
   <rect x="670" y="130" rx="16" ry="16" width="260" height="170" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
-  <text x="800" y="170" text-anchor="middle" class="node-title">[Agent] Reflection</text>
-  <text x="800" y="198" text-anchor="middle" class="node-title">Critique</text>
+  <text x="800" y="170" text-anchor="middle" class="node-title">[Model] Critique</text>
+  <text x="800" y="198" text-anchor="middle" class="node-title">Draft</text>
   <text x="800" y="232" text-anchor="middle" class="node-text">flags over-claim,</text>
   <text x="800" y="256" text-anchor="middle" class="node-text">delivery not confirmed</text>
 
   <rect x="985" y="130" rx="16" ry="16" width="260" height="170" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
-  <text x="1115" y="170" text-anchor="middle" class="node-title">[Student] Revised</text>
-  <text x="1115" y="198" text-anchor="middle" class="node-title">Report</text>
+  <text x="1115" y="170" text-anchor="middle" class="node-title">[Model] Revise</text>
+  <text x="1115" y="198" text-anchor="middle" class="node-title">Draft</text>
   <text x="1115" y="232" text-anchor="middle" class="node-text">attempted sharing +</text>
   <text x="1115" y="256" text-anchor="middle" class="node-text">what remains uncertain</text>
 
   <rect x="1300" y="130" rx="16" ry="16" width="260" height="170" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
-  <text x="1430" y="170" text-anchor="middle" class="node-title">[Student] Final</text>
+  <text x="1430" y="170" text-anchor="middle" class="node-title">[Student] Reviewed</text>
   <text x="1430" y="198" text-anchor="middle" class="node-title">Report</text>
   <text x="1430" y="226" text-anchor="middle" class="node-text">claims limited to</text>
   <text x="1430" y="250" text-anchor="middle" class="node-text">what the evidence supports</text>
