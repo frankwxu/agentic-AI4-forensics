@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="394" viewBox="30 24 1540 394" role="img" aria-labelledby="title desc">
   <title id="title">ReAct Pattern Workflow</title>
-  <desc id="desc">Workflow for the ReAct Pattern: forensic question, tool-guided thought-action-observation loop, and a final bounded answer.</desc>
+  <desc id="desc">Workflow for the ReAct Pattern: forensic question, tool-guided reason-action-observation loop, and a final bounded answer.</desc>
 
   <defs>
     <style>
@@ -27,7 +27,7 @@
 
   <rect x="355" y="150" rx="16" ry="16" width="260" height="175" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
   <text x="485" y="188" text-anchor="middle" class="node-title">[Student+Agent]</text>
-  <text x="485" y="216" text-anchor="middle" class="node-title">Thought</text>
+  <text x="485" y="216" text-anchor="middle" class="node-title">Reason</text>
   <text x="485" y="250" text-anchor="middle" class="node-text">pick the next tool</text>
   <text x="485" y="274" text-anchor="middle" class="node-text">needed to reduce</text>
   <text x="485" y="298" text-anchor="middle" class="node-text">the key uncertainty</text>

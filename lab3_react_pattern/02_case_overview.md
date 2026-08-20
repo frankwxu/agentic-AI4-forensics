@@ -2,7 +2,7 @@
 
 ## Case Overview
 - Case ID: `RA-2026-009`
-- Scenario: Quick review of whether a Signal attachment attempt happened during a reported unattended interval, using connectivity records as context to avoid overstating delivery.
+- Scenario: Quick review of whether someone tried to send an image through Signal during a reported unattended interval, using connectivity records as context to avoid overstating delivery.
 - Device: Samsung Galaxy A54 (`Android 14`)
 - Incident window (UTC): `2026-02-20T14:10:00Z` to `2026-02-20T14:25:00Z` (`UTC` is a standard global time reference used so timestamps are interpreted consistently.)
 - Analysis timezone: `America/New_York`
@@ -17,14 +17,14 @@
 ## Narrative Summary
 An outreach coordinator reported that a work phone was left unattended on a supply table for a short interval during a community event. In this mini-case, students examine a small set of digital records to reconstruct what happened during that time window. The records include an incident-window record based on staff observation, a messaging record from Signal, and network-status records.
 
-Signal is a messaging app, similar to WhatsApp or iMessage, that people can use to send text messages, photos, and other attachments. In this case, the Signal record shows an attachment attempt, meaning the phone tried to send or prepare a file through the app. The word `event` here means a recorded action or system log entry with a timestamp, such as the start of the unattended interval, a message attempt being logged, or mobile data going offline or coming back online.
+Signal is a messaging app, similar to WhatsApp or iMessage, that people can use to send text messages, photos, and other attachments. In this case, the Signal record shows an attempt to send an image through the app. The word `event` here means a recorded action or system log entry with a timestamp, such as the start of the unattended interval, an image-sending attempt being logged, or mobile data going offline or coming back online.
 
-`Network-status changes` means changes in the phone's internet connectivity, especially whether mobile data was unavailable or later restored. These records matter because a message attempt can appear in the logs even when the phone is not connected well enough to complete delivery. Students must answer one main timing question: did the attachment attempt happen during the unattended interval? The connectivity record does not prove delivery; it helps students decide whether the evidence supports only an attempt or something stronger.
+`Network-status changes` means changes in the phone's internet connectivity, especially whether mobile data was unavailable or later restored. These records matter because an attempt to send an image can appear in the logs even when the phone is not connected well enough to complete delivery. Students must answer one main timing question: did the attempt to send an image through Signal happen during the unattended interval? The connectivity record does not prove delivery; it helps students decide whether the evidence supports only an attempt or something stronger.
 
 ## Key Observed Event Sequence (UTC)
 1. `14:10:00` - staff observation marks the start of the unattended interval
 2. `14:15:58` - mobile data drops offline
-3. `14:16:11` - Signal attachment attempt recorded
+3. `14:16:11` - attempt to send an image through Signal recorded
 4. `14:25:00` - staff observation marks the end of the unattended interval
 5. `14:28:02` - mobile data restored after the unattended interval
 
