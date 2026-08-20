@@ -62,7 +62,7 @@ The Planning Pattern begins with a larger question rather than a single tool cal
 
 Use only the staged records to build a careful timeline, identify what remains unknown, and revise the plan when the network record changes the meaning of the earlier WhatsApp finding.
 
-## The Planning Workflow in This Lab
+## The Planning Workflow for This Case
 
 Lab 4 applies the general Planning Pattern to reconstructing this timeline. You first make the planning and replanning steps visible with a partial evidence bundle. You then compare that process with `PlanningAgent`, extend it to a planner-plus-`ReactAgent` workflow, and optionally view a bounded automatic version.
 
@@ -74,9 +74,9 @@ Lab 4 applies the general Planning Pattern to reconstructing this timeline. You 
 
 - **[Instructor] Incident Question:** *Which communication events happened in the 30-minute gap?* Start with this narrow timing question and the staged evidence package.
 - **[Student] Initial Plan:** *Set the time window, build the call timeline, and check for gaps.* Record the order of evidence checks and the assumptions that later evidence could challenge.
-- **[Student+Agent] Evidence Review Loop:** *Review unlock times, call logs, and WhatsApp activity.* Add each supported observation to the working timeline instead of treating a single record as the complete answer.
+- **[Student+Agent] Evidence Review Loop:** *Review unlock times and call logs.* Add each supported observation to the working timeline and identify any remaining gap instead of treating the first records as the complete answer.
 - **[Student+Agent] Replanning:** *Add WhatsApp after new message evidence appears.* When a new observation reveals a gap or conflict, update the remaining steps before drawing a conclusion.
-- **[Student] Final Timeline and Decision:** *Call in window; WhatsApp activity in window, delivery later.* State the supported timing of the call and WhatsApp activity, but do not claim confirmed delivery; the later network restoration only shows that connectivity returned after the incident window.
+- **[Student] Final Timeline and Decision:** *Call in window; WhatsApp activity in window, delivery unconfirmed.* State the supported timing of the call and WhatsApp activity, but do not claim confirmed delivery; later network restoration only shows that connectivity returned after the incident window.
 - **Repeat:** *Replan until the timeline fits all evidence.* If an important uncertainty remains, return to the current plan and choose the next needed check; otherwise, write the final response.
 
 ## Planning Logic
@@ -92,9 +92,26 @@ Students are assessed on how clearly they plan and replan, not on hidden model i
 
 The agent is a planning aid, not a decision authority. You remain responsible for accepting, rejecting, and justifying the final conclusion.
 
-## Guided Example
+## Notebook Sequence
 
-In this lab, students reconstruct activity during a missing-phone interval. The planning challenge is to revise an initial call-based timeline when WhatsApp and network evidence reveal that a delivery claim would go beyond the available records.
+The three notebooks build on one another. Start with the core planning steps in `03a`, then see a planner and executor work together in `03b`. Use `03c` only after `03b`, because it automates the same loop.
+
+| Notebook | What it teaches | How the workflow runs | When to use it |
+|---|---|---|---|
+| [03a_planning_lab_notebook.ipynb](03a_planning_lab_notebook.ipynb) | The core Planning Pattern: make an initial plan, inspect a new observation, and replan. | You first follow the planning process manually, then compare it with `PlanningAgent`. It does not use a separate `ReactAgent`. | Required starting point for learning planning and replanning. |
+| [03b_guided_planner_react_workflow.ipynb](03b_guided_planner_react_workflow.ipynb) | How Planning and ReAct work together. | `PlanningAgent` chooses the next task; `ReactAgent` gathers the evidence and returns the observation used to revise the plan. | Guided extension after `03a`. |
+| [03c_automatic_planner_react_demo.ipynb](03c_automatic_planner_react_demo.ipynb) | A bounded automatic planner-plus-ReAct loop. | The program repeats planner -> `ReactAgent` -> observation -> replan for up to five rounds. | Optional demonstration; the exact tool order and wording can vary by model. |
+
+Follow this sequence:
+
+1. **Review the case.** Read [02_case_overview.md](02_case_overview.md) to understand the incident window, available artifacts, and evidence limits.
+2. **Make planning visible.** Complete [03a_planning_lab_notebook.ipynb](03a_planning_lab_notebook.ipynb). You build an initial plan from partial evidence, receive the withheld network observation, revise the plan, and compare the manual process with `PlanningAgent`.
+3. **Extend planning to evidence execution.** Complete [03b_guided_planner_react_workflow.ipynb](03b_guided_planner_react_workflow.ipynb). `PlanningAgent` selects the next evidence-gathering task, and `ReactAgent` returns the observation used for the next planning decision.
+4. **Explore bounded automation (optional).** Run [03c_automatic_planner_react_demo.ipynb](03c_automatic_planner_react_demo.ipynb) to see the same planner-to-`ReactAgent` loop run for a limited number of rounds. Its exact sequence may vary by model.
+
+## After-Completion Comparison
+
+After completing [03a_planning_lab_notebook.ipynb](03a_planning_lab_notebook.ipynb), use this example to compare the plan and conclusion with your own work. It shows why the initial call-based timeline must be revised when WhatsApp and network evidence appear.
 
 | Plan Step | New Observation | Required Plan Update | Why It Matters |
 |---|---|---|---|
@@ -111,13 +128,6 @@ Student Final v2:
 "The records show an outgoing phone call at `21:08 UTC` and WhatsApp activity associated with an image attachment at `21:13 UTC`, both within the `20:55-21:25 UTC` incident window. Network records show the device was offline from `21:10` until `21:26 UTC`, so the available evidence does not confirm that the attachment was delivered during the incident window."
 
 This contrast shows the Planning Pattern objective: revise the investigation path and the final conclusion when new evidence changes what the earlier plan could support.
-
-## Workflow in This Lab
-
-1. **Review the case.** Read [02_case_overview.md](02_case_overview.md) to understand the incident window, available artifacts, and evidence limits.
-2. **Make planning visible.** Complete [03a_lab_notebook.ipynb](03a_lab_notebook.ipynb). You build an initial plan from partial evidence, receive the withheld network observation, revise the plan, and compare the manual process with `PlanningAgent`.
-3. **Extend planning to evidence execution.** Complete [03b_lab_planner_react_workflow.ipynb](03b_lab_planner_react_workflow.ipynb). `PlanningAgent` selects the next evidence-gathering task, and `ReactAgent` returns the observation used for the next planning decision.
-4. **Explore bounded automation (optional).** Run [03c_automatic_planner_react_demo.ipynb](03c_automatic_planner_react_demo.ipynb) to see the same planner-to-`ReactAgent` loop run for a limited number of rounds. Its exact sequence may vary by model.
 
 ## Lab-Specific Environment
 

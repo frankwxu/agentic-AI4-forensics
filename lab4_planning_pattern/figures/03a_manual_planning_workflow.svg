@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="430" viewBox="0 0 1500 430" role="img" aria-labelledby="title desc">
+  <title id="title">Manual Planning and Replanning Workflow</title>
+  <desc id="desc">A workflow for the core Lab 4 notebook: partial artifact bundle, initial plan, new observation, revised plan, and evidence-bounded timeline, with a loop for additional checks.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .node-text { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .label { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="430" fill="#ffffff"/>
+  <text x="750" y="54" text-anchor="middle" class="title">Manual Planning and Replanning in 03a</text>
+
+  <rect x="35" y="145" rx="16" ry="16" width="240" height="150" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="155" y="185" text-anchor="middle" class="node-title">Partial Artifact</text>
+  <text x="155" y="211" text-anchor="middle" class="node-title">Bundle</text>
+  <text x="155" y="248" text-anchor="middle" class="node-text">Start with the records</text>
+  <text x="155" y="271" text-anchor="middle" class="node-text">currently available</text>
+
+  <rect x="325" y="145" rx="16" ry="16" width="240" height="150" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+  <text x="445" y="198" text-anchor="middle" class="node-title">Initial Plan</text>
+  <text x="445" y="241" text-anchor="middle" class="node-text">Order the evidence</text>
+  <text x="445" y="264" text-anchor="middle" class="node-text">checks and assumptions</text>
+
+  <rect x="615" y="145" rx="16" ry="16" width="240" height="150" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="735" y="198" text-anchor="middle" class="node-title">New Observation</text>
+  <text x="735" y="241" text-anchor="middle" class="node-text">Compare the new record</text>
+  <text x="735" y="264" text-anchor="middle" class="node-text">with the current plan</text>
+
+  <rect x="905" y="145" rx="16" ry="16" width="240" height="150" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
+  <text x="1025" y="198" text-anchor="middle" class="node-title">Revised Plan</text>
+  <text x="1025" y="241" text-anchor="middle" class="node-text">Update the remaining</text>
+  <text x="1025" y="264" text-anchor="middle" class="node-text">steps when needed</text>
+
+  <rect x="1195" y="145" rx="16" ry="16" width="270" height="150" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1330" y="185" text-anchor="middle" class="node-title">Evidence-Bounded</text>
+  <text x="1330" y="211" text-anchor="middle" class="node-title">Timeline</text>
+  <text x="1330" y="248" text-anchor="middle" class="node-text">State what the records</text>
+  <text x="1330" y="271" text-anchor="middle" class="node-text">support and what remains unknown</text>
+
+  <line x1="275" y1="220" x2="325" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="565" y1="220" x2="615" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="855" y1="220" x2="905" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="1145" y1="220" x2="1195" y2="220" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <path d="M 1025 295 C 1025 365, 735 365, 735 295" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="8 8" marker-end="url(#arrow)"/>
+  <text x="880" y="403" text-anchor="middle" class="label">If a key gap remains, check another record and replan</text>
+</svg>

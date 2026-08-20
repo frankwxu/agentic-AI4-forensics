@@ -1,5 +1,9 @@
 # Timeline Reconstruction Case
 
+![Planning case overview](figures/planning_case_overview.png)
+
+*Figure 1. Planning case overview: the incident context, key event sequence, available artifacts, and evidence limit for the Lab 4 timeline-reconstruction exercise.*
+
 ## Case Overview
 - Case ID: `PL-2026-011`
 - Scenario: Mobile-phone access and communication timing review after a phone went missing during field visits.

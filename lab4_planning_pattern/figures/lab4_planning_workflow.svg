@@ -35,9 +35,9 @@
   <rect x="670" y="150" rx="16" ry="16" width="260" height="175" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
   <text x="800" y="188" text-anchor="middle" class="node-title">[Student+Agent] Evidence</text>
   <text x="800" y="216" text-anchor="middle" class="node-title">Review Loop</text>
-  <text x="800" y="250" text-anchor="middle" class="node-text">review unlock times,</text>
-  <text x="800" y="274" text-anchor="middle" class="node-text">call logs, and</text>
-  <text x="800" y="298" text-anchor="middle" class="node-text">WhatsApp activity</text>
+  <text x="800" y="250" text-anchor="middle" class="node-text">review unlock times</text>
+  <text x="800" y="274" text-anchor="middle" class="node-text">and call logs</text>
+  <text x="800" y="298" text-anchor="middle" class="node-text">check for gaps</text>
 
   <rect x="985" y="150" rx="16" ry="16" width="260" height="175" fill="#ffedd5" stroke="#ea580c" stroke-width="2"/>
   <text x="1115" y="188" text-anchor="middle" class="node-title">[Student+Agent]</text>
@@ -47,11 +47,11 @@
   <text x="1115" y="298" text-anchor="middle" class="node-text">evidence appears</text>
 
   <rect x="1300" y="150" rx="16" ry="16" width="260" height="175" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
-  <text x="1430" y="188" text-anchor="middle" class="node-title">[Student] Final Timeline</text>
-  <text x="1430" y="216" text-anchor="middle" class="node-title">and Decision</text>
+  <text x="1430" y="188" text-anchor="middle" class="node-title">[Student] Final</text>
+  <text x="1430" y="216" text-anchor="middle" class="node-title">Timeline</text>
   <text x="1430" y="250" text-anchor="middle" class="node-text">call in window;</text>
-  <text x="1430" y="274" text-anchor="middle" class="node-text">WhatsApp activity in</text>
-  <text x="1430" y="298" text-anchor="middle" class="node-text">window, delivery later</text>
+  <text x="1430" y="274" text-anchor="middle" class="node-text">WhatsApp in window;</text>
+  <text x="1430" y="298" text-anchor="middle" class="node-text">delivery unconfirmed</text>
 
   <line x1="300" y1="238" x2="355" y2="238" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
   <line x1="615" y1="238" x2="670" y2="238" stroke="#334155" stroke-width="3" marker-end="url(#arrow)"/>
