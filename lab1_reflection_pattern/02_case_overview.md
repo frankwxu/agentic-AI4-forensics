@@ -29,12 +29,12 @@ Investigators are reviewing a company-issued Android phone after possible custom
 9. `01:12:04` - `customers_q1.csv` deleted from Downloads
 
 ## Artifact Files
-- Manifest: `artifact_manifest.json`
-- File events: `file_events.csv`
-- App messages: `app_db_messages.csv`
-- Network events: `network_events.csv`
-- Location events: `location_events.csv`
-- Chain of custody: `chain_of_custody.csv`
+- `artifact_manifest.json`: identifies the case and device, explains time handling, and lists the artifacts in the evidence package.
+- `file_events.csv`: records when files were created, accessed, copied, or deleted. Use the path and file hash to trace `customers_q1.csv`.
+- `app_db_messages.csv`: records selected Telegram and Gmail messages, including their time, direction, contact, and a short text excerpt.
+- `network_events.csv`: records connections to remote services, the process responsible, and the amount of outgoing data. Use it to compare network activity with message and file events.
+- `location_events.csv`: records approximate device locations from GPS, Wi-Fi, or cell sources. Use it to assess whether the phone stayed in the same general place.
+- `chain_of_custody.csv`: records acquisition, hash verification, and later handling of the evidence, helping document its integrity.
 
 ### Artifact Guide
 Use the notes below to understand what each file contains before you begin your draft.

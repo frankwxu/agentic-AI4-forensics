@@ -25,12 +25,12 @@ After a black SUV with a roof rack was reported stolen on January 2, investigato
 5. `published_at_utc = null` - no artifact shows that the draft was posted live
 
 ## Artifact Files
-- Manifest: `artifact_manifest.json`
-- Media index: `media_index.csv`
-- Image metadata: `image_metadata.csv`
-- Vehicle detections: `vehicle_detections.csv`
-- Listing drafts: `listing_drafts.json`
-- Chain of custody: `chain_of_custody.csv`
+- `artifact_manifest.json`: identifies the case and device, gives the acquisition context, and lists the files in the staged evidence package.
+- `media_index.csv`: lists the image files recovered from the phone, including their paths, creation times, sizes, and folders. Use it to find candidate photos.
+- `image_metadata.csv`: records each image's capture and edit times, location coordinates, and camera model. Use it to place a candidate image in time and context.
+- `vehicle_detections.csv`: records detected vehicle features—such as color, body type, roof rack, and confidence—for each image. Use it to compare a photo with the reported vehicle.
+- `listing_drafts.json`: stores saved sale-listing drafts, including their text, attached images, and publication status. Use it to determine whether a vehicle photo was prepared for a sale listing.
+- `chain_of_custody.csv`: records acquisition, hash verification, and later handling of the evidence, helping document its integrity.
 
 ## Intended Educational Use
 This dataset is synthetic and designed to demonstrate a tool-use workflow:

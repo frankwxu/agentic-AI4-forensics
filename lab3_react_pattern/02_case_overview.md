@@ -1,6 +1,10 @@
-# Incremental Communication Verification Case
+# Case Overview: Signal Image-Sending Attempt During an Unattended Interval
 
-## Case Overview
+![Case overview for the Signal image-sending attempt during an unattended interval](../lab0_04_ai_agent/figures/ReAct_case_overview.png)
+
+*Figure 1. The case timeline and the artifacts used to answer the question. The image-sending attempt is recorded during the unattended interval, but the records do not prove delivery.*
+
+## Case Details
 - Case ID: `RA-2026-009`
 - Scenario: Quick review of whether someone tried to send an image through Signal during a reported unattended interval, using connectivity records as context to avoid overstating delivery.
 - Device: Samsung Galaxy A54 (`Android 14`)
@@ -29,11 +33,11 @@ Signal is a messaging app, similar to WhatsApp or iMessage, that people can use 
 5. `14:28:02` - mobile data restored after the unattended interval
 
 ## Artifact Files
-- Manifest: `artifact_manifest.json` (a summary file describing the contents of the staged evidence package)
-- Incident window: `incident_window.csv`
-- Messaging events: `messaging_events.csv`
-- Network events: `network_events.csv`
-- Chain of custody: `chain_of_custody.csv` (a record of how the evidence was collected, handled, and documented)
+- `artifact_manifest.json`: identifies the case and device, gives the acquisition context, and lists the files in this staged evidence package.
+- `incident_window.csv`: records the staff-observed start and end of the time when the phone was unattended. Use it as the time window for comparing other events.
+- `messaging_events.csv`: records Signal activity, including the timestamp and details of the image-sending attempt.
+- `network_events.csv`: records when mobile data went offline and was restored. Use it as delivery context; it does not prove that an image was delivered.
+- `chain_of_custody.csv`: records how the phone data was acquired and when its original image hash was verified, helping document evidence handling.
 
 ## What Students Do Next
 After reading this overview, students should open `03a_memory_demo.ipynb` for the memory warm-up, then `03b_lab_notebook.ipynb` for the guided ReAct walkthrough, and finally `03c_react_assignment.ipynb` for the less-guided assignment.

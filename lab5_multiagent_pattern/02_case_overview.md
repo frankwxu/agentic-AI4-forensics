@@ -35,12 +35,12 @@ Students are not being asked to identify a suspect or prove intent. The task is 
 6. `2026-03-05T11:02:44Z` - analyst review begins without a documented transfer from the prior handler
 
 ## Artifact Files
-- Manifest: `artifact_manifest.json`
-- Device state: `device_state.csv`
-- File events: `file_events.csv`
-- Messaging events: `messaging_events.csv`
-- Network events: `network_events.csv`
-- Chain of custody: `chain_of_custody.csv`
+- `artifact_manifest.json`: identifies the case and device, gives the acquisition context, and lists the files in the staged evidence package.
+- `device_state.csv`: records when the phone was locked and unlocked. Use it to define the unattended interval.
+- `file_events.csv`: records the creation and location of `patients_contacts.png`, along with its file hash. Use it to identify the file involved in the possible transmission.
+- `messaging_events.csv`: records the messaging-app attachment attempt, including its time, target, and file details. Use it as evidence that the file was selected for sending.
+- `network_events.csv`: records network-upload activity, including the app and outgoing bytes. Use it to assess whether the attachment attempt was followed by a transfer attempt.
+- `chain_of_custody.csv`: records how the evidence was acquired and handled. Use it to identify the undocumented transfer that affects confidence in the conclusion.
 
 ## Intended Educational Use
 This dataset is synthetic and designed to demonstrate a multiagent workflow:

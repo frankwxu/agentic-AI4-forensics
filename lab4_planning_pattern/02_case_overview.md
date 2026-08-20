@@ -26,12 +26,12 @@ A state benefits caseworker reported that a phone was missing for 30 minutes dur
 6. `21:27:04` - mobile data restored after the incident window
 
 ## Artifact Files
-- Manifest: `artifact_manifest.json`
-- Unlock events: `unlock_events.csv`
-- Call log: `call_log.csv`
-- WhatsApp events: `whatsapp_events.csv`
-- Network status: `network_status.csv`
-- Chain of custody: `chain_of_custody.csv`
+- `artifact_manifest.json`: identifies the case and device, gives the acquisition context, and lists the files in the staged evidence package.
+- `unlock_events.csv`: records when the phone was unlocked or locked. Use it to establish device-access timing during the missing period.
+- `call_log.csv`: records the time, direction, number, duration, and type of each phone call. Use it to place the outgoing call in the timeline.
+- `whatsapp_events.csv`: records WhatsApp actions, including opening a chat, deleting a message, and creating an image-attachment record. Use it to reconstruct app activity.
+- `network_status.csv`: records time ranges when the phone was online or offline. Use it to interpret what the messaging records can—and cannot—show about delivery.
+- `chain_of_custody.csv`: records acquisition, hash verification, and later handling of the evidence, helping document its integrity.
 
 ## Intended Educational Use
 This dataset is synthetic and designed to demonstrate a planning and replanning workflow:
