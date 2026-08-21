@@ -12,7 +12,7 @@ Your five implementations must address five distinct, student-defined questions:
 4. **ReAct** — use an iterative reasoning, action, and observation loop.
 5. **Multiagent** — coordinate at least two agents with distinct responsibilities.
 
-Questions may come from any domain. Digital-forensics questions are strongly encouraged, especially questions that require evidence-based conclusions, clear uncertainty language, and a distinction between observed evidence and inference.
+Questions should address digital-forensics tasks, especially tasks that require evidence-based conclusions, clear uncertainty language, and a distinction between observed evidence and inference. A non-forensic topic requires instructor approval.
 
 ## Learning Objectives
 
@@ -60,6 +60,10 @@ State the criteria you used to select your framework, cite your sources, and exp
 
 ## Pattern Implementation Requirements
 
+All five patterns must be implemented and run using the **one AI agent framework** selected through the framework review. Do not substitute standalone scripts, unrelated libraries, or a different framework for an individual pattern without instructor approval.
+
+Pattern-specific requirements are in the `PATTERN-INSTRUCTIONS.md` file within each pattern folder. This top-level `README.md` is the main guide for the complete final-project submission.
+
 Each pattern implementation must include the following in its code and report section:
 
 - A clear research question and intended user/task.
@@ -81,11 +85,15 @@ For forensic questions, identify the source artifact or record behind each impor
 
 ## Evaluation Requirements
 
-For each pattern, evaluate at least three representative cases. Define success before or while designing the test set; acceptable measures include task accuracy, evidence-citation completeness, valid tool-call rate, plan quality, conflict-resolution quality, or a justified domain-specific measure.
+For each pattern, evaluate at least three representative cases under two conditions: the **instructor-provided baseline implementation** in `src/` and the **student reimplementation** in the selected agent framework. Use the same user question, input/data, LLM/model, configuration, and success criterion in both conditions. Define success before or while designing the test set; acceptable measures include task accuracy, evidence-citation completeness, valid tool-call rate, plan quality, conflict-resolution quality, or a justified domain-specific measure.
+
+Students may use their own selected LLMs/models, including local or open-source models. For every model used, the report must identify the model name and version, provider or source, access method, relevant configuration, and any fine-tuning or adaptation. When a student-selected model differs from the model used by the instructor baseline, run a controlled model comparison using the same cases, implementation condition, user question, data, configuration, and success criterion. Compare quality, success rate, reliability, latency/cost, and limitations. Do not attribute a difference to the implementation framework when the LLM/model also changed.
 
 Report:
 
-- Per-case result and whether it met the stated success criterion.
+- Per-case instructor-baseline and student-implementation result, and whether each met the stated success criterion.
+- Comparative conclusion explaining how the selected-framework reimplementation differed from the instructor-provided implementation.
+- For each pattern, use the corresponding classroom lab result or documented instructor baseline as the comparison reference. Identify any differences in task, data, model, or criterion and provide a justified qualitative comparison rather than an unsupported direct performance claim.
 - Reliability across repeated runs, when stochastic behavior is relevant.
 - Latency and/or cost when the framework or provider makes it available.
 - Failure modes, including unsupported claims, invalid tool use, faulty plans, or unresolved agent disagreements.
@@ -93,33 +101,39 @@ Report:
 
 ## Deliverables
 
-Submit one project package containing:
+Submit one GitHub repository containing the entire `final-project` folder. The repository must contain one **final research report** and the supporting materials listed below. The final research report must follow [`submission-template.md`](submission-template.md); it is not a separate assignment from the framework review, evaluation, or reproducibility documentation.
 
-1. **Research report** — 6–8 pages, excluding references and appendices.
-2. **Runnable implementation** — a source repository link or compressed source package with all five pattern implementations.
-3. **README** — setup, configuration, dependency, execution, and reproduction instructions.
-4. **Framework review** — comparison table, sources, selection criteria, and selection rationale; this may be part of the report or a separate appendix.
-5. **Test materials and results** — questions, inputs/data references, expected criteria, outputs, and evaluation results.
-6. **Demonstration** — short recorded or live demonstration showing the five implementations and one representative result from each.
-7. **Team contribution record** — required only for two-student teams; see `EVALUATION.md`.
+1. **Final research report** — 6–8 pages, excluding references and appendices. Use `submission-template.md` as its required structure. Include the framework review, research questions and evidence-based answers, implementation descriptions, evaluation results, model/AI-use disclosure, and reproducibility information in the report or its appendices.
+2. **Runnable implementations** — complete and run the notebook in each pattern folder using the selected agent framework: `01-reflection/reflection.ipynb`, `02-tool-use/tool-use.ipynb`, `03-planning/planning.ipynb`, `04-react/react.ipynb`, and `05-multiagent/multiagent.ipynb`. Include any supporting code, data, dependencies, and safe configuration needed to reproduce each notebook.
+3. **Instructor and student implementation comparison evidence** — document this in the **“Required Instructor and Student Implementation Comparison Evidence”** section of `submission-template.md`. For each pattern and test case, include the shared user question and data, instructor-baseline output from `src/`, student-notebook output, LLM/model and configuration, run logs or pattern artifacts, success results, and an evidence-based comparison.
+4. **Pattern-specific documentation** — complete the `PATTERN-INSTRUCTIONS.md` file in each pattern folder with setup, dependencies, execution, reproduction, and evidence-location instructions for that pattern.
+5. **Presentation materials** — slides, recording (if used), or other materials supporting the oral presentation. Demonstrate only one representative pattern, including its instructor-versus-student comparison, results, and limitations. The other four patterns only need to be identified as completed; students do not need to demonstrate or discuss them in detail. Start with `your_presentation.pptx` and rename it for your project before submitting. See the presentation reference outline in `submission-template.md`.
+6. **Team contribution record** — required only for two-student teams; see `EVALUATION.md`.
 
-Use the suggested structure in [`submission-template.md`](submission-template.md).
+Each student must submit the repository link individually through Sakai.
 
 ## Data, Ethics, and Academic Integrity
 
+- Students may use a dataset previously used in class or provide their own dataset for implementing and evaluating the patterns. Document the dataset source, contents, permitted use, and any preprocessing; cite external datasets.
 - Prefer synthetic, public, or instructor-approved data.
 - Do not submit private, sensitive, or real-case evidence unless the instructor explicitly approves its use and sharing.
 - Protect identifiers and credentials. Do not place API keys, tokens, personal data, or restricted evidence in source control or the submission.
-- Cite frameworks, models, datasets, code, and external materials. Clearly identify generated content and all substantive external assistance.
-- Your team is responsible for understanding, testing, and explaining every submitted component. Work that cannot be explained or reproduced may not receive full credit.
+- AI tools may be used for this project, including to generate or revise code, text, analyses, and other project materials. Disclose every AI tool/model used, the purpose of its use, and any substantive prompts, outputs, or assistance in the report or appendix.
+- Cite frameworks, models, datasets, code, AI-generated content, and other external materials. Do not present undisclosed AI-generated work as your own.
+- Verify all AI outputs. Your team is responsible for their accuracy, unsupported claims, security implications, and appropriate use of evidence.
+- Do not upload private, sensitive, real-case, or restricted forensic evidence to an AI service unless the instructor explicitly approves both the data and service.
+- Your team must be able to explain and modify every submitted component during the oral presentation. Work that cannot be explained or reproduced may not receive full credit.
 
 ## Submission Details
 
+Upload the **entire `final-project` folder** to a GitHub repository so that all required code, documentation, test materials, and results are available in one place. Each student must submit the link to that GitHub repository individually through the Sakai website.
+
+All final-project submissions and oral presentations are due during the **last class meeting**.
+
 | Item | Placeholder |
 |---|---|
-| Proposal/checkpoint due | `[Instructor will provide]` |
-| Final package due | `[Instructor will provide]` |
-| Demonstration format/date | `[Instructor will provide]` |
-| Submission location | `[Instructor will provide]` |
+| Final package due | Last class meeting |
+| Oral presentation date | Last class meeting |
+| Submission location | Sakai — each student submits the GitHub repository link individually |
 
 See [`EVALUATION.md`](EVALUATION.md) for the complete 100-point rubric and grading process.
