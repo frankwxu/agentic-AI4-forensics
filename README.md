@@ -171,6 +171,7 @@ Each onboarding lab has its own `01_instructions.md` with the step-by-step detai
 - `lab3_react_pattern/`: ReAct lab for step-by-step communication verification with tool calls
 - `lab4_planning_pattern/`: Planning lab for phone access, call timing, and delayed WhatsApp delivery
 - `lab5_multiagent_pattern/`: Multiagent lab for transmission assessment and chain-of-custody review
+- `projects/final-project/`: Capstone project that applies and evaluates all five patterns
 
 Each onboarding lab folder includes its own instructions and supporting materials for that part of the setup or warm-up sequence.
 
@@ -197,3 +198,10 @@ Students should follow this sequence:
 8. `lab3_react_pattern`
 9. `lab4_planning_pattern`
 10. `lab5_multiagent_pattern`
+11. [`projects/final-project/`](projects/final-project/README.md)
+
+## Final Project
+
+After completing Labs 1 through 5, complete the [Final Project: Agentic AI Patterns](projects/final-project/README.md). Students review agent frameworks, select one framework, and implement Reflection, Tool Use, Planning, ReAct, and Multiagent workflows for five distinct research questions.
+
+For every pattern, students compare the same test cases under a baseline condition without the target pattern and a pattern condition using it. The project guide includes required deliverables, the 100-point evaluation rubric, starter notebooks, pattern folders, and the submission template.
