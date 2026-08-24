@@ -1,0 +1,4 @@
+step,action,location,detail
+1,open_file,desktop,Opened notes.txt
+2,write_note,editor,Added a reminder
+3,save_file,cloud,Saved notes.txt

@@ -29,9 +29,7 @@ By the end of this primer, you should be able to:
 2. Read [02_python_basics_reading.md](02_python_basics_reading.md).
 3. Open [03_python_basics_notebook.ipynb](03_python_basics_notebook.ipynb).
 4. Run the notebook from top to bottom.
-5. Open [04_python_patterns_for_later_labs.ipynb](04_python_patterns_for_later_labs.ipynb).
-6. Run that notebook from top to bottom.
-7. Continue to [Lab 0-01: LLM Foundations](../lab0_01_llm_foundations/01_instructions.md).
+5. Continue to [Lab 0-01: LLM Foundations](../lab0_01_llm_foundations/01_instructions.md).
 
 ## Success Criteria
 
@@ -44,6 +42,9 @@ You have completed this primer when:
 - you can inspect a tiny JSON file and a tiny CSV file in a notebook
 - you can read later-lab helper patterns such as `sorted(...)`, list/dictionary comprehensions, and `enumerate(...)`
 - you can explain in plain language what `@tool` is doing in the course notebooks
+- you can recognize f-strings, Boolean conditions, `.get(...)`, slicing, `.append(...)`, `next(...)`, and `range(...)`
+- you can read a simple `try`/`except`/`raise` block and explain what error it handles
+- you can explain how `**arguments` supplies named function inputs and how an object calls a method such as `.run(...)`
 - you can read later course notebook cells with much less anxiety
 
 ## Next

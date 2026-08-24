@@ -1,0 +1,15 @@
+{
+  "lesson_id": "PY-INTRO-001",
+  "title": "Python practice",
+  "student": "Taylor Reed",
+  "status": "ready",
+  "files": [
+    "notes.txt",
+    "schedule.csv",
+    "ideas.md"
+  ],
+  "notes": [
+    "Small classroom dataset",
+    "Use for Python basics only"
+  ]
+}

@@ -231,11 +231,13 @@ When you open [03_python_basics_notebook.ipynb](03_python_basics_notebook.ipynb)
 - loading a tiny JSON file and a tiny CSV file
 - printing a few values that look like later course notebook outputs
 
-Then open [04_python_patterns_for_later_labs.ipynb](04_python_patterns_for_later_labs.ipynb) to practice the extra notebook-reading patterns that show up often in Labs 2-5:
+Later sections of the same [03_python_basics_notebook.ipynb](03_python_basics_notebook.ipynb) practice the extra notebook-reading patterns that show up often in Labs 2-5:
 
 - `with` blocks for file reading
 - `sorted(...)`
 - list and dictionary comprehensions
 - `enumerate(...)`
-- imports from the course code
-- `@tool` and simple type hints as reading aids
+- imports and the later-lab `@tool` pattern
+- f-strings, Boolean conditions, and safe `.get(...)` lookups
+- slicing, `.append(...)`, `range(...)`, `next(...)`, and generator expressions
+- `try`/`except`/`raise`, `**arguments`, and the basic class/method pattern used by tools and agents
