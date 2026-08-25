@@ -37,11 +37,15 @@ The following are representative LLM families and their providers:
 
 For a second, approachable explanation, see Hugging Face's [What are LLMs?](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms) lesson.
 
+For a video introduction, watch [What Is a Large Language Model (LLM)?](https://www.youtube.com/watch?v=LPZh9BOjkQs&t=266s) on YouTube.
+
 ## 2. What a Transformer Does at a High Level
 
 The `transformer` is the model architecture that made modern LLMs practical at scale. Most current LLMs are built on this deep-learning architecture, which uses an `attention` mechanism to decide which parts of the input matter most for the current prediction. Transformers were introduced in 2017, and their adoption grew rapidly after models such as Google's BERT in 2018.
 
 If you would like to see the original encoder--decoder Transformer design, see the diagram in the paper [*Attention Is All You Need*](https://arxiv.org/abs/1706.03762).
+
+For a video introduction to Transformers, watch [The Illustrated Transformer](https://www.youtube.com/watch?v=wjZofJX0v4M) on YouTube.
 
 > **Important:** The diagram below shows the original encoder--decoder Transformer, which was designed for sequence-to-sequence tasks such as translation. Llama and GPT-style chat LLMs use only a decoder stack: the same layers process the prompt and generate the next token.
 
