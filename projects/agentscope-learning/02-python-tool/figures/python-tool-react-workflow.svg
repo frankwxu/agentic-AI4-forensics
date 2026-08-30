@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="360" viewBox="0 0 1000 360" role="img" aria-labelledby="title desc">
+  <title id="title">AgentScope ReAct workflow with one Python tool</title>
+  <desc id="desc">A user message enters the agent. The model requests the get IP details tool. AgentScope executes the read-only Python function and adds the result to the agent context. The model then produces a final assistant answer.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#344054"/></marker>
+    <style>.label { font: 600 17px Arial, sans-serif; fill: #101828; } .small { font: 14px Arial, sans-serif; fill: #475467; } .box { stroke-width: 2; rx: 14; }</style>
+  </defs>
+  <rect width="1000" height="360" fill="#ffffff"/>
+  <rect class="box" x="35" y="130" width="150" height="92" fill="#eff8ff" stroke="#2e90fa"/>
+  <text class="label" x="110" y="166" text-anchor="middle">User message</text><text class="small" x="110" y="192" text-anchor="middle">indicator question</text>
+  <line x1="185" y1="176" x2="255" y2="176" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect class="box" x="260" y="75" width="230" height="202" fill="#f9f5ff" stroke="#9e77ed"/>
+  <text class="label" x="375" y="110" text-anchor="middle">Agent</text>
+  <text class="small" x="375" y="140" text-anchor="middle">prompt + model + toolkit</text>
+  <rect class="box" x="290" y="161" width="170" height="72" fill="#ffffff" stroke="#d0d5dd"/>
+  <text class="small" x="375" y="189" text-anchor="middle">Model emits</text><text class="small" x="375" y="212" text-anchor="middle">tool call</text>
+  <line x1="490" y1="176" x2="560" y2="176" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect class="box" x="565" y="130" width="190" height="92" fill="#fffaeb" stroke="#f79009"/>
+  <text class="label" x="660" y="166" text-anchor="middle">FunctionTool</text><text class="small" x="660" y="192" text-anchor="middle">get_ip_details()</text>
+  <path d="M 660 222 C 660 308, 375 320, 375 277" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="small" x="515" y="330" text-anchor="middle">tool result added to agent context</text>
+  <line x1="755" y1="176" x2="825" y2="176" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect class="box" x="830" y="130" width="135" height="92" fill="#ecfdf3" stroke="#12b76a"/>
+  <text class="label" x="898" y="166" text-anchor="middle">Final answer</text><text class="small" x="898" y="192" text-anchor="middle">text response</text>
+  <text class="small" x="500" y="35" text-anchor="middle">The second model pass uses the tool result before returning the answer.</text>
+</svg>

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
-  <title id="title">Minimal AgentScope ReAct workflow</title>
-  <desc id="desc">A user message enters an agent configured with a system prompt, chat model, and ReAct configuration, and the agent returns an assistant message. No tools are registered in this lesson.</desc>
+  <title id="title">First AgentScope agent workflow</title>
+  <desc id="desc">A user message enters an agent configured with instructions and a chat model, and the agent returns an assistant message. No tools are registered in this lesson.</desc>
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#344054"/></marker>
     <style>.label { font: 600 18px Arial, sans-serif; fill: #101828; } .small { font: 15px Arial, sans-serif; fill: #475467; } .box { stroke-width: 2; rx: 14; }</style>

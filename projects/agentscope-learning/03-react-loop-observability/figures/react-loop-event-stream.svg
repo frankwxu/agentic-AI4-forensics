@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="250" viewBox="0 0 960 250" role="img" aria-labelledby="title desc">
+<title id="title">Visible ReAct cycle</title><desc id="desc">Question, first model request, Python tool, tool result, second model request, answer.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5 0 10z" fill="#344054"/></marker><style>.b{stroke-width:2;rx:12}.t{font:600 16px Arial;fill:#101828}.s{font:13px Arial;fill:#475467}</style></defs>
+<rect width="960" height="250" fill="#fff"/>
+<rect class="b" x="20" y="90" width="110" height="70" fill="#eff8ff" stroke="#2e90fa"/><text class="t" x="75" y="120" text-anchor="middle">Question</text><text class="s" x="75" y="143" text-anchor="middle">from analyst</text>
+<rect class="b" x="190" y="70" width="145" height="110" fill="#f9f5ff" stroke="#9e77ed"/><text class="t" x="262" y="108" text-anchor="middle">Agent</text><text class="s" x="262" y="133" text-anchor="middle">first model</text><text class="s" x="262" y="153" text-anchor="middle">request</text>
+<rect class="b" x="405" y="90" width="145" height="70" fill="#fffaeb" stroke="#f79009"/><text class="t" x="477" y="120" text-anchor="middle">Python tool</text><text class="s" x="477" y="143" text-anchor="middle">checks list</text>
+<rect class="b" x="620" y="70" width="145" height="110" fill="#f9f5ff" stroke="#9e77ed"/><text class="t" x="692" y="108" text-anchor="middle">Agent</text><text class="s" x="692" y="133" text-anchor="middle">second model</text><text class="s" x="692" y="153" text-anchor="middle">request</text>
+<rect class="b" x="830" y="90" width="110" height="70" fill="#ecfdf3" stroke="#12b76a"/><text class="t" x="885" y="120" text-anchor="middle">Answer</text><text class="s" x="885" y="143" text-anchor="middle">to analyst</text>
+<path d="M130 125H190M335 125H405M550 125H620M765 125H830" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#a)"/>
+<text class="s" x="480" y="35" text-anchor="middle">Status updates: model starts → tool requested → tool starts → result ready → final answer</text>
+<path d="M477 160C477 225 692 225 692 180" fill="none" stroke="#344054" stroke-width="2" marker-end="url(#a)"/><text class="s" x="585" y="240" text-anchor="middle">tool result returns to agent</text>
+</svg>
