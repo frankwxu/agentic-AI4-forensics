@@ -17,5 +17,5 @@
   <line x1="605" y1="150" x2="685" y2="150" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
   <rect class="box" x="690" y="102" width="175" height="96" fill="#ecfdf3" stroke="#12b76a"/>
   <text class="label" x="778" y="142" text-anchor="middle">Assistant message</text><text class="small" x="778" y="169" text-anchor="middle">Msg(role=&quot;assistant&quot;)</text>
-  <text class="small" x="450" y="286" text-anchor="middle">Lesson 01: no tools registered yet</text>
+  <text class="small" x="450" y="286" text-anchor="middle">Lesson 02: no tools registered yet</text>
 </svg>

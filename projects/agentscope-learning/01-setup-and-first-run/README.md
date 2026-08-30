@@ -3,7 +3,7 @@
 **Time:** 20–30 minutes  
 **Outcome:** A working AgentScope environment that can make one model call.
 
-This is a setup check, not a programming lesson. Finish it before Lesson 01.
+This is a setup check, not a programming lesson. Finish it before Lesson 02.
 
 ## 1. Create a separate Python workspace
 

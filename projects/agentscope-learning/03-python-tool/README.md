@@ -17,7 +17,7 @@ You are a junior analyst on a practice security team at a company. One employee�
 
 ## Before you start
 
-Complete [Lesson 01](../01-first-agentscope-agent/README.md), then copy this lesson’s settings:
+Complete [Lesson 02](../02-first-agentscope-agent/README.md), then copy this lesson’s settings:
 
     cp .env.example .env
 
@@ -52,7 +52,7 @@ Without the `Toolkit`, the agent cannot see or call `get_ip_details`.
 | `"192.0.2.44"` | A local `suspicious` record. |
 | `"198.51.100.23"` | A result that says no local record was found. |
 
-## What changes from Lesson 01?
+## What changes from Lesson 02?
 
 The agent now has a `Toolkit` (a list of available tools) containing one function:
 
@@ -60,7 +60,7 @@ The agent now has a `Toolkit` (a list of available tools) containing one functio
                  → AgentScope runs the function → tool result
                  → Agent reasons again → final answer
 
-AgentScope handles the handoff after the tool runs: it adds the tool result to the agent’s conversation, then asks the model to produce the final answer. The notebook does not show those internal steps yet; Lesson 03 makes them visible.
+AgentScope handles the handoff after the tool runs: it adds the tool result to the agent’s conversation, then asks the model to produce the final answer. The notebook does not show those internal steps yet; Lesson 04 makes them visible.
 
 The tool is marked read-only: it only looks at a fixed list and changes nothing. AgentScope can run this kind of tool without asking first. Tools that change files, send messages, or run commands should ask for permission; a later lesson covers that.
 
