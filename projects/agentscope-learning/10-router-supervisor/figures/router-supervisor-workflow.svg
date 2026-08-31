@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="400" viewBox="0 0 1100 400" role="img" aria-labelledby="title desc">
+  <title id="title">Router-supervisor workflow</title>
+  <desc id="desc">An analyst question goes to a router. The router chooses the active network route. A dashed alternate evidence route remains visible. The original case and question are sent to the selected network specialist, which produces an answer.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#344054"/></marker>
+    <style>.box{stroke-width:2;rx:14}.title{font:600 18px Arial,sans-serif;fill:#101828}.body{font:14px Arial,sans-serif;fill:#475467}.label{font:600 13px Arial,sans-serif;fill:#344054}.muted{font:14px Arial,sans-serif;fill:#98a2b3}</style>
+  </defs>
+  <rect width="1100" height="400" fill="#ffffff"/>
+  <circle cx="48" cy="67" r="7" fill="#9e77ed"/><path d="M36 84Q48 72 60 84" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round"/><text class="label" x="70" y="73">Agents</text>
+  <rect x="150" y="56" width="16" height="21" rx="2" fill="#eff8ff" stroke="#2e90fa" stroke-width="2"/><path d="M162 56V63H166" fill="none" stroke="#2e90fa" stroke-width="2"/><text class="label" x="176" y="73">Data and requests</text>
+  <rect x="320" y="59" width="20" height="15" rx="3" fill="#fffaeb" stroke="#f79009" stroke-width="2"/><text class="label" x="350" y="73">Route decision</text>
+
+  <rect class="box" x="35" y="145" width="175" height="95" fill="#eff8ff" stroke="#2e90fa"/>
+  <text class="title" x="122" y="181" text-anchor="middle">Analyst question</text><text class="body" x="122" y="207" text-anchor="middle">What did the alert</text><text class="body" x="122" y="227" text-anchor="middle">observe?</text>
+  <rect class="box" x="280" y="125" width="185" height="120" fill="#f9f5ff" stroke="#9e77ed"/>
+  <text class="title" x="365" y="166" text-anchor="middle">Router</text><text class="body" x="365" y="193" text-anchor="middle">chooses one specialist</text><text class="body" x="365" y="214" text-anchor="middle">for the question</text><circle cx="435" cy="145" r="7" fill="#9e77ed"/><path d="M423 163Q435 151 447 163" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round"/>
+  <rect class="box" x="535" y="105" width="150" height="75" fill="#fffaeb" stroke="#f79009"/>
+  <text class="title" x="610" y="136" text-anchor="middle">Route label</text><text class="body" x="610" y="160" text-anchor="middle">NETWORK (active)</text>
+  <rect class="box" x="770" y="95" width="200" height="120" fill="#f9f5ff" stroke="#9e77ed"/>
+  <text class="title" x="855" y="135" text-anchor="middle">Network specialist</text><text class="body" x="855" y="162" text-anchor="middle">reports what the alert</text><text class="body" x="855" y="183" text-anchor="middle">observed and cannot show</text><circle cx="940" cy="115" r="7" fill="#9e77ed"/><path d="M928 133Q940 121 952 133" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round"/>
+  <rect class="box" x="770" y="270" width="200" height="88" fill="#f9f5ff" stroke="#9e77ed" stroke-dasharray="7 6"/>
+  <text class="title" x="850" y="307" text-anchor="middle">Evidence specialist</text><text class="muted" x="850" y="333" text-anchor="middle">alternate route: not called</text><circle cx="940" cy="290" r="7" fill="#9e77ed" opacity=".65"/><path d="M928 308Q940 296 952 308" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round" opacity=".65"/>
+  <rect class="box" x="985" y="115" width="90" height="75" fill="#ecfdf3" stroke="#12b76a"/>
+  <text class="title" x="1030" y="146" text-anchor="middle">Answer</text><text class="body" x="1030" y="169" text-anchor="middle">to analyst</text>
+  <rect class="box" x="510" y="275" width="180" height="70" fill="#eff8ff" stroke="#2e90fa"/>
+  <text class="title" x="600" y="305" text-anchor="middle">Original case</text><text class="body" x="600" y="328" text-anchor="middle">sent to selected specialist</text>
+  <path d="M210 192H280" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M465 160H535" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M685 142H770" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M685 160C720 180 720 310 770 314" fill="none" stroke="#98a2b3" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+  <text class="muted" x="706" y="245">EVIDENCE alternate route</text>
+  <path d="M970 152H985" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M690 302C750 302 735 180 770 180" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="label" x="725" y="87">active route</text>
+</svg>

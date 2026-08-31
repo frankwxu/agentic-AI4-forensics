@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="390" viewBox="0 0 1100 390" role="img" aria-labelledby="title desc">
+  <title id="title">Parallel specialist workflow</title>
+  <desc id="desc">One original case is sent independently to a network specialist and an evidence specialist. Both calls begin together using asyncio gather. Their two findings are displayed side by side by Python.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#344054"/></marker>
+    <style>.box{stroke-width:2;rx:14}.title{font:600 18px Arial,sans-serif;fill:#101828}.body{font:14px Arial,sans-serif;fill:#475467}.label{font:600 13px Arial,sans-serif;fill:#344054}</style>
+  </defs>
+  <rect width="1100" height="390" fill="#ffffff"/>
+  <circle cx="48" cy="67" r="7" fill="#9e77ed"/><path d="M36 84Q48 72 60 84" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round"/><text class="label" x="70" y="73">Agents</text>
+  <rect x="150" y="56" width="16" height="21" rx="2" fill="#eff8ff" stroke="#2e90fa" stroke-width="2"/><path d="M162 56V63H166" fill="none" stroke="#2e90fa" stroke-width="2"/><text class="label" x="176" y="73">Shared case data</text>
+  <text class="label" x="550" y="42" text-anchor="middle">asyncio.gather starts both independent calls together</text>
+  <rect class="box" x="35" y="145" width="200" height="105" fill="#eff8ff" stroke="#2e90fa"/>
+  <text class="title" x="135" y="183" text-anchor="middle">Original case</text><text class="body" x="135" y="210" text-anchor="middle">alert, local record,</text><text class="body" x="135" y="231" text-anchor="middle">and analyst question</text>
+  <rect class="box" x="390" y="92" width="220" height="118" fill="#f9f5ff" stroke="#9e77ed"/>
+  <text class="title" x="488" y="132" text-anchor="middle">Network specialist</text><text class="body" x="488" y="159" text-anchor="middle">reports alert observations</text><text class="body" x="488" y="180" text-anchor="middle">and limits</text><circle cx="580" cy="112" r="7" fill="#9e77ed"/><path d="M568 130Q580 118 592 130" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round"/>
+  <rect class="box" x="390" y="255" width="220" height="100" fill="#f9f5ff" stroke="#9e77ed"/>
+  <text class="title" x="482" y="294" text-anchor="middle">Evidence specialist</text><text class="body" x="482" y="321" text-anchor="middle">lists facts, gaps, next item</text><circle cx="580" cy="275" r="7" fill="#9e77ed"/><path d="M568 293Q580 281 592 293" fill="none" stroke="#9e77ed" stroke-width="3" stroke-linecap="round"/>
+  <rect class="box" x="760" y="92" width="150" height="118" fill="#ecfdf3" stroke="#12b76a"/>
+  <text class="title" x="835" y="132" text-anchor="middle">Network</text><text class="title" x="835" y="154" text-anchor="middle">finding</text><text class="body" x="835" y="180" text-anchor="middle">separate output</text>
+  <rect class="box" x="760" y="255" width="150" height="100" fill="#ecfdf3" stroke="#12b76a"/>
+  <text class="title" x="835" y="294" text-anchor="middle">Evidence</text><text class="title" x="835" y="316" text-anchor="middle">finding</text><text class="body" x="835" y="338" text-anchor="middle">separate output</text>
+  <rect class="box" x="965" y="155" width="105" height="105" fill="#f2f4f7" stroke="#98a2b3"/>
+  <text class="title" x="1018" y="192" text-anchor="middle">Python</text><text class="body" x="1018" y="218" text-anchor="middle">prints both</text><text class="body" x="1018" y="239" text-anchor="middle">findings</text>
+  <path d="M235 181C300 181 320 151 390 151" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M235 216C300 216 320 305 390 305" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="label" x="295" y="138" text-anchor="middle">starts together</text>
+  <path d="M610 151H760M610 305H760" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M910 151C945 151 935 190 965 190M910 305C945 305 935 225 965 225" fill="none" stroke="#344054" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="body" x="1018" y="290" text-anchor="middle">No handoff or</text><text class="body" x="1018" y="311" text-anchor="middle">new synthesis agent</text>
+</svg>

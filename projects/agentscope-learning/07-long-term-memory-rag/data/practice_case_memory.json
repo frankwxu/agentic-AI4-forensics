@@ -1,0 +1,17 @@
+[
+  {
+    "case_id": "INC-204",
+    "fact": "The workstation contacted 192.0.2.44 forty-three times at 09:14 UTC.",
+    "source": "practice network alert"
+  },
+  {
+    "case_id": "INC-204",
+    "fact": "The local practice list marks 192.0.2.44 as suspicious; this is not proof of malicious activity.",
+    "source": "practice IP record"
+  },
+  {
+    "case_id": "INC-204",
+    "fact": "The available alert does not identify the process that made the contacts.",
+    "source": "practice network alert"
+  }
+]
