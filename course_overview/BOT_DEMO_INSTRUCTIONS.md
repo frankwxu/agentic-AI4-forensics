@@ -30,6 +30,8 @@ This conversation illustrates the agent receiving messages and replying through 
 
 ## 1. Install dependencies
 
+Before installing dependencies, follow the [repository setup and update instructions](README.md) to get the latest course materials.
+
 From the repository root:
 
 ```bash
