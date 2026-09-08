@@ -52,21 +52,34 @@ The template also includes `TELEGRAM_CHAT_ID`. The current demo does not use it 
 
 For example, `OPENAI_MODEL` may be a tool-capable chat model available to your OpenAI account. Never commit the real `.env`; it contains credentials.
 
-## 3. Start the bot
+## 3. Start the Python bot
 
-Run this command from the repository root:
+After installing dependencies and configuring the secure `.env` file in steps 1–2, run:
 
 ```bash
+cd /home/frank/projects/agentic-AI4-forensics
 python3 course_overview/telegram_agent_demo.py
 ```
+
+Leave this terminal running while you use Telegram. The Python process receives messages and generates the bot's replies.
 
 The terminal should show the dependency installation completing, followed by the bot process waiting for Telegram messages:
 
 ![Terminal installing dependencies and starting telegram_agent_demo.py](figures/telegram_bot_run.jpg)
 
-Open Telegram, find the bot associated with `TELEGRAM_BOT_TOKEN`, and send it a normal text message. The demo ignores Telegram commands such as `/start`.
+## 4. Open Telegram and message the bot
 
-Stop polling with `Ctrl+C`.
+Once the Python bot is running:
+
+1. Open the Telegram app on your phone or computer.
+2. Search for the bot's username associated with `TELEGRAM_BOT_TOKEN` and open its chat.
+3. If Telegram displays a **Start** button, click it. This sends `/start`, which this demo ignores, so no reply is expected yet.
+4. Send a normal text message, such as `My favorite color is green.` The bot should reply in the same chat.
+5. Send `What color did I tell you I like?` to demonstrate conversation memory.
+
+Telegram may already be open before you launch the Python process; the process must be running for the bot to respond.
+
+When the demonstration is finished, press `Ctrl+C` in the terminal to stop polling. Telegram itself can remain open.
 
 ### Expected Telegram interaction
 
