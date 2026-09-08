@@ -1,20 +1,8 @@
 # Course overview
 
-**Before each class, download the latest course materials.** Follow the Git instructions below if you have Git installed, or use the ZIP download option.
+**Start here: [Course Setup](../course_setup.md).** Complete this one-time setup to download the repository, prepare your Python environment, and configure VS Code before starting [Lab 0-00: Python Basics](../lab0_00_python_basics/01_instructions.md).
 
-## First download with Git
-
-Open a terminal in the folder where you want to keep the course repository, then run:
-
-```bash
-git clone https://github.com/frankwxu/agentic-AI4-forensics.git
-cd agentic-AI4-forensics
-```
-
-- `git clone` downloads the repository from GitHub and creates an `agentic-AI4-forensics` folder inside the terminal's current directory. This folder is your local repository.
-- `cd agentic-AI4-forensics` moves the terminal into that folder so subsequent commands run there.
-
-Your local repository is the folder containing `README.md` and `course_overview`. Its location depends on where you ran `git clone`.
+**Before each class, download the latest course materials.** If you cloned the repository with Git, follow the update commands below. If you downloaded a ZIP, follow [Update a ZIP download](#update-a-zip-download).
 
 ## Update before each class
 
@@ -45,12 +33,9 @@ The `--ff-only` option allows Git to move your local branch forward when no merg
 
 If Git says **Already up to date**, no updates are needed. If Git reports local changes that prevent switching or updating, or says the histories have diverged, preserve your work and ask the instructor for help. Do not delete your changes to force an update.
 
-## Download without Git
+## Update a ZIP download
 
-1. Open the [course repository on GitHub](https://github.com/frankwxu/agentic-AI4-forensics).
-2. Select the `main` branch, then choose **Code → Download ZIP**.
-3. Extract the ZIP into a new, separate folder. For each update, download it again and use a different folder so your previous work is preserved.
-4. Use the newly extracted folder for the latest course materials. A ZIP download does not include Git history, so `git pull` will not update it.
+Download a fresh ZIP using the [Course Setup ZIP instructions](../course_setup.md#download-without-git). Extract each update into a new, separate folder to preserve your previous work, and use the newly extracted folder for the latest course materials.
 
 ## Run the bot demo
 
