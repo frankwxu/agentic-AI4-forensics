@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Complete [Course Setup](../course_setup.md) before this primer. The goal is not to teach full Python. The goal is to teach just enough Python for you to read the notebook code used throughout the rest of the course.
+Complete [Course Setup](../course_overview/course_setup.md) before this primer. The goal is not to teach full Python. The goal is to teach just enough Python for you to read the notebook code used throughout the rest of the course.
 
 This primer has three parts:
 
@@ -25,7 +25,7 @@ By the end of this primer, you should be able to:
 
 ## Lab Sequence
 
-1. Confirm that you have completed [Course Setup](../course_setup.md).
+1. Confirm that you have completed [Course Setup](../course_overview/course_setup.md).
 2. Read [02_python_basics_reading.md](02_python_basics_reading.md).
 3. Open [03_python_basics_notebook.ipynb](03_python_basics_notebook.ipynb).
 4. Run the notebook from top to bottom.

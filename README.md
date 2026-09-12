@@ -80,7 +80,7 @@ The original copyright and permission notice are preserved in
 
 ## Get Started
 
-Complete [Course Setup](course_setup.md) to clone the repository, create and activate the virtual environment, install the required Python packages, and launch Jupyter.
+Complete [Course Setup](course_overview/course_setup.md) to clone the repository, create and activate the virtual environment, install the required Python packages, and launch Jupyter.
 
 ## Open-Source Ollama Setup
 
@@ -126,7 +126,7 @@ If your instructor provides a different `MODEL` or `OLLAMA_BASE_URL`, use the in
 
 ## Quick Start
 
-Start with [Course Setup](course_setup.md). Complete the `Open-Source Ollama Setup` section above before starting the later agent workflow labs. Most runnable lab folders now have their own `.env.example`. Lab 0-00 (`lab0_00_python_basics`) begins the course with a lightweight Python primer for reading notebook code. Lab 0-01 (`lab0_01_llm_foundations`) provides an LLM foundations reading and tiny local training demo. Lab 0-02 (`lab0_02_environment_setup`) adds `.env`, Ollama, and Graphviz for the agent workflow labs.
+Start with [Course Setup](course_overview/course_setup.md). Complete the `Open-Source Ollama Setup` section above before starting the later agent workflow labs. Most runnable lab folders now have their own `.env.example`. Lab 0-00 (`lab0_00_python_basics`) begins the course with a lightweight Python primer for reading notebook code. Lab 0-01 (`lab0_01_llm_foundations`) provides an LLM foundations reading and tiny local training demo. Lab 0-02 (`lab0_02_environment_setup`) adds `.env`, Ollama, and Graphviz for the agent workflow labs.
 
 The onboarding labs are paced for cybersecurity and digital forensics students who may only have a little programming experience.
 
@@ -148,9 +148,9 @@ cp lab2_tool_use_pattern/.env.example lab2_tool_use_pattern/.env
 
 Lab 2 defaults to `qwen3:8b` in its local example because the `ToolAgent` section has been more stable with that model in the current Ollama setup.
 
-Begin with [Course Setup](course_setup.md), then [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_instructions.md). Continue to [lab0_01_llm_foundations/01_instructions.md](lab0_01_llm_foundations/01_instructions.md), followed by [lab0_02_environment_setup/01_instructions.md](lab0_02_environment_setup/01_instructions.md). The onboarding sequence has a one-time setup guide and five labs:
+Begin with [Course Setup](course_overview/course_setup.md), then [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_instructions.md). Continue to [lab0_01_llm_foundations/01_instructions.md](lab0_01_llm_foundations/01_instructions.md), followed by [lab0_02_environment_setup/01_instructions.md](lab0_02_environment_setup/01_instructions.md). The onboarding sequence has a one-time setup guide and five labs:
 
-- `Course Setup` (`course_setup.md`): repository clone, virtual environment, base Python packages, and Jupyter
+- `Course Setup` (`course_overview/course_setup.md`): repository clone, virtual environment, base Python packages, and Jupyter
 - `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and two small practice notebooks
 - `Lab 0-01` (`lab0_01_llm_foundations`): LLM foundations primer with a tiny local training demo
 - `Lab 0-02` (`lab0_02_environment_setup`): `.env`, Ollama, Graphviz, and environment checks for the later agent labs

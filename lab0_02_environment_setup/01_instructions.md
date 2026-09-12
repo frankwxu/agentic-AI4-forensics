@@ -1,6 +1,6 @@
 # Lab 0-02: Environment Setup and Ollama Connectivity Check
 
-Complete [Course Setup](../course_setup.md), [Lab 0-00: Python Basics](../lab0_00_python_basics/01_instructions.md), and [Lab 0-01: LLM Foundations](../lab0_01_llm_foundations/01_instructions.md) before this lab. This lab focuses on the remaining setup needed for the later agent workflow labs: `.env`, Ollama connectivity, Graphviz, and environment verification.
+Complete [Course Setup](../course_overview/course_setup.md), [Lab 0-00: Python Basics](../lab0_00_python_basics/01_instructions.md), and [Lab 0-01: LLM Foundations](../lab0_01_llm_foundations/01_instructions.md) before this lab. This lab focuses on the remaining setup needed for the later agent workflow labs: `.env`, Ollama connectivity, Graphviz, and environment verification.
 
 ## Purpose
 

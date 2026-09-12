@@ -7,7 +7,7 @@ Use this primer before [lab0_02_environment_setup/01_instructions.md](../lab0_02
 - a plain-language mental model of what a large language model is
 - one small runnable example of how a model is trained and then used for next-word prediction
 
-This lab does not require `.env`, Ollama, or Graphviz. Complete [Course Setup](../course_setup.md) and [Lab 0-00: Python Basics](../lab0_00_python_basics/01_instructions.md) before you begin.
+This lab does not require `.env`, Ollama, or Graphviz. Complete [Course Setup](../course_overview/course_setup.md) and [Lab 0-00: Python Basics](../lab0_00_python_basics/01_instructions.md) before you begin.
 
 ## Learning Goals
 

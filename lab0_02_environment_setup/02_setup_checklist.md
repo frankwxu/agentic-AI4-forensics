@@ -2,7 +2,7 @@
 
 Use this checklist before starting `lab0_03_llm_api_and_model_basics`.
 
-- [Course Setup](../course_setup.md) is completed:
+- [Course Setup](../course_overview/course_setup.md) is completed:
   - repository cloned locally
   - virtual environment created: `.venv-ai4-forensics`
   - virtual environment activated in the current shell
