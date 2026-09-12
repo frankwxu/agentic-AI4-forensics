@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="620" viewBox="0 0 1380 620" role="img" aria-labelledby="title desc">
+  <title id="title">Attention Uses Context with Different Weights</title>
+  <desc id="desc">In Dorothy picked up her bag because she, she is the token being processed. Illustrative attention weights are Dorothy 60%, picked 5%, up 5%, her 20%, bag 5%, and because 5%, totaling 100%. Arrow widths are proportional to these weights. Attention produces an updated representation of she. A larger attention weight means that token’s information contributes more to the weighted combination; it is not the probability that ‘she’ refers to that word. This simplified illustration shows only earlier words; self-attention can also include the current token. These are not measured model values; words are shown for simplicity.</desc>
+  <defs>
+    <style>
+      .title { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 20px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .text { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .small { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 600 20px 'Consolas', 'Courier New', monospace; fill: #0f172a; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="strongArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect width="1380" height="620" fill="#ffffff"/>
+  <text x="690" y="48" text-anchor="middle" class="title">Attention Uses Context with Different Weights</text>
+  <text x="552" y="96" text-anchor="middle" class="small">Earlier context</text>
+  <text x="1190" y="96" text-anchor="middle" class="small">Token being processed</text>
+  <rect x="60" y="115" width="180" height="65" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="150.0" y="157" text-anchor="middle" class="mono">Dorothy</text>
+  <rect x="275" y="115" width="145" height="65" rx="14" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+  <text x="347.5" y="157" text-anchor="middle" class="mono">picked</text>
+  <rect x="455" y="115" width="90" height="65" rx="14" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+  <text x="500.0" y="157" text-anchor="middle" class="mono">up</text>
+  <rect x="580" y="115" width="100" height="65" rx="14" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+  <text x="630.0" y="157" text-anchor="middle" class="mono">her</text>
+  <rect x="715" y="115" width="105" height="65" rx="14" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+  <text x="767.5" y="157" text-anchor="middle" class="mono">bag</text>
+  <rect x="855" y="115" width="190" height="65" rx="14" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+  <text x="950.0" y="157" text-anchor="middle" class="mono">because</text>
+  <rect x="1110" y="115" width="160" height="65" rx="14" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="1190.0" y="157" text-anchor="middle" class="mono">she</text>
+  <path d="M 150.0 185 C 150.0 250, 340 260, 340 326" fill="none" stroke="#2563eb" stroke-width="12" marker-end="url(#strongArrow)"/>
+  <path d="M 347.5 185 C 347.5 250, 391 260, 391 326" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 500.0 185 C 500.0 250, 442 260, 442 326" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 630.0 185 C 630.0 250, 493 260, 493 326" fill="none" stroke="#94a3b8" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M 767.5 185 C 767.5 250, 544 260, 544 326" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 950.0 185 C 950.0 250, 595 260, 595 326" fill="none" stroke="#94a3b8" stroke-width="1" marker-end="url(#arrow)"/>
+  <text x="175.0" y="214" class="label" style="paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;">60%</text>
+  <text x="372.5" y="214" class="label" style="paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;">5%</text>
+  <text x="525.0" y="214" class="label" style="paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;">5%</text>
+  <text x="655.0" y="214" class="label" style="paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;">20%</text>
+  <text x="792.5" y="214" class="label" style="paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;">5%</text>
+  <text x="975.0" y="214" class="label" style="paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round;">5%</text>
+  <text x="1010" y="278" text-anchor="middle" class="small">While processing “she”</text>
+  <rect x="265" y="335" width="420" height="120" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="475" y="381" text-anchor="middle" class="label">Attention:</text>
+  <text x="475" y="418" text-anchor="middle" class="text">combine information</text>
+  <path d="M 699 395 H 818" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <rect x="835" y="335" width="450" height="120" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="1060" y="381" text-anchor="middle" class="label">Updated representation</text>
+  <text x="1060" y="418" text-anchor="middle" class="text">of “she”</text>
+  <path d="M 435 514 H 495" stroke="#2563eb" stroke-width="7"/>
+  <text x="515" y="521" class="text">Thicker line = greater attention weight</text>
+  <text x="690" y="582" text-anchor="middle" class="small">Illustrative attention weights over the six earlier words; not measured model values.</text>
+</svg>

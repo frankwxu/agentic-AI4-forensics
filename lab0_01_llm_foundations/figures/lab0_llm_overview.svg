@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="410" viewBox="0 0 1380 410" role="img" aria-labelledby="title desc">
+  <title id="title">An LLM Generates Text One Token at a Time</title>
+  <desc id="desc">The text Dorothy ran goes into an LLM, which scores possible next tokens. One token, a leading space followed by home, is selected and appended to produce Dorothy ran home. A return arrow shows that prediction repeats with the updated text. This is an illustrative token split.</desc>
+  <defs>
+    <style>
+      .title { font: 700 28px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 22px 'Segoe UI', Arial, sans-serif; fill: #0b1324; }
+      .text { font: 500 20px 'Segoe UI', Arial, sans-serif; fill: #1e293b; }
+      .small { font: 500 18px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .mono { font: 600 21px 'Consolas', 'Courier New', monospace; fill: #0f172a; }
+      .arrow { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1380" height="410" fill="#ffffff"/>
+  <text x="690" y="48" text-anchor="middle" class="title">An LLM Generates Text One Token at a Time</text>
+
+  <rect x="40" y="110" width="260" height="140" rx="18" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
+  <text x="170" y="150" text-anchor="middle" class="label">Text so far</text>
+  <text x="170" y="199" text-anchor="middle" class="mono">"Dorothy ran"</text>
+
+  <path d="M 310 180 H 354" class="arrow"/>
+  <rect x="365" y="110" width="300" height="140" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="515" y="150" text-anchor="middle" class="label">LLM</text>
+  <text x="515" y="190" text-anchor="middle" class="text">Scores possible</text>
+  <text x="515" y="220" text-anchor="middle" class="text">next tokens</text>
+
+  <path d="M 675 180 H 719" class="arrow"/>
+  <rect x="730" y="110" width="240" height="140" rx="18" fill="#f8fafc" stroke="#64748b" stroke-width="2.5"/>
+  <text x="850" y="150" text-anchor="middle" class="label">Select one token</text>
+  <text x="850" y="199" text-anchor="middle" class="mono" xml:space="preserve">" home"</text>
+  <text x="850" y="230" text-anchor="middle" class="small">Append it to the text</text>
+
+  <path d="M 980 180 H 1024" class="arrow"/>
+  <rect x="1035" y="110" width="305" height="140" rx="18" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="1187.5" y="150" text-anchor="middle" class="label">Updated text</text>
+  <text x="1187.5" y="199" text-anchor="middle" class="mono">"Dorothy ran home"</text>
+
+  <path d="M 1187.5 260 V 315 H 170 V 261" class="arrow"/>
+  <rect x="495" y="295" width="390" height="40" fill="#ffffff"/>
+  <text x="690" y="322" text-anchor="middle" class="text">Repeat with the updated text</text>
+  <text x="690" y="380" text-anchor="middle" class="small">Illustrative token split; generation continues until a stopping condition is reached.</text>
+</svg>
