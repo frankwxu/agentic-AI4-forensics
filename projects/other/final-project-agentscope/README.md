@@ -62,7 +62,7 @@ State the criteria you used to select your framework, cite your sources, and exp
 
 All five patterns must be implemented and run using the **one AI agent framework** selected through the framework review. Do not substitute standalone scripts, unrelated libraries, or a different framework for an individual pattern without instructor approval.
 
-Pattern-specific requirements are in the `PATTERN-INSTRUCTIONS.md` file within each pattern folder. This top-level `README.md` is the main guide for the complete final-project submission.
+Pattern-specific requirements are in the `PATTERN-INSTRUCTIONS.md` file within each pattern folder. This top-level `README.md` is the main guide for the complete final project submission.
 
 Each pattern implementation must include the following in its code and report section:
 
@@ -101,7 +101,7 @@ Report:
 
 ## Deliverables
 
-Submit one GitHub repository containing the entire `final-project` folder. The repository must contain one **final research report** and the supporting materials listed below. The final research report must follow [`submission-template.md`](submission-template.md); it is not a separate assignment from the framework review, evaluation, or reproducibility documentation.
+Submit one GitHub repository containing the entire `final-project-agentscope` folder. The repository must contain one **final research report** and the supporting materials listed below. The final research report must follow [`submission-template.md`](submission-template.md); it is not a separate assignment from the framework review, evaluation, or reproducibility documentation.
 
 1. **Final research report** — 6–8 pages, excluding references and appendices. Use `submission-template.md` as its required structure. Include the framework review, research questions and evidence-based answers, implementation descriptions, evaluation results, model/AI-use disclosure, and reproducibility information in the report or its appendices.
 2. **Runnable implementations** — complete and run the notebook in each pattern folder using the selected agent framework: `01-reflection/reflection.ipynb`, `02-tool-use/tool-use.ipynb`, `03-planning/planning.ipynb`, `04-react/react.ipynb`, and `05-multiagent/multiagent.ipynb`. Include any supporting code, data, dependencies, and safe configuration needed to reproduce each notebook.
@@ -126,9 +126,9 @@ Each student must submit the repository link individually through Sakai.
 
 ## Submission Details
 
-Upload the **entire `final-project` folder** to a GitHub repository so that all required code, documentation, test materials, and results are available in one place. Each student must submit the link to that GitHub repository individually through the Sakai website.
+Upload the **entire `final-project-agentscope` folder** to a GitHub repository so that all required code, documentation, test materials, and results are available in one place. Each student must submit the link to that GitHub repository individually through the Sakai website.
 
-All final-project submissions and oral presentations are due during the **last class meeting**.
+All final project submissions and oral presentations are due during the **last class meeting**.
 
 | Item | Placeholder |
 |---|---|

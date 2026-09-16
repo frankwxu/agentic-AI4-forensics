@@ -3,3 +3,22 @@
 __pycache__/
 .ipynb_checkpoints/
 *Zone.Identifier
+
+# LaTeX build intermediates in any folder.
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+_minted-*/

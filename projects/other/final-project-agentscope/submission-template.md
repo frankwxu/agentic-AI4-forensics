@@ -11,7 +11,7 @@ Use this template to write the **final research report**. Replace bracketed text
 - Model configuration and any fine-tuning/adaptation: `[Settings, prompt configuration, or none]`
 - Theme/domain: `[Domain]`
 - Dataset(s): `[Classroom dataset or own dataset; source, permitted use, preprocessing, and citation]`
-- GitHub repository: `[Link to repository containing the entire final-project folder]`
+- GitHub repository: `[Link to repository containing the entire final-project-agentscope folder]`
 
 ### AI-Use Disclosure
 
@@ -155,7 +155,7 @@ Use the following outline as a guide for the oral presentation. Demonstrate one 
 
 ## 6. Submission Checklist
 
-- [ ] The GitHub repository contains the entire `final-project` folder, including code, report, framework review, test materials/results, and presentation materials.
+- [ ] The GitHub repository contains the entire `final-project-agentscope` folder, including code, report, framework review, test materials/results, and presentation materials.
 - [ ] Each student submitted the GitHub repository link individually through Sakai.
 - [ ] The project package and oral presentation will be submitted/presented during the last class meeting.
 - [ ] Dataset source, permitted use, preprocessing, and citations are documented. Private, sensitive, or real-case data has instructor approval.

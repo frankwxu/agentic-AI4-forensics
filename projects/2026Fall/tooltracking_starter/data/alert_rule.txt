@@ -1,0 +1,1 @@
+Rule R-1 (practice rule): Flag a device if it has at least three failed login events within any 10-minute window and then a successful login within five minutes after the third failure. Compare timestamps in UTC. This synthetic rule is only for the course exercise.
