@@ -7,6 +7,7 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{tikz}
+\usepackage{graphicx}
 \hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
 \setlist{nosep,leftmargin=*}
 
@@ -73,6 +74,15 @@ Draw a \textbf{high-level architecture diagram} with labeled components and arro
 \end{tikzpicture}
 \caption{One possible M1 tool-calling sequence. The actual tool name, call ID, and evidence must come from the team's run.}
 \label{fig:midterm-example}
+\end{figure}
+
+\noindent\textbf{Hermes running example.} Figure~\ref{fig:hermes-tool-calls} shows part of a Hermes terminal session during a separate task. The highlighted lines show a process poll and wait, then a terminal command followed by another wait. This illustrates that one task may involve several tool invocations. The screenshot is only a partial view: it does not establish every call's arguments, result, or complete order. For your own test, use the available run record to identify and explain the calls you actually observed.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{tool_calling_hermes.jpg}
+\caption{Example Hermes session showing visible tool-call activity. The highlighted status lines and terminal command are from an illustrative task, not the required M1 dataset question.}
+\label{fig:hermes-tool-calls}
 \end{figure}
 
 \subsection{Assess observation limits}
