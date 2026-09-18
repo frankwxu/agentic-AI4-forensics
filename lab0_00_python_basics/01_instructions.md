@@ -4,11 +4,10 @@
 
 Complete [Course Setup](../course_overview/course_setup.md) before this primer. The goal is not to teach full Python. The goal is to teach just enough Python for you to read the notebook code used throughout the rest of the course.
 
-This primer has three parts:
+This primer has two parts:
 
 - a short reading you can do first
-- a first practice notebook on variables, lists, dictionaries, loops, functions, JSON, and CSV
-- a second practice notebook on later-lab patterns such as `sorted(...)`, comprehensions, `enumerate(...)`, and `@tool`
+- one guided practice notebook on variables, lists, dictionaries, loops, functions, JSON, CSV, and later-lab patterns such as `sorted(...)`, comprehensions, `enumerate(...)`, and `@tool`
 
 ## Learning Goals
 
@@ -29,7 +28,9 @@ By the end of this primer, you should be able to:
 2. Read [02_python_basics_reading.md](02_python_basics_reading.md).
 3. Open [03_python_basics_notebook.ipynb](03_python_basics_notebook.ipynb).
 4. Run the notebook from top to bottom.
-5. Continue to [Lab 0-01: LLM Foundations](../lab0_01_llm_foundations/01_instructions.md).
+5. Complete the notebook's Small Programming Assignment and answer the ten short-answer questions in its Reflection Assignment.
+6. Submit one PDF to Canvas containing your programming code, its output, a one-sentence explanation of how you retrieved a course name from a row, and your numbered answers to the ten reflection questions. You may prepare the PDF in any editor; you do not need to export the entire notebook.
+7. Continue to [Lab 0-01: LLM Foundations](../lab0_01_llm_foundations/01_instructions.md).
 
 ## Success Criteria
 
@@ -46,6 +47,7 @@ You have completed this primer when:
 - you can read a simple `try`/`except`/`raise` block and explain what error it handles
 - you can explain how `**arguments` supplies named function inputs and how an object calls a method such as `.run(...)`
 - you can read later course notebook cells with much less anxiety
+- you have submitted one PDF with the programming task's code, output, and explanation, plus answers to the ten Reflection Assignment questions
 
 ## Next
 

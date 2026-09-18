@@ -151,7 +151,7 @@ Lab 2 defaults to `qwen3:8b` in its local example because the `ToolAgent` sectio
 Begin with [Course Setup](course_overview/course_setup.md), then [lab0_00_python_basics/01_instructions.md](lab0_00_python_basics/01_instructions.md). Continue to [lab0_01_llm_foundations/01_instructions.md](lab0_01_llm_foundations/01_instructions.md), followed by [lab0_02_environment_setup/01_instructions.md](lab0_02_environment_setup/01_instructions.md). The onboarding sequence has a one-time setup guide and five labs:
 
 - `Course Setup` (`course_overview/course_setup.md`): repository clone, virtual environment, base Python packages, and Jupyter
-- `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and two small practice notebooks
+- `Lab 0-00` (`lab0_00_python_basics`): Python primer for reading course notebooks, with a short reading and one guided practice notebook
 - `Lab 0-01` (`lab0_01_llm_foundations`): LLM foundations primer with a tiny local training demo
 - `Lab 0-02` (`lab0_02_environment_setup`): `.env`, Ollama, Graphviz, and environment checks for the later agent labs
 - `Lab 0-03` (`lab0_03_llm_api_and_model_basics`): an LLM API, structured-output, and model-comparison warm-up
@@ -161,7 +161,7 @@ Each onboarding lab has its own `01_instructions.md` with the step-by-step detai
 
 ## Lab Folders
 
-- `lab0_00_python_basics/`: Python primer with a short reading, two small guided notebooks, and tiny JSON/CSV practice data
+- `lab0_00_python_basics/`: Python primer with a short reading, one guided practice notebook, and tiny JSON/CSV practice data
 - `lab0_01_llm_foundations/`: LLM foundations primer with a tiny local training demo, reading, figures, and a short public-domain book excerpt
 - `lab0_02_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
 - `lab0_03_llm_api_and_model_basics/`: Warm-up lab for one-model API requests and structured output, followed by model comparison and prompt revision
