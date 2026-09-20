@@ -163,6 +163,7 @@ Each onboarding lab has its own `01_instructions.md` with the step-by-step detai
 
 - `lab0_00_python_basics/`: Python primer with a short reading, one guided practice notebook, and tiny JSON/CSV practice data
 - `lab0_01_llm_foundations/`: LLM foundations primer with a tiny local training demo, reading, figures, and a short public-domain book excerpt
+- `sub_01_vit_foundations/`: optional Vision Transformer supplement with a conceptual reading and tiny MNIST digit-classification demo
 - `lab0_02_environment_setup/`: Setup lab for `.env`, Ollama, Graphviz, and connectivity verification for the later workflow labs
 - `lab0_03_llm_api_and_model_basics/`: Warm-up lab for one-model API requests and structured output, followed by model comparison and prompt revision
 - `lab0_04_ai_agent/`: Warm-up lab for comparing a plain model prompt with a bounded agent workflow and designing a small agent card
@@ -174,6 +175,10 @@ Each onboarding lab has its own `01_instructions.md` with the step-by-step detai
 - `projects/final-project-agentscope/`: Capstone project that applies and evaluates all five patterns
 
 Each onboarding lab folder includes its own instructions and supporting materials for that part of the setup or warm-up sequence.
+
+## Optional Supplements
+
+After completing Lab 0-01, students may complete [Optional Supplement 01: Vision Transformer Foundations](sub_01_vit_foundations/01_instructions.md). It explains how a Vision Transformer converts image patches into tokens and includes a tiny MNIST `3`-versus-`8` training demo. The supplement is not required for Labs 1 through 5 or the final project.
 
 Labs 1 through 5 contain:
 
