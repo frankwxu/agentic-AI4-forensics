@@ -124,3 +124,5 @@ When you open [03_tiny_vit_digits_demo.ipynb](03_tiny_vit_digits_demo.ipynb), wa
 - two encoder blocks process the complete token sequence without a causal mask
 - the final `[CLS]` representation produces scores for digits `3` and `8`
 - test errors and confidence scores illustrate why classification requires validation
+
+After training, continue to [04_visualize_vit_decision.ipynb](04_visualize_vit_decision.ipynb). It masks one image patch at a time and measures how the predicted-class probability changes. The resulting heatmap shows sensitivity to this particular masking test; it is not a literal view of the model's reasoning or proof that a highlighted patch caused the decision.

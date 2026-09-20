@@ -7,6 +7,9 @@ __pycache__/
 # Downloaded teaching datasets (the source notes remain tracked).
 sub_01_vit_foundations/data/MNIST/
 
+# Generated model checkpoints (the output notes remain tracked).
+sub_01_vit_foundations/outputs/*.pt
+
 # LaTeX build intermediates in any folder.
 *.aux
 *.bbl

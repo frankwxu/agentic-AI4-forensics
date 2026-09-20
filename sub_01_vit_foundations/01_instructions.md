@@ -19,6 +19,7 @@ By the end of this supplement, you should be able to:
 - recognize ViT as an encoder-based Transformer
 - contrast ViT image classification with decoder-only next-token generation
 - implement and train a tiny ViT on a small image-classification task
+- visualize how masking individual patches changes the model's predicted probability
 - explain why a confident image classification is not sufficient forensic evidence
 
 ## Supplement Sequence
@@ -26,8 +27,9 @@ By the end of this supplement, you should be able to:
 1. Read [02_vit_introduction.md](02_vit_introduction.md).
 2. Follow the ViT architecture figure from the input image to the predicted class.
 3. Open [03_tiny_vit_digits_demo.ipynb](03_tiny_vit_digits_demo.ipynb) and run it from top to bottom. The first run downloads MNIST into this supplement's `data/` folder.
-4. Compare the ViT pipeline with the decoder-only LLM pipeline from Lab 0-01.
-5. Answer the reflection questions in the reading and notebook.
+4. After Notebook 03 saves the trained checkpoint, open [04_visualize_vit_decision.ipynb](04_visualize_vit_decision.ipynb) and run it from top to bottom.
+5. Compare the ViT pipeline with the decoder-only LLM pipeline from Lab 0-01.
+6. Answer the reflection questions in the reading and notebooks.
 
 ## Completion Criteria
 
@@ -38,6 +40,7 @@ You have completed this supplement when you can:
 - state what the `[CLS]` token contributes to image classification
 - identify the encoder blocks and classification head in the architecture
 - interpret the demo's loss, accuracy, confusion matrix, and example predictions
+- interpret a patch-occlusion heatmap as model sensitivity rather than proof of reasoning
 - name at least two reasons a ViT prediction requires human and evidentiary validation in a forensic investigation
 
 ## Next
