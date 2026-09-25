@@ -88,18 +88,19 @@ Draw a \textbf{high-level architecture diagram} with labeled components and arro
 \subsection{Assess observation limits}
 Identify one way to inspect tool-call evidence in your selected platform (for example, Hermes hooks or OpenClaw trajectory/audit records). State what it records, one visibility gap, and one question you could not resolve from the available evidence. Implementing a separate collector is not required.
 
-\section{IEEE-Style Midterm Report in Overleaf}
-Create the report in Overleaf using the official \textbf{IEEE Conference Template}: \url{https://www.overleaf.com/latex/templates/ieee-conference-template/grfzhhncsfqn}. Click ``Open as Template'' to make the team's copy. Use its two-column \texttt{IEEEtran} conference format and numbered references. Aim for \textbf{4--6 pages of main text}, excluding references and an optional appendix. Include:
+\section{Midterm Technical Report}
+Prepare a clear, professional technical report in a standard single-column format. Use an 11- or 12-point readable font, 1-inch margins, numbered section headings, page numbers, figure and table captions, and consistent citations and references. The report may be created in Word, Google Docs, Overleaf, or another suitable editor, but it must be submitted as a PDF. The main report must be \textbf{at least 6 pages}, excluding references and an optional appendix. There is no strict maximum, but the report should remain focused and avoid unnecessary repetition. Include representative screenshots and other essential run evidence in the main report; place additional supporting evidence in the optional appendix. Include:
 \begin{enumerate}
-  \item \textbf{Title, authors, abstract, and keywords}: platform, model access path, tests, and main finding.
-  \item \textbf{I. Introduction}: purpose, scope, and team objectives.
-  \item \textbf{II. Platform and Setup}: agent version, system/VM, model/provider, installation and verification steps.
-  \item \textbf{III. Tool-Calling Architecture}: labeled high-level diagram, component roles, and numbered sequence for one real question.
-  \item \textbf{IV. Test Method}: exact prompts, enabled tools, expected observations, and evidence source.
-  \item \textbf{V. Results}: per-task table of actual behavior, tool names and outcomes, representative evidence, and discrepancies.
-  \item \textbf{VI. Discussion and Limitations}: visibility gaps, unresolved questions, and how evidence could be improved.
-  \item \textbf{VII. Conclusion}: what the team learned and what remains unresolved.
-  \item \textbf{References}: IEEE-style numbered citations to platform and model documentation and other sources.
+  \item \textbf{Title and team members}: project title, student names, selected platform, and model access path.
+  \item \textbf{Executive Summary}: tests performed, main findings, and the most important limitation observed.
+  \item \textbf{Introduction and Objectives}: purpose, scope, and team objectives.
+  \item \textbf{Platform and Setup}: agent version, system/VM, model/provider, installation and verification steps.
+  \item \textbf{Tool-Calling Architecture}: labeled high-level diagram, component roles, and numbered sequence for one real question.
+  \item \textbf{Test Methodology}: exact prompts, enabled tools, expected observations, and evidence source.
+  \item \textbf{Results and Evidence}: per-task table of actual behavior, tool names and outcomes, representative evidence, and discrepancies.
+  \item \textbf{Discussion and Limitations}: visibility gaps, unresolved questions, and how evidence could be improved.
+  \item \textbf{Conclusion}: what the team learned and what remains unresolved.
+  \item \textbf{References}: consistent citations to platform and model documentation and other sources.
   \item \textbf{Appendix (optional)}: additional redacted screenshots, command output, and detailed setup notes.
 \end{enumerate}
 Include the team's \textbf{GitHub repository URL} and evaluated commit hash in the report. Include a short \textbf{team contributions and AI-assistance statement} identifying each student's work, any ChatGPT/Claude or other AI help, and how outputs were checked. AI assistance is encouraged, but the team must verify and understand all submitted material.
@@ -109,8 +110,8 @@ Each team must create a \textbf{GitHub repository} containing setup/reproduction
 
 Each student must independently submit \textbf{one Canvas submission} containing:
 \begin{enumerate}
-  \item The same team midterm report PDF in IEEE format.
-  \item A share link to the editable Overleaf project with instructor access.
+  \item The same team midterm technical report PDF.
+  \item A share link to the editable report source (for example, Word, Google Docs, or Overleaf) with instructor access.
   \item The team's presentation slides (PPT or PPTX).
   \item The team's GitHub repository link and evaluated commit hash.
   \item A short individual contribution statement, consistent with the team report.
@@ -128,7 +129,7 @@ Both students must participate in the \textbf{oral presentation}. Demonstrate in
   Function exploration              & At least three capabilities explored, including one actual tool invocation; clear explanation of configuration and behavior.                                 & 15           \\
   Tool-use tests and evidence       & Three distinct tasks, including tool use and cross-file interpretation; exact prompts, observed calls, results, and a documented error or limitation where feasible. & 20           \\
   Tool-calling architecture         & Accurate labeled diagram, component responsibilities, tool/result path, numbered real call sequence, and observation versus inference.                      & 20           \\
-  IEEE report and repository        & IEEE structure and citations, clear results, GitHub link/commit, reproducibility, safe evidence, and contribution/AI-use disclosure.                        & 15           \\
+  Technical report and repository   & Required report structure, consistent citations, clear results, GitHub link/commit, reproducibility, safe evidence, and contribution/AI-use disclosure.      & 15           \\
   Presentation and participation    & Both students present, demonstrate a tool call, explain the diagram, and document substantially equal contributions.                                        & 10           \\
   \midrule
   \textbf{Total}                    &                                                                                                                                                             & \textbf{100} \\
@@ -145,7 +146,6 @@ A failed or refused tool call can earn credit when documented and analyzed. Inve
   \item OpenClaw, ``Tools overview,'' \url{https://docs.openclaw.ai/tools}.
   \item OpenClaw, ``Local models,'' \url{https://docs.openclaw.ai/gateway/local-models}.
   \item OpenClaw, ``Trajectory bundles,'' \url{https://docs.openclaw.ai/tools/trajectory}.
-  \item IEEE, ``Conference template,'' \url{https://www.overleaf.com/latex/templates/ieee-conference-template/grfzhhncsfqn}.
 \end{enumerate}
 Use the instructions that match the version you install; agent commands and model support may change.
 
