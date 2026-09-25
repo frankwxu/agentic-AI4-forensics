@@ -30,11 +30,10 @@ The following are representative LLM families and their providers:
 
 | Model | Provider |
 | --- | --- |
-| ChatGPT (GPT family) | OpenAI |
-| GPT4 | OpenAI |
+| GPT family (including GPT-4) | OpenAI |
 | Claude | Anthropic |
 | Gemini | Google |
-| Llama 3 | Meta (Facebook AI Research) |
+| Llama 3 | Meta |
 | Qwen | Alibaba Cloud |
 | DeepSeek-R1 | DeepSeek |
 | SmolLM2 | Hugging Face |
@@ -79,7 +78,7 @@ Transformers are commonly grouped by the job they perform:
 
 Although language models come in several forms, the LLMs used in chat systems are typically large decoder-only Transformers. Their repeated next-token generation is the principle this reading focuses on.
 
-Figure 4 shows the tiny decoder-only Transformer used in the accompanying [notebook](03_tiny_llm_book_demo.ipynb). Its two Transformer blocks each combine masked self-attention with feed-forward processing. An output layer converts the processed representations into scores for possible next tokens.
+Figure 4 shows the tiny decoder-only Transformer used in the accompanying [notebook](03_tiny_llm_book_demo.ipynb). Its two Transformer blocks each combine masked self-attention with a position-wise feed-forward network (FFN). Attention gathers useful clues from the current and earlier tokens. The FFN then processes those clues for each token separately. An output layer converts the results into scores for possible next tokens.
 
 ![The notebook’s tiny decoder-only Transformer: token and position embeddings are added, pass through two blocks with four attention heads each, then final normalization and an output layer produce vocabulary scores at each position.](./figures/lab0_decoder_only_overview.svg)
 
@@ -88,7 +87,7 @@ Figure 4 shows the tiny decoder-only Transformer used in the accompanying [noteb
 For this course, treat the notebook’s `decoder-only Transformer` as a model with a clear job:
 
 - input: token IDs for the text seen so far
-- internal work: combine token and position embeddings, then update token representations using the allowed context
+- internal work: combine token and position embeddings, then use the current and earlier tokens to update each token’s internal meaning
 - output: vocabulary scores at each position; generation uses the scores at the last position to select the next token
 
 The components in Figure 4 each perform a specific operation for a particular purpose:
@@ -97,9 +96,9 @@ The components in Figure 4 each perform a specific operation for a particular pu
 | --- | --- | --- |
 | `token embeddings` | Map each token ID to a learned vector. | This gives the model numerical features it can learn and process, rather than treating the ID itself as a meaningful number. |
 | `position embeddings` | Represent each token’s position in the sequence and are added to the token embeddings. | They provide information about word order, helping the model distinguish sequences that contain the same words in different positions. |
-| `transformer blocks` | Combine attention with feed-forward processing and repeat twice in this notebook’s model. | Repeating the blocks lets later layers refine the representations built by earlier layers, supporting more complex relationships in the text. |
+| `transformer blocks` | Combine attention with a position-wise feed-forward network (FFN) and repeat twice in this notebook’s model. | Repeating the blocks lets later layers refine the representations built by earlier layers, supporting more complex relationships in the text. |
 | `masked self-attention` | Uses four attention heads in each block to combine information from earlier tokens and the current token, while blocking access to future tokens. | This lets each token draw on relevant context; multiple heads can learn different relationships, and the mask prevents the model from using future text to predict what comes next. |
-| `feed-forward processing` | Applies a small neural network to each token’s representation separately. | Its nonlinear transformations let the model learn combinations of features beyond the weighted mixing performed by attention. |
+| `position-wise feed-forward network (FFN)` | Applies the same small neural network to each token separately. | It helps the model recognize and combine useful patterns in the clues gathered by attention. |
 | `final layer normalization` | Normalizes the feature values within each token’s representation, then applies a learned scale and shift. | This helps control variation in their numerical scale before the output layer produces scores. |
 | `output layer` | Converts each position’s final representation into a score for every token in the vocabulary. | These scores let the system compare possible next tokens and convert their relative scores into probabilities for selection. |
 
@@ -112,7 +111,7 @@ Two additional components handle the steps before and after the architecture sho
 
 The notebook appends the selected token to the input and repeats the process to generate more text.
 
-The next two sections explain tokens and embeddings, including how attention updates token representations using context. Section 5 then explains next-token scoring and selection.
+The next two sections explain tokens and embeddings, including how attention uses context to update each token’s internal meaning. Section 5 then explains next-token scoring and selection.
 
 ## 3. How Text Becomes Tokens
 
@@ -142,7 +141,7 @@ The exact split depends on the tokenizer. The important point is that models wor
 
 Many tokenizers use subword pieces, which lets a limited vocabulary represent many different words. For example, `interest` and `ing` can combine to form `interesting`, while `ed` can be added to form `interested`.
 
-### Tokenization Example
+### 3.1 Tokenization Example
 
 You can picture tokenization as a first pass that turns text into chunks the model can work with, and then assigns each chunk an ID.
 
@@ -163,7 +162,7 @@ The model does not yet know what these chunks mean. At this stage, it has an ord
 
 In the tiny notebook for this lab, we simplify even further and use `word-level tokens`, so each word is treated as one token. Real production LLMs often use more flexible tokenizers that can split longer words into smaller parts.
 
-### Try It: Tokenizer Playground
+### 3.2 Try It: Tokenizer Playground
 
 Use the interactive Hugging Face tokenizer playground to see how different tokenizers split your own text into tokens:
 
@@ -171,19 +170,19 @@ Use the interactive Hugging Face tokenizer playground to see how different token
 
 If the interactive view is not available in your Markdown preview, open the [Tokenizer Playground](https://agents-course-the-tokenizer-playground.static.hf.space) in a new tab.
 
-### Why This Matters
+### 3.3 Why This Matters
 
 - A single word can become multiple tokens.
 - A prompt with more tokens uses more of the model's context window.
 - Small wording changes can change the token sequence and therefore change the output.
 
-## 4. From Token IDs to Initial Token Meanings
+## 4. From Token IDs to Contextualized Meanings
 
 Token IDs are only labels. Before the model can do useful math with them, it looks up each ID in an embedding table and turns it into a small vector of learned numbers.
 
 That is the role of `embeddings`: they give each token an initial meaning the model can work with numerically.
 
-### Embedding Lookup Example
+### 4.1 Embedding Lookup Example
 
 Students often ask what an embedding actually is. A simple answer is: it is a row of learned numbers attached to a token.
 
@@ -213,7 +212,7 @@ So when students ask, "What does an embedding look like?", the shortest correct 
 
 You do not need to interpret each number by itself. What matters is that the model uses those numbers as the token's starting meaning before context is applied.
 
-### From Initial to Contextualized Meanings
+### 4.2 Attention: From Initial to Contextualized Meanings
 
 The transformer updates each token's starting embedding using the surrounding tokens. The resulting contextualized meaning can differ across sentences. For example, `bank` can point toward different meanings in a river sentence versus a money sentence. Attention lets the model give greater weight to the words that reveal which meaning is intended.
 
@@ -239,7 +238,51 @@ The following simplified view makes the same contrast explicit: one starting emb
 
 *Figure 9. The token `bank` can start with one initial embedding, but the transformer updates it differently in a river sentence versus a money sentence.*
 
-### Context Windows
+### 4.3 What the Feed-Forward Network Adds
+
+Attention and the position-wise feed-forward network (FFN) have different jobs inside each Transformer block. Attention gathers useful clues from the context. The FFN processes those clues for each token and refines the model’s internal meaning for that token. The overall flow is:
+
+```text
+Current and earlier tokens provide context
+                  ↓
+Attention gathers the useful clues
+                  ↓
+The FFN processes those clues for each token
+                  ↓
+The model updates its internal meaning for the token
+```
+
+For example, if attention connects `bank` with `river` and `water`, the FFN helps refine `bank` toward its riverbank meaning. If attention instead connects `bank` with `money` and `account`, the FFN helps refine `bank` toward its financial-institution meaning.
+
+The same small FFN is reused for every token. Attention gathers the context; the FFN processes what attention gathered.
+
+### 4.4 Why Final Layer Normalization Is Used
+
+After the Transformer blocks finish processing the tokens, their internal values may be on different numerical scales. `Final layer normalization` adjusts those values to a more consistent scale before the output layer uses them.
+
+For example, after the model processes `bank`, some of its internal values might be much larger or smaller than the others. Final layer normalization brings the set of values into a more balanced range. It does not make the values identical or erase what the model learned about `bank`; it prepares that information so the output layer can use it more consistently when scoring possible next tokens such as `river` or `loan`.
+
+Here is a simplified numerical example using only three values:
+
+```text
+Before normalization:       [ 2.00,  6.00, 10.00]
+Average value:                6.00
+After normalization:        [-1.22,  0.00,  1.22]
+```
+
+The values are now centered around zero and use a more consistent scale, but their pattern remains: the first is lower, the middle is in the center, and the last is higher. Real models normalize many more values and also learn an additional adjustment. Students do not need to calculate these numbers; the example simply shows what normalization changes.
+
+```text
+Transformer blocks update each token
+                  ↓
+Final layer normalization prepares the values
+                  ↓
+The output layer produces next-token scores
+```
+
+You can think of this as a preparation step. It does not choose the next token or add new context. It gives the output layer values that are easier to use consistently.
+
+### 4.5 Context Windows
 
 The `context window` is the amount of recent text the model is allowed to consider at one time when predicting the next token. For example, if a tiny model could only look at the last 6 tokens, then:
 
@@ -257,17 +300,17 @@ Anything earlier than that would fall outside the current window. More useful re
 
 ## 5. How an LLM Generates Text
 
-### Autoregressive Generation
+### 5.1 Autoregressive Generation
 
 At each generation step, the model takes the current contextualized token meanings and produces a probability distribution over possible next tokens.
 
-LLMs generate text `autoregressively`: each selected token is appended to the input sequence and becomes part of the context used to predict the following token. The loop continues until the model selects an end-of-sequence (`EOS`) token, which signals that generation can stop.
+LLMs generate text `autoregressively`: each selected token is appended to the input sequence and becomes part of the context used to predict the following token. Many LLM systems stop when the model selects an end-of-sequence (`EOS`) token or when they reach a configured length limit. The tiny notebook uses a fixed `max_new_tokens` limit instead of an EOS token.
 
 ![Figure 10. Animated autoregressive generation](https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit1/AutoregressionSchema.gif)
 
 *Figure 10. Autoregressive generation: each selected token becomes part of the context for the next prediction. Source: [Hugging Face Agents Course](https://huggingface.co/learn/agents-course/en/unit1/what-are-llms).*
 
-### One Decoding Step
+### 5.2 One Decoding Step
 
 During one decoding step, the tokenized input is transformed into contextual representations that capture token meaning and position. The model then produces scores ranking every vocabulary token as a possible next token.
 
@@ -285,11 +328,11 @@ This is the core loop:
 4. score possible next tokens
 5. choose one token
 6. append it to the sequence
-7. repeat until the model selects an `EOS` token
+7. repeat until the stopping condition is reached
 
-That is what people mean by `next-token prediction`.
+That is what people mean by `next-token prediction`. In many systems, the stopping condition is an `EOS` token. In the accompanying notebook, it is the `max_new_tokens` limit.
 
-### Next-Token Prediction Example
+### 5.3 Next-Token Prediction Example
 
 Suppose the current text is:
 
@@ -308,7 +351,7 @@ other tokens 0.03 combined
 
 The model does not simply "know" one correct next token. It scores many possibilities and the system then selects or samples one. That does not mean the model has proven Dorothy ran home; it means that, given the words so far, `home` currently looks like the most likely next token.
 
-Figure 12 makes the selection stage visible. After the model scores possible next tokens, a decoding strategy selects one token; the selected token is appended to the text and becomes part of the context for the next prediction. This continues until the model selects `EOS`.
+Figure 12 makes the selection stage visible. After the model scores possible next tokens, a decoding strategy selects one token; the selected token is appended to the text and becomes part of the context for the next prediction. This continues until the system reaches its stopping condition.
 
 ![Figure 12. Animated next-token generation](https://huggingface.co/datasets/agents-course/course-images/resolve/main/en/unit1/DecodingFinal.gif)
 
@@ -321,7 +364,7 @@ Figure 12 makes the selection stage visible. After the model scores possible nex
 - `training`: the model's internal weights are updated so it gets better at prediction
 - `inference`: the model uses its current weights to generate an output, but the weights do not change
 
-### Parameters and Weights
+### 6.1 Parameters and Weights
 
 An LLM contains many learned numeric values called `parameters`. `Weights` are a common type of parameter that controls how strongly parts of the model influence a prediction. Parameters appear in the embeddings and the attention, feed-forward, and output layers. For this course, you can usually think of adjusting parameters and adjusting weights as the same training idea.
 
@@ -338,7 +381,7 @@ The table includes the Qwen models used in this course alongside familiar exampl
 | Claude | Not publicly disclosed |
 | Gemini | Not publicly disclosed |
 
-`B` means billion parameters. “Active per token” applies to mixture-of-experts models, which activate only part of their total parameters for a given token. Parameter count describes model scale, but it does not guarantee factual accuracy, reliable reasoning, or evidence-based conclusions. For published examples, see Meta's [Llama 3.1 announcement](https://ai.meta.com/blog/meta-llama-3-1/), Google's [Gemma 3 documentation](https://ai.google.dev/gemma/docs/core/gemma_library), and DeepSeek's [DeepSeek-R1 model card](https://github.com/deepseek-ai/DeepSeek-R1).
+`B` means billion parameters. “Active per token” applies to mixture-of-experts models, which activate only part of their total parameters for a given token. Parameter count describes model scale, but it does not guarantee factual accuracy, reliable reasoning, or evidence-based conclusions. For published examples, see Qwen's [Qwen3 announcement](https://qwenlm.github.io/blog/qwen3/) and [Qwen3.5-9B model card](https://huggingface.co/Qwen/Qwen3.5-9B), Meta's [Llama 3.1 announcement](https://ai.meta.com/blog/meta-llama-3-1/), Google's [Gemma 3 documentation](https://ai.google.dev/gemma/docs/core/gemma_library), and DeepSeek's [DeepSeek-R1 model card](https://github.com/deepseek-ai/DeepSeek-R1).
 
 During training, the model repeatedly predicts tokens, compares its predictions with the training text, measures error, and updates its weights to reduce that error over time.
 
@@ -351,7 +394,7 @@ This distinction matters later in the course:
 - agent workflows add structure and tools around inference
 - they do not magically remove model limitations
 
-### A Tiny Analogy for Weights
+### 6.2 A Tiny Analogy for Weights
 
 If the word `weights` still feels abstract, it can help to look at a much simpler model first.
 
@@ -359,7 +402,7 @@ If the word `weights` still feels abstract, it can help to look at a much simple
 
 *Figure 13. This is not an LLM. It is a small line-fitting example used only to show what a weight is. Training changes the model's internal numbers so its predictions move closer to the data.*
 
-### A Training Example
+### 6.3 How Training Updates the Model’s Weights
 
 Here is a tiny teaching example:
 
@@ -387,7 +430,7 @@ This is why training and inference feel different:
 
 ## 7. How Prompts and Sampling Shape Outputs
 
-### Prompt Tokens Become Context
+### 7.1 Prompt Tokens Become Context
 
 A prompt is the input text the LLM receives; it is not a separate command that bypasses the model. The system converts the prompt into tokens and places them in the context the model processes. In a decoder-only Transformer, self-attention lets the model relate the current prediction to relevant earlier prompt tokens. Changing the prompt changes this contextual processing and can change the scores for possible next tokens—and therefore the response.
 
@@ -399,7 +442,7 @@ A prompt is the input text the LLM receives; it is not a separate command that b
 
 In short, the prompt becomes part of the context, and the context must fit inside the context window.
 
-### Prompting Example
+### 7.2 Prompting Example
 
 If you ask:
 
@@ -436,7 +479,7 @@ This is why prompt wording can influence:
 - caution or certainty
 - consistency across runs
 
-### Temperature and Sampling
+### 7.3 Temperature and Sampling
 
 `Temperature` changes how deterministic or variable token selection becomes.
 
@@ -497,12 +540,13 @@ Use these questions to check your understanding:
 1. In one or two sentences, what does an LLM predict at each generation step?
 2. Why is a token not always the same thing as a word?
 3. How does attention help the model give `bank` different contextualized meanings in a river sentence and a money sentence?
-4. What is the difference between a prompt, context, and a context window?
-5. How do prompt wording and temperature each influence an LLM's output?
-6. What is the difference between training a model and using it at inference time? What happens to its parameters in each case?
-7. Why can an LLM sound confident and still be wrong? Name one reason later labs add tools, memory, or human review around the model.
+4. What different jobs do attention and the FFN perform, and what does final layer normalization do before the output layer?
+5. What is the difference between a prompt, context, and a context window?
+6. How do prompt wording and temperature each influence an LLM's output?
+7. What is the difference between training a model and using it at inference time? What happens to its parameters in each case?
+8. Why can an LLM sound confident and still be wrong? Name one reason later labs add tools, memory, or human review around the model.
 
-## Notebook Bridge
+## 10. Notebook Bridge
 
 When you open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb), watch for these connections:
 
@@ -513,7 +557,7 @@ When you open [03_tiny_llm_book_demo.ipynb](03_tiny_llm_book_demo.ipynb), watch 
 - inference uses the trained model to score and sample likely next words
 - the model can still sound fluent while remaining limited by its size, data, and context
 
-## Key Takeaways
+## 11. Key Takeaways
 
 If you remember only three things from this primer, keep these:
 

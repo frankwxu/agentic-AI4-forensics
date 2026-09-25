@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1380" height="2070" viewBox="0 0 760 1140" role="img" aria-labelledby="title desc">
 <title id="title">The Notebook’s Tiny Decoder-Only Transformer</title>
-<desc id="desc">Token IDs are mapped to token embeddings, which are added to position embeddings. Two Transformer blocks each use masked multi-head self-attention with four heads and feed-forward processing. Final layer normalization and an output layer produce vocabulary scores at each position. During generation, scores at the last position are used to select the next token. Within-block normalization, residual connections, and dropout are omitted for clarity.</desc>
+<desc id="desc">Token IDs are mapped to token embeddings, which are added to position embeddings. Two Transformer blocks each use masked multi-head self-attention with four heads to combine information across token positions, followed by a position-wise feed-forward network that transforms each token independently. Final layer normalization and an output layer produce vocabulary scores at each position. During generation, scores at the last position are used to select the next token. Within-block normalization, residual connections, and dropout are omitted for clarity.</desc>
 <defs>
 <style>
 .title { font: 700 24px 'Segoe UI', Arial, sans-serif; fill: #172b4d; }
@@ -38,8 +38,8 @@
 <text x="380" y="575" text-anchor="middle" class="small">Context: earlier tokens and the token itself</text>
 <path d="M 380 599 V 618" class="arrow"/>
 <rect x="66" y="632" width="628" height="65" rx="12" fill="#eef7f5" stroke="#b5d6ce" stroke-width="1.5"/>
-<text x="380" y="659" text-anchor="middle" class="label">Feed-forward processing</text>
-<text x="380" y="684" text-anchor="middle" class="small">Processes each token’s representation</text>
+<text x="380" y="659" text-anchor="middle" class="label">Position-wise feed-forward network (FFN)</text>
+<text x="380" y="684" text-anchor="middle" class="small">Transforms each token independently</text>
 <path d="M 380 726 V 747" class="arrow"/>
 <rect x="80" y="760" width="600" height="52" rx="12" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
 <text x="380" y="792" text-anchor="middle" class="label">Final layer normalization</text>
