@@ -78,29 +78,31 @@ Transformers are commonly grouped by the job they perform:
 
 Although language models come in several forms, the LLMs used in chat systems are typically large decoder-only Transformers. Their repeated next-token generation is the principle this reading focuses on.
 
-Figure 4 shows the tiny decoder-only Transformer used in the accompanying [notebook](03_tiny_llm_book_demo.ipynb). Its two Transformer blocks each combine masked self-attention with a position-wise feed-forward network (FFN). Attention gathers useful clues from the current and earlier tokens. The FFN then processes those clues for each token separately. An output layer converts the results into scores for possible next tokens.
+Figure 4 shows the tiny decoder-only Transformer used in the accompanying [notebook](03_tiny_llm_book_demo.ipynb). It is not simply the decoder half of Figure 3. Figure 3 shows the original Transformer's post-normalization design, in which each sublayer is followed by `Add & Norm`. The notebook uses a pre-normalization design: layer normalization occurs before the attention and FFN sublayers inside each block, and a separate final LayerNorm follows the last block. Figure 4 omits the within-block normalization and residual connections so that the main flow remains easy to see.
 
-![The notebook’s tiny decoder-only Transformer: token and position embeddings are added, pass through two blocks with four attention heads each, then final normalization and an output layer produce vocabulary scores at each position.](./figures/lab0_decoder_only_overview.svg)
+The notebook's two Transformer blocks each combine masked self-attention with a position-wise feed-forward network (FFN). Attention gathers useful clues from the current and earlier tokens. The FFN then processes those clues for each token separately. After the final LayerNorm, a linear output projection converts each representation into one score, or logit, for every vocabulary token.
 
-*Figure 4. A simplified view of the notebook’s tiny decoder-only Transformer. Token and position embeddings are added, then processed by two Transformer blocks. Final normalization and an output layer produce vocabulary scores at each position. During generation, the scores at the last position are used to select the next token.*
+![The notebook’s tiny decoder-only Transformer: token and position embeddings are added, pass through two pre-normalization blocks with four attention heads each, then a final LayerNorm and linear vocabulary projection produce logits at each position.](./figures/lab0_decoder_only_overview.svg)
+
+*Figure 4. A simplified view of the notebook’s tiny decoder-only Transformer. Unlike Figure 3's original post-normalization architecture, this model uses pre-normalization blocks and a final LayerNorm after the last block. A linear projection then produces vocabulary logits at each position. During generation, the logits at the last position are used to select the next token.*
 
 For this course, treat the notebook’s `decoder-only Transformer` as a model with a clear job:
 
 - input: token IDs for the text seen so far
 - internal work: combine token and position embeddings, then use the current and earlier tokens to update each token’s internal meaning
-- output: vocabulary scores at each position; generation uses the scores at the last position to select the next token
+- output: vocabulary logits at each position; generation uses the logits at the last position to select the next token
 
 The components in Figure 4 each perform a specific operation for a particular purpose:
 
 | Component | What it does | Why it is needed |
 | --- | --- | --- |
-| `token embeddings` | Map each token ID to a learned vector. | This gives the model numerical features it can learn and process, rather than treating the ID itself as a meaningful number. |
-| `position embeddings` | Represent each token’s position in the sequence and are added to the token embeddings. | They provide information about word order, helping the model distinguish sequences that contain the same words in different positions. |
-| `transformer blocks` | Combine attention with a position-wise feed-forward network (FFN) and repeat twice in this notebook’s model. | Repeating the blocks lets later layers refine the representations built by earlier layers, supporting more complex relationships in the text. |
-| `masked self-attention` | Uses four attention heads in each block to combine information from earlier tokens and the current token, while blocking access to future tokens. | This lets each token draw on relevant context; multiple heads can learn different relationships, and the mask prevents the model from using future text to predict what comes next. |
-| `position-wise feed-forward network (FFN)` | Applies the same small neural network to each token separately. | It helps the model recognize and combine useful patterns in the clues gathered by attention. |
-| `final layer normalization` | Normalizes the feature values within each token’s representation, then applies a learned scale and shift. | This helps control variation in their numerical scale before the output layer produces scores. |
-| `output layer` | Converts each position’s final representation into a score for every token in the vocabulary. | These scores let the system compare possible next tokens and convert their relative scores into probabilities for selection. |
+| `Token embeddings` | Map each token ID to a learned vector. | This gives the model numerical features it can learn and process, rather than treating the ID itself as a meaningful number. |
+| `Position embeddings` | Represent each token’s position in the sequence and are added to the token embeddings. | They provide information about word order, helping the model distinguish sequences that contain the same words in different positions. |
+| `Transformer block` | Combines attention with a position-wise feed-forward network (FFN) and repeats twice in this notebook’s model. | Repeating the block lets the later instance refine the representations built by the earlier instance, supporting more complex relationships in the text. |
+| `Masked multi-head self-attention` | Uses four attention heads in each block to combine information from earlier tokens and the current token, while blocking access to future tokens. | This lets each token draw on relevant context; multiple heads can learn different relationships, and the mask prevents the model from using future text to predict what comes next. |
+| `Position-wise feed-forward network (FFN)` | Applies the same small neural network to each token separately. | It helps the model recognize and combine useful patterns in the clues gathered by attention. |
+| `Final LayerNorm (after the last block)` | Normalizes the feature values within each token’s representation, then applies a learned scale and shift. | This helps control variation in their numerical scale before the output projection produces logits. |
+| `Linear projection to vocabulary logits` | Converts each position’s final representation into one logit for every token in the vocabulary. | These logits let the system compare possible next tokens and convert their relative scores into probabilities for selection. |
 
 Two additional components handle the steps before and after the architecture shown in Figure 4:
 
