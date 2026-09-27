@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1540" height="520" viewBox="30 20 1540 520" role="img" aria-labelledby="title desc">
   <title id="title">Teaching-Friendly LLM Pipeline</title>
-  <desc id="desc">Diagram for Lab 0-01 showing a teaching-friendly LLM pipeline from a Dorothy example through tokens, token IDs, initial token meanings in embeddings, transformer-based contextualization, an output layer that scores many next tokens with the top few shown, and sampled output.</desc>
+  <desc id="desc">Diagram for Lab 0-01 showing a teaching-friendly LLM pipeline from a Dorothy example through tokenization, token and position embeddings, Transformer blocks and final LayerNorm, a linear projection to vocabulary logits, softmax probabilities, and sampled output.</desc>
 
   <defs>
     <style>
@@ -17,8 +17,8 @@
 
   <rect x="0" y="0" width="1600" height="560" fill="#ffffff"/>
   <text x="800" y="58" text-anchor="middle" class="title">From Text Input to Next-Token Output</text>
-  <text x="800" y="88" text-anchor="middle" class="subtitle">Text -&gt; tokens -&gt; token IDs -&gt; initial token meanings (embeddings)</text>
-  <text x="800" y="114" text-anchor="middle" class="subtitle">-&gt; transformer -&gt; contextualized token meanings -&gt; output layer</text>
+  <text x="800" y="88" text-anchor="middle" class="subtitle">Text -&gt; tokens and IDs -&gt; token + position embeddings -&gt; Transformer blocks</text>
+  <text x="800" y="114" text-anchor="middle" class="subtitle">-&gt; final LayerNorm -&gt; linear projection -&gt; vocabulary logits -&gt; softmax probabilities</text>
 
   <rect x="60" y="168" rx="18" ry="18" width="240" height="132" fill="#e2e8f0" stroke="#475569" stroke-width="2.5"/>
   <text x="180" y="202" text-anchor="middle" class="node-title">Text Input</text>
@@ -32,30 +32,31 @@
   <text x="460" y="292" text-anchor="middle" class="small">[17, 42]</text>
 
   <rect x="620" y="148" rx="18" ry="18" width="240" height="172" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
-  <text x="740" y="182" text-anchor="middle" class="node-title">Embeddings</text>
-  <text x="740" y="214" text-anchor="middle" class="node-text">give tokens initial</text>
-  <text x="740" y="238" text-anchor="middle" class="node-text">token meanings</text>
-  <text x="740" y="270" text-anchor="middle" class="small">17 -&gt; [0.21, -0.44, 0.08, 0.91]</text>
-  <text x="740" y="292" text-anchor="middle" class="small">42 -&gt; [0.18, -0.39, 0.11, 0.87]</text>
+  <text x="740" y="176" text-anchor="middle" class="node-title">Token embeddings +</text>
+  <text x="740" y="199" text-anchor="middle" class="node-title">Position embeddings</text>
+  <text x="740" y="226" text-anchor="middle" class="node-text">represent token identity</text>
+  <text x="740" y="248" text-anchor="middle" class="node-text">and sequence position</text>
+  <text x="740" y="276" text-anchor="middle" class="small">17 -&gt; [0.21, -0.44, 0.08, 0.91]</text>
+  <text x="740" y="298" text-anchor="middle" class="small">42 -&gt; [0.18, -0.39, 0.11, 0.87]</text>
 
   <rect x="900" y="124" rx="22" ry="22" width="320" height="220" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
-  <text x="1060" y="162" text-anchor="middle" class="node-title">Transformer</text>
+  <text x="1060" y="162" text-anchor="middle" class="node-title">Transformer blocks</text>
   <text x="1060" y="194" text-anchor="middle" class="node-text">updates token meanings</text>
   <text x="1060" y="218" text-anchor="middle" class="node-text">using surrounding context</text>
-  <text x="1060" y="254" text-anchor="middle" class="small">output of this stage:</text>
-  <text x="1060" y="278" text-anchor="middle" class="small">contextualized token meanings</text>
-  <text x="1060" y="300" text-anchor="middle" class="small">for the current sequence</text>
-  <text x="1060" y="322" text-anchor="middle" class="small">inside the context window</text>
+  <text x="1060" y="254" text-anchor="middle" class="small">then Final LayerNorm</text>
+  <text x="1060" y="278" text-anchor="middle" class="small">produces normalized,</text>
+  <text x="1060" y="300" text-anchor="middle" class="small">contextualized representations</text>
+  <text x="1060" y="322" text-anchor="middle" class="small">for the current sequence</text>
 
   <rect x="1250" y="132" rx="18" ry="18" width="280" height="232" fill="#fee2e2" stroke="#dc2626" stroke-width="2.5"/>
-  <text x="1390" y="168" text-anchor="middle" class="node-title">Output Layer</text>
-  <text x="1390" y="200" text-anchor="middle" class="node-text">scores many possible</text>
-  <text x="1390" y="224" text-anchor="middle" class="node-text">next tokens</text>
-  <text x="1390" y="252" text-anchor="middle" class="small">top few shown:</text>
-  <text x="1305" y="280" text-anchor="start" class="small">" home" 0.72</text>
+  <text x="1390" y="168" text-anchor="middle" class="node-title">Linear projection</text>
+  <text x="1390" y="200" text-anchor="middle" class="node-text">Vocabulary logits</text>
+  <text x="1390" y="224" text-anchor="middle" class="node-text">Softmax → probabilities</text>
+  <text x="1390" y="252" text-anchor="middle" class="small">top probabilities:</text>
+  <text x="1305" y="280" text-anchor="start" class="small">" home" 0.52</text>
   <text x="1305" y="302" text-anchor="start" class="small">" away" 0.18</text>
   <text x="1305" y="324" text-anchor="start" class="small">" back" 0.10</text>
-  <text x="1305" y="346" text-anchor="start" class="small">... many other tokens</text>
+  <text x="1305" y="346" text-anchor="start" class="small">all other tokens 0.20</text>
 
   <rect x="560" y="378" rx="18" ry="18" width="480" height="108" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
   <text x="800" y="414" text-anchor="middle" class="node-title">Sampling or Selection</text>

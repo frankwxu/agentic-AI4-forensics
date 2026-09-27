@@ -314,20 +314,20 @@ LLMs generate text `autoregressively`: each selected token is appended to the in
 
 ### 5.2 One Decoding Step
 
-During one decoding step, the tokenized input is transformed into contextual representations that capture token meaning and position. The model then produces scores ranking every vocabulary token as a possible next token.
+During one decoding step, token and position embeddings pass through the Transformer blocks and final LayerNorm. The linear projection then produces one vocabulary logit for each possible next token, and softmax converts those logits into probabilities.
 
-The output layer scores the whole vocabulary, but Figure 11 shows only a small top-token slice so the probabilities are easy to read.
+The model assigns a probability to every token in the vocabulary, but Figure 11 shows only a small top-token slice and groups the remaining probability so the result is easy to read.
 
 ![Figure 11. From text input to next-token output in an LLM](./figures/lab0_llm_pipeline.svg)
 
-*Figure 11. A teaching-friendly LLM pipeline: text becomes tokens, tokens become token IDs, token IDs become initial token meanings (embeddings), the transformer turns those into contextualized token meanings, and the output layer scores many possible next tokens. The figure shows only the top few probabilities so they are easy to read.*
+*Figure 11. A teaching-friendly LLM pipeline consistent with Figure 4: token and position embeddings pass through the Transformer blocks and final LayerNorm; a linear projection produces vocabulary logits; and softmax converts the logits into probabilities. The figure shows the top few probabilities and groups the remainder so they are easy to read.*
 
 This is the core loop:
 
 1. read the current token sequence
-2. turn token IDs into embeddings
-3. use the transformer to update those meanings with context
-4. score possible next tokens
+2. turn token IDs into token and position embeddings
+3. use the Transformer blocks and final LayerNorm to update those meanings with context
+4. project the representations to vocabulary logits and use softmax to obtain probabilities
 5. choose one token
 6. append it to the sequence
 7. repeat until the stopping condition is reached
