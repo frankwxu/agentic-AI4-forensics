@@ -46,6 +46,8 @@ By the end of Lab 0-02, you should be able to:
    OLLAMA_BASE_URL="http://localhost:11434/v1"
    ```
 
+   > **Note:** The IP address of our Ollama server VM is **136.160.215.236**. When connecting to the instructor-managed Ollama server from another machine, use `http://136.160.215.236:11434/v1` as the Ollama base URL.
+
 2. Install the Graphviz system application.
 
    Linux (Debian/Ubuntu):
