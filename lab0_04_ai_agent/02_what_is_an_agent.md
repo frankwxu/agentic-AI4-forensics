@@ -87,7 +87,9 @@ Both types follow an observe–decide–act loop. In an LLM-based agent, the `LL
 
 An `LLM` can be part of a workflow without controlling it. The term **agency** describes how much the model's output is allowed to control the next step in the surrounding program. Here, **control flow** means what the program does next: for example, choosing a path, calling a tool, or running another step.
 
-**Reasoning and planning do not determine agency by themselves.** An `LLM` can reason about a problem and return text, but remain a simple processor if the program only displays or saves that response. The workflow gives the model agency when it allows the response to affect a path, tool, or later step.
+**Reasoning and planning alone do not make an `LLM` an agent.** If a program only asks the `LLM` a question and displays or saves its answer, the `LLM` is simply generating text. The `LLM` becomes part of an AI agent when the program uses its answer to decide what to do next—for example, choosing an analysis method, calling a tool, or continuing to another step.
+
+For example, an `LLM` that recommends examining file metadata is only giving advice. If the program uses that recommendation to run a metadata-extraction tool, the `LLM` is participating in an agentic workflow.
 
 The patterns below are simplified pseudocode, not code you need to run.
 
