@@ -30,6 +30,7 @@ Work in a team of exactly two students. Both students are responsible for unders
   \item Check every graph against independent execution evidence; show that the validator detects a deliberately altered graph.
   \item Submit the technical report, editable report-source link, slides, and reproducible GitHub repository as described below.
 \end{enumerate}
+Items 2 and 3 describe the full-credit automated pathway. Teams that make a substantial, documented automation attempt but cannot complete it may use the reduced-credit manual fallback in Section~\ref{sec:manual-fallback}. The automated pathway is the only path to an A.
 
 \section{Learning Objectives}
 By the end of the project, you should be able to:
@@ -42,7 +43,7 @@ By the end of the project, you should be able to:
 \end{enumerate}
 
 \section{Platform and Project Scope}
-Choose \textbf{one} platform: Hermes Agent (Nous Research) or OpenClaw. Record the installed version or commit, model/provider, operating environment, tool configuration, and tracing interface used. Use real agent executions. A hand-written list of expected calls or a simulated graph alone does not satisfy the implementation requirement. A deterministic mock tool is allowed for a controlled test, but the selected agent must actually invoke it.
+Choose \textbf{one} platform: Hermes Agent (Nous Research) or OpenClaw. Record the installed version or commit, model/provider, operating environment, tool configuration, and tracing interface used. Use real agent executions. A hand-written list of expected calls or a simulated graph alone does not satisfy the full-credit implementation requirement. The manual fallback permits hand-constructed digital graphs only under the requirements and grade ceiling in Section~\ref{sec:manual-fallback}. A deterministic mock tool is allowed for a controlled test, but the selected agent must actually invoke it.
 
 Begin with official platform documentation and identify a supported observation point. For example, Hermes documents \texttt{pre\_tool\_call} and \texttt{post\_tool\_call} hooks; OpenClaw documents trajectory bundles, audit records, and OpenTelemetry signals. These are examples, not required implementation choices. Explain the coverage and limitations of the interface you choose. If it omits a type of tool action, supplement it with another observable source and document the reconciliation rule. Official starting points appear in Section~\ref{sec:sources}.
 
@@ -135,29 +136,101 @@ Figure~\ref{fig:loop-example} distinguishes a \emph{workflow loop} from the grap
 \end{figure}
 
 \section{Required Technical Work}
-\subsection{Propose a tracing solution}
-Describe the problem, proposed architecture, alternatives considered, and why you selected your capture method. Include a data-flow diagram from agent event to stored trace, graph, and validation result. Define the trace boundary: one prompt, one run, one session, or another explicit unit. Specify what constitutes a tool call and whether failed, blocked, retried, nested, or parallel calls are included.
+The full-credit pathway has three core tasks: \textbf{capture the calls, build the graph, and verify the graph}. First make the three tasks work for one run; then apply the same automated process to all required runs. Section~\ref{sec:manual-fallback} provides a reduced-credit fallback when a substantial automation attempt remains unsuccessful.
 
-\subsection{Implement trace capture and graph construction}
-Implement a runnable collector or parser and a graph generator. Preserve enough metadata to distinguish repeated calls to the same tool: at minimum a run identifier, unique call identifier (native or generated), tool name, event order or timestamp, outcome, and an evidence pointer to the raw record. Capture start/end or request/result events where the platform permits. Record missing fields as unknown; do not invent timestamps, call IDs, or dependencies. If raw arguments or results contain secrets or personal information, redact them in shared artifacts while keeping the evidence needed to verify call identity and order.
+\subsection{Task 1: Capture the tool calls}
+Run the agent and save evidence showing which tools it actually called. Implement a runnable collector or parser. For every call, preserve at least:
+\begin{itemize}
+  \item run ID and unique call ID (native or generated),
+  \item tool name,
+  \item event order or timestamp,
+  \item outcome, and
+  \item a pointer to the supporting raw evidence.
+\end{itemize}
+Capture request/result or start/end events when the platform provides them. Save a second, independent record for Task~3. Record an unavailable field as \emph{unknown}; do not invent timestamps, call IDs, outcomes, or dependencies. Redact secrets and personal information from shared artifacts while preserving the evidence needed to identify and order calls.
 
-Provide a documented command that accepts saved run evidence and its independent reference record and produces, for each run, a machine-readable graph, a readable visualization, and a validation report. The command must work on a new saved run without manually redrawing its graph or editing the code. Automating agent launch and prompt execution is optional; the trace-to-graph-and-validation process is required.
+\paragraph{Brief design note.}
+Describe the tracing problem, your proposed architecture, the platform observation point you selected, and why you selected it. Define the boundary of one run and what counts as a tool call. State how your method treats failed, blocked, repeated, nested, and parallel calls. Include a data-flow diagram from agent event to saved trace, graph, and validation result. Describe at least one alternative capture method you considered.
 
-Define graph semantics before generating graphs. At minimum, every observed tool call must appear as a distinct node. Repeated uses of one tool and retries must have separate call IDs and nodes; do not merge them by tool name or draw a self-loop merely because the tool name repeats. Label a call as a retry only when the run evidence supports that relationship. An edge must have a declared meaning, such as \emph{next observed call in a run}, \emph{parent/child call}, \emph{retry of}, or \emph{data dependency}. Do not label temporal adjacency as causation. If your trace supports several edge meanings, use distinct labels or visual styles. Include the user question and final agent response as context in the graph or its caption. Show tool name, call order/ID, and success, error, or blocked status. Save both a machine-readable graph (for example, JSON, GraphML, or DOT) and a readable image or interactive view.
+\paragraph{Hint.}
+Start with one simple tool-using question. Look for an official platform trace, hook, trajectory, audit record, or instrumentation point around the tool boundary. Automating agent launch and prompt execution is optional; reliably processing saved run evidence is required.
 
-\subsection{Demonstrate the actual calling sequence}
-Run the five required cases in the shared guide: M0--M2, F1, and F2. At least one run must elicit two or more tool calls so that order can be demonstrated. Include a real repeated-call or retry case when you can reproduce one. Otherwise, use a clearly labeled synthetic trace fixture with two calls to the same tool to test that your graph generator keeps both nodes; the fixture does not replace a required real agent run. For each real run, provide the exact question, relevant tool setup, actual trace excerpt, generated graph, validation report, final answer, and a short interpretation of what happened. A prompt that is expected to use a tool but does not is a valid observed result; report it honestly and run additional cases as needed to demonstrate multi-call behavior.
+\subsection{Task 2: Build the tool-call graph}
+For the full-credit pathway, create one documented command that reads a saved trace and produces:
+\begin{itemize}
+  \item a machine-readable graph, such as JSON, GraphML, or DOT, and
+  \item a readable graph image or interactive view.
+\end{itemize}
+The command must also accept the independent record used in Task~3. It must work on a new saved run without editing the code or drawing the graph manually.
 
-\subsection{Verify graph correctness}
-Establish a \textbf{reference record independent of the graph generator}, such as a separate platform audit/trajectory stream, instrumentation around the tool boundary, or a manually annotated raw trace reviewed by both team members. Explain why it can reveal missing or extra calls. For every demonstrated run, compare the generated graph with that record. Check:
-\begin{enumerate}
-  \item Node coverage: every actual call appears once; no call is fabricated.
-  \item Identity and attributes: tool name, call ID, run association, and outcome agree with the record.
-  \item Edge correctness: each edge follows its declared semantics; ordering claims agree with the evidence. Do not force a total order on truly concurrent calls.
-  \item Boundary behavior: no-tool, failed/blocked, and repeated or parallel calls are represented correctly where applicable.
-\end{enumerate}
-For example, if an independent audit lists calls C1 (read devices) and C2 (read events), a graph with only C1 is missing one call. If your edges mean \emph{next observed call}, the graph should also contain C1$\rightarrow$C2. This example is a correctness check, not a required call sequence for M2.
-Report counts of reference calls, graph nodes, matched calls, missing calls, extra calls, correct edges, and incorrect edges for each run. Compute node precision and recall when the reference permits it; define how calls are matched. Explain every discrepancy and fix the implementation or document a justified visibility limit. Demonstrate at least one automated validation test by deliberately removing a known call node or altering an edge in a copy of a graph and showing that the validator detects the change. Human inspection alone is insufficient.
+Every observed invocation must be a separate node. Show its tool name, call ID or order, and success, error, or blocked status. Repeated uses of the same tool must have different nodes and call IDs; do not merge them or replace them with a self-loop. Label a call as a retry only when the evidence supports that relationship. Define what every edge means. If you use more than one edge meaning, give them different labels or visual styles. Include the user's question and the agent's final response in the graph or its accompanying run record.
+
+\paragraph{Hint.}
+The simplest useful edge meaning is often \emph{next observed call in this run}. Such an edge shows order, not causation. Add parent/child, retry, or data-dependency edges only when the saved evidence supports them, and do not force an order on calls that were truly concurrent.
+
+\subsection{Task 3: Verify the graph}
+For the full-credit pathway, extend the same command so that it compares the generated graph with the independent record and produces a validation report. The independent record may come from a separate platform audit or trajectory stream, instrumentation around the tool boundary, or a manually annotated raw trace reviewed by both team members. Explain why it is independent of the graph generator and how it can reveal missing or extra calls.
+
+For each run, check that:
+\begin{itemize}
+  \item every actual call appears exactly once and no call is fabricated,
+  \item tool name, call ID, run association, and outcome match,
+  \item every edge follows its declared meaning and agrees with the evidence, and
+  \item no-tool, failed or blocked, repeated, and parallel behavior is represented correctly when it occurs.
+\end{itemize}
+Report counts of reference calls, graph nodes, matched calls, missing calls, extra calls, correct edges, and incorrect edges. Define how calls are matched and compute node precision and recall when the reference permits it. Explain each discrepancy; fix the implementation or document a justified visibility limit.
+
+Test the validator by changing a \emph{copy} of one graph: remove a known call node or alter an edge, and show that the automated validator detects the error. Human inspection alone is not sufficient for the full-credit pathway.
+
+\paragraph{Hint.}
+Match calls by native call ID when possible. If no native ID exists, define and document a consistent matching rule. Check nodes first, then their attributes, and then the edges. Never modify the original evidence for the mutation test.
+
+\subsection{Apply the solution}
+After the three tasks work for one run, use the same process for the five required new runs: M0--M2, F1, and F2. At least one real run must contain two or more calls so that order can be demonstrated; add a run if necessary. Include a real repeated-call or retry case when you can reproduce one. Otherwise, use a clearly labeled synthetic fixture with two calls to the same tool to test that both calls remain separate nodes. The fixture does not replace a required real run.
+
+For every real run, save the exact question, relevant tool setup, actual trace excerpt, independent reference record, machine-readable and readable graphs, validation report, final response, and a short interpretation. An expected tool call that does not occur is still a valid observation; report no-tool, failed, blocked, repeated, or parallel behavior honestly.
+
+\subsection*{Full-credit completion checklist}
+For the automated pathway, confirm that your team has:
+\begin{itemize}
+  \item one documented command that produces a machine-readable graph, readable visualization, and validation report for a new saved run;
+  \item an independent reference record and node/edge validation results for every required run;
+  \item five required new runs and at least one real multi-call run;
+  \item separate nodes for repeated calls and a repeated-call fixture if no real repetition was reproduced;
+  \item one automated test that detects a deliberately altered graph;
+  \item a data-flow diagram and short explanation of the design and alternative considered; and
+  \item redacted shared evidence with unavailable fields marked unknown and no invented metadata.
+\end{itemize}
+
+\section{Manual Fallback Option}\label{sec:manual-fallback}
+The automated solution remains the expected and full-credit pathway. A team that makes a substantial automation attempt but cannot complete the automated graph pipeline may use this fallback without advance instructor approval. A fully correct fallback submission may earn at most \textbf{85/100}, equivalent to a solid B. The ceiling is not an automatic score: inaccurate graphs, missing runs, weak evidence, insufficient effort documentation, or unequal participation reduce the grade further.
+
+\subsection{Required manual work}
+Fallback teams must still:
+\begin{itemize}
+  \item complete M0--M2 and F1--F2 as new real runs and include at least one real multi-call run;
+  \item preserve the raw execution evidence and an independent reference record for every run;
+  \item produce readable digital graphs with a diagram tool; informal hand sketches are insufficient;
+  \item represent every actual call as a distinct node labeled with its call ID or order, tool name, outcome, and evidence pointer;
+  \item define every edge meaning and avoid unsupported causal or total-order claims;
+  \item provide a manual call inventory and node/edge comparison for every run, including reference, matched, missing, extra, correct-edge, and incorrect-edge counts, plus precision and recall when possible;
+  \item explain all discrepancies, limitations, and no-tool, failed, blocked, repeated, or parallel behavior; and
+  \item alter a copy of one graph and manually show how comparison with the reference reveals the introduced node or edge error.
+\end{itemize}
+Clearly label the report and repository as using the manual fallback. This pathway does not require a reusable trace-processing command, a machine-readable graph, or an automated validator. Partial automated components should still be submitted and demonstrated.
+
+\subsection{Required evidence of the automation attempt}
+To qualify for the 85-point ceiling, the report must summarize and the repository must preserve:
+\begin{itemize}
+  \item the attempted collector, parser, graph generator, or validator code;
+  \item a chronological troubleshooting record listing commands, errors, attempted fixes, and results;
+  \item tests or saved outputs showing which components worked and which failed;
+  \item a component-status table identifying completed, partial, and blocked features;
+  \item a technical explanation of the unresolved blocker and reasonable next steps;
+  \item Git commit history or equivalent dated evidence showing iterative work; and
+  \item concrete implementation, testing, review, and documentation contributions from both students.
+\end{itemize}
+Documentation does not earn credit merely for length. It must demonstrate a good-faith technical attempt and make the reported failures reproducible.
 
 \section{Suggested Work Plan}
 \begin{enumerate}
@@ -180,9 +253,9 @@ Use the following sections and subsections, adapting names only when the same in
   \item \textbf{Introduction}: motivation, problem statement, objectives, and contributions.
   \item \textbf{Background and Related Work}: agent tool calling, chosen platform, existing trace facilities, and graph interpretation.
   \item \textbf{Requirements and Design}: trace boundary, event schema, capture point, architecture, graph semantics, privacy decisions, and alternative approaches.
-  \item \textbf{Implementation}: platform/version, configuration, automated trace-to-graph command, generated outputs, reproducibility steps, and the team's GitHub repository URL with the commit hash used for evaluation.
+  \item \textbf{Implementation}: platform/version, configuration, automated trace-to-graph command, generated outputs, reproducibility steps, and the team's GitHub repository URL with the commit hash used for evaluation. A fallback team instead presents its attempted implementation, component-status table, troubleshooting summary, unresolved blocker, and next steps.
   \item \textbf{Experimental Method}: M0--M2 reruns and F1--F2, exact prompts, tools, model/settings, test conditions, reference record, matching rules, and metrics.
-  \item \textbf{Results and Verification}: trace/graph examples, per-run comparison table, correctness results, graph-mutation test, discrepancies, and any useful comparison with midterm observations.
+  \item \textbf{Results and Verification}: trace/graph examples, per-run comparison table, correctness results, graph-mutation test, discrepancies, and any useful comparison with midterm observations. A fallback team clearly identifies its graphs and mutation check as manually produced and verified.
   \item \textbf{Discussion and Limitations}: visibility gaps, concurrency or retries, threats to validity, and improvements.
   \item \textbf{Conclusion}: what was achieved and what remains unresolved.
   \item \textbf{References}: consistent citations to all external sources.
@@ -198,12 +271,18 @@ Each student must independently submit \textbf{one Canvas assignment submission}
   \item The same final technical report PDF prepared by the team.
   \item A share link to the editable report source (for example, Word, Google Docs, or Overleaf); grant the instructor access before submitting. A view-only PDF link is not sufficient.
   \item The team's presentation slides (PPT or PPTX).
-  \item A link to the team's GitHub repository containing the runnable trace-to-graph-and-validation command, dependency and setup instructions, redacted saved run evidence, machine-readable graphs, rendered graphs, validation reports and tests, and the prompts/configuration needed to reproduce results. The same URL and evaluated commit hash must appear in the report.
+  \item A link to the team's GitHub repository, with contents appropriate to the selected pathway:
+  \begin{itemize}
+    \item \textbf{Automated pathway}: runnable processing command, dependency and setup instructions, redacted saved run evidence, machine-readable and rendered graphs, validation reports and tests, and the prompts and configuration needed to reproduce results.
+    \item \textbf{Manual fallback}: attempted code, troubleshooting record, component-status table, redacted run and reference evidence, editable graph sources and rendered graphs, manual comparisons, altered graph and detected discrepancy, and the prompts and configuration needed to reproduce results.
+  \end{itemize}
+  The same URL and evaluated commit hash must appear in the report.
   \item A short individual contribution statement, either in Canvas comments or as an attached file, consistent with the team statement in the report.
 \end{enumerate}
-Both students submit the same team PDF, editable report-source link, slides, and repository link; each supplies their own contribution statement. The \textbf{oral presentation is required}. Both students must speak and be prepared to explain the design, code, validation method, and results. Demonstrate at least one question-to-trace-to-graph-to-verification sequence live or with a recorded backup. Follow the instructor's Canvas announcement for the due date, presentation length, and submission link.
+Both students submit the same team PDF, editable report-source link, slides, and repository link; each supplies their own contribution statement. The \textbf{oral presentation is required}. Both students must speak and be prepared to explain the design, code, validation method, and results. Demonstrate at least one question-to-trace-to-graph-to-verification sequence live or with a recorded backup. A fallback team demonstrates its manual graph construction and comparison and explains the attempted automation and unresolved blocker. Follow the instructor's Canvas announcement for the due date, presentation length, and submission link.
 
 \section{Evaluation Rubric (100 Points)}
+The following rubric applies to the full-credit automated pathway.
 \renewcommand{\arraystretch}{1.15}
 \begin{longtable}{p{0.28\linewidth}p{0.57\linewidth}r}
   \toprule
@@ -222,7 +301,29 @@ Both students submit the same team PDF, editable report-source link, slides, and
   \bottomrule
 \end{longtable}
 
-The rubric awards credit for measured, honest results. A documented visibility gap or failed run can support a strong analysis if the method detects and explains it; an unsupported claim of perfect tracing cannot.
+\begin{samepage}
+\subsection*{Manual fallback grading}
+The following maxima apply only to a submission that meets the eligibility and evidence requirements in Section~\ref{sec:manual-fallback}.
+\begin{center}
+\begin{tabular}{p{0.52\linewidth}r}
+  \toprule
+  Criterion                                             & Maximum points \\
+  \midrule
+  Problem framing and design                            & 10/10          \\
+  Automated trace processing and documented attempt    & 15/25          \\
+  Visualization                                         & 20/20          \\
+  Testing and demonstration                             & 10/10          \\
+  Manual correctness verification                      & 15/20          \\
+  Technical report and reproducibility                  & 10/10          \\
+  Presentation and participation                       & 5/5            \\
+  \midrule
+  \textbf{Maximum fallback total}                       & \textbf{85/100} \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\end{samepage}
+
+The 15 automation points assess the attempted implementation, tests, iterative troubleshooting, partial working components, and reproducible failure evidence. The 15 verification points assess the accuracy and completeness of the manual comparisons and altered-graph check. The automated pathway is the only path to an A. The rubric awards credit for measured, honest results: a documented visibility gap or failed run can support a strong analysis, but an unsupported claim of perfect tracing cannot.
 
 \section{References and Official Starting Points}\label{sec:sources}
 \begin{enumerate}
@@ -230,7 +331,152 @@ The rubric awards credit for measured, honest results. A documented visibility g
   \item OpenClaw, ``Trajectory bundles,'' \url{https://docs.openclaw.ai/tools/trajectory}.
   \item OpenClaw, ``Audit records,'' \url{https://github.com/openclaw/openclaw/blob/main/docs/cli/audit.md}.
   \item OpenClaw, ``OpenTelemetry,'' \url{https://github.com/openclaw/openclaw/blob/main/docs/gateway/opentelemetry.md}.
+  \item Nous Research, ``Hermes Agent: Observer Hooks,'' \url{https://github.com/NousResearch/hermes-agent/blob/main/website/docs/developer-guide/observer-hooks.md}.
+  \item Nous Research, ``Hermes Agent: Sessions,'' \url{https://github.com/NousResearch/hermes-agent/blob/main/website/docs/user-guide/sessions.md}.
+  \item Nous Research, ``Hermes Agent: Plugins,'' \url{https://github.com/NousResearch/hermes-agent/blob/main/website/docs/developer-guide/plugins/index.md}.
 \end{enumerate}
 Check the installed platform version against its corresponding documentation; tracing features and event fields can change.
+
+\appendix
+\section{Example: One Possible Hermes Agent Tracking Solution}
+This appendix gives one possible design, not a required implementation or complete code submission. Students may use a different supported design. Check the installed Hermes version against its documentation before relying on the event names and fields below.
+
+\subsection{Architecture}
+Use a Hermes observer plugin as the graph's capture source and a separately exported Hermes session as the independent reference:
+\begin{verbatim}
+Hermes run
+  |-- observer hooks --> hook_events.jsonl --> processor --> graph files
+  `-- session store -----------------------> reference.jsonl
+                                                   |
+graph files + reference.jsonl ----------------> validator --> report
+\end{verbatim}
+The graph generator reads only \path{hook_events.jsonl}. The validator separately reads the generated graph and \path{reference.jsonl}. Because the hook log and session export use different Hermes storage paths, the export can reveal a call missing from the hook log or graph. If the session export omits a blocked or cancelled call, document that visibility limit and supplement the reference with separate instrumentation around the tool boundary.
+
+\subsection{Step 1: Capture Hermes events}
+Create a native Hermes plugin, for example:
+\begin{verbatim}
+~/.hermes/plugins/tool-trace/
+|-- plugin.yaml
+`-- __init__.py
+\end{verbatim}
+The manifest can declare four hooks:
+\begin{verbatim}
+name: tool-trace
+version: 0.1.0
+description: Save tool-call events for a course project
+provides_hooks:
+  - pre_llm_call
+  - pre_tool_call
+  - post_tool_call
+  - post_llm_call
+\end{verbatim}
+Register callbacks that accept \texttt{**kwargs} for forward compatibility. The following is an abbreviated sketch of the plugin core:
+\newpage
+\begin{verbatim}
+import hashlib, itertools, json, threading, time
+from plugins.plugin_storage import plugin_data_dir
+
+LOG = plugin_data_dir("tool-trace") / "hook_events.jsonl"
+SEQ = itertools.count(1)
+LOCK = threading.Lock()
+FIELDS = (
+    "session_id", "turn_id", "task_id", "api_request_id",
+    "tool_call_id", "tool_name", "status", "duration_ms",
+    "error_type", "error_message", "user_message",
+    "assistant_response",
+)
+
+def digest(value):
+    text = json.dumps(value, sort_keys=True, default=str)
+    return hashlib.sha256(text.encode()).hexdigest()
+
+def record(event, payload):
+    with LOCK:
+        row = {"event": event, "capture_seq": next(SEQ),
+               "captured_at_ns": time.time_ns()}
+        row.update({key: payload.get(key) for key in FIELDS})
+        if "args" in payload:
+            row["args_sha256"] = digest(payload["args"])
+        if "result" in payload:
+            row["result_sha256"] = digest(payload["result"])
+        with LOG.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(row, default=str) + "\n")
+
+def pre_llm(**kw):  record("pre_llm_call", kw)
+def pre_tool(**kw): record("pre_tool_call", kw)
+def post_tool(**kw): record("post_tool_call", kw)
+def post_llm(**kw): record("post_llm_call", kw)
+
+def register(ctx):
+    ctx.register_hook("pre_llm_call", pre_llm)
+    ctx.register_hook("pre_tool_call", pre_tool)
+    ctx.register_hook("post_tool_call", post_tool)
+    ctx.register_hook("post_llm_call", post_llm)
+\end{verbatim}
+This sketch stores hashes rather than raw arguments and results. A team may store redacted values when its analysis needs them, but must not publish secrets or sensitive content. Record the plugin log path produced by the active Hermes profile; do not assume that every profile uses the default home directory.
+
+Check and enable the plugin before collecting graded runs:
+\begin{verbatim}
+hermes plugins doctor ~/.hermes/plugins/tool-trace --ci
+hermes plugins enable tool-trace
+\end{verbatim}
+Test with one simple tool-using prompt. Confirm that one \texttt{pre\_tool\_call} and one \texttt{post\_tool\_call} share the same \texttt{tool\_call\_id}. A post event should provide the outcome, commonly \texttt{ok}, \texttt{error}, \texttt{blocked}, or \texttt{cancelled}. Preserve the raw JSONL before processing it.
+
+\subsection{Step 2: Construct the graph}
+The processor can treat one \texttt{turn\_id} within a \texttt{session\_id} as a run. It should:
+\begin{enumerate}
+  \item select events for that run and retain their original line numbers as evidence pointers;
+  \item pair pre- and post-tool events by \texttt{tool\_call\_id};
+  \item create one node per pre-tool event and attach the post event's status;
+  \item assign a documented generated ID only when Hermes supplies no call ID;
+  \item create edges labeled \emph{next observed call} from the pre-event order; and
+  \item omit an ordering edge when the evidence shows concurrent calls and does not establish their order.
+\end{enumerate}
+A node without a matching post event should remain in the graph with outcome \emph{unknown} or \emph{incomplete}; it must not be silently discarded. A repeated tool name still produces separate nodes. The processor should write both a machine-readable graph and a rendered graph, for example \path{graph.json}, \path{graph.dot}, and \path{graph.png}.
+
+One possible graph record is:
+\begin{verbatim}
+{
+  "run_id": "<session_id>:<turn_id>",
+  "edge_semantics": "next observed call",
+  "nodes": [
+    {"id": "call_1", "tool": "read_file", "order": 1,
+     "outcome": "ok", "evidence": "hook_events.jsonl:12"}
+  ],
+  "edges": []
+}
+\end{verbatim}
+
+\subsection{Step 3: Create and use the independent reference}
+After the run, export the matching Hermes session from its persisted session store:
+\begin{verbatim}
+hermes sessions export reference.jsonl \
+  --session-id SESSION_ID --redact
+\end{verbatim}
+The reference parser should extract tool calls from assistant-message \texttt{tool\_calls} and join later tool-result messages by \texttt{tool\_call\_id}. It must be separate from the hook-log parser. Match graph nodes to reference calls by native call ID when possible; otherwise use a documented combination of tool name, arguments or argument hash, and observed position.
+
+For each run, the validator reports reference calls, graph nodes, matched calls, missing calls, extra calls, attribute disagreements, correct edges, and incorrect edges. Compute node precision as matched calls divided by graph nodes and node recall as matched calls divided by reference calls. If the export does not provide an independently checkable outcome or order, mark that check unavailable rather than claiming it passed.
+
+\begin{samepage}
+The team-created command could have this interface:
+\begin{verbatim}
+python -m tracker process \
+  --events runs/F1/hook_events.jsonl \
+  --reference runs/F1/reference.jsonl \
+  --run-id SESSION_ID:TURN_ID \
+  --out runs/F1/output
+\end{verbatim}
+\end{samepage}
+It should produce the graph files and validation report in one run. To demonstrate the negative test, copy \path{graph.json}, remove one known node or change one edge, run the validator on the altered copy, and preserve the failing report. Never alter the raw hook log or independent reference.
+
+\subsection{Expected limitations}
+The team should test and report at least these limitations:
+\begin{itemize}
+  \item A provider may omit a native \texttt{tool\_call\_id}; generated IDs then require an explicit matching rule.
+  \item Concurrent calls may have an observable hook-emission order without a defensible causal order.
+  \item The session export and observer log may expose different fields or boundary behavior.
+  \item Hook callbacks can fail or time out, so missing hook events must remain detectable through the independent reference.
+  \item Arguments, results, questions, answers, and local paths may require redaction before publication.
+\end{itemize}
 
 \end{document}
