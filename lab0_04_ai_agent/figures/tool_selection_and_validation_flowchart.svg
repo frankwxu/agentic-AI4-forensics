@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1040" viewBox="0 0 1500 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Tool Selection and Validation Flowchart</title>
+  <desc id="desc">Flowchart showing how an agent gives a user question and approved tool descriptions to an LLM, how the LLM selects either add_integers or multiply_integers and returns a JSON request, and how the agent validates the tool name before executing or rejecting the request.</desc>
+
+  <defs>
+    <style>
+      .title { font: 700 34px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 500 19px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .lane-title { font: 700 19px 'Segoe UI', Arial, sans-serif; letter-spacing: 1px; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .node-text { font: 500 17px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .code-text { font: 600 16px 'Consolas', 'Courier New', monospace; fill: #1e293b; }
+      .branch-text { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .key-text { font: 700 18px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="1040" fill="#ffffff"/>
+  <text x="750" y="48" text-anchor="middle" class="title">How an Agent Selects and Validates a Tool</text>
+  <text x="750" y="80" text-anchor="middle" class="subtitle">The LLM proposes a tool request; the agent decides whether that request is safe to execute.</text>
+
+  <!-- Responsibility lanes -->
+  <rect x="35" y="110" width="1430" height="130" rx="18" fill="#eff6ff" stroke="#93c5fd" stroke-width="2"/>
+  <text x="70" y="143" class="lane-title" fill="#1d4ed8">USER</text>
+
+  <rect x="35" y="260" width="1430" height="435" rx="18" fill="#fffbeb" stroke="#fcd34d" stroke-width="2"/>
+  <text x="70" y="293" class="lane-title" fill="#b45309">LLM: SELECTS AND REQUESTS</text>
+
+  <rect x="35" y="715" width="1430" height="250" rx="18" fill="#f0fdf4" stroke="#86efac" stroke-width="2"/>
+  <text x="70" y="748" class="lane-title" fill="#15803d">AGENT PROGRAM: VALIDATES AND RUNS</text>
+
+  <!-- User question -->
+  <rect x="510" y="130" width="480" height="88" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="750" y="165" text-anchor="middle" class="node-title">1. User asks a question</text>
+  <text x="750" y="195" text-anchor="middle" class="node-text">“What is 18 plus 7?”</text>
+
+  <!-- Context supplied to LLM -->
+  <rect x="465" y="285" width="570" height="105" rx="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="750" y="320" text-anchor="middle" class="node-title">2. Agent sends context to the LLM</text>
+  <text x="750" y="350" text-anchor="middle" class="node-text">user question + descriptions of approved tools</text>
+  <text x="750" y="376" text-anchor="middle" class="code-text">add_integers  |  multiply_integers</text>
+
+  <!-- LLM decision -->
+  <polygon points="750,420 975,500 750,580 525,500" fill="#fde68a" stroke="#ca8a04" stroke-width="2.5"/>
+  <text x="750" y="484" text-anchor="middle" class="node-title">3. Which tool description</text>
+  <text x="750" y="512" text-anchor="middle" class="node-title">best matches the question?</text>
+  <text x="750" y="542" text-anchor="middle" class="node-text">The LLM predicts the best fit</text>
+
+  <!-- Selected requests -->
+  <rect x="155" y="595" width="475" height="75" rx="15" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="392" y="626" text-anchor="middle" class="node-title">Addition → select add_integers</text>
+  <text x="392" y="654" text-anchor="middle" class="code-text">{"name": "add_integers", ...}</text>
+
+  <rect x="870" y="595" width="475" height="75" rx="15" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text x="1107" y="626" text-anchor="middle" class="node-title">Multiplication → select multiply_integers</text>
+  <text x="1107" y="654" text-anchor="middle" class="code-text">{"name": "multiply_integers", ...}</text>
+
+  <!-- Validation decision -->
+  <polygon points="750,750 950,820 750,890 550,820" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="750" y="805" text-anchor="middle" class="node-title">4. Is the requested name in</text>
+  <text x="750" y="834" text-anchor="middle" class="code-text">APPROVED_TOOLS?</text>
+  <text x="750" y="860" text-anchor="middle" class="node-text">The agent checks—never the LLM</text>
+
+  <!-- Outcomes -->
+  <rect x="105" y="795" width="330" height="95" rx="16" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="270" y="832" text-anchor="middle" class="node-title">No: reject the request</text>
+  <text x="270" y="862" text-anchor="middle" class="node-text">Raise an error; do not run code</text>
+
+  <rect x="1065" y="795" width="330" height="95" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1230" y="832" text-anchor="middle" class="node-title">Yes: run the tool</text>
+  <text x="1230" y="862" text-anchor="middle" class="node-text">Return the result to the user</text>
+
+  <!-- Flow arrows -->
+  <line x1="750" y1="218" x2="750" y2="285" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="750" y1="390" x2="750" y2="420" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 570 540 C 500 560, 430 565, 400 595" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 930 540 C 1000 560, 1070 565, 1100 595" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 392 670 C 392 710, 655 705, 700 760" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M 1107 670 C 1107 710, 845 705, 800 760" fill="none" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="550" y1="820" x2="435" y2="820" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="950" y1="820" x2="1065" y2="820" stroke="#475569" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <text x="505" y="802" text-anchor="middle" class="branch-text">NO</text>
+  <text x="995" y="802" text-anchor="middle" class="branch-text">YES</text>
+
+  <!-- Takeaway -->
+  <rect x="280" y="985" width="940" height="38" rx="19" fill="#e2e8f0"/>
+  <text x="750" y="1011" text-anchor="middle" class="key-text">Key idea: selection is a model prediction; validation and execution are agent responsibilities.</text>
+</svg>
