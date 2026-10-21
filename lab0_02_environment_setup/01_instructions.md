@@ -43,10 +43,10 @@ By the end of Lab 0-02, you should be able to:
 
    ```text
    MODEL="qwen3:8b"
-   OLLAMA_BASE_URL="http://localhost:11434/v1"
+   OLLAMA_BASE_URL="http://136.160.215.236:11434/v1"
    ```
 
-   > **Note:** The IP address of our Ollama server VM is **136.160.215.236**. When connecting to the instructor-managed Ollama server from another machine, use `http://136.160.215.236:11434/v1` as the Ollama base URL.
+   > **Note:** The IP address of our Ollama server VM is **136.160.215.236**. To see which models are currently available, run `curl http://136.160.215.236:11434/v1/models`.
 
 2. Install the Graphviz system application.
 
@@ -73,22 +73,22 @@ By the end of Lab 0-02, you should be able to:
 
 4. Test the configured Ollama endpoint from the command line.
 
-   If `lab0_02_environment_setup/.env` contains the current temporary instructor endpoint:
+   If `lab0_02_environment_setup/.env` contains the current instructor endpoint:
 
    ```text
-   OLLAMA_BASE_URL="http://localhost:11434/v1"
+   OLLAMA_BASE_URL="http://136.160.215.236:11434/v1"
    ```
 
-   then test the server at:
+   then list the available models with:
 
    ```bash
-   curl http://localhost:11434/api/tags
+   curl http://136.160.215.236:11434/v1/models
    ```
 
    In Windows PowerShell, use:
 
    ```powershell
-   curl.exe http://localhost:11434/api/tags
+   curl.exe http://136.160.215.236:11434/v1/models
    ```
 
    You should receive a JSON response listing available models.
