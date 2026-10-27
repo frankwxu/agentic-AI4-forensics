@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1480" height="930" viewBox="0 0 1480 930" role="img" aria-labelledby="title desc">
+  <title id="title">Bounded forensic agent workflow</title>
+  <desc id="desc">The agent initializes its state, sends the current evidence and available tools to the model, records the model decision in an audit trace, and branches. A tool request is validated, executed, saved to working memory, and loops to the next turn. A final review is validated and displayed.</desc>
+  <defs>
+    <style>
+      .diagram-title { font: 700 30px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .node-title { font: 700 21px 'Segoe UI', Arial, sans-serif; fill: #0f172a; }
+      .node-text { font: 500 16px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .branch-label { font: 700 17px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .loop-label { font: 600 17px 'Segoe UI', Arial, sans-serif; fill: #1d4ed8; }
+      .code { font: 600 16px Consolas, 'Courier New', monospace; fill: #1e293b; }
+      .arrow { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#arrow); }
+      .loop { fill: none; stroke: #2563eb; stroke-width: 3; stroke-dasharray: 9 7; marker-end: url(#arrow-blue); }
+      .trace-arrow { fill: none; stroke: #64748b; stroke-width: 2.5; stroke-dasharray: 7 6; marker-end: url(#arrow-gray); }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="1480" height="930" fill="#ffffff"/>
+  <text x="740" y="48" text-anchor="middle" class="diagram-title">How the Bounded Forensic Agent Completes One or More Turns</text>
+
+  <rect x="40" y="90" width="280" height="115" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="180" y="125" text-anchor="middle" class="node-title">1. Initialize State</text>
+  <text x="180" y="158" text-anchor="middle" class="code">messages</text>
+  <text x="180" y="183" text-anchor="middle" class="code">working_memory · used_tools</text>
+
+  <rect x="380" y="90" width="300" height="115" rx="16" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="530" y="125" text-anchor="middle" class="node-title">2. Build Turn Context</text>
+  <text x="530" y="158" text-anchor="middle" class="node-text">Current evidence, unused tools,</text>
+  <text x="530" y="181" text-anchor="middle" class="node-text">and the next-turn instruction</text>
+
+  <rect x="740" y="90" width="300" height="115" rx="16" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="890" y="125" text-anchor="middle" class="node-title">3. Ask the Model</text>
+  <text x="890" y="158" text-anchor="middle" class="node-text">Return one schema-constrained</text>
+  <text x="890" y="181" text-anchor="middle" class="node-text">JSON decision</text>
+
+  <rect x="1100" y="90" width="330" height="115" rx="16" fill="#f1f5f9" stroke="#64748b" stroke-width="2"/>
+  <text x="1265" y="125" text-anchor="middle" class="node-title">Record in <tspan class="code">agent_trace</tspan></text>
+  <text x="1265" y="158" text-anchor="middle" class="node-text">Turn, response time, and decision</text>
+  <text x="1265" y="181" text-anchor="middle" class="node-text">For inspection—not model evidence</text>
+
+  <line x1="320" y1="148" x2="380" y2="148" class="arrow"/>
+  <line x1="680" y1="148" x2="740" y2="148" class="arrow"/>
+  <line x1="890" y1="205" x2="890" y2="228" class="arrow"/>
+  <line x1="1040" y1="148" x2="1100" y2="148" class="trace-arrow"/>
+  <text x="1070" y="134" text-anchor="middle" class="branch-label">also record</text>
+
+  <polygon points="890,230 1030,300 890,370 750,300" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+  <text x="890" y="294" text-anchor="middle" class="node-title">Which action?</text>
+  <text x="890" y="321" text-anchor="middle" class="code">tool or final</text>
+
+  <path d="M 750 300 H 565 V 420" class="arrow"/>
+  <text x="655" y="286" text-anchor="middle" class="branch-label">tool</text>
+
+  <rect x="400" y="420" width="330" height="110" rx="16" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+  <text x="565" y="457" text-anchor="middle" class="node-title">4A. Validate Request</text>
+  <text x="565" y="490" text-anchor="middle" class="node-text">Tool must be approved and unused</text>
+  <text x="565" y="513" text-anchor="middle" class="node-text">before Python may execute it</text>
+
+  <rect x="400" y="580" width="330" height="110" rx="16" fill="#ccfbf1" stroke="#0f766e" stroke-width="2"/>
+  <text x="565" y="617" text-anchor="middle" class="node-title">5A. Run Approved Reader</text>
+  <text x="565" y="650" text-anchor="middle" class="node-text">Read one bounded view</text>
+  <text x="565" y="673" text-anchor="middle" class="node-text">of the synthetic case packet</text>
+
+  <rect x="400" y="740" width="330" height="110" rx="16" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="565" y="777" text-anchor="middle" class="node-title">6A. Update State</text>
+  <text x="565" y="810" text-anchor="middle" class="code">working_memory += result</text>
+  <text x="565" y="833" text-anchor="middle" class="code">used_tools += tool name</text>
+
+  <line x1="565" y1="530" x2="565" y2="580" class="arrow"/>
+  <line x1="565" y1="690" x2="565" y2="740" class="arrow"/>
+
+  <path d="M 565 850 V 890 H 120 V 255 H 530 V 205" class="loop"/>
+  <text x="255" y="878" text-anchor="middle" class="loop-label">Start the next turn with updated evidence</text>
+
+  <path d="M 1030 300 H 1200 V 420" class="arrow"/>
+  <text x="1115" y="286" text-anchor="middle" class="branch-label">final</text>
+
+  <rect x="1020" y="420" width="360" height="110" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1200" y="457" text-anchor="middle" class="node-title">4B. Validate Final Review</text>
+  <text x="1200" y="490" text-anchor="middle" class="node-text">Required fields, final action,</text>
+  <text x="1200" y="513" text-anchor="middle" class="node-text">and human-review flag</text>
+
+  <rect x="1020" y="600" width="360" height="110" rx="16" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1200" y="637" text-anchor="middle" class="node-title">5B. Stop and Display</text>
+  <text x="1200" y="670" text-anchor="middle" class="node-text">Show the evidence-bounded review</text>
+  <text x="1200" y="693" text-anchor="middle" class="node-text">and compact execution summary</text>
+
+  <line x1="1200" y1="530" x2="1200" y2="600" class="arrow"/>
+</svg>
